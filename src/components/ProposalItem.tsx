@@ -24,7 +24,7 @@ function ProposalItem({ proposal }: { proposal: IProposal }) {
         <div className='flex flex-col justify-start items-start gap-4'>
           <div className='flex items-center justify-start w-full  relative'>
             <Image
-              src={`/images/default-avatar-${Number(proposal.seller.id) % 11}.jpeg`}
+              src={`/images/default-avatar-${Number(proposal.seller.id) % 9}.jpeg`}
               className='w-10 mr-4 rounded-full'
               width={50}
               height={50}

@@ -1,0 +1,44 @@
+import { QRCodeSVG } from 'qrcode.react';
+import { toast } from 'react-toastify';
+import { ClipboardDocumentIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
+
+function InviteMember() {
+  const shareLink = `https://www.beetogether.work/onboarding/invite`;
+  const handleCopyClick = () => {
+    navigator.clipboard.writeText(shareLink);
+    toast('Link copied', {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      progress: undefined,
+      theme: 'dark',
+    });
+  };
+
+  return (
+    <div className='flex flex-col justify-between items-center '>
+      <a
+        onClick={handleCopyClick}
+        className='flex p-3 bg-endnight border-endnight rounded justify-between text-greeny'>
+        Copy invite link
+        <ClipboardDocumentIcon className='ml-2 h-5 w-5' />
+      </a>
+      <p className='mb-4 mt-4'>or</p>
+      <div className='flex justify-center'>
+        <QRCodeSVG
+          value={shareLink}
+          size={200}
+          bgColor='#ff0050'
+          fgColor='#0f172a'
+          level='L'
+          includeMargin={true}
+        />
+      </div>
+    </div>
+  );
+}
+
+export default InviteMember;

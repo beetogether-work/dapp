@@ -17,12 +17,6 @@ function Invite() {
             </a>
           </div>
           <HiveInviteForm />
-
-          <div className='text-center'>
-            <p className='font-sans text-sm font-normal leading-normal text-gray-400 mt-10'>
-              © 2023 BeeTogether. All rights reserved.
-            </p>
-          </div>
         </div>
       </div>
     </div>
