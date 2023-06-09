@@ -165,7 +165,7 @@ function ServiceForm() {
                 type='text'
                 id='title'
                 name='title'
-                className='mt-1 mb-1 block w-full rounded-xl border-gray-300 shadow-sm focus:ring-opacity-50'
+                className='mt-1 mb-1 block w-full rounded-xl border border-gray-700 bg-midnight shadow-sm focus:ring-opacity-50'
                 placeholder=''
               />
               <span className='text-red-500'>
@@ -179,7 +179,7 @@ function ServiceForm() {
                 as='textarea'
                 id='about'
                 name='about'
-                className='mt-1 mb-1 block w-full rounded-xl border-gray-300 shadow-sm focus:ring-opacity-50'
+                className='mt-1 mb-1 block w-full rounded-xl border border-gray-700 bg-midnight shadow-sm focus:ring-opacity-50'
                 placeholder=''
               />
               <span className='text-red-500'>
@@ -202,7 +202,7 @@ function ServiceForm() {
                   type='number'
                   id='rateAmount'
                   name='rateAmount'
-                  className='mt-1 mb-1 block w-full rounded-xl border-gray-300 shadow-sm focus:ring-opacity-50'
+                  className='mt-1 mb-1 block w-full rounded-xl border border-gray-700 bg-midnight shadow-sm focus:ring-opacity-50'
                   placeholder=''
                 />
                 <span className='text-red-500 mt-2'>

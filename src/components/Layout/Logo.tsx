@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 function Logo({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
   return (
-    <h1 className={`text-1xl ${theme == 'light' ? 'text-white' : 'text-redpraha'}`}>
+    <div className={`text-1xl ${theme == 'light' ? 'text-white' : 'text-redpraha'}`}>
       <Link href='/' className='flex items-center'>
         <Image
           src={'/logo-text-white.png'}
@@ -13,7 +13,7 @@ function Logo({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
           className='-ml-2 sm:ml-0'
         />
       </Link>
-    </h1>
+    </div>
   );
 }
 

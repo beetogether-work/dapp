@@ -188,7 +188,7 @@ function ProposalForm({
                 id='about'
                 rows={8}
                 name='about'
-                className='mt-1 mb-1 block w-full rounded-xl border-gray-300 shadow-sm focus:ring-opacity-50'
+                className='mt-1 mb-1 block w-full rounded-xl border border-gray-700 bg-midnight shadow-sm focus:ring-opacity-50'
                 placeholder=''
               />
               <span className='text-red-500'>
@@ -203,7 +203,7 @@ function ProposalForm({
                   type='number'
                   id='rateAmount'
                   name='rateAmount'
-                  className='mt-1 mb-1 block w-full rounded-xl border-gray-300 shadow-sm focus:ring-opacity-50'
+                  className='mt-1 mb-1 block w-full rounded-xl border border-gray-700 bg-midnight shadow-sm focus:ring-opacity-50'
                   placeholder=''
                 />
                 <span className='text-red-500'>
