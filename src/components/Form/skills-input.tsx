@@ -3,6 +3,7 @@ import { useFormikContext } from 'formik';
 import { useEffect, useState } from 'react';
 import { MINIMUM_QUERY_LENGTH, useWorkxSkills } from '../../hooks/workx/useWorkxSkills';
 import { debounce } from 'lodash';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 
 export function SkillsInput({
   initialValues,
@@ -39,18 +40,17 @@ export function SkillsInput({
       <div
         key={skill}
         className={
-          'leading-tight mr-2 inline-flex items-center rounded-full bg-zinc-100 pl-3 text-sm font-medium text-blue-800'
+          'leading-tight mr-2 inline-flex items-center rounded-full bg-midnight p-1 pl-3 text-xs text-gray-200'
         }>
         <span>{skill}</span>
         <span
-          className={'ml-1 cursor-pointer rounded-full bg-zinc-300 p-1 w-[28px] text-center'}
+          className={'ml-2 cursor-pointer rounded-full bg-redpraha text-center'}
           onClick={() => {
             const newSkills = [...allSkills];
             newSkills.splice(newSkills.indexOf(skill), 1);
             setAllSkills(newSkills);
           }}>
-          {' '}
-          x
+          <XMarkIcon width={16} />
         </span>
       </div>
     );
