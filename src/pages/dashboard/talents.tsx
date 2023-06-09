@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
-import SearchTalentButton from '../components/Form/SearchTalentButton';
-import Loading from '../components/Loading';
-import UserItem from '../components/UserItem';
-import useUsers from '../hooks/useUsers';
+import SearchTalentButton from '../../components/Form/SearchTalentButton';
+import Loading from '../../components/Loading';
+import UserItem from '../../components/UserItem';
+import useUsers from '../../hooks/useUsers';
 
 function Talents() {
   const PAGE_SIZE = 36;

@@ -10,7 +10,7 @@ function SearchModal() {
   const router = useRouter();
 
   const handleChat = () => {
-    const chatLink = `https://www.beetogether.work/messaging/${search}`;
+    const chatLink = `https://www.beetogether.work/dashboard/messaging/${search}`;
     router.push(chatLink);
   };
 

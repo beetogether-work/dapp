@@ -14,7 +14,7 @@ const ConversationCard = ({ peerAddress, latestMessage }: IConversationCardProps
   const router = useRouter();
 
   const handleSelectConversation = () => {
-    router.push(`/messaging/${peerAddress}`);
+    router.push(`/dashboard/messaging/${peerAddress}`);
   };
 
   return (

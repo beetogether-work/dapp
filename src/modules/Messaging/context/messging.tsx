@@ -49,7 +49,7 @@ const MessagingProvider = ({ children }: { children: ReactNode }) => {
         }
       }
       const buyerAddress = ethers.utils.getAddress(userAddress);
-      router.push(`/messaging/${buyerAddress}`);
+      router.push(`/dashboard/messaging/${buyerAddress}`);
     }
   };
 

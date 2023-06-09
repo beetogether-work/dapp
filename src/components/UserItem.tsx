@@ -44,7 +44,7 @@ function UserItem({ user }: { user: IUser }) {
           {currentUser?.id === user.id && (
             <Link
               className='text-green-600 bg-green-50 hover:bg-redpraha hover:text-white px-5 py-2 rounded'
-              href={`/profile/edit`}>
+              href={`/dashboard/profile/edit`}>
               Edit profile
             </Link>
           )}

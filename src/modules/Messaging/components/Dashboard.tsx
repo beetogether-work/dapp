@@ -33,13 +33,6 @@ function Dashboard() {
   );
   const peerUser = useUserByAddress(selectedConversationPeerAddress);
 
-  watchAccount(() => {
-    providerState?.disconnect?.();
-    selectedConversationPeerAddress
-      ? router.push(`/messaging/${selectedConversationPeerAddress}`)
-      : router.push(`/messaging`);
-  });
-
   // Listens to new conversations ? ==> Yes, & sets them in "xmtp context". Stream stops "onDestroy"
   useStreamConversations();
 

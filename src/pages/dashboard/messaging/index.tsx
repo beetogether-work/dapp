@@ -2,25 +2,19 @@ import { watchAccount } from '@wagmi/core';
 import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import { useSigner } from 'wagmi';
-import Steps from '../../components/Steps';
-import TalentLayerContext from '../../context/talentLayer';
-import CardHeader from '../../modules/Messaging/components/CardHeader';
-import ConversationList from '../../modules/Messaging/components/ConversationList';
-import { XmtpContext } from '../../modules/Messaging/context/XmtpContext';
-import useStreamConversations from '../../modules/Messaging/hooks/useStreamConversations';
+import Steps from '../../../components/Steps';
+import TalentLayerContext from '../../../context/talentLayer';
+import CardHeader from '../../../modules/Messaging/components/CardHeader';
+import ConversationList from '../../../modules/Messaging/components/ConversationList';
+import { XmtpContext } from '../../../modules/Messaging/context/XmtpContext';
+import useStreamConversations from '../../../modules/Messaging/hooks/useStreamConversations';
 
 function MessagingIndex() {
-  const router = useRouter();
   const { account } = useContext(TalentLayerContext);
   const { data: signer } = useSigner({
     chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
   });
   const { providerState } = useContext(XmtpContext);
-
-  watchAccount(() => {
-    providerState?.disconnect?.();
-    router.push(`/messaging`);
-  });
 
   // Listens to new conversations ? ==> Yes, & sets them in "xmtp context". Stream stops "onDestroy"
   useStreamConversations();

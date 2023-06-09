@@ -37,7 +37,7 @@ function UserSubMenu() {
             {account?.address && truncateAddress(account.address)}
           </p>
           <a
-            href='/profile/edit'
+            href='/dashboard/profile/edit'
             className='mt-2 border border-redpraha rounded-xl hover:bg-endnight text-white bg-midnight px-5 py-2 w-full'
             role='none'>
             Manage Account
