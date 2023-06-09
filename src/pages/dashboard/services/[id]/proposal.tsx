@@ -23,6 +23,10 @@ function CreateOrEditProposal() {
     return <Loading />;
   }
 
+  if (!account?.isConnected) {
+    return <Steps />;
+  }
+
   return (
     <div className='max-w-7xl mx-auto text-gray-200 sm:px-4 lg:px-0'>
       <div className=' -mx-6 -mt-6 '>
@@ -45,8 +49,6 @@ function CreateOrEditProposal() {
           )}
         </p>
       </div>
-
-      <Steps />
 
       {!userExists() && account?.isConnected && user && (
         <div className='border border-redpraha rounded-xl p-8'>

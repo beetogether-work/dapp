@@ -1,13 +1,17 @@
 import Image from 'next/image';
-import Steps from '../../components/Steps';
-import { PlusIcon } from '@heroicons/react/24/outline';
 import InviteModal from '../../components/InviteModal';
+import Steps from '../../components/Steps';
+import TalentLayerContext from '../../context/talentLayer';
+import { useContext } from 'react';
 
 function Hive() {
+  const { account } = useContext(TalentLayerContext);
+  if (!account?.isConnected) {
+    return <Steps />;
+  }
+
   return (
     <div className='max-w-7xl mx-auto text-gray-200 sm:px-4 lg:px-0'>
-      <Steps />
-
       <div className='bg-redpraha rounded-xl px-6 py-6'>
         <div className='flex w-full flex-col items-center sm:flex-row'>
           <div className='flex flex-1 flex-row w-full mb-4'>
