@@ -71,7 +71,7 @@ function HiveInviteForm() {
         );
 
         setSubmitting(false);
-        // TODO: now redirect to success page
+        // TODO: now redirect to hive dashboard page
       } catch (error: any) {
         showErrorTransactionToast(error);
       }

@@ -27,7 +27,7 @@ function ReviewItem({ review }: { review: IReview }) {
             </div>
           </div>
 
-          <div className=' border-t border-gray-100 w-full'>
+          <div className=' border-t border-gray-700 w-full'>
             <p className='text-sm text-gray-500 mt-4'>
               <strong>Rating:</strong> {review.rating}
             </p>

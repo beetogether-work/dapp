@@ -38,7 +38,7 @@ function UserProposalItem({ proposal }: { proposal: IProposal }) {
               </p>
             </div>
 
-            <span className='absolute right-0 inline-flex items-center rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-medium text-zinc-800'>
+            <span className='absolute right-[-25px] top-[-25px] inline-flex items-center rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-medium text-zinc-800'>
               {proposal.status}
             </span>
           </div>
@@ -56,13 +56,13 @@ function UserProposalItem({ proposal }: { proposal: IProposal }) {
             </p>
           </div>
         </div>
-        <div className='flex flex-row gap-4 justify-between items-center border-t border-gray-100 pt-4'>
+        <div className='flex flex-row gap-4 justify-between items-center border-t border-gray-700 pt-4'>
           <p className='text-gray-400 font-bold line-clamp-1 flex-1'>
             {renderTokenAmount(proposal.rateToken, proposal.rateAmount)}
           </p>
           <Link
             className='text-zinc-600 bg-zinc-50 hover:bg-zinc-500 hover:text-white px-3 py-2 rounded text-sm'
-            href={`/services/${proposal.service.id}`}>
+            href={`/dashboard/services/${proposal.service.id}`}>
             Show Job
           </Link>
           {isBuyer && proposal.status === ProposalStatusEnum.Pending && (

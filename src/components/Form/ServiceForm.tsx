@@ -144,7 +144,7 @@ function ServiceForm() {
         setSubmitting(false);
         resetForm();
         if (newId) {
-          router.push(`/services/${newId}`);
+          router.push(`/dashboard/services/${newId}`);
         }
       } catch (error) {
         showErrorTransactionToast(error);

@@ -176,10 +176,10 @@ function ProposalForm({
     <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
       {({ isSubmitting }) => (
         <Form>
-          <h2 className='mb-2 text-gray-900 font-bold'>For the job:</h2>
+          <h2 className='mb-2 text-white font-bold'>For the job:</h2>
           <ServiceItem service={service} />
 
-          <h2 className=' mt-8 mb-2 text-gray-900 font-bold'>Describe your proposal in details:</h2>
+          <h2 className=' mt-8 mb-2 text-white font-bold'>Describe your proposal in details:</h2>
           <div className='grid grid-cols-1 gap-6 border border-gray-700 rounded-xl p-8 bg-endnight'>
             <label className='block'>
               <span className='text-gray-100'>about</span>
@@ -216,7 +216,7 @@ function ProposalForm({
                   component='select'
                   id='rateToken'
                   name='rateToken'
-                  className='mt-1 mb-2 block w-full rounded-xl border-gray-300 shadow-sm focus:ring-opacity-50'
+                  className='mt-1 mb-2 block w-full rounded-xl border border-gray-700 bg-midnight shadow-sm focus:ring-opacity-50'
                   placeholder=''>
                   <option value=''>Select a token</option>
                   {allowedTokenList.map((token, index) => (
@@ -236,7 +236,7 @@ function ProposalForm({
                 type='number'
                 id='expirationDate'
                 name='expirationDate'
-                className='mt-1 mb-2 block w-full rounded-xl border-gray-300 shadow-sm focus:ring-opacity-50'
+                className='mt-1 mb-2 block w-full rounded-xl border border-gray-700 bg-midnight shadow-sm focus:ring-opacity-50'
                 placeholder=''
               />
               <span className='text-red-500'>
@@ -249,7 +249,7 @@ function ProposalForm({
                 type='text'
                 id='videoUrl'
                 name='videoUrl'
-                className='mt-1 mb-2 block w-full rounded-xl border-gray-300 shadow-sm focus:ring-opacity-50'
+                className='mt-1 mb-2 block w-full rounded-xl border border-gray-700 bg-midnight shadow-sm focus:ring-opacity-50'
                 placeholder='Enter  video URL'
               />
               <span className='text-red-500'>

@@ -39,12 +39,12 @@ function ProposalItem({ proposal }: { proposal: IProposal }) {
               </p>
             </div>
 
-            <span className='absolute right-0 inline-flex items-center rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-medium text-zinc-800'>
+            <span className='absolute right-[-25px] top-[-25px] inline-flex items-center rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-medium text-zinc-800'>
               {proposal.status}
             </span>
           </div>
 
-          <div className=' border-t border-gray-100 w-full'>
+          <div className=' border-t border-gray-700 w-full'>
             <p className='text-sm text-gray-500 mt-4'>
               <strong>Message:</strong> {proposal.description?.about}
             </p>
@@ -60,7 +60,7 @@ function ProposalItem({ proposal }: { proposal: IProposal }) {
             )}
           </div>
         </div>
-        <div className='flex flex-row gap-4 justify-between items-center border-t border-gray-100 pt-4'>
+        <div className='flex flex-row gap-4 justify-between items-center border-t border-gray-700 pt-4'>
           <p className='text-gray-400 font-bold line-clamp-1 flex-1'>
             {renderTokenAmount(proposal.rateToken, proposal.rateAmount)}
           </p>
@@ -75,7 +75,7 @@ function ProposalItem({ proposal }: { proposal: IProposal }) {
             <div className='flex flex-row gap-4 items-center border-t border-gray-700 pt-4'>
               <Link
                 className='text-zinc-600 bg-zinc-50 hover:bg-zinc-500 hover:text-white px-3 py-2 rounded text-sm'
-                href={`/services/${service.id}/proposal`}>
+                href={`/dashboard/services/${service.id}/proposal`}>
                 Edit proposal
               </Link>
             </div>
