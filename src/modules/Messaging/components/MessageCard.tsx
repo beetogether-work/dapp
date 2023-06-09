@@ -58,7 +58,7 @@ const MessageCard = ({ message, dateHasChanged }: IMessageCardProps) => {
                   <div className={'break-all'}>{messageContent}</div>
                 </div>
                 <div className='ml-2'>
-                  <Loading size={'5'} />
+                  <Loading />
                 </div>
               </div>
             )}
