@@ -27,7 +27,7 @@ function InviteMember() {
         <ClipboardDocumentIcon className='ml-2 h-5 w-5' />
       </a>
       <p className='mb-4 mt-4'>or</p>
-      <div className='flex justify-center'>
+      <div className='flex justify-center rounded-xl overflow-hidden'>
         <QRCodeSVG
           value={shareLink}
           size={200}
@@ -35,6 +35,7 @@ function InviteMember() {
           fgColor='#0f172a'
           level='L'
           includeMargin={true}
+          radius={20}
         />
       </div>
     </div>

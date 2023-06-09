@@ -61,7 +61,7 @@ function Hive() {
         </div>
       </div>
 
-      <div className='flex flex-col justify-between gap-6 sm:flex-row mt-6'>
+      <div className='flex flex-col justify-between gap-6 mt-6'>
         <div>
           <h3 className='font-heading text-lg font-semibold leading-tight text-gray-100 mb-1'>
             <span>Proposals</span>
