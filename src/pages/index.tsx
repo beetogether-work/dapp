@@ -89,25 +89,23 @@ function Home() {
               <div className="row align-items-center">
                 <div className="col-lg-5 col-md-12 col-12">
                   <div className="hero-content">
-                    <h1 className="wow fadeInLeft" data-wow-delay=".4s">A powerful app for your business.</h1>
-                    <p className="wow fadeInLeft" data-wow-delay=".6s">From open source to pro services, Piqes helps you
-                      to build, deploy, test, and monitor apps.</p>
+                    <h1 className="wow fadeInLeft" data-wow-delay=".4s">Do-it-yourself is good, do it together is beeter!</h1>
+                    <p className="wow fadeInLeft" data-wow-delay=".6s">BeeTogether is your all-in-one platform to launch and manage your own service DAO or freelance collective in web 3</p>
                     <div className="button wow fadeInLeft" data-wow-delay=".8s">
-                      <a href="javascript:void(0)" className="btn"><i className="lni lni-apple" /> App Store</a>
-                      <a href="javascript:void(0)" className="btn btn-alt"><i className="lni lni-play-store" /> Google
-                        Play</a>
+                      <a href="javascript:void(0)" className="btn"><i className="lni lni-apple" /> Lannch Your Hive</a>
+
                     </div>
                   </div>
                 </div>
                 <div className="col-lg-7 col-md-12 col-12">
                   <div className="hero-image wow fadeInRight" data-wow-delay=".4s">
-                  <Image
-          src={'/images/phone.png'}
-          width={180}
-          height={36}
-          alt='phone image'
-          className='-ml-2 sm:ml-0'
-        />
+                    <Image
+                      src={'/images/phone.png'}
+                      width={180}
+                      height={36}
+                      alt='phone image'
+                      className='-ml-2 sm:ml-0'
+                    />
                   </div>
                 </div>
               </div>
@@ -120,11 +118,10 @@ function Home() {
               <div className="row">
                 <div className="col-12">
                   <div className="section-title">
-                    <h3 className="wow zoomIn" data-wow-delay=".2s">Features</h3>
-                    <h2 className="wow fadeInUp" data-wow-delay=".4s">Your Experience Gets Better And Better Over Time.
+                    <h3 className="wow zoomIn" data-wow-delay=".2s">Start Your Hive</h3>
+                    <h2 className="wow fadeInUp" data-wow-delay=".4s">The Hive Mindset
                     </h2>
-                    <p className="wow fadeInUp" data-wow-delay=".6s">There are many variations of passages of Lorem
-                      Ipsum available, but the majority have suffered alteration in some form.</p>
+                    <p className="wow fadeInUp" data-wow-delay=".6s">Hives are groups of independent workers that come together to get hired, make money, and grow their reputations together! This work style is taking the world by storm as more people transition to freelance and DAO-based work. What about you? Do you have the #HiveMindset?</p>
                   </div>
                 </div>
               </div>
@@ -133,9 +130,8 @@ function Home() {
                   {/* Start Single Feature */}
                   <div className="single-feature wow fadeInUp" data-wow-delay=".2s">
                     <i className="lni lni-cloud-upload" />
-                    <h3>Push to Deploy</h3>
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a
-                      page at its layout.</p>
+                    <h3>1. Find your hive!</h3>
+                    <p>Bring together a team to find work together. Create your Hive and add your frens.</p>
                   </div>
                   {/* End Single Feature */}
                 </div>
@@ -143,9 +139,8 @@ function Home() {
                   {/* Start Single Feature */}
                   <div className="single-feature wow fadeInUp" data-wow-delay=".4s">
                     <i className="lni lni-lock" />
-                    <h3>SSL Certificates</h3>
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a
-                      page at its layout.</p>
+                    <h3>2. Search for work.</h3>
+                    <p>Connect with the Talentlayer protocol to get results for job types by keyword.</p>
                   </div>
                   {/* End Single Feature */}
                 </div>
@@ -153,9 +148,8 @@ function Home() {
                   {/* Start Single Feature */}
                   <div className="single-feature wow fadeInUp" data-wow-delay=".6s">
                     <i className="lni lni-reload" />
-                    <h3>Simple Queues</h3>
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a
-                      page at its layout.</p>
+                    <h3>3. Apply and get hired.</h3>
+                    <p>Apply to and get hired for gigs. Configure automatic pay splits for team members.</p>
                   </div>
                   {/* End Single Feature */}
                 </div>
@@ -163,9 +157,8 @@ function Home() {
                   {/* Start Single Feature */}
                   <div className="single-feature wow fadeInUp" data-wow-delay=".2s">
                     <i className="lni lni-shield" />
-                    <h3>Advanced Security</h3>
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a
-                      page at its layout.</p>
+                    <h3>4. Complete work and get reviews!</h3>
+                    <p>Grow your Hive’s reputation and your own at the same time.</p>
                   </div>
                   {/* End Single Feature */}
                 </div>
@@ -173,19 +166,8 @@ function Home() {
                   {/* Start Single Feature */}
                   <div className="single-feature wow fadeInUp" data-wow-delay=".4s">
                     <i className="lni lni-cog" />
-                    <h3>Powerful API</h3>
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a
-                      page at its layout.</p>
-                  </div>
-                  {/* End Single Feature */}
-                </div>
-                <div className="col-lg-4 col-md-6 col-12">
-                  {/* Start Single Feature */}
-                  <div className="single-feature wow fadeInUp" data-wow-delay=".6s">
-                    <i className="lni lni-layers" />
-                    <h3>Database Backups</h3>
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a
-                      page at its layout.</p>
+                    <h3>5. Manage your Hive treasury with voting!</h3>
+                    <p>Cover admin costs for everyone in the collective, pay for joint marketing, and more.</p>
                   </div>
                   {/* End Single Feature */}
                 </div>
@@ -199,8 +181,8 @@ function Home() {
               <div className="row">
                 <div className="col-lg-10 offset-lg-1 col-md-12 col-12">
                   <div className="title">
-                    <h2>Trusted by developers from over 80 planets</h2>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority.</p>
+                    <h2>Why Form a Hive?</h2>
+                    <p>Working with your frens has many benefits!</p>
                   </div>
                 </div>
               </div>
@@ -209,20 +191,20 @@ function Home() {
                   <div className="row">
                     <div className="col-lg-4 col-md-4 col-12">
                       <div className="single-achievement wow fadeInUp" data-wow-delay=".2s">
-                        <h3 className="counter"><span id="secondo1" className="countup" cup-end={100}>100</span>%</h3>
-                        <p>satisfaction</p>
+                        <h3 className="counter">save on costs</h3>
+                        <p>taking clients together means you don't have to do accounting, marketing, and other admin tasks alone</p>
                       </div>
                     </div>
                     <div className="col-lg-4 col-md-4 col-12">
                       <div className="single-achievement wow fadeInUp" data-wow-delay=".4s">
-                        <h3 className="counter"><span id="secondo2" className="countup" cup-end={120}>120</span>K</h3>
-                        <p>Happy Users</p>
+                        <h3 className="counter">get bigger clients</h3>
+                        <p>by combining skillsets with other workers, take bigger projects than you could alone</p>
                       </div>
                     </div>
                     <div className="col-lg-4 col-md-4 col-12">
                       <div className="single-achievement wow fadeInUp" data-wow-delay=".6s">
-                        <h3 className="counter"><span id="secondo3" className="countup" cup-end={125}>125</span>k+</h3>
-                        <p>Downloads</p>
+                        <h3 className="counter">grow together</h3>
+                        <p>upskill and grow your reputation by working on more important projects with cool ppl</p>
                       </div>
                     </div>
                   </div>
@@ -237,10 +219,9 @@ function Home() {
               <div className="row">
                 <div className="col-12">
                   <div className="section-title">
-                    <h3 className="wow zoomIn" data-wow-delay=".2s">pricing</h3>
-                    <h2 className="wow fadeInUp" data-wow-delay=".4s">Pricing Plan</h2>
-                    <p className="wow fadeInUp" data-wow-delay=".6s">There are many variations of passages of Lorem
-                      Ipsum available, but the majority have suffered alteration in some form.</p>
+                    <h3 className="wow zoomIn" data-wow-delay=".2s">Features</h3>
+                    <h2 className="wow fadeInUp" data-wow-delay=".4s">Make Your Hive Buzz With Custom Features!</h2>
+                    <p className="wow fadeInUp" data-wow-delay=".6s">BeeTogether has all you need to run a successful hive.</p>
                   </div>
                 </div>
               </div>
@@ -250,29 +231,22 @@ function Home() {
                   <div className="single-table wow fadeInUp" data-wow-delay=".2s">
                     {/* Table Head */}
                     <div className="table-head">
-                      <h4 className="title">Hobby</h4>
+                      <h4 className="title">BeeScribe</h4>
                       <p>All the basics for starting a new business</p>
                       <div className="price">
-                        <h2 className="amount">$12<span className="duration">/mo</span></h2>
+                        <Image
+                          src={'/images/logo-placeholder.png'}
+                          width={180}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 sm:ml-0'
+                        />
                       </div>
                       <div className="button">
-                        <a href="javascript:void(0)" className="btn">Buy Hobby</a>
+                        <a href="javascript:void(0)" className="btn">Learn More</a>
                       </div>
                     </div>
                     {/* End Table Head */}
-                    {/* Start Table Content */}
-                    <div className="table-content">
-                      <h4 className="middle-title">What's Included</h4>
-                      {/* Table List */}
-                      <ul className="table-list">
-                        <li><i className="lni lni-checkmark-circle" /> Cras justo odio.</li>
-                        <li><i className="lni lni-checkmark-circle" /> Dapibus ac facilisis in.</li>
-                        <li><i className="lni lni-checkmark-circle" /> Morbi leo risus.</li>
-                        <li><i className="lni lni-checkmark-circle" /> Potenti felis, in cras ligula.</li>
-                      </ul>
-                      {/* End Table List */}
-                    </div>
-                    {/* End Table Content */}
                   </div>
                   {/* End Single Table*/}
                 </div>
@@ -281,29 +255,22 @@ function Home() {
                   <div className="single-table wow fadeInUp" data-wow-delay=".4s">
                     {/* Table Head */}
                     <div className="table-head">
-                      <h4 className="title">Freelancer</h4>
+                      <h4 className="title">Account Abstraction</h4>
                       <p>All the basics for starting a new business</p>
                       <div className="price">
-                        <h2 className="amount">$24<span className="duration">/mo</span></h2>
+                        <Image
+                          src={'/images/logo-placeholder.png'}
+                          width={180}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 sm:ml-0'
+                        />
                       </div>
                       <div className="button">
-                        <a href="javascript:void(0)" className="btn">Buy Freelancer</a>
+                        <a href="javascript:void(0)" className="btn">Learn More</a>
                       </div>
                     </div>
                     {/* End Table Head */}
-                    {/* Start Table Content */}
-                    <div className="table-content">
-                      <h4 className="middle-title">What's Included</h4>
-                      {/* Table List */}
-                      <ul className="table-list">
-                        <li><i className="lni lni-checkmark-circle" /> Cras justo odio.</li>
-                        <li><i className="lni lni-checkmark-circle" /> Dapibus ac facilisis in.</li>
-                        <li><i className="lni lni-checkmark-circle" /> Morbi leo risus.</li>
-                        <li><i className="lni lni-checkmark-circle" /> Potenti felis, in cras ligula.</li>
-                      </ul>
-                      {/* End Table List */}
-                    </div>
-                    {/* End Table Content */}
                   </div>
                   {/* End Single Table*/}
                 </div>
@@ -312,29 +279,22 @@ function Home() {
                   <div className="single-table wow fadeInUp" data-wow-delay=".6s">
                     {/* Table Head */}
                     <div className="table-head">
-                      <h4 className="title">Startup</h4>
+                      <h4 className="title">Governance</h4>
                       <p>All the basics for starting a new business</p>
                       <div className="price">
-                        <h2 className="amount">$32<span className="duration">/mo</span></h2>
+                        <Image
+                          src={'/images/logo-placeholder.png'}
+                          width={180}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 sm:ml-0'
+                        />
                       </div>
                       <div className="button">
-                        <a href="javascript:void(0)" className="btn">Buy Startup</a>
+                        <a href="javascript:void(0)" className="btn">Learn More</a>
                       </div>
                     </div>
                     {/* End Table Head */}
-                    {/* Start Table Content */}
-                    <div className="table-content">
-                      <h4 className="middle-title">What's Included</h4>
-                      {/* Table List */}
-                      <ul className="table-list">
-                        <li><i className="lni lni-checkmark-circle" /> Cras justo odio.</li>
-                        <li><i className="lni lni-checkmark-circle" /> Dapibus ac facilisis in.</li>
-                        <li><i className="lni lni-checkmark-circle" /> Morbi leo risus.</li>
-                        <li><i className="lni lni-checkmark-circle" /> Potenti felis, in cras ligula.</li>
-                      </ul>
-                      {/* End Table List */}
-                    </div>
-                    {/* End Table Content */}
                   </div>
                   {/* End Single Table*/}
                 </div>
@@ -343,29 +303,22 @@ function Home() {
                   <div className="single-table wow fadeInUp" data-wow-delay=".8s">
                     {/* Table Head */}
                     <div className="table-head">
-                      <h4 className="title">Enterprise</h4>
-                      <p>All the basics for starting a new business</p>
+                      <h4 className="title">Gateway RPC</h4>
+                      <p>A more reliable way to interact with blockchain tech.</p>
                       <div className="price">
-                        <h2 className="amount">$48<span className="duration">/mo</span></h2>
+                        <Image
+                          src={'/images/logo-placeholder.png'}
+                          width={180}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 sm:ml-0'
+                        />
                       </div>
                       <div className="button">
-                        <a href="javascript:void(0)" className="btn">Buy Enterprise</a>
+                        <a href="javascript:void(0)" className="btn">Learn More</a>
                       </div>
                     </div>
                     {/* End Table Head */}
-                    {/* Start Table Content */}
-                    <div className="table-content">
-                      <h4 className="middle-title">What's Included</h4>
-                      {/* Table List */}
-                      <ul className="table-list">
-                        <li><i className="lni lni-checkmark-circle" /> Cras justo odio.</li>
-                        <li><i className="lni lni-checkmark-circle" /> Dapibus ac facilisis in.</li>
-                        <li><i className="lni lni-checkmark-circle" /> Morbi leo risus.</li>
-                        <li><i className="lni lni-checkmark-circle" /> Potenti felis, in cras ligula.</li>
-                      </ul>
-                      {/* End Table List */}
-                    </div>
-                    {/* End Table Content */}
                   </div>
                   {/* End Single Table*/}
                 </div>
@@ -374,23 +327,7 @@ function Home() {
           </section>
           {/*/ End Pricing Table Area */}
           {/* Start Call To Action Area */}
-          <section className="section call-action">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-8 offset-lg-2 col-md-12 col-12">
-                  <div className="cta-content">
-                    <h2 className="wow fadeInUp" data-wow-delay=".2s">You are using free Lite <br />Version of Appvilla
-                    </h2>
-                    <p className="wow fadeInUp" data-wow-delay=".4s">Please, purchase full version of the template to
-                      get all pages, features and commercial license.</p>
-                    <div className="button wow fadeInUp" data-wow-delay=".6s">
-                      <a href="javascript:void(0)" className="btn">Purchase Now</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+         
           {/* End Call To Action Area */}
           {/* Start Footer Area */}
           <footer className="footer">
@@ -416,7 +353,7 @@ function Home() {
                         {/* Single Widget */}
                         <div className="single-footer f-link">
                           <ul>
-                            <li><a href="javascript:void(0)">Github</a></li>
+                            <li><a href="https://github.com/beetogether-work/dapp">Github</a></li>
                             <li><a href="javascript:void(0)">Devfolio</a></li>
                             <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Contact Web Admin</a></li>
                           </ul>

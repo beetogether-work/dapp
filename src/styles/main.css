@@ -2243,7 +2243,7 @@ ol {
   line-height: 60px;
   text-align: center;
   display: inline-block;
-  background-color: #93f4ff;
+  background-color: #ff0050;
   color: #fff;
   font-size: 20px;
   border-radius: 7px;
@@ -2312,7 +2312,6 @@ ol {
   font-size: 15px;
   color: #000;
   font-weight: 500;
-  text-transform: capitalize;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
