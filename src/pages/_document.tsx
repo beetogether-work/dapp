@@ -27,7 +27,7 @@ export default function Document() {
         <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
         <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
         <link rel='manifest' href='/manifest.json' />
-        <link rel='mask-icon' href='/images/safari-pinned-tab.svg' color='#11112a' />
+        <link rel='mask-icon' href='/images/safari-pinned-tab.svg' color='#000000' />
         <link rel='shortcut icon' href='/favicon.ico' />
       </Head>
       <body className='text-white bg-midnight'>
