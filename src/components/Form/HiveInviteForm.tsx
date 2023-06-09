@@ -90,7 +90,7 @@ function HiveInviteForm() {
           <p className='font-alt text-sm font-normal leading-normal text-gray-400 mb-6'>
             to join the yyy hive
           </p>
-          <div className='grid grid-cols-1 gap-6 border border-gray-700 rounded-xl p-8 bg-endnight'>
+          <div className='grid grid-cols-1 gap-6 border border-gray-700 rounded-xl p-6 bg-endnight'>
             <label className='block'>
               <span className='text-gray-100'>Your handle</span>
               <Field
