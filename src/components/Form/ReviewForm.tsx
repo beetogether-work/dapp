@@ -107,7 +107,7 @@ function ReviewForm({ serviceId }: { serviceId: string }) {
           {/* {Object.keys(errors).map(errorKey => (
             <div key={errorKey}>{errors[errorKey]}</div>
           ))} */}
-          <div className='grid grid-cols-1 gap-6 border border-gray-700 rounded-xl p-8 bg-endnight'>
+          <div className='grid grid-cols-1 gap-6 border border-gray-700 rounded-xl p-6 bg-endnight'>
             <label className='block'>
               <span className='text-gray-100'>Message</span>
               <Field

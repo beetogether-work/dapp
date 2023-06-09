@@ -2,11 +2,10 @@ import { useRouter } from 'next/router';
 
 function BottomLink({ children, href }: { children: React.ReactNode; href: string }) {
   const router = useRouter();
-  let className =
-    router.asPath === href || (href != '/' && router.asPath.includes(href)) ? 'bg-redpraha' : '';
+  let className = router.asPath === href ? 'bg-redpraha' : '';
 
   className +=
-    ' inline-flex font-light text-white flex-col items-center justify-center px-2 hover:bg-redpraha group m-1 rounded-xl';
+    ' inline-flex font-light text-white flex-col items-center justify-center px-2 hover:bg-redpraha group m-2 rounded-xl';
 
   const handleClick = (e: any) => {
     e.preventDefault();

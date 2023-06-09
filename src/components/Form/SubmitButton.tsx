@@ -36,9 +36,7 @@ function SubmitButton({
           Loading...
         </button>
       ) : isConnected ? (
-        <button
-          type='submit'
-          className='grow px-5 py-2 rounded-xl bg-redpraha text-white hover:bg-endnight  '>
+        <button type='submit' className='grow px-5 py-2 rounded-xl bg-redpraha text-white'>
           {label}
         </button>
       ) : (

@@ -11,6 +11,10 @@ import TalentLayerContext from '../../../../context/talentLayer';
 function Dashboard() {
   const { account, user } = useContext(TalentLayerContext);
 
+  if (!account?.isConnected) {
+    return <Steps />;
+  }
+
   return (
     <div className='max-w-7xl mx-auto text-gray-200 sm:px-4 lg:px-0'>
       <div className=' -mx-6 -mt-6 '>
@@ -18,8 +22,6 @@ function Dashboard() {
           Your <span className='text-gray-100 ml-1'> dashboard </span>
         </p>
       </div>
-
-      <Steps />
 
       {account?.isConnected && user && (
         <div>
