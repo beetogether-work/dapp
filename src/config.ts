@@ -107,10 +107,38 @@ const zkSync: Config = {
   },
 };
 
+const mantle: Config = {
+  networkId: NetworkEnum.MANTLE,
+  subgraphUrl: 'https://graph.testnet.mantle.xyz/subgraphs/name/talentlayer',
+  BTSubgraphUrl: 'https://graph.testnet.mantle.xyz/subgraphs/name/beetogether',
+  contracts: {
+    hiveFactory: '0x5FC6c2fE038a79Bb5A5300dEa61162FFd3EaA276',
+    talentLayerId: '0xF6b4d81a77e41f7Ee4dc3FCA56E171567862DEB2',
+    serviceRegistry: '0x7C171329aA4edCEF43de5E378c1E93C110C756A7',
+    talentLayerReview: '0x79186f85c7d937d2b52ce64136b176abbd651a39',
+    talentLayerEscrow: '0x6444ac8760c5647d3f94d691990FcBA734434A66',
+    talentLayerPlatformId: '0xc83A9E89C2E61d251a9429203b99f0497CEfE5Ec',
+  },
+  escrowConfig: {
+    adminFee: '0',
+    adminWallet: '0x8d960334c2EF30f425b395C1506Ef7c5783789F3',
+    timeoutPayment: 3600 * 24 * 7,
+  },
+  tokens: {
+    [ethers.constants.AddressZero]: {
+      address: ethers.constants.AddressZero,
+      symbol: 'BIT',
+      name: 'Bit',
+      decimals: 18,
+    },
+  },
+};
+
 const chains: { [networkId in NetworkEnum]: Config } = {
   [NetworkEnum.LOCAL]: local,
   [NetworkEnum.MUMBAI]: mumbai,
   [NetworkEnum.ZKSYNC]: zkSync,
+  [NetworkEnum.MANTLE]: mantle,
 };
 
 export const getConfig = (networkId: NetworkEnum) => chains[networkId];

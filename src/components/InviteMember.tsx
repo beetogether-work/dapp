@@ -21,7 +21,7 @@ function InviteMember({ hiveAddress, signature }: { hiveAddress: string; signatu
     <div className='flex flex-col justify-between items-center '>
       <a
         onClick={handleCopyClick}
-        className='flex p-3 bg-endnight border-endnight rounded justify-between text-greeny'>
+        className='flex p-3 bg-endnight border-endnight rounded justify-between text-greeny cursor-pointer'>
         Copy invite link
         <ClipboardDocumentIcon className='ml-2 h-5 w-5' />
       </a>
