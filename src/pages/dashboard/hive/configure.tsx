@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import HiveForm from '../../../components/Form/hiveForm';
 import Steps from '../../../components/Steps';
 import TalentLayerContext from '../../../context/talentLayer';
+import HiveForm from '../../../components/Form/HiveForm';
 
 function ConfigureHive() {
   const { account, user } = useContext(TalentLayerContext);

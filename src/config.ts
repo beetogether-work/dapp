@@ -4,6 +4,7 @@ import { IToken, NetworkEnum } from './types';
 export type Config = {
   networkId: NetworkEnum;
   subgraphUrl: string;
+  BTSubgraphUrl: string;
   escrowConfig: { [key: string]: any };
   contracts: { [key: string]: `0x${string}` };
   tokens: { [key: string]: IToken };
@@ -18,7 +19,9 @@ export const FEE_RATE_DIVIDER = 10_000;
 const goerli: Config = {
   networkId: NetworkEnum.GOERLI,
   subgraphUrl: 'https://api.thegraph.com/subgraphs/name/talentlayer/talent-layer-protocol',
+  BTSubgraphUrl: 'https://api.thegraph.com/subgraphs/name/mattiapomelli/beetogether-mumbai',
   contracts: {
+    hiveFactory: '0xeecFd8a85fbB9BbA5Dac2022C824e1c42C5d9634',
     talentLayerId: '0x11119eD887aeC1302e2cAF49942F891667A31BBc',
     serviceRegistry: '0xf0EECbBf164D81261C7Ce4D22D16f38DC63fBAbd',
     talentLayerReview: '0xCf7577fB4749fA9Ae38296D52C53C654F9A9367f',
@@ -59,7 +62,9 @@ const goerli: Config = {
 const mumbai: Config = {
   networkId: NetworkEnum.MUMBAI,
   subgraphUrl: 'https://api.thegraph.com/subgraphs/name/talentlayer/talent-layer-mumbai',
+  BTSubgraphUrl: 'https://api.thegraph.com/subgraphs/name/mattiapomelli/beetogether-mumbai',
   contracts: {
+    hiveFactory: '0xeecFd8a85fbB9BbA5Dac2022C824e1c42C5d9634',
     talentLayerId: '0x3F87289e6Ec2D05C32d8A74CCfb30773fF549306',
     serviceRegistry: '0x27ED516dC1df64b4c1517A64aa2Bb72a434a5A6D',
     talentLayerReview: '0x050F59E1871d3B7ca97e6fb9DCE64b3818b14B18',
@@ -90,7 +95,9 @@ const mumbai: Config = {
 const local: Config = {
   networkId: NetworkEnum.LOCAL,
   subgraphUrl: 'http://localhost:8020/',
+  BTSubgraphUrl: 'https://api.thegraph.com/subgraphs/name/mattiapomelli/beetogether-mumbai',
   contracts: {
+    hiveFactory: '0xeecFd8a85fbB9BbA5Dac2022C824e1c42C5d9634',
     talentLayerId: '0x2475F87a2A73548b2E49351018E7f6a53D3d35A4',
     serviceRegistry: '0x3dE39C61d4281716c458ffdb3150aa9aF4fb752a',
     talentLayerReview: '0xa3A183D6f70217362050040Ef365923a0c1989e8',
