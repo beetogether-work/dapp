@@ -102,39 +102,39 @@ function Hive() {
             <div className='border-gray-700 overflow-x-auto border rounded-md'>
               <div className='inline-block min-w-full align-middle'>
                 <div className='overflow-hidden'>
-                  <table className='divide-gray-200 dark:divide-gray-700 min-w-full table-fixed divide-y'>
+                  <table className='divide-gray-700 min-w-full table-fixed divide-y'>
                     <thead>
                       <tr>
-                        <th className='text-gray-700 dark:text-gray-400 text-left font-sans font-semibold tracking-wider text-xs uppercase border-gray-200 dark:border-gray-700 last:border-e-none dark:bg-gray-800 border-r bg-white px-4 py-5'>
-                          Work
+                        <th className='text-gray-400 text-left font-sans font-semibold tracking-wider text-xs uppercase border-gray-700 last:border-e-none bg-gray-800 border-r px-4 py-5'>
+                          Gig
                         </th>
-                        <th className='text-gray-700 dark:text-gray-400 text-left font-sans font-semibold tracking-wider text-xs uppercase border-gray-200 dark:border-gray-700 last:border-e-none dark:bg-gray-800 border-r bg-white px-4 py-5'>
+                        <th className='text-gray-400 text-left font-sans font-semibold tracking-wider text-xs uppercase border-gray-700 last:border-e-none bg-gray-800 border-r px-4 py-5'>
                           {' '}
                           Innitiator{' '}
                         </th>
-                        <th className='text-gray-700 dark:text-gray-400 text-left font-sans font-semibold tracking-wider text-xs uppercase border-gray-200 dark:border-gray-700 last:border-e-none dark:bg-gray-800 border-r bg-white px-4 py-5'>
+                        <th className='text-gray-400 text-left font-sans font-semibold tracking-wider text-xs uppercase border-gray-700 last:border-e-none bg-gray-800 border-r px-4 py-5'>
                           Status
                         </th>
-                        <th className='text-gray-700 dark:text-gray-400 text-left font-sans font-semibold tracking-wider text-xs uppercase border-gray-200 dark:border-gray-700 last:border-e-none dark:bg-gray-800 border-r bg-white px-4 py-5'>
+                        <th className='text-gray-400 text-left font-sans font-semibold tracking-wider text-xs uppercase border-gray-700 last:border-e-none bg-gray-800 border-r px-4 py-5'>
                           Action
                         </th>
                       </tr>
                     </thead>
-                    <tbody className='divide-gray-200 dark:divide-gray-700 dark:bg-gray-800 divide-y bg-white'>
+                    <tbody className='divide-gray-700 bg-gray-800 divide-y'>
                       {/**/}
-                      <tr className='hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors duration-300'>
-                        <td className='font-alt whitespace-nowrap text-sm text-gray-500 dark:text-white p-4'>
+                      <tr className='hover:bg-gray-900 transition-colors duration-300'>
+                        <td className='font-alt whitespace-nowrap text-sm text-white p-4'>
                           <a href='' className='underline'>
                             Solidity Security audit
                           </a>
                         </td>
-                        <td className='font-alt whitespace-nowrap text-sm text-gray-800 dark:text-white p-4'>
+                        <td className='font-alt whitespace-nowrap text-sm text-white p-4'>
                           <div className='flex items-center'>
                             <div className='relative inline-flex shrink-0 items-center justify-center outline-none h-10 w-10 rounded-full bg-indigo-500/20 text-indigo-500 mr-[6px]'>
                               <div className='flex h-full w-full items-center justify-center overflow-hidden text-center transition-all duration-300 rounded-full '>
                                 <img
                                   src={`/images/default-avatar-3.jpeg`}
-                                  className='max-h-full max-w-full object-cover shadow-sm dark:border-transparent h-10 w-10'
+                                  className='max-h-full max-w-full object-cover shadow-sm border-transparent h-10 w-10'
                                 />
                                 {/**/}
                                 {/**/}
@@ -149,32 +149,32 @@ function Hive() {
                           </div>
                         </td>
 
-                        <td className='font-alt whitespace-nowrap text-sm text-gray-800 dark:text-white p-4 capitalize'>
-                          <span className='inline-block px-3 font-sans transition-shadow duration-300 py-1 text-[0.65rem] rounded-full bg-info-100 text-info-500 border-info-100 dark:border-info-500 dark:text-info-500 border dark:bg-transparent font-medium'>
+                        <td className='font-alt whitespace-nowrap text-sm text-white p-4 capitalize'>
+                          <span className='inline-block px-3 font-sans transition-shadow duration-300 py-1 text-[0.65rem] rounded-full bg-info-100 text-info-500 border-info-500 border bg-transparent font-medium'>
                             waiting vote
                           </span>
                         </td>
-                        <td className='font-alt whitespace-nowrap text-sm text-gray-800 dark:text-white p-4'>
+                        <td className='font-alt whitespace-nowrap text-sm text-white p-4'>
                           <button
                             type='button'
-                            className='relative font-sans font-normal text-sm inline-flex items-center justify-center leading-5 no-underline h-8 px-3 py-2 space-x-1 border nui-focus transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed hover:enabled:shadow-none text-gray-700 bg-white border-gray-300 dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:hover:enabled:bg-gray-600 hover:enabled:bg-gray-50 dark:active:enabled:bg-gray-700/70 active:enabled:bg-gray-100 rounded-md'>
+                            className='relative font-sans font-normal text-sm inline-flex items-center justify-center leading-5 no-underline h-8 px-3 py-2 space-x-1 border nui-focus transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed hover:enabled:shadow-none text-white bg-gray-700 border-gray-600 hover:enabled:bg-gray-600  active:enabled:bg-gray-700/70 rounded-md'>
                             Vote for
                           </button>
                         </td>
                       </tr>
-                      <tr className='hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors duration-300'>
-                        <td className='font-alt whitespace-nowrap text-sm text-gray-500 dark:text-white p-4'>
+                      <tr className='hover:bg-gray-900 transition-colors duration-300'>
+                        <td className='font-alt whitespace-nowrap text-sm text-white p-4'>
                           <a href='' className='underline'>
                             Chat AI
                           </a>
                         </td>
-                        <td className='font-alt whitespace-nowrap text-sm text-gray-800 dark:text-white p-4'>
+                        <td className='font-alt whitespace-nowrap text-sm text-white p-4'>
                           <div className='flex items-center'>
                             <div className='relative inline-flex shrink-0 items-center justify-center outline-none h-10 w-10 rounded-full bg-indigo-500/20 text-indigo-500 mr-[6px]'>
                               <div className='flex h-full w-full items-center justify-center overflow-hidden text-center transition-all duration-300 rounded-full '>
                                 <img
                                   src={`/images/default-avatar-1.jpeg`}
-                                  className='max-h-full max-w-full object-cover shadow-sm dark:border-transparent h-10 w-10'
+                                  className='max-h-full max-w-full object-cover shadow-sm border-transparent h-10 w-10'
                                 />
                                 {/**/}
                                 {/**/}
@@ -189,15 +189,15 @@ function Hive() {
                           </div>
                         </td>
 
-                        <td className='font-alt whitespace-nowrap text-sm text-gray-800 dark:text-white p-4 capitalize'>
-                          <span className='inline-block px-3 font-sans transition-shadow duration-300 py-1 text-[0.65rem] rounded-full bg-info-100 text-info-500 border-info-100 dark:border-info-500 dark:text-info-500 border dark:bg-transparent font-medium'>
+                        <td className='font-alt whitespace-nowrap text-sm text-white p-4 capitalize'>
+                          <span className='inline-block px-3 font-sans transition-shadow duration-300 py-1 text-[0.65rem] rounded-full bg-info-100 text-info-500 border-info-500 border bg-transparent font-medium'>
                             waiting vote
                           </span>
                         </td>
-                        <td className='font-alt whitespace-nowrap text-sm text-gray-800 dark:text-white p-4'>
+                        <td className='font-alt whitespace-nowrap text-sm text-white p-4'>
                           <button
                             type='button'
-                            className='relative font-sans font-normal text-sm inline-flex items-center justify-center leading-5 no-underline h-8 px-3 py-2 space-x-1 border nui-focus transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed hover:enabled:shadow-none text-gray-700 bg-white border-gray-300 dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:hover:enabled:bg-gray-600 hover:enabled:bg-gray-50 dark:active:enabled:bg-gray-700/70 active:enabled:bg-gray-100 rounded-md'>
+                            className='relative font-sans font-normal text-sm inline-flex items-center justify-center leading-5 no-underline h-8 px-3 py-2 space-x-1 border nui-focus transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed hover:enabled:shadow-none text-white bg-gray-700 border-gray-600 hover:enabled:bg-gray-600  active:enabled:bg-gray-700/70 rounded-md'>
                             Vote for
                           </button>
                         </td>

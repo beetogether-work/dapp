@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { useDisconnect } from 'wagmi';
 import BeeTogetherContext from '../context/beeTogether';
 import { truncateAddress } from '../utils';
+import Link from 'next/link';
 
 function UserSubMenu() {
   const { account, user, hive } = useContext(BeeTogetherContext);
@@ -41,21 +42,21 @@ function UserSubMenu() {
             {account?.address && truncateAddress(account.address)}
           </p>
           {user && (
-            <a
+            <Link
               href='/dashboard/profile/edit'
               className='mt-2 border border-redpraha rounded-xl hover:bg-endnight text-white bg-midnight px-5 py-2 w-full'
               role='none'>
               Manage Account
-            </a>
+            </Link>
           )}
         </div>
       </div>
       {hive && (
         <div className='px-2 py-2' role='none'>
           <div role='menuitem'>
-            <a
+            <Link
               aria-current='page'
-              href='/dashboards/personal-3#'
+              href='/dashboards'
               className='group flex w-full items-center rounded-md p-2 text-sm transition-colors duration-300 text-gray-500 bg-endnight hover:bg-midnight'>
               <div className='relative inline-flex h-9 w-9 items-center justify-center rounded-full mr-2'>
                 <Image
@@ -73,7 +74,7 @@ function UserSubMenu() {
                 </h6>
                 <p className='text-gray-400 font-sans text-xs'>{hive.members.length} members</p>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       )}

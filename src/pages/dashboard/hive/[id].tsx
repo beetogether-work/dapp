@@ -40,14 +40,14 @@ function PublicHive() {
             <div className='relative inline-flex shrink-0 items-center justify-center outline-none h-28 w-28 rounded-full ltablet:mx-0 mx-auto lg:mx-0'>
               <div className='flex h-full w-full items-center justify-center overflow-hidden text-center transition-all duration-300 rounded-full'>
                 <Image
-                  className='max-h-full max-w-full object-cover shadow-sm dark:border-transparent h-28 w-28'
+                  className='max-h-full max-w-full object-cover shadow-sm border-transparent h-28 w-28'
                   alt=''
                   src={`/images/default-avatar-1.jpeg`}
                   width={112}
                   height={112}
                 />
               </div>
-              <div className='dark:bg-gray-800 absolute z-10 block overflow-hidden rounded-full bg-white h-10 w-10 bottom-0 end-0'>
+              <div className='bg-gray-800 absolute z-10 block overflow-hidden rounded-full  h-10 w-10 bottom-0 end-0'>
                 <Image
                   className='relative h-full w-full scale-90 rounded-full object-cover'
                   alt=''
@@ -59,7 +59,7 @@ function PublicHive() {
             </div>
             <div className='ltablet:text-left text-center lg:text-left'>
               <h2 className='font-heading text-xl font-semibold leading-normal ltablet:justify-start flex items-center justify-center gap-2 lg:justify-start'>
-                <span className='text-gray-800 dark:text-white'>{hive?.identity.handle}</span>
+                <span className='text-white'>{hive?.identity.handle}</span>
                 <svg
                   data-v-cd102a71
                   xmlns='http://www.w3.org/2000/svg'
@@ -79,24 +79,21 @@ function PublicHive() {
               <span className='text-gray-400 mb-4 block font-sans text-base'>UI-UX web3</span>
               <div className='mb-6 flex items-center gap-x-6'>
                 <div className='ltablet:flex-row ltablet:flex-auto flex flex-1 flex-col gap-x-2 font-sans lg:flex-auto lg:flex-row'>
-                  <span className='text-gray-800 dark:text-gray-100 font-semibold'>
-                    {' '}
-                    {hive.members.length}{' '}
-                  </span>
+                  <span className='text-gray-100 font-semibold'> {hive.members.length} </span>
                   <span className='text-gray-400 ltablet:text-base text-xs sm:text-sm lg:text-base'>
                     {' '}
                     Members{' '}
                   </span>
                 </div>
                 <div className='ltablet:flex-row ltablet:flex-auto flex flex-1 flex-col gap-x-2 font-sans lg:flex-auto lg:flex-row'>
-                  <span className='text-gray-800 dark:text-gray-100 font-semibold'> 121 </span>
+                  <span className='text-gray-100 font-semibold'> 121 </span>
                   <span className='text-gray-400 ltablet:text-base text-xs sm:text-sm lg:text-base'>
                     {' '}
                     Gigs done{' '}
                   </span>
                 </div>
                 <div className='ltablet:flex-row ltablet:flex-auto flex flex-1 flex-col gap-x-2 font-sans lg:flex-auto lg:flex-row'>
-                  <span className='text-gray-800 dark:text-gray-100 font-semibold'> 329 </span>
+                  <span className='text-gray-100 font-semibold'> 329 </span>
                   <span className='text-gray-400 ltablet:text-base text-xs sm:text-sm lg:text-base'>
                     {' '}
                     Lens followers{' '}
@@ -111,7 +108,7 @@ function PublicHive() {
                       id='headlessui-popover-button-41'
                       aria-expanded='false'
                       data-headlessui-state>
-                      <div className='dark:bg-gray-700 shadow-gray-300/40 dark:shadow-gray-900/20 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-xl'>
+                      <div className='bg-gray-700 shadow-gray-900/20 flex h-10 w-10 items-center justify-center rounded-full shadow-xl'>
                         <div className='bg-danger-500/20 flex h-8 w-8 items-center justify-center rounded-full'>
                           <svg
                             data-v-cd102a71
@@ -140,7 +137,7 @@ function PublicHive() {
                       id='headlessui-popover-button-46'
                       aria-expanded='false'
                       data-headlessui-state>
-                      <div className='dark:bg-gray-700 shadow-gray-300/40 dark:shadow-gray-900/20 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-xl'>
+                      <div className='bg-gray-700 shadow-gray-900/20 flex h-10 w-10 items-center justify-center rounded-full shadow-xl'>
                         <div className='bg-success-500/20 flex h-8 w-8 items-center justify-center rounded-full'>
                           <svg
                             data-v-cd102a71
@@ -169,7 +166,7 @@ function PublicHive() {
                       id='headlessui-popover-button-51'
                       aria-expanded='false'
                       data-headlessui-state>
-                      <div className='dark:bg-gray-700 shadow-gray-300/40 dark:shadow-gray-900/20 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-xl'>
+                      <div className='bg-gray-700 shadow-gray-900/20 flex h-10 w-10 items-center justify-center rounded-full shadow-xl'>
                         <div className='flex h-8 w-8 items-center justify-center rounded-full bg-yellow-500/20'>
                           <svg
                             data-v-cd102a71
@@ -207,7 +204,7 @@ function PublicHive() {
         <div className='mt-6 items-end gap-2'>
           <button
             type='button'
-            className='inline-flex items-center justify-center border-b-2 px-4 py-3 font-sans text-sm border-primary-500 text-gray-800 dark:text-gray-100'>
+            className='inline-flex items-center justify-center border-b-2 px-4 py-3 font-sans text-sm border-primary-500 text-gray-100'>
             <span>Information</span>
           </button>
           <button
