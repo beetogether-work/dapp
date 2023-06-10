@@ -30,18 +30,6 @@ function Home() {
                 {/* Start Navbar */}
                 <nav className='navbar navbar-expand-lg'>
                   <WhiteLogo></WhiteLogo>
-                  <button
-                    className='navbar-toggler mobile-menu-btn'
-                    type='button'
-                    data-bs-toggle='collapse'
-                    data-bs-target='#navbarSupportedContent'
-                    aria-controls='navbarSupportedContent'
-                    aria-expanded='false'
-                    aria-label='Toggle navigation'>
-                    <span className='toggler-icon' />
-                    <span className='toggler-icon' />
-                    <span className='toggler-icon' />
-                  </button>
                   <div
                     className='collapse navbar-collapse sub-menu-bar'
                     id='navbarSupportedContent'>
@@ -181,13 +169,17 @@ function Home() {
             <div className='col-lg-4 col-md-6 col-12'>
               {/* Start Single Feature */}
               <div className='single-feature wow fadeInUp' data-wow-delay='.2s'>
-                <Image
-                  src={'/images/demo1.png'}
-                  width={600}
-                  height={36}
-                  alt='phone image'
-                  className='-ml-2 mb-4 sm:ml-0'
-                />
+                <div className='flex items-center justify-center mb-4'>
+                  <div className='flex items-center justify-center mb-4'>
+                    <Image
+                      src={'/images/demo1.png'}
+                      width={600}
+                      height={36}
+                      alt='phone image'
+                      className='-ml-2 mb-4 sm:ml-0'
+                    />
+                  </div>
+                </div>
                 <h3>Build your hive!</h3>
                 <p>
                   Bring together a team to find work together. Create your Hive and add your frens.
@@ -198,13 +190,15 @@ function Home() {
             <div className='col-lg-4 col-md-6 col-12'>
               {/* Start Single Feature */}
               <div className='single-feature wow fadeInUp' data-wow-delay='.4s'>
-                <Image
-                  src={'/images/demo2.png'}
-                  width={600}
-                  height={36}
-                  alt='phone image'
-                  className='-ml-2 mb-4 sm:ml-0'
-                />
+                <div className='flex items-center justify-center mb-4'>
+                  <Image
+                    src={'/images/demo2.png'}
+                    width={600}
+                    height={36}
+                    alt='phone image'
+                    className='-ml-2 mb-4 sm:ml-0'
+                  />
+                </div>
                 <h3>Search for work and make proposals.</h3>
                 <p>
                   Connect with the Talentlayer protocol to get results for job types by keyword.
@@ -215,13 +209,15 @@ function Home() {
             <div className='col-lg-4 col-md-6 col-12'>
               {/* Start Single Feature */}
               <div className='single-feature wow fadeInUp' data-wow-delay='.2s'>
-                <Image
-                  src={'/images/demosoon.png'}
-                  width={600}
-                  height={36}
-                  alt='phone image'
-                  className='-ml-2 mb-4 sm:ml-0'
-                />
+                <div className='flex items-center justify-center mb-4'>
+                  <Image
+                    src={'/images/demosoon.png'}
+                    width={600}
+                    height={36}
+                    alt='phone image'
+                    className='-ml-2 mb-4 sm:ml-0'
+                  />
+                </div>
                 <h3>Complete work and get reviews!</h3>
                 <p>Grow your Hive’s reputation and your own at the same time.</p>
               </div>
@@ -230,13 +226,15 @@ function Home() {
             <div className='col-lg-4 col-md-6 col-12'>
               {/* Start Single Feature */}
               <div className='single-feature wow fadeInUp' data-wow-delay='.4s'>
-                <Image
-                  src={'/images/demosoon.png'}
-                  width={600}
-                  height={36}
-                  alt='phone image'
-                  className='-ml-2 mb-4 sm:ml-0'
-                />
+                <div className='flex items-center justify-center mb-4'>
+                  <Image
+                    src={'/images/demosoon.png'}
+                    width={600}
+                    height={36}
+                    alt='phone image'
+                    className='-ml-2 mb-4 sm:ml-0'
+                  />
+                </div>
                 <h3>Manage your Hive treasury with voting!</h3>
                 <p>
                   Cover admin costs for everyone in the collective, pay for joint marketing, and
@@ -269,18 +267,20 @@ function Home() {
           <div className='row'>
             <div className='col-12'>
               <div className='row'>
-                <div className='col-md-6 col-12'>
+                <div className='col-lg-4 col-md-6 col-12'>
                   {/* Single Table */}
                   <div className='single-table wow fadeInUp' data-wow-delay='.8s'>
                     {/* Table Head */}
                     <div className='table-head'>
-                      <Image
-                        src={'/images/tl.png'}
-                        width={180}
-                        height={36}
-                        alt='phone image'
-                        className='-ml-2 mb-4 sm:ml-0'
-                      />
+                      <div className='flex items-center justify-center mb-4'>
+                        <Image
+                          src={'/images/tl.png'}
+                          width={180}
+                          height={36}
+                          alt='phone image'
+                          className=''
+                        />
+                      </div>
                       <h4 className='title'>Find jobs via the open protocol for work!</h4>
                       <p>⭐ Search for job opportunities for your Hive by keyword</p>
                       <p>⭐ Apply for work and submit proposals</p>
@@ -291,18 +291,20 @@ function Home() {
                   </div>
                   {/* End Single Table*/}
                 </div>
-                <div className='col-md-6 col-12'>
+                <div className='col-lg-4 col-md-6 col-12'>
                   {/* Single Table */}
                   <div className='single-table wow fadeInUp' data-wow-delay='.8s'>
                     {/* Table Head */}
                     <div className='table-head'>
-                      <Image
-                        src={'/images/rep.png'}
-                        width={180}
-                        height={36}
-                        alt='phone image'
-                        className='-ml-2 mb-4 sm:ml-0'
-                      />
+                      <div className='flex items-center justify-center mb-4'>
+                        <Image
+                          src={'/images/rep.png'}
+                          width={180}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 mb-4 sm:ml-0'
+                        />
+                      </div>
                       <h4 className='title'>Grow your Hive's reputation (and yours too!)</h4>
                       <p>⭐ Get reviews for your hive after doing work for clients</p>
                       <p>⭐ Your Hives are displayed on your TalentLayer work reputation profile</p>
@@ -312,18 +314,20 @@ function Home() {
                   </div>
                   {/* End Single Table*/}
                 </div>
-                <div className='col-md-6 col-12'>
+                <div className='col-lg-4 col-md-6 col-12'>
                   {/* Single Table */}
                   <div className='single-table wow fadeInUp' data-wow-delay='.2s'>
                     {/* Table Head */}
                     <div className='table-head'>
-                      <Image
-                        src={'/images/honey.png'}
-                        width={180}
-                        height={36}
-                        alt='phone image'
-                        className='-ml-2 mb-4 sm:ml-0'
-                      />
+                      <div className='flex items-center justify-center mb-4'>
+                        <Image
+                          src={'/images/honey.png'}
+                          width={180}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 mb-4 sm:ml-0'
+                        />
+                      </div>
                       <h4 className='title'>HoneyPot</h4>
                       <p>
                         <strong>A shared funding pool for your Hive</strong>
@@ -336,18 +340,20 @@ function Home() {
                   </div>
                   {/* End Single Table*/}
                 </div>
-                <div className='col-md-6 col-12'>
+                <div className='col-lg-4 col-md-6 col-12'>
                   {/* Single Table */}
                   <div className='single-table wow fadeInUp' data-wow-delay='.4s'>
                     {/* Table Head */}
                     <div className='table-head'>
-                      <Image
-                        src={'/images/stick.png'}
-                        width={180}
-                        height={36}
-                        alt='phone image'
-                        className='-ml-2 mb-4 sm:ml-0'
-                      />
+                      <div className='flex items-center justify-center mb-4'>
+                        <Image
+                          src={'/images/stick.png'}
+                          width={180}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 mb-4 sm:ml-0'
+                        />
+                      </div>
                       <h4 className='title'>Goodbye Gas Fees!</h4>
                       <p>
                         <strong>Cover gas fees for your members</strong>
@@ -359,18 +365,20 @@ function Home() {
                   </div>
                   {/* End Single Table*/}
                 </div>
-                <div className='col-md-6 col-12'>
+                <div className='col-lg-4 col-md-6 col-12'>
                   {/* Single Table */}
                   <div className='single-table wow fadeInUp' data-wow-delay='.6s'>
                     {/* Table Head */}
                     <div className='table-head'>
-                      <Image
-                        src={'/images/vote.png'}
-                        width={180}
-                        height={36}
-                        alt='phone image'
-                        className='-ml-2 mb-4 sm:ml-0'
-                      />
+                      <div className='flex items-center justify-center mb-4'>
+                        <Image
+                          src={'/images/vote.png'}
+                          width={180}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 mb-4 sm:ml-0'
+                        />
+                      </div>
                       <h4 className='title'>Governance</h4>
                       <p>
                         <strong>Make decisions as a Hive</strong>
@@ -382,18 +390,20 @@ function Home() {
                   </div>
                   {/* End Single Table*/}
                 </div>
-                <div className='col-md-6 col-12'>
+                <div className='col-lg-4 col-md-6 col-12'>
                   {/* Single Table */}
                   <div className='single-table wow fadeInUp' data-wow-delay='.8s'>
                     {/* Table Head */}
                     <div className='table-head'>
-                      <Image
-                        src={'/images/rpc.png'}
-                        width={180}
-                        height={36}
-                        alt='phone image'
-                        className='-ml-2 mb-4 sm:ml-0'
-                      />
+                      <div className='flex items-center justify-center mb-4'>
+                        <Image
+                          src={'/images/rpc.png'}
+                          width={180}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 mb-4 sm:ml-0'
+                        />
+                      </div>
                       <h4 className='title'>Access Your Data When You Need!</h4>
                       <p>
                         ⭐ Thanks to Gateway RPC, ensure your Hive always has access to your
@@ -405,18 +415,20 @@ function Home() {
                   </div>
                   {/* End Single Table*/}
                 </div>
-                <div className='col-md-6 col-12'>
+                <div className='col-lg-4 col-md-6 col-12'>
                   {/* Single Table */}
                   <div className='single-table wow fadeInUp' data-wow-delay='.2s'>
                     {/* Table Head */}
                     <div className='table-head'>
-                      <Image
-                        src={'/images/robeet.png'}
-                        width={180}
-                        height={36}
-                        alt='phone image'
-                        className='-ml-2 sm:ml-0'
-                      />
+                      <div className='flex items-center justify-center mb-4'>
+                        <Image
+                          src={'/images/robeet.png'}
+                          width={180}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 sm:ml-0'
+                        />
+                      </div>
                       <h4 className='title'>RoBEEt AI Assistant</h4>
                       <p>
                         <strong>The AI assistant that helps your Hive work better!</strong>
@@ -461,13 +473,15 @@ function Home() {
             <div className='col-lg-4 col-md-6 col-12'>
               {/* Start Single Feature */}
               <div className='single-feature wow fadeInUp' data-wow-delay='.2s'>
-                <Image
-                  src={'/images/demo1.png'}
-                  width={600}
-                  height={36}
-                  alt='phone image'
-                  className='-ml-2 mb-4 sm:ml-0'
-                />
+                <div className='flex items-center justify-center mb-4'>
+                  <Image
+                    src={'/images/demo1.png'}
+                    width={600}
+                    height={36}
+                    alt='phone image'
+                    className='-ml-2 mb-4 sm:ml-0'
+                  />
+                </div>
                 <h3>Build your hive!</h3>
                 <p>
                   Bring together a team to find work together. Create your Hive and add your frens.
@@ -478,13 +492,15 @@ function Home() {
             <div className='col-lg-4 col-md-6 col-12'>
               {/* Start Single Feature */}
               <div className='single-feature wow fadeInUp' data-wow-delay='.4s'>
-                <Image
-                  src={'/images/demo2.png'}
-                  width={600}
-                  height={36}
-                  alt='phone image'
-                  className='-ml-2 mb-4 sm:ml-0'
-                />
+                <div className='flex items-center justify-center mb-4'>
+                  <Image
+                    src={'/images/demo2.png'}
+                    width={600}
+                    height={36}
+                    alt='phone image'
+                    className='-ml-2 mb-4 sm:ml-0'
+                  />
+                </div>
                 <h3>Search for work and make proposals.</h3>
                 <p>
                   Connect with the Talentlayer protocol to get results for job types by keyword.
@@ -495,13 +511,15 @@ function Home() {
             <div className='col-lg-4 col-md-6 col-12'>
               {/* Start Single Feature */}
               <div className='single-feature wow fadeInUp' data-wow-delay='.2s'>
-                <Image
-                  src={'/images/demosoon.png'}
-                  width={600}
-                  height={36}
-                  alt='phone image'
-                  className='-ml-2 mb-4 sm:ml-0'
-                />
+                <div className='flex items-center justify-center mb-4'>
+                  <Image
+                    src={'/images/demosoon.png'}
+                    width={600}
+                    height={36}
+                    alt='phone image'
+                    className='-ml-2 mb-4 sm:ml-0'
+                  />
+                </div>
                 <h3>Complete work and get reviews!</h3>
                 <p>Grow your Hive’s reputation and your own at the same time.</p>
               </div>
@@ -510,13 +528,15 @@ function Home() {
             <div className='col-lg-4 col-md-6 col-12'>
               {/* Start Single Feature */}
               <div className='single-feature wow fadeInUp' data-wow-delay='.4s'>
-                <Image
-                  src={'/images/demosoon.png'}
-                  width={600}
-                  height={36}
-                  alt='phone image'
-                  className='-ml-2 mb-4 sm:ml-0'
-                />
+                <div className='flex items-center justify-center mb-4'>
+                  <Image
+                    src={'/images/demosoon.png'}
+                    width={600}
+                    height={36}
+                    alt='phone image'
+                    className='-ml-2 mb-4 sm:ml-0'
+                  />
+                </div>
                 <h3>Manage your Hive treasury with voting!</h3>
                 <p>
                   Cover admin costs for everyone in the collective, pay for joint marketing, and
@@ -541,7 +561,7 @@ function Home() {
             </div>
           </div>
           <div className='row'>
-            <div className='col-lg-8 offset-lg-2 col-md-12 col-12'>
+            <div className='col-md-12 col-12'>
               <div className='row'>
                 <div className='col-lg-4 col-md-4 col-12'>
                   <div className='single-achievement wow fadeInUp' data-wow-delay='.2s'>
@@ -599,13 +619,15 @@ function Home() {
             <div className='col-lg-4 col-md-6 col-12'>
               {/* Start Single Feature */}
               <div className='single-feature wow fadeInUp' data-wow-delay='.4s'>
-                <Image
-                  src={'/images/tech.png'}
-                  width={600}
-                  height={36}
-                  alt='phone image'
-                  className='-ml-2 mb-4 sm:ml-0'
-                />
+                <div className='flex items-center justify-center mb-4'>
+                  <Image
+                    src={'/images/tech.png'}
+                    width={600}
+                    height={36}
+                    alt='phone image'
+                    className='-ml-2 mb-4 sm:ml-0'
+                  />
+                </div>
                 <h3>Hives on a Strong Foundation</h3>
                 <p>
                   You can trust that your Hive is in good hands thanks to our best-in-class
@@ -617,13 +639,15 @@ function Home() {
             <div className='col-lg-4 col-md-6 col-12'>
               {/* Start Single Feature */}
               <div className='single-feature wow fadeInUp' data-wow-delay='.2s'>
-                <Image
-                  src={'/images/chains.png'}
-                  width={600}
-                  height={36}
-                  alt='phone image'
-                  className='-ml-2 mb-4 sm:ml-0'
-                />
+                <div className='flex items-center justify-center mb-4'>
+                  <Image
+                    src={'/images/chains.png'}
+                    width={600}
+                    height={36}
+                    alt='phone image'
+                    className='-ml-2 mb-4 sm:ml-0'
+                  />
+                </div>
                 <h3>A Multi-Chain Future</h3>
                 <p>
                   For Hives that work across many chain ecosystems, we've got you covered! We

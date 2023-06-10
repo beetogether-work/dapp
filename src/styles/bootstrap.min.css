@@ -4411,6 +4411,7 @@ fieldset:disabled .btn {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    padding-left: 20px;
     padding-top: .5rem;
     padding-bottom: .5rem
 }
