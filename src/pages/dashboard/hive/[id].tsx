@@ -109,14 +109,14 @@ function PublicHive() {
                       aria-expanded='false'
                       data-headlessui-state>
                       <div className='bg-gray-700 shadow-gray-900/20 flex h-10 w-10 items-center justify-center rounded-full shadow-xl'>
-                        <div className='bg-danger-500/20 flex h-8 w-8 items-center justify-center rounded-full'>
+                        <div className='bg-red-500/20 flex h-8 w-8 items-center justify-center rounded-full'>
                           <svg
                             data-v-cd102a71
                             xmlns='http://www.w3.org/2000/svg'
                             xmlnsXlink='http://www.w3.org/1999/xlink'
                             aria-hidden='true'
                             role='img'
-                            className='icon text-danger-500 h-5 w-5'
+                            className='icon text-red-500 h-5 w-5'
                             width='1em'
                             height='1em'
                             viewBox='0 0 24 24'>
@@ -138,14 +138,14 @@ function PublicHive() {
                       aria-expanded='false'
                       data-headlessui-state>
                       <div className='bg-gray-700 shadow-gray-900/20 flex h-10 w-10 items-center justify-center rounded-full shadow-xl'>
-                        <div className='bg-success-500/20 flex h-8 w-8 items-center justify-center rounded-full'>
+                        <div className='bg-green-500/20 flex h-8 w-8 items-center justify-center rounded-full'>
                           <svg
                             data-v-cd102a71
                             xmlns='http://www.w3.org/2000/svg'
                             xmlnsXlink='http://www.w3.org/1999/xlink'
                             aria-hidden='true'
                             role='img'
-                            className='icon text-success-500 h-5 w-5'
+                            className='icon text-green-500 h-5 w-5'
                             width='1em'
                             height='1em'
                             viewBox='0 0 24 24'>
