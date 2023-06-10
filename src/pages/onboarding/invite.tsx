@@ -10,7 +10,6 @@ import { useChainId } from '../../hooks/useChainId';
 
 function Invite() {
   const chainId = useChainId();
-
   const router = useRouter();
   const query = router.query;
   const [hive, setHive] = useState();
@@ -32,7 +31,7 @@ function Invite() {
       }
     };
     fetchData();
-  }, [query]);
+  }, [query, chainId]);
 
   return (
     <div>
@@ -45,7 +44,13 @@ function Invite() {
           <div className='mx-auto flex w-full max-w-xs items-center justify-between px-3'>
             <Logo />
           </div>
-          {hive ? <HiveInviteForm hive={hive} /> : <Loading />}
+          {hive ? (
+            <HiveInviteForm hive={hive} />
+          ) : (
+            <div className='mt-6'>
+              <Loading />
+            </div>
+          )}
           <p></p>
         </div>
       </div>

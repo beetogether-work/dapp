@@ -60,25 +60,23 @@ const BeeTogetherProvider = ({ children }: { children: ReactNode }) => {
             (process.env.NEXT_PUBLIC_DELEGATE_ADDRESS as string).toLowerCase(),
           ) !== -1,
       );
-
+      setLoading(false);
       return true;
     } catch (err: any) {
+      setLoading(false);
       // eslint-disable-next-line no-console
       console.error(err);
-    } finally {
-      setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchData();
-  }, [account.address, account.isConnected, isActiveDelegate, hive]);
+  }, [chainId, account.address, account.isConnected, isActiveDelegate, hive]);
 
   useEffect(() => {
     const interval = setInterval(() => {
       fetchData();
     }, 4000);
-
     return () => {
       clearInterval(interval);
     };
