@@ -4,13 +4,15 @@ import { PlusIcon } from '@heroicons/react/24/outline';
 import BeeTogetherContext from '../context/beeTogether';
 import { useSigner } from 'wagmi';
 import { ethers } from 'ethers';
+import { useChainId } from '../hooks/useChainId';
 
 function InviteModal() {
+  const chainId = useChainId();
   const [signature, setSignature] = useState<string>();
   const [show, setShow] = useState(false);
   const { hive } = useContext(BeeTogetherContext);
   const { data: signer } = useSigner({
-    chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
+    chainId,
   });
 
   const generateSignature = async () => {

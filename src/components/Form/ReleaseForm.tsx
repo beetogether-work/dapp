@@ -6,6 +6,7 @@ import BeeTogetherContext from '../../context/beeTogether';
 import { executePayment } from '../../contracts/executePayment';
 import { IService, IToken, ServiceStatusEnum } from '../../types';
 import { renderTokenAmount } from '../../utils/conversion';
+import { useChainId } from '../../hooks/useChainId';
 
 interface IFormValues {
   percentField: string;
@@ -26,11 +27,12 @@ function ReleaseForm({
   closeModal,
   isBuyer,
 }: IReleaseFormProps) {
+  const chainId = useChainId();
   const { user, isActiveDelegate } = useContext(BeeTogetherContext);
   const { data: signer } = useSigner({
-    chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
+    chainId,
   });
-  const provider = useProvider({ chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string) });
+  const provider = useProvider({ chainId });
   const [percent, setPercentage] = useState(0);
 
   const handleSubmit = async (values: any) => {
@@ -40,6 +42,7 @@ function ReleaseForm({
     const percentToToken = totalInEscrow.mul(percent).div(100);
 
     await executePayment(
+      chainId,
       user.address,
       signer,
       provider,

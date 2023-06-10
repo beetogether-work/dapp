@@ -1,10 +1,14 @@
 import { processRequest } from '../utils/graphql';
 import { getUserByAddress } from './users';
 
-export const graphIsSynced = async (entity: string, cid: string): Promise<number> => {
+export const graphIsSynced = async (
+  chainId: number,
+  entity: string,
+  cid: string,
+): Promise<number> => {
   return new Promise<number>((resolve, reject) => {
     const interval = setInterval(async () => {
-      const response = await checkEntityByUri(entity, cid);
+      const response = await checkEntityByUri(chainId, entity, cid);
       if (response?.data?.data?.[entity][0]) {
         clearInterval(interval);
         resolve(response?.data?.data?.[entity][0].id);
@@ -13,10 +17,10 @@ export const graphIsSynced = async (entity: string, cid: string): Promise<number
   });
 };
 
-export const graphUserIsSynced = async (address: string): Promise<number> => {
+export const graphUserIsSynced = async (chainId: number, address: string): Promise<number> => {
   return new Promise<number>((resolve, reject) => {
     const interval = setInterval(async () => {
-      const response = await getUserByAddress(address);
+      const response = await getUserByAddress(chainId, address);
       if (response?.data?.data?.['users'][0]) {
         clearInterval(interval);
         resolve(response?.data?.data?.['users'][0].id);
@@ -25,7 +29,7 @@ export const graphUserIsSynced = async (address: string): Promise<number> => {
   });
 };
 
-export const checkEntityByUri = (entity: string, cid: string): Promise<any> => {
+export const checkEntityByUri = (chainId: number, entity: string, cid: string): Promise<any> => {
   let query;
   if (entity.includes('Description')) {
     query = `
@@ -42,10 +46,10 @@ export const checkEntityByUri = (entity: string, cid: string): Promise<any> => {
           }
         } `;
   }
-  return processRequest(query);
+  return processRequest(chainId, query);
 };
 
-export const getAllowedTokenList = (): Promise<any> => {
+export const getAllowedTokenList = (chainId: number): Promise<any> => {
   const query = `
       {
          tokens(where: {allowed: true}) {
@@ -57,5 +61,5 @@ export const getAllowedTokenList = (): Promise<any> => {
         }
       }
       `;
-  return processRequest(query);
+  return processRequest(chainId, query);
 };

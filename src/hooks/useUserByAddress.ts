@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { getUserByAddress, getUserById } from '../queries/users';
 import { IUser } from '../types';
+import { useChainId } from './useChainId';
 
 const useUserByAddress = (address: string): IUser | null => {
+  const chainId = useChainId();
   const [user, setUser] = useState<IUser | null>(null);
 
   useEffect(() => {
@@ -11,7 +13,7 @@ const useUserByAddress = (address: string): IUser | null => {
         if (!address) {
           return;
         }
-        const response = await getUserByAddress(address);
+        const response = await getUserByAddress(chainId, address);
         if (response?.data?.data?.users) {
           setUser(response.data.data.users[0]);
         }

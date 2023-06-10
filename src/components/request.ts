@@ -2,12 +2,14 @@
 import axios from 'axios';
 
 export const delegateCreateService = async (
+  chainId: number,
   userId: string,
   userAddress: string,
   cid: string,
 ): Promise<any> => {
   try {
     return await axios.post('/api/delegate/create-service', {
+      chainId,
       userId,
       userAddress,
       cid,
@@ -19,12 +21,14 @@ export const delegateCreateService = async (
 };
 
 export const delegateUpdateProfileData = async (
+  chainId: number,
   userId: string,
   userAddress: string,
   cid: string,
 ): Promise<any> => {
   try {
     return await axios.post('/api/delegate/update-profil-data', {
+      chainId,
       userId,
       userAddress,
       cid,
@@ -36,6 +40,7 @@ export const delegateUpdateProfileData = async (
 };
 
 export const delegateCreateOrUpdateProposal = async (
+  chainId: number,
   userId: string,
   userAddress: string,
   serviceId: string,
@@ -47,6 +52,7 @@ export const delegateCreateOrUpdateProposal = async (
 ): Promise<any> => {
   try {
     return await axios.post('/api/delegate/create-update-proposal', {
+      chainId,
       userId,
       userAddress,
       serviceId,
@@ -63,6 +69,7 @@ export const delegateCreateOrUpdateProposal = async (
 };
 
 export const delegateReleaseOrReimburse = async (
+  chainId: number,
   userAddress: string,
   profileId: string,
   transactionId: number,
@@ -71,6 +78,7 @@ export const delegateReleaseOrReimburse = async (
 ): Promise<any> => {
   try {
     return await axios.post('/api/delegate/release-reimburse', {
+      chainId,
       userAddress,
       profileId,
       transactionId,
@@ -84,6 +92,7 @@ export const delegateReleaseOrReimburse = async (
 };
 
 export const delegateMintReview = async (
+  chainId: number,
   userId: string,
   userAddress: string,
   serviceId: string,
@@ -92,6 +101,7 @@ export const delegateMintReview = async (
 ): Promise<any> => {
   try {
     return await axios.post('/api/delegate/mint-review', {
+      chainId,
       userId,
       userAddress,
       serviceId,
@@ -105,12 +115,14 @@ export const delegateMintReview = async (
 };
 
 export const delegateMintID = async (
+  chainId: number,
   handle: string,
   handlePrice: any,
   userAddress: string,
 ): Promise<any> => {
   try {
     return await axios.post('/api/delegate/mint-id', {
+      chainId,
       handle,
       handlePrice,
       userAddress,

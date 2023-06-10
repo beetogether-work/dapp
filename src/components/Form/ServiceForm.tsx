@@ -5,7 +5,6 @@ import { useContext, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useProvider, useSigner } from 'wagmi';
 import * as Yup from 'yup';
-import { config } from '../../config';
 import BeeTogetherContext from '../../context/beeTogether';
 import ServiceRegistry from '../../contracts/ABI/TalentLayerService.json';
 import { postToIPFS } from '../../utils/ipfs';
@@ -17,6 +16,8 @@ import { getServiceSignature } from '../../utils/signature';
 import { IToken } from '../../types';
 import { SkillsInput } from './skills-input';
 import { delegateCreateService } from '../request';
+import { useChainId } from '../../hooks/useChainId';
+import { useConfig } from '../../hooks/useConfig';
 
 interface IFormValues {
   title: string;
@@ -35,11 +36,14 @@ const initialValues: IFormValues = {
 };
 
 function ServiceForm() {
+  const config = useConfig();
+  const chainId = useChainId();
+
   const { open: openConnectModal } = useWeb3Modal();
   const { user, account } = useContext(BeeTogetherContext);
-  const provider = useProvider({ chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string) });
+  const provider = useProvider({ chainId });
   const { data: signer } = useSigner({
-    chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
+    chainId,
   });
 
   const router = useRouter();
@@ -113,7 +117,7 @@ function ServiceForm() {
         let tx;
 
         if (isActiveDelegate) {
-          const response = await delegateCreateService(user.id, user.address, cid);
+          const response = await delegateCreateService(chainId, user.id, user.address, cid);
           tx = response.data.transaction;
         } else {
           const contract = new ethers.Contract(

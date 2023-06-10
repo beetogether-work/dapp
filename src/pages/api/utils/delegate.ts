@@ -1,13 +1,13 @@
 import { NextApiResponse } from 'next';
 import { ethers, Wallet } from 'ethers';
-import { config } from '../../../config';
 import { getUserByAddress } from '../../../queries/users';
 
 export async function isPlatformAllowedToDelegate(
+  chainId: number,
   userAddress: string,
   res: NextApiResponse,
 ): Promise<boolean> {
-  const getUser = await getUserByAddress(userAddress);
+  const getUser = await getUserByAddress(chainId, userAddress);
   const delegateAddresses = getUser.data?.data?.users[0].delegates;
 
   if (

@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
 import { getProposalById } from '../queries/proposals';
 import { IProposal } from '../types';
+import { useChainId } from './useChainId';
 
 const useProposalById = (id?: string | undefined): IProposal | undefined => {
+  const chainId = useChainId();
   const [proposal, setProposal] = useState<IProposal>();
 
   useEffect(() => {
     const fetchData = async () => {
       if (id) {
         try {
-          const response = await getProposalById(id);
+          const response = await getProposalById(chainId, id);
           if (response?.data?.data?.proposals[0]) {
             setProposal(response.data.data.proposals[0]);
           }

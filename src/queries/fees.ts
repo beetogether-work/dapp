@@ -1,6 +1,7 @@
 import { processRequest } from '../utils/graphql';
 
 export const getProtocolAndPlatformsFees = (
+  chainId: number,
   originServicePlatformId: string,
   originValidatedProposalPlatformId: string,
 ): Promise<any> => {
@@ -18,5 +19,5 @@ export const getProtocolAndPlatformsFees = (
   }
     `;
 
-  return processRequest(query);
+  return processRequest(chainId, query);
 };

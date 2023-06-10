@@ -9,12 +9,14 @@ import ContactButton from '../../modules/Messaging/components/ContactButton';
 import { IAccount, IProposal } from '../../types';
 import { renderTokenAmount } from '../../utils/conversion';
 import Step from '../Step';
+import { useChainId } from '../../hooks/useChainId';
 
 function ValidateProposalModal({ proposal, account }: { proposal: IProposal; account: IAccount }) {
+  const chainId = useChainId();
   const { data: signer } = useSigner({
-    chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
+    chainId,
   });
-  const provider = useProvider({ chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string) });
+  const provider = useProvider({ chainId });
   const [show, setShow] = useState(false);
   const { data: ethBalance } = useBalance({ address: account.address });
   const isProposalUseEth: boolean = proposal.rateToken.address === ethers.constants.AddressZero;
@@ -48,6 +50,7 @@ function ValidateProposalModal({ proposal, account }: { proposal: IProposal; acc
       return;
     }
     await validateProposal(
+      chainId,
       signer,
       provider,
       proposal.service.id,

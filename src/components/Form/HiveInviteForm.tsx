@@ -11,22 +11,25 @@ import { createTalentLayerIdTransactionToast, showErrorTransactionToast } from '
 import SubmitButton from './SubmitButton';
 import { IHive } from '../../types';
 import { useRouter } from 'next/router';
-import { config } from '../../config';
+import { useConfig } from '../../hooks/useConfig';
+import { useChainId } from '../../hooks/useChainId';
 
 interface IFormValues {
   handle: string;
 }
 
 function HiveInviteForm({ hive }: { hive: IHive }) {
+  const config = useConfig();
+  const chainId = useChainId();
   const router = useRouter();
   const query = router.query;
   const { open: openConnectModal } = useWeb3Modal();
   const { account, user } = useContext(BeeTogetherContext);
   const { data: signer } = useSigner({
-    chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
+    chainId,
   });
 
-  const provider = useProvider({ chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string) });
+  const provider = useProvider({ chainId });
   let tx: ethers.providers.TransactionResponse;
 
   const validationSchema = Yup.object().shape({
@@ -70,6 +73,7 @@ function HiveInviteForm({ hive }: { hive: IHive }) {
           },
         );
         await createTalentLayerIdTransactionToast(
+          chainId,
           {
             pending: 'Joining the hive...',
             success: 'Congrats! Your are now part of this hive!',

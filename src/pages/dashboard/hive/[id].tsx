@@ -5,21 +5,24 @@ import Loading from '../../../components/Loading';
 import { getUserById } from '../../../queries/users';
 import { getHiveById } from '../../../queries/hive';
 import { IHive } from '../../../types';
+import { useChainId } from '../../../hooks/useChainId';
 
 function PublicHive() {
+  const chainId = useChainId();
+
   const router = useRouter();
   const { id } = router.query;
   const [hive, setHive] = useState<IHive>();
 
   useEffect(() => {
     const fetchData = async () => {
-      const responseHive = await getHiveById(id as string);
+      const responseHive = await getHiveById(chainId, id as string);
       const currentHive = responseHive.data?.data?.hives[0];
       if (currentHive) {
-        const responseOwner = await getUserById(currentHive.owner);
+        const responseOwner = await getUserById(chainId, currentHive.owner);
         currentHive.owner = responseOwner?.data?.data?.user;
 
-        const responseIdentity = await getUserById(currentHive.id);
+        const responseIdentity = await getUserById(chainId, currentHive.id);
         currentHive.identity = responseIdentity?.data?.data?.user;
         setHive(currentHive);
       }

@@ -4,8 +4,11 @@ import { IService, IUser, ServiceStatusEnum } from '../types';
 import { renderTokenAmountFromConfig } from '../utils/conversion';
 import { formatDate } from '../utils/dates';
 import ServiceStatus from './ServiceStatus';
+import { useChainId } from '../hooks/useChainId';
 
 function UserServiceItem({ user, service }: { user: IUser; service: IService }) {
+  const chainId = useChainId();
+
   const isBuyer = user?.id === service.buyer.id;
 
   return (
@@ -51,6 +54,7 @@ function UserServiceItem({ user, service }: { user: IUser; service: IService }) 
           {service.description?.rateToken && service.description?.rateAmount && (
             <p className='text-gray-900 font-bold line-clamp-1 max-w-[100px]'>
               {renderTokenAmountFromConfig(
+                chainId,
                 service.description.rateToken,
                 service.description.rateAmount,
               )}

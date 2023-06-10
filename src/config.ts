@@ -16,49 +16,6 @@ export const maxDecimals = {
 
 export const FEE_RATE_DIVIDER = 10_000;
 
-const goerli: Config = {
-  networkId: NetworkEnum.GOERLI,
-  subgraphUrl: 'https://api.thegraph.com/subgraphs/name/talentlayer/talent-layer-protocol',
-  BTSubgraphUrl: 'https://api.thegraph.com/subgraphs/name/mattiapomelli/beetogether-mumbai',
-  contracts: {
-    hiveFactory: '0xeecFd8a85fbB9BbA5Dac2022C824e1c42C5d9634',
-    talentLayerId: '0x11119eD887aeC1302e2cAF49942F891667A31BBc',
-    serviceRegistry: '0xf0EECbBf164D81261C7Ce4D22D16f38DC63fBAbd',
-    talentLayerReview: '0xCf7577fB4749fA9Ae38296D52C53C654F9A9367f',
-    talentLayerEscrow: '0x34FCF4b0A418011682F6EdC86c49a0Faacc8A667',
-    talentLayerPlatformId: '0x08FB56537F118Cf35C4d3eB280444737f6D1bE46',
-  },
-  escrowConfig: {
-    timeoutPayment: 3600 * 24 * 7,
-  },
-  tokens: {
-    [ethers.constants.AddressZero]: {
-      address: ethers.constants.AddressZero,
-      symbol: 'ETH',
-      name: 'ETH',
-      decimals: 18,
-    },
-    '0x73967c6a0904aa032c103b4104747e88c566b1a2': {
-      address: '0x73967c6a0904aa032c103b4104747e88c566b1a2',
-      symbol: 'DAI',
-      name: 'DAI Stablecoin',
-      decimals: 18,
-    },
-    '0x07865c6e87b9f70255377e024ace6630c1eaa37f': {
-      address: '0x07865c6e87b9f70255377e024ace6630c1eaa37f',
-      symbol: 'USDC',
-      name: 'USDC Stablecoin',
-      decimals: 6,
-    },
-    '0xd80d331d3b6dca0a20f4af2edc9c9645cd1f10c8': {
-      address: '0xd80d331d3b6dca0a20f4af2edc9c9645cd1f10c8',
-      symbol: 'SERC20',
-      name: 'Simple ERC20',
-      decimals: 18,
-    },
-  },
-};
-
 const mumbai: Config = {
   networkId: NetworkEnum.MUMBAI,
   subgraphUrl: 'https://api.thegraph.com/subgraphs/name/talentlayer/talent-layer-mumbai',
@@ -123,10 +80,37 @@ const local: Config = {
   },
 };
 
-const chains: { [networkId in NetworkEnum]: Config } = {
-  [NetworkEnum.LOCAL]: local,
-  [NetworkEnum.GOERLI]: goerli,
-  [NetworkEnum.MUMBAI]: mumbai,
+const zkSync: Config = {
+  networkId: NetworkEnum.ZKSYNC,
+  subgraphUrl: 'https://api.thegraph.com/subgraphs/name/mattiapomelli/talentlayer-zksynctestnet',
+  BTSubgraphUrl: 'https://api.thegraph.com/subgraphs/name/mattiapomelli/beetogether-zksync',
+  contracts: {
+    hiveFactory: '0x98Ef8e54ec2fe89FCdA42d2cbC7F091508Aff5D4',
+    talentLayerId: '0x02c8615A5EbcF78ad9CDe35c14AFAB0f683bB10B',
+    serviceRegistry: '0x9B4a84dd61Bf00a89521545C3EEB11de3aaf775C',
+    talentLayerReview: '0xd3c5Eb477b73B79434463dE8b7A769605B2b8Cec',
+    talentLayerEscrow: '0x34d8cCf63fD034ED0ec3B5cdCC34Cf93748760b2',
+    talentLayerPlatformId: '0x26924caD212D324CF23607095D0343E75E51D18B',
+  },
+  escrowConfig: {
+    adminFee: '0',
+    adminWallet: '0x8d960334c2EF30f425b395C1506Ef7c5783789F3',
+    timeoutPayment: 3600 * 24 * 7,
+  },
+  tokens: {
+    [ethers.constants.AddressZero]: {
+      address: ethers.constants.AddressZero,
+      symbol: 'ETH',
+      name: 'Ethereum',
+      decimals: 18,
+    },
+  },
 };
 
-export const config = chains[process.env.NEXT_PUBLIC_NETWORK_ID as unknown as NetworkEnum];
+const chains: { [networkId in NetworkEnum]: Config } = {
+  [NetworkEnum.LOCAL]: local,
+  [NetworkEnum.MUMBAI]: mumbai,
+  [NetworkEnum.ZKSYNC]: zkSync,
+};
+
+export const getConfig = (networkId: NetworkEnum) => chains[networkId];
