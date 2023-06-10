@@ -232,7 +232,7 @@ function ProposalForm({
         );
         setSubmitting(false);
         resetForm();
-        router.back();
+        router.push(`/dashboard`);
       } catch (error) {
         showErrorTransactionToast(error);
       }
