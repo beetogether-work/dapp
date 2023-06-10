@@ -39,7 +39,7 @@ function UserBadges({ user }: IProps) {
         </>
       )}
 
-      {user.address === currentUser?.address && groupsData.length > 0 && (
+      {/* {user.address === currentUser?.address && groupsData.length > 0 && (
         <>
           <h2 className='mb-6 pb-4 border-b border-gray-gray-200 text-gray-100 font-medium break-all mt-4'>
             All zkPOW badges:
@@ -52,7 +52,7 @@ function UserBadges({ user }: IProps) {
             })}
           </div>
         </>
-      )}
+      )} */}
     </>
   );
 }

@@ -24,7 +24,7 @@ function Invite() {
       const currentHive = responseHive.data?.data?.hives[0];
       if (currentHive) {
         const responseOwner = await getUserById(chainId, currentHive.owner);
-        currentHive.owner = responseOwner?.data?.data?.user;
+        currentHive.ownerIdentity = responseOwner?.data?.data?.user;
 
         const responseIdentity = await getUserById(chainId, currentHive.id);
         currentHive.identity = responseIdentity?.data?.data?.user;

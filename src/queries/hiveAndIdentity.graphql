@@ -1,0 +1,41 @@
+query HiveAndIdentityQuery($hiveId: ID!) {
+    # this one is coming from BeeTogether
+    hive(id: $hiveId) {
+        id
+        cid 
+        members
+        owner
+        description{
+            id
+            manifesto
+            offeredServices
+        }
+        address
+    }
+    # this one is coming from Talentlayer
+    user(id: $hiveId) {
+        id
+        address
+        handle
+        rating
+        delegates
+        userStats {
+            numReceivedReviews
+        }
+        updatedAt
+        createdAt
+        description {
+            about
+            role
+            name
+            country
+            headline
+            id
+            image_url
+            video_url
+            title
+            timezone
+            skills_raw
+        }
+    }
+}

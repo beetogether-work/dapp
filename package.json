@@ -58,6 +58,7 @@
     ]
   },
   "devDependencies": {
+    "@graphprotocol/client-cli": "^3.0.0",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@types/level-js": "^4.0.2",

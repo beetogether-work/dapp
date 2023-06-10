@@ -1,0 +1,12 @@
+sources:
+  - name: beetogether
+    handler:
+      graphql:
+        endpoint: https://api.thegraph.com/subgraphs/name/mattiapomelli/beetogether-mumbai
+  - name: talentlayer
+    handler:
+      graphql:
+        endpoint: https://api.thegraph.com/subgraphs/name/talentlayer/talent-layer-mumbai
+
+documents:
+  - ./src/queries/hiveAndIdentity.graphql
