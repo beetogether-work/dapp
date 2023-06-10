@@ -20,10 +20,10 @@ import { getMesh, ExecuteMeshFn, SubscribeMeshFn, MeshContext as BaseMeshContext
 import { MeshStore, FsStoreStorageAdapter } from '@graphql-mesh/store';
 import { path as pathModule } from '@graphql-mesh/cross-helpers';
 import { ImportFn } from '@graphql-mesh/types';
-import type { BeetogetherTypes } from './sources/beetogether/types';
 import type { TalentlayerTypes } from './sources/talentlayer/types';
-import * as importedModule$0 from "./sources/beetogether/introspectionSchema";
-import * as importedModule$1 from "./sources/talentlayer/introspectionSchema";
+import type { BeetogetherTypes } from './sources/beetogether/types';
+import * as importedModule$0 from "./sources/talentlayer/introspectionSchema";
+import * as importedModule$1 from "./sources/beetogether/introspectionSchema";
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -1080,6 +1080,7 @@ export type Hive = {
   cid?: Maybe<Scalars['String']>;
   description?: Maybe<HiveDescription>;
   proposalRequests?: Maybe<Array<ProposalRequest>>;
+  paymasterAddress: Scalars['Bytes'];
 };
 
 
@@ -1240,6 +1241,16 @@ export type Hive_filter = {
   description_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
   description_?: InputMaybe<HiveDescription_filter>;
   proposalRequests_?: InputMaybe<ProposalRequest_filter>;
+  paymasterAddress?: InputMaybe<Scalars['Bytes']>;
+  paymasterAddress_not?: InputMaybe<Scalars['Bytes']>;
+  paymasterAddress_gt?: InputMaybe<Scalars['Bytes']>;
+  paymasterAddress_lt?: InputMaybe<Scalars['Bytes']>;
+  paymasterAddress_gte?: InputMaybe<Scalars['Bytes']>;
+  paymasterAddress_lte?: InputMaybe<Scalars['Bytes']>;
+  paymasterAddress_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  paymasterAddress_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  paymasterAddress_contains?: InputMaybe<Scalars['Bytes']>;
+  paymasterAddress_not_contains?: InputMaybe<Scalars['Bytes']>;
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
   and?: InputMaybe<Array<InputMaybe<Hive_filter>>>;
@@ -1257,7 +1268,8 @@ export type Hive_orderBy =
   | 'description__id'
   | 'description__offeredServices'
   | 'description__manifesto'
-  | 'proposalRequests';
+  | 'proposalRequests'
+  | 'paymasterAddress';
 
 /** Defines the order direction, either ascending or descending */
 export type OrderDirection =
@@ -1285,7 +1297,7 @@ export type ProposalRequest = {
 
 export type ProposalRequestDescription = {
   id: Scalars['ID'];
-  proposal: ProposalRequest;
+  proposalRequest: ProposalRequest;
   startDate?: Maybe<Scalars['BigInt']>;
   about?: Maybe<Scalars['String']>;
   expectedHours?: Maybe<Scalars['BigInt']>;
@@ -1301,27 +1313,27 @@ export type ProposalRequestDescription_filter = {
   id_lte?: InputMaybe<Scalars['ID']>;
   id_in?: InputMaybe<Array<Scalars['ID']>>;
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
-  proposal?: InputMaybe<Scalars['String']>;
-  proposal_not?: InputMaybe<Scalars['String']>;
-  proposal_gt?: InputMaybe<Scalars['String']>;
-  proposal_lt?: InputMaybe<Scalars['String']>;
-  proposal_gte?: InputMaybe<Scalars['String']>;
-  proposal_lte?: InputMaybe<Scalars['String']>;
-  proposal_in?: InputMaybe<Array<Scalars['String']>>;
-  proposal_not_in?: InputMaybe<Array<Scalars['String']>>;
-  proposal_contains?: InputMaybe<Scalars['String']>;
-  proposal_contains_nocase?: InputMaybe<Scalars['String']>;
-  proposal_not_contains?: InputMaybe<Scalars['String']>;
-  proposal_not_contains_nocase?: InputMaybe<Scalars['String']>;
-  proposal_starts_with?: InputMaybe<Scalars['String']>;
-  proposal_starts_with_nocase?: InputMaybe<Scalars['String']>;
-  proposal_not_starts_with?: InputMaybe<Scalars['String']>;
-  proposal_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
-  proposal_ends_with?: InputMaybe<Scalars['String']>;
-  proposal_ends_with_nocase?: InputMaybe<Scalars['String']>;
-  proposal_not_ends_with?: InputMaybe<Scalars['String']>;
-  proposal_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
-  proposal_?: InputMaybe<ProposalRequest_filter>;
+  proposalRequest?: InputMaybe<Scalars['String']>;
+  proposalRequest_not?: InputMaybe<Scalars['String']>;
+  proposalRequest_gt?: InputMaybe<Scalars['String']>;
+  proposalRequest_lt?: InputMaybe<Scalars['String']>;
+  proposalRequest_gte?: InputMaybe<Scalars['String']>;
+  proposalRequest_lte?: InputMaybe<Scalars['String']>;
+  proposalRequest_in?: InputMaybe<Array<Scalars['String']>>;
+  proposalRequest_not_in?: InputMaybe<Array<Scalars['String']>>;
+  proposalRequest_contains?: InputMaybe<Scalars['String']>;
+  proposalRequest_contains_nocase?: InputMaybe<Scalars['String']>;
+  proposalRequest_not_contains?: InputMaybe<Scalars['String']>;
+  proposalRequest_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  proposalRequest_starts_with?: InputMaybe<Scalars['String']>;
+  proposalRequest_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  proposalRequest_not_starts_with?: InputMaybe<Scalars['String']>;
+  proposalRequest_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  proposalRequest_ends_with?: InputMaybe<Scalars['String']>;
+  proposalRequest_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  proposalRequest_not_ends_with?: InputMaybe<Scalars['String']>;
+  proposalRequest_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  proposalRequest_?: InputMaybe<ProposalRequest_filter>;
   startDate?: InputMaybe<Scalars['BigInt']>;
   startDate_not?: InputMaybe<Scalars['BigInt']>;
   startDate_gt?: InputMaybe<Scalars['BigInt']>;
@@ -1386,19 +1398,19 @@ export type ProposalRequestDescription_filter = {
 
 export type ProposalRequestDescription_orderBy =
   | 'id'
-  | 'proposal'
-  | 'proposal__id'
-  | 'proposal__createdAt'
-  | 'proposal__updatedAt'
-  | 'proposal__ownerId'
-  | 'proposal__sharedAmount'
-  | 'proposal__status'
-  | 'proposal__serviceId'
-  | 'proposal__rateToken'
-  | 'proposal__rateAmount'
-  | 'proposal__cid'
-  | 'proposal__platformId'
-  | 'proposal__expirationDate'
+  | 'proposalRequest'
+  | 'proposalRequest__id'
+  | 'proposalRequest__createdAt'
+  | 'proposalRequest__updatedAt'
+  | 'proposalRequest__ownerId'
+  | 'proposalRequest__sharedAmount'
+  | 'proposalRequest__status'
+  | 'proposalRequest__serviceId'
+  | 'proposalRequest__rateToken'
+  | 'proposalRequest__rateAmount'
+  | 'proposalRequest__cid'
+  | 'proposalRequest__platformId'
+  | 'proposalRequest__expirationDate'
   | 'startDate'
   | 'about'
   | 'expectedHours'
@@ -1611,7 +1623,8 @@ export type ProposalRequest_orderBy =
   | 'hive__address'
   | 'hive__owner'
   | 'hive__honeyFee'
-  | 'hive__cid';
+  | 'hive__cid'
+  | 'hive__paymasterAddress';
 
 export type _Block_ = {
   /** The hash of the block */
@@ -1762,6 +1775,7 @@ export type Evidence_orderBy =
   | 'party__handle'
   | 'party__createdAt'
   | 'party__updatedAt'
+  | 'party__numReviews'
   | 'party__address'
   | 'party__rating'
   | 'party__cid'
@@ -3086,6 +3100,7 @@ export type Proposal_orderBy =
   | 'seller__handle'
   | 'seller__createdAt'
   | 'seller__updatedAt'
+  | 'seller__numReviews'
   | 'seller__address'
   | 'seller__rating'
   | 'seller__cid'
@@ -3424,6 +3439,7 @@ export type Review_orderBy =
   | 'to__handle'
   | 'to__createdAt'
   | 'to__updatedAt'
+  | 'to__numReviews'
   | 'to__address'
   | 'to__rating'
   | 'to__cid'
@@ -3835,6 +3851,7 @@ export type Service_orderBy =
   | 'buyer__handle'
   | 'buyer__createdAt'
   | 'buyer__updatedAt'
+  | 'buyer__numReviews'
   | 'buyer__address'
   | 'buyer__rating'
   | 'buyer__cid'
@@ -3844,6 +3861,7 @@ export type Service_orderBy =
   | 'seller__handle'
   | 'seller__createdAt'
   | 'seller__updatedAt'
+  | 'seller__numReviews'
   | 'seller__address'
   | 'seller__rating'
   | 'seller__cid'
@@ -4277,6 +4295,7 @@ export type Transaction_orderBy =
   | 'sender__handle'
   | 'sender__createdAt'
   | 'sender__updatedAt'
+  | 'sender__numReviews'
   | 'sender__address'
   | 'sender__rating'
   | 'sender__cid'
@@ -4286,6 +4305,7 @@ export type Transaction_orderBy =
   | 'receiver__handle'
   | 'receiver__createdAt'
   | 'receiver__updatedAt'
+  | 'receiver__numReviews'
   | 'receiver__address'
   | 'receiver__rating'
   | 'receiver__cid'
@@ -4327,6 +4347,7 @@ export type User = {
   createdAt: Scalars['BigInt'];
   updatedAt: Scalars['BigInt'];
   platform?: Maybe<Platform>;
+  numReviews?: Maybe<Scalars['BigInt']>;
   address: Scalars['String'];
   rating: Scalars['BigDecimal'];
   reviews?: Maybe<Array<Review>>;
@@ -4646,6 +4667,7 @@ export type UserDescription_orderBy =
   | 'user__handle'
   | 'user__createdAt'
   | 'user__updatedAt'
+  | 'user__numReviews'
   | 'user__address'
   | 'user__rating'
   | 'user__cid'
@@ -4734,6 +4756,7 @@ export type UserGain_orderBy =
   | 'user__handle'
   | 'user__createdAt'
   | 'user__updatedAt'
+  | 'user__numReviews'
   | 'user__address'
   | 'user__rating'
   | 'user__cid'
@@ -4856,6 +4879,7 @@ export type UserStats_orderBy =
   | 'user__handle'
   | 'user__createdAt'
   | 'user__updatedAt'
+  | 'user__numReviews'
   | 'user__address'
   | 'user__rating'
   | 'user__cid';
@@ -4934,6 +4958,14 @@ export type User_filter = {
   platform_not_ends_with?: InputMaybe<Scalars['String']>;
   platform_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
   platform_?: InputMaybe<Platform_filter>;
+  numReviews?: InputMaybe<Scalars['BigInt']>;
+  numReviews_not?: InputMaybe<Scalars['BigInt']>;
+  numReviews_gt?: InputMaybe<Scalars['BigInt']>;
+  numReviews_lt?: InputMaybe<Scalars['BigInt']>;
+  numReviews_gte?: InputMaybe<Scalars['BigInt']>;
+  numReviews_lte?: InputMaybe<Scalars['BigInt']>;
+  numReviews_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  numReviews_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
   address?: InputMaybe<Scalars['String']>;
   address_not?: InputMaybe<Scalars['String']>;
   address_gt?: InputMaybe<Scalars['String']>;
@@ -5061,6 +5093,7 @@ export type User_orderBy =
   | 'platform__arbitrationFeeTimeout'
   | 'platform__cid'
   | 'platform__signer'
+  | 'numReviews'
   | 'address'
   | 'rating'
   | 'reviews'
@@ -5489,6 +5522,7 @@ export type HiveResolvers<ContextType = MeshContext, ParentType extends Resolver
   cid?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   description?: Resolver<Maybe<ResolversTypes['HiveDescription']>, ParentType, ContextType>;
   proposalRequests?: Resolver<Maybe<Array<ResolversTypes['ProposalRequest']>>, ParentType, ContextType, RequireFields<HiveproposalRequestsArgs, 'skip' | 'first'>>;
+  paymasterAddress?: Resolver<ResolversTypes['Bytes'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
@@ -5525,7 +5559,7 @@ export type ProposalRequestResolvers<ContextType = MeshContext, ParentType exten
 
 export type ProposalRequestDescriptionResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['ProposalRequestDescription'] = ResolversParentTypes['ProposalRequestDescription']> = ResolversObject<{
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  proposal?: Resolver<ResolversTypes['ProposalRequest'], ParentType, ContextType>;
+  proposalRequest?: Resolver<ResolversTypes['ProposalRequest'], ParentType, ContextType>;
   startDate?: Resolver<Maybe<ResolversTypes['BigInt']>, ParentType, ContextType>;
   about?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   expectedHours?: Resolver<Maybe<ResolversTypes['BigInt']>, ParentType, ContextType>;
@@ -5764,6 +5798,7 @@ export type UserResolvers<ContextType = MeshContext, ParentType extends Resolver
   createdAt?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
   updatedAt?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
   platform?: Resolver<Maybe<ResolversTypes['Platform']>, ParentType, ContextType>;
+  numReviews?: Resolver<Maybe<ResolversTypes['BigInt']>, ParentType, ContextType>;
   address?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   rating?: Resolver<ResolversTypes['BigDecimal'], ParentType, ContextType>;
   reviews?: Resolver<Maybe<Array<ResolversTypes['Review']>>, ParentType, ContextType, RequireFields<UserreviewsArgs, 'skip' | 'first'>>;
@@ -5856,7 +5891,7 @@ export type DirectiveResolvers<ContextType = MeshContext> = ResolversObject<{
   derivedFrom?: derivedFromDirectiveResolver<any, any, ContextType>;
 }>;
 
-export type MeshContext = BeetogetherTypes.Context & TalentlayerTypes.Context & BaseMeshContext;
+export type MeshContext = TalentlayerTypes.Context & BeetogetherTypes.Context & BaseMeshContext;
 
 
 import { fileURLToPath } from '@graphql-mesh/utils';
@@ -5865,10 +5900,10 @@ const baseDir = pathModule.join(pathModule.dirname(fileURLToPath(import.meta.url
 const importFn: ImportFn = <T>(moduleId: string) => {
   const relativeModuleId = (pathModule.isAbsolute(moduleId) ? pathModule.relative(baseDir, moduleId) : moduleId).split('\\').join('/').replace(baseDir + '/', '');
   switch(relativeModuleId) {
-    case ".graphclient/sources/beetogether/introspectionSchema":
+    case ".graphclient/sources/talentlayer/introspectionSchema":
       return Promise.resolve(importedModule$0) as T;
     
-    case ".graphclient/sources/talentlayer/introspectionSchema":
+    case ".graphclient/sources/beetogether/introspectionSchema":
       return Promise.resolve(importedModule$1) as T;
     
     default:
@@ -5906,7 +5941,7 @@ const talentlayerTransforms = [];
 const additionalTypeDefs = [] as any[];
 const beetogetherHandler = new GraphqlHandler({
               name: "beetogether",
-              config: {"endpoint":"https://api.thegraph.com/subgraphs/name/mattiapomelli/beetogether-mumbai"},
+              config: {"endpoint":"https://api.thegraph.com/subgraphs/name/mattiapomelli/talentlayer-zksynctestnet"},
               baseDir,
               cache,
               pubsub,
@@ -5916,7 +5951,7 @@ const beetogetherHandler = new GraphqlHandler({
             });
 const talentlayerHandler = new GraphqlHandler({
               name: "talentlayer",
-              config: {"endpoint":"https://api.thegraph.com/subgraphs/name/talentlayer/talent-layer-mumbai"},
+              config: {"endpoint":"https://api.thegraph.com/subgraphs/name/mattiapomelli/beetogether-zksync"},
               baseDir,
               cache,
               pubsub,

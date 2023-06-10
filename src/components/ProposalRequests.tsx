@@ -1,5 +1,5 @@
 import { ethers } from 'ethers';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useProvider, useSigner } from 'wagmi';
 import {
   ProposalRequest,
@@ -7,13 +7,14 @@ import {
   ProposalRequestsQueryQuery,
   execute,
 } from '../../.graphclient';
+import BeeTogetherContext from '../context/beeTogether';
 import HiveABI from '../contracts/ABI/Hive.json';
 import { useChainId } from '../hooks/useChainId';
-import { IHive } from '../types';
 import { createMultiStepsTransactionToast } from '../utils/toast';
 import Loading from './Loading';
 
-function ProposalRequests({ hive }: { hive: IHive }) {
+function ProposalRequests() {
+  const { user, hive } = useContext(BeeTogetherContext);
   const chainId = useChainId();
   const { data: signer } = useSigner({
     chainId,
@@ -29,8 +30,6 @@ function ProposalRequests({ hive }: { hive: IHive }) {
         hiveId: hive.id,
       });
       const data: ProposalRequestsQueryQuery = result?.data;
-      console.log('ProposalRequests', data);
-      console.log('ProposalRequests', data.proposalRequests);
       setProposalRequests(data.proposalRequests as ProposalRequest[]);
       setLoading(false);
     };
@@ -156,12 +155,14 @@ function ProposalRequests({ hive }: { hive: IHive }) {
                                 </span>
                               </td>
                               <td className='font-alt whitespace-nowrap text-sm text-white p-4'>
-                                <button
-                                  onClick={() => voteAndExecute(proposalRequest.id)}
-                                  type='button'
-                                  className='relative font-sans font-normal text-sm inline-flex items-center justify-center leading-5 no-underline h-8 px-3 py-2 space-x-1 border nui-focus transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed hover:enabled:shadow-none text-white bg-gray-700 border-gray-600 hover:enabled:bg-gray-600  active:enabled:bg-gray-700/70 rounded-md'>
-                                  Vote for
-                                </button>
+                                {proposalRequest.ownerId != user?.id && (
+                                  <button
+                                    onClick={() => voteAndExecute(proposalRequest.id)}
+                                    type='button'
+                                    className='relative font-sans font-normal text-sm inline-flex items-center justify-center leading-5 no-underline h-8 px-3 py-2 space-x-1 border nui-focus transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed hover:enabled:shadow-none text-white bg-gray-700 border-gray-600 hover:enabled:bg-gray-600  active:enabled:bg-gray-700/70 rounded-md'>
+                                    Vote and execute
+                                  </button>
+                                )}
                               </td>
                             </tr>
                           ))}

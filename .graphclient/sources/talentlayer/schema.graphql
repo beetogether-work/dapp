@@ -28,665 +28,25 @@ input Block_height {
 
 scalar Bytes
 
-type Evidence {
-  id: ID!
-  transaction: Transaction!
-  createdAt: BigInt!
-  party: User!
-  uri: String!
-}
-
-input Evidence_filter {
-  id: ID
-  id_not: ID
-  id_gt: ID
-  id_lt: ID
-  id_gte: ID
-  id_lte: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  transaction: String
-  transaction_not: String
-  transaction_gt: String
-  transaction_lt: String
-  transaction_gte: String
-  transaction_lte: String
-  transaction_in: [String!]
-  transaction_not_in: [String!]
-  transaction_contains: String
-  transaction_contains_nocase: String
-  transaction_not_contains: String
-  transaction_not_contains_nocase: String
-  transaction_starts_with: String
-  transaction_starts_with_nocase: String
-  transaction_not_starts_with: String
-  transaction_not_starts_with_nocase: String
-  transaction_ends_with: String
-  transaction_ends_with_nocase: String
-  transaction_not_ends_with: String
-  transaction_not_ends_with_nocase: String
-  transaction_: Transaction_filter
-  createdAt: BigInt
-  createdAt_not: BigInt
-  createdAt_gt: BigInt
-  createdAt_lt: BigInt
-  createdAt_gte: BigInt
-  createdAt_lte: BigInt
-  createdAt_in: [BigInt!]
-  createdAt_not_in: [BigInt!]
-  party: String
-  party_not: String
-  party_gt: String
-  party_lt: String
-  party_gte: String
-  party_lte: String
-  party_in: [String!]
-  party_not_in: [String!]
-  party_contains: String
-  party_contains_nocase: String
-  party_not_contains: String
-  party_not_contains_nocase: String
-  party_starts_with: String
-  party_starts_with_nocase: String
-  party_not_starts_with: String
-  party_not_starts_with_nocase: String
-  party_ends_with: String
-  party_ends_with_nocase: String
-  party_not_ends_with: String
-  party_not_ends_with_nocase: String
-  party_: User_filter
-  uri: String
-  uri_not: String
-  uri_gt: String
-  uri_lt: String
-  uri_gte: String
-  uri_lte: String
-  uri_in: [String!]
-  uri_not_in: [String!]
-  uri_contains: String
-  uri_contains_nocase: String
-  uri_not_contains: String
-  uri_not_contains_nocase: String
-  uri_starts_with: String
-  uri_starts_with_nocase: String
-  uri_not_starts_with: String
-  uri_not_starts_with_nocase: String
-  uri_ends_with: String
-  uri_ends_with_nocase: String
-  uri_not_ends_with: String
-  uri_not_ends_with_nocase: String
-  """Filter for the block changed event."""
-  _change_block: BlockChangedFilter
-  and: [Evidence_filter]
-  or: [Evidence_filter]
-}
-
-enum Evidence_orderBy {
-  id
-  transaction
-  transaction__id
-  transaction__amount
-  transaction__protocolEscrowFeeRate
-  transaction__originServiceFeeRate
-  transaction__originValidatedProposalFeeRate
-  transaction__disputeId
-  transaction__senderFee
-  transaction__receiverFee
-  transaction__lastInteraction
-  transaction__status
-  transaction__arbitrator
-  transaction__arbitratorExtraData
-  transaction__arbitrationFeeTimeout
-  transaction__ruling
-  transaction__metaEvidenceUri
-  createdAt
-  party
-  party__id
-  party__index
-  party__handle
-  party__createdAt
-  party__updatedAt
-  party__address
-  party__rating
-  party__cid
-  uri
-}
-
-type FeeClaim {
-  id: ID!
-  createdAt: BigInt
-  platform: Platform
-  token: Token
-  amount: BigInt!
-  transactionHash: String
-}
-
-input FeeClaim_filter {
-  id: ID
-  id_not: ID
-  id_gt: ID
-  id_lt: ID
-  id_gte: ID
-  id_lte: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  createdAt: BigInt
-  createdAt_not: BigInt
-  createdAt_gt: BigInt
-  createdAt_lt: BigInt
-  createdAt_gte: BigInt
-  createdAt_lte: BigInt
-  createdAt_in: [BigInt!]
-  createdAt_not_in: [BigInt!]
-  platform: String
-  platform_not: String
-  platform_gt: String
-  platform_lt: String
-  platform_gte: String
-  platform_lte: String
-  platform_in: [String!]
-  platform_not_in: [String!]
-  platform_contains: String
-  platform_contains_nocase: String
-  platform_not_contains: String
-  platform_not_contains_nocase: String
-  platform_starts_with: String
-  platform_starts_with_nocase: String
-  platform_not_starts_with: String
-  platform_not_starts_with_nocase: String
-  platform_ends_with: String
-  platform_ends_with_nocase: String
-  platform_not_ends_with: String
-  platform_not_ends_with_nocase: String
-  platform_: Platform_filter
-  token: String
-  token_not: String
-  token_gt: String
-  token_lt: String
-  token_gte: String
-  token_lte: String
-  token_in: [String!]
-  token_not_in: [String!]
-  token_contains: String
-  token_contains_nocase: String
-  token_not_contains: String
-  token_not_contains_nocase: String
-  token_starts_with: String
-  token_starts_with_nocase: String
-  token_not_starts_with: String
-  token_not_starts_with_nocase: String
-  token_ends_with: String
-  token_ends_with_nocase: String
-  token_not_ends_with: String
-  token_not_ends_with_nocase: String
-  token_: Token_filter
-  amount: BigInt
-  amount_not: BigInt
-  amount_gt: BigInt
-  amount_lt: BigInt
-  amount_gte: BigInt
-  amount_lte: BigInt
-  amount_in: [BigInt!]
-  amount_not_in: [BigInt!]
-  transactionHash: String
-  transactionHash_not: String
-  transactionHash_gt: String
-  transactionHash_lt: String
-  transactionHash_gte: String
-  transactionHash_lte: String
-  transactionHash_in: [String!]
-  transactionHash_not_in: [String!]
-  transactionHash_contains: String
-  transactionHash_contains_nocase: String
-  transactionHash_not_contains: String
-  transactionHash_not_contains_nocase: String
-  transactionHash_starts_with: String
-  transactionHash_starts_with_nocase: String
-  transactionHash_not_starts_with: String
-  transactionHash_not_starts_with_nocase: String
-  transactionHash_ends_with: String
-  transactionHash_ends_with_nocase: String
-  transactionHash_not_ends_with: String
-  transactionHash_not_ends_with_nocase: String
-  """Filter for the block changed event."""
-  _change_block: BlockChangedFilter
-  and: [FeeClaim_filter]
-  or: [FeeClaim_filter]
-}
-
-enum FeeClaim_orderBy {
-  id
-  createdAt
-  platform
-  platform__id
-  platform__address
-  platform__name
-  platform__createdAt
-  platform__updatedAt
-  platform__originServiceFeeRate
-  platform__originValidatedProposalFeeRate
-  platform__servicePostingFee
-  platform__proposalPostingFee
-  platform__arbitrator
-  platform__arbitratorExtraData
-  platform__arbitrationFeeTimeout
-  platform__cid
-  platform__signer
-  token
-  token__id
-  token__address
-  token__symbol
-  token__name
-  token__decimals
-  token__allowed
-  token__minimumTransactionAmount
-  amount
-  transactionHash
-}
-
-type FeePayment {
-  id: ID!
-  createdAt: BigInt
-  platform: Platform
-  service: Service
-  type: FeeType!
-  token: Token
-  amount: BigInt
-}
-
-input FeePayment_filter {
-  id: ID
-  id_not: ID
-  id_gt: ID
-  id_lt: ID
-  id_gte: ID
-  id_lte: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  createdAt: BigInt
-  createdAt_not: BigInt
-  createdAt_gt: BigInt
-  createdAt_lt: BigInt
-  createdAt_gte: BigInt
-  createdAt_lte: BigInt
-  createdAt_in: [BigInt!]
-  createdAt_not_in: [BigInt!]
-  platform: String
-  platform_not: String
-  platform_gt: String
-  platform_lt: String
-  platform_gte: String
-  platform_lte: String
-  platform_in: [String!]
-  platform_not_in: [String!]
-  platform_contains: String
-  platform_contains_nocase: String
-  platform_not_contains: String
-  platform_not_contains_nocase: String
-  platform_starts_with: String
-  platform_starts_with_nocase: String
-  platform_not_starts_with: String
-  platform_not_starts_with_nocase: String
-  platform_ends_with: String
-  platform_ends_with_nocase: String
-  platform_not_ends_with: String
-  platform_not_ends_with_nocase: String
-  platform_: Platform_filter
-  service: String
-  service_not: String
-  service_gt: String
-  service_lt: String
-  service_gte: String
-  service_lte: String
-  service_in: [String!]
-  service_not_in: [String!]
-  service_contains: String
-  service_contains_nocase: String
-  service_not_contains: String
-  service_not_contains_nocase: String
-  service_starts_with: String
-  service_starts_with_nocase: String
-  service_not_starts_with: String
-  service_not_starts_with_nocase: String
-  service_ends_with: String
-  service_ends_with_nocase: String
-  service_not_ends_with: String
-  service_not_ends_with_nocase: String
-  service_: Service_filter
-  type: FeeType
-  type_not: FeeType
-  type_in: [FeeType!]
-  type_not_in: [FeeType!]
-  token: String
-  token_not: String
-  token_gt: String
-  token_lt: String
-  token_gte: String
-  token_lte: String
-  token_in: [String!]
-  token_not_in: [String!]
-  token_contains: String
-  token_contains_nocase: String
-  token_not_contains: String
-  token_not_contains_nocase: String
-  token_starts_with: String
-  token_starts_with_nocase: String
-  token_not_starts_with: String
-  token_not_starts_with_nocase: String
-  token_ends_with: String
-  token_ends_with_nocase: String
-  token_not_ends_with: String
-  token_not_ends_with_nocase: String
-  token_: Token_filter
-  amount: BigInt
-  amount_not: BigInt
-  amount_gt: BigInt
-  amount_lt: BigInt
-  amount_gte: BigInt
-  amount_lte: BigInt
-  amount_in: [BigInt!]
-  amount_not_in: [BigInt!]
-  """Filter for the block changed event."""
-  _change_block: BlockChangedFilter
-  and: [FeePayment_filter]
-  or: [FeePayment_filter]
-}
-
-enum FeePayment_orderBy {
-  id
-  createdAt
-  platform
-  platform__id
-  platform__address
-  platform__name
-  platform__createdAt
-  platform__updatedAt
-  platform__originServiceFeeRate
-  platform__originValidatedProposalFeeRate
-  platform__servicePostingFee
-  platform__proposalPostingFee
-  platform__arbitrator
-  platform__arbitratorExtraData
-  platform__arbitrationFeeTimeout
-  platform__cid
-  platform__signer
-  service
-  service__id
-  service__createdAt
-  service__updatedAt
-  service__status
-  service__cid
-  type
-  token
-  token__id
-  token__address
-  token__symbol
-  token__name
-  token__decimals
-  token__allowed
-  token__minimumTransactionAmount
-  amount
-}
-
-enum FeeType {
-  Platform
-  OriginPlatform
-}
-
-"""
-8 bytes signed integer
-
-"""
-scalar Int8
-
-type Keyword {
-  id: ID!
-}
-
-input Keyword_filter {
-  id: ID
-  id_not: ID
-  id_gt: ID
-  id_lt: ID
-  id_gte: ID
-  id_lte: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  """Filter for the block changed event."""
-  _change_block: BlockChangedFilter
-  and: [Keyword_filter]
-  or: [Keyword_filter]
-}
-
-enum Keyword_orderBy {
-  id
-}
-
-"""Defines the order direction, either ascending or descending"""
-enum OrderDirection {
-  asc
-  desc
-}
-
-type Payment {
-  id: ID!
-  createdAt: BigInt
-  service: Service!
-  amount: BigInt!
-  rateToken: Token!
-  paymentType: String
-  transactionHash: String
-  transaction: Transaction!
-}
-
-enum PaymentType {
-  Release
-  Reimburse
-}
-
-input Payment_filter {
-  id: ID
-  id_not: ID
-  id_gt: ID
-  id_lt: ID
-  id_gte: ID
-  id_lte: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  createdAt: BigInt
-  createdAt_not: BigInt
-  createdAt_gt: BigInt
-  createdAt_lt: BigInt
-  createdAt_gte: BigInt
-  createdAt_lte: BigInt
-  createdAt_in: [BigInt!]
-  createdAt_not_in: [BigInt!]
-  service: String
-  service_not: String
-  service_gt: String
-  service_lt: String
-  service_gte: String
-  service_lte: String
-  service_in: [String!]
-  service_not_in: [String!]
-  service_contains: String
-  service_contains_nocase: String
-  service_not_contains: String
-  service_not_contains_nocase: String
-  service_starts_with: String
-  service_starts_with_nocase: String
-  service_not_starts_with: String
-  service_not_starts_with_nocase: String
-  service_ends_with: String
-  service_ends_with_nocase: String
-  service_not_ends_with: String
-  service_not_ends_with_nocase: String
-  service_: Service_filter
-  amount: BigInt
-  amount_not: BigInt
-  amount_gt: BigInt
-  amount_lt: BigInt
-  amount_gte: BigInt
-  amount_lte: BigInt
-  amount_in: [BigInt!]
-  amount_not_in: [BigInt!]
-  rateToken: String
-  rateToken_not: String
-  rateToken_gt: String
-  rateToken_lt: String
-  rateToken_gte: String
-  rateToken_lte: String
-  rateToken_in: [String!]
-  rateToken_not_in: [String!]
-  rateToken_contains: String
-  rateToken_contains_nocase: String
-  rateToken_not_contains: String
-  rateToken_not_contains_nocase: String
-  rateToken_starts_with: String
-  rateToken_starts_with_nocase: String
-  rateToken_not_starts_with: String
-  rateToken_not_starts_with_nocase: String
-  rateToken_ends_with: String
-  rateToken_ends_with_nocase: String
-  rateToken_not_ends_with: String
-  rateToken_not_ends_with_nocase: String
-  rateToken_: Token_filter
-  paymentType: String
-  paymentType_not: String
-  paymentType_gt: String
-  paymentType_lt: String
-  paymentType_gte: String
-  paymentType_lte: String
-  paymentType_in: [String!]
-  paymentType_not_in: [String!]
-  paymentType_contains: String
-  paymentType_contains_nocase: String
-  paymentType_not_contains: String
-  paymentType_not_contains_nocase: String
-  paymentType_starts_with: String
-  paymentType_starts_with_nocase: String
-  paymentType_not_starts_with: String
-  paymentType_not_starts_with_nocase: String
-  paymentType_ends_with: String
-  paymentType_ends_with_nocase: String
-  paymentType_not_ends_with: String
-  paymentType_not_ends_with_nocase: String
-  transactionHash: String
-  transactionHash_not: String
-  transactionHash_gt: String
-  transactionHash_lt: String
-  transactionHash_gte: String
-  transactionHash_lte: String
-  transactionHash_in: [String!]
-  transactionHash_not_in: [String!]
-  transactionHash_contains: String
-  transactionHash_contains_nocase: String
-  transactionHash_not_contains: String
-  transactionHash_not_contains_nocase: String
-  transactionHash_starts_with: String
-  transactionHash_starts_with_nocase: String
-  transactionHash_not_starts_with: String
-  transactionHash_not_starts_with_nocase: String
-  transactionHash_ends_with: String
-  transactionHash_ends_with_nocase: String
-  transactionHash_not_ends_with: String
-  transactionHash_not_ends_with_nocase: String
-  transaction: String
-  transaction_not: String
-  transaction_gt: String
-  transaction_lt: String
-  transaction_gte: String
-  transaction_lte: String
-  transaction_in: [String!]
-  transaction_not_in: [String!]
-  transaction_contains: String
-  transaction_contains_nocase: String
-  transaction_not_contains: String
-  transaction_not_contains_nocase: String
-  transaction_starts_with: String
-  transaction_starts_with_nocase: String
-  transaction_not_starts_with: String
-  transaction_not_starts_with_nocase: String
-  transaction_ends_with: String
-  transaction_ends_with_nocase: String
-  transaction_not_ends_with: String
-  transaction_not_ends_with_nocase: String
-  transaction_: Transaction_filter
-  """Filter for the block changed event."""
-  _change_block: BlockChangedFilter
-  and: [Payment_filter]
-  or: [Payment_filter]
-}
-
-enum Payment_orderBy {
-  id
-  createdAt
-  service
-  service__id
-  service__createdAt
-  service__updatedAt
-  service__status
-  service__cid
-  amount
-  rateToken
-  rateToken__id
-  rateToken__address
-  rateToken__symbol
-  rateToken__name
-  rateToken__decimals
-  rateToken__allowed
-  rateToken__minimumTransactionAmount
-  paymentType
-  transactionHash
-  transaction
-  transaction__id
-  transaction__amount
-  transaction__protocolEscrowFeeRate
-  transaction__originServiceFeeRate
-  transaction__originValidatedProposalFeeRate
-  transaction__disputeId
-  transaction__senderFee
-  transaction__receiverFee
-  transaction__lastInteraction
-  transaction__status
-  transaction__arbitrator
-  transaction__arbitratorExtraData
-  transaction__arbitrationFeeTimeout
-  transaction__ruling
-  transaction__metaEvidenceUri
-}
-
-type Platform {
+type Hive {
   id: ID!
   address: Bytes!
-  name: String!
-  createdAt: BigInt!
-  updatedAt: BigInt!
-  feePayments(skip: Int = 0, first: Int = 100, orderBy: FeePayment_orderBy, orderDirection: OrderDirection, where: FeePayment_filter): [FeePayment!]
-  totalPlatformGains(skip: Int = 0, first: Int = 100, orderBy: PlatformGain_orderBy, orderDirection: OrderDirection, where: PlatformGain_filter): [PlatformGain!]
-  feeClaims(skip: Int = 0, first: Int = 100, orderBy: FeeClaim_orderBy, orderDirection: OrderDirection, where: FeeClaim_filter): [FeeClaim!]
-  originServiceFeeRate: Int!
-  originValidatedProposalFeeRate: Int!
-  servicePostingFee: BigInt!
-  proposalPostingFee: BigInt!
-  arbitrator: Bytes!
-  arbitratorExtraData: Bytes!
-  arbitrationFeeTimeout: BigInt!
+  owner: BigInt!
+  honeyFee: Int!
+  members: [BigInt!]!
   cid: String
-  description: PlatformDescription
-  signer: Bytes!
+  description: HiveDescription
+  proposalRequests(skip: Int = 0, first: Int = 100, orderBy: ProposalRequest_orderBy, orderDirection: OrderDirection, where: ProposalRequest_filter): [ProposalRequest!]
+  paymasterAddress: Bytes!
 }
 
-type PlatformDescription {
+type HiveDescription {
   id: ID!
-  about: String
-  website: String
-  platform: Platform!
-  video_url: String
-  image_url: String
+  offeredServices: String
+  manifesto: String
 }
 
-input PlatformDescription_filter {
+input HiveDescription_filter {
   id: ID
   id_not: ID
   id_gt: ID
@@ -695,247 +55,59 @@ input PlatformDescription_filter {
   id_lte: ID
   id_in: [ID!]
   id_not_in: [ID!]
-  about: String
-  about_not: String
-  about_gt: String
-  about_lt: String
-  about_gte: String
-  about_lte: String
-  about_in: [String!]
-  about_not_in: [String!]
-  about_contains: String
-  about_contains_nocase: String
-  about_not_contains: String
-  about_not_contains_nocase: String
-  about_starts_with: String
-  about_starts_with_nocase: String
-  about_not_starts_with: String
-  about_not_starts_with_nocase: String
-  about_ends_with: String
-  about_ends_with_nocase: String
-  about_not_ends_with: String
-  about_not_ends_with_nocase: String
-  website: String
-  website_not: String
-  website_gt: String
-  website_lt: String
-  website_gte: String
-  website_lte: String
-  website_in: [String!]
-  website_not_in: [String!]
-  website_contains: String
-  website_contains_nocase: String
-  website_not_contains: String
-  website_not_contains_nocase: String
-  website_starts_with: String
-  website_starts_with_nocase: String
-  website_not_starts_with: String
-  website_not_starts_with_nocase: String
-  website_ends_with: String
-  website_ends_with_nocase: String
-  website_not_ends_with: String
-  website_not_ends_with_nocase: String
-  platform: String
-  platform_not: String
-  platform_gt: String
-  platform_lt: String
-  platform_gte: String
-  platform_lte: String
-  platform_in: [String!]
-  platform_not_in: [String!]
-  platform_contains: String
-  platform_contains_nocase: String
-  platform_not_contains: String
-  platform_not_contains_nocase: String
-  platform_starts_with: String
-  platform_starts_with_nocase: String
-  platform_not_starts_with: String
-  platform_not_starts_with_nocase: String
-  platform_ends_with: String
-  platform_ends_with_nocase: String
-  platform_not_ends_with: String
-  platform_not_ends_with_nocase: String
-  platform_: Platform_filter
-  video_url: String
-  video_url_not: String
-  video_url_gt: String
-  video_url_lt: String
-  video_url_gte: String
-  video_url_lte: String
-  video_url_in: [String!]
-  video_url_not_in: [String!]
-  video_url_contains: String
-  video_url_contains_nocase: String
-  video_url_not_contains: String
-  video_url_not_contains_nocase: String
-  video_url_starts_with: String
-  video_url_starts_with_nocase: String
-  video_url_not_starts_with: String
-  video_url_not_starts_with_nocase: String
-  video_url_ends_with: String
-  video_url_ends_with_nocase: String
-  video_url_not_ends_with: String
-  video_url_not_ends_with_nocase: String
-  image_url: String
-  image_url_not: String
-  image_url_gt: String
-  image_url_lt: String
-  image_url_gte: String
-  image_url_lte: String
-  image_url_in: [String!]
-  image_url_not_in: [String!]
-  image_url_contains: String
-  image_url_contains_nocase: String
-  image_url_not_contains: String
-  image_url_not_contains_nocase: String
-  image_url_starts_with: String
-  image_url_starts_with_nocase: String
-  image_url_not_starts_with: String
-  image_url_not_starts_with_nocase: String
-  image_url_ends_with: String
-  image_url_ends_with_nocase: String
-  image_url_not_ends_with: String
-  image_url_not_ends_with_nocase: String
+  offeredServices: String
+  offeredServices_not: String
+  offeredServices_gt: String
+  offeredServices_lt: String
+  offeredServices_gte: String
+  offeredServices_lte: String
+  offeredServices_in: [String!]
+  offeredServices_not_in: [String!]
+  offeredServices_contains: String
+  offeredServices_contains_nocase: String
+  offeredServices_not_contains: String
+  offeredServices_not_contains_nocase: String
+  offeredServices_starts_with: String
+  offeredServices_starts_with_nocase: String
+  offeredServices_not_starts_with: String
+  offeredServices_not_starts_with_nocase: String
+  offeredServices_ends_with: String
+  offeredServices_ends_with_nocase: String
+  offeredServices_not_ends_with: String
+  offeredServices_not_ends_with_nocase: String
+  manifesto: String
+  manifesto_not: String
+  manifesto_gt: String
+  manifesto_lt: String
+  manifesto_gte: String
+  manifesto_lte: String
+  manifesto_in: [String!]
+  manifesto_not_in: [String!]
+  manifesto_contains: String
+  manifesto_contains_nocase: String
+  manifesto_not_contains: String
+  manifesto_not_contains_nocase: String
+  manifesto_starts_with: String
+  manifesto_starts_with_nocase: String
+  manifesto_not_starts_with: String
+  manifesto_not_starts_with_nocase: String
+  manifesto_ends_with: String
+  manifesto_ends_with_nocase: String
+  manifesto_not_ends_with: String
+  manifesto_not_ends_with_nocase: String
   """Filter for the block changed event."""
   _change_block: BlockChangedFilter
-  and: [PlatformDescription_filter]
-  or: [PlatformDescription_filter]
+  and: [HiveDescription_filter]
+  or: [HiveDescription_filter]
 }
 
-enum PlatformDescription_orderBy {
+enum HiveDescription_orderBy {
   id
-  about
-  website
-  platform
-  platform__id
-  platform__address
-  platform__name
-  platform__createdAt
-  platform__updatedAt
-  platform__originServiceFeeRate
-  platform__originValidatedProposalFeeRate
-  platform__servicePostingFee
-  platform__proposalPostingFee
-  platform__arbitrator
-  platform__arbitratorExtraData
-  platform__arbitrationFeeTimeout
-  platform__cid
-  platform__signer
-  video_url
-  image_url
+  offeredServices
+  manifesto
 }
 
-type PlatformGain {
-  id: ID!
-  platform: Platform
-  token: Token
-  totalOriginPlatformFeeGain: BigInt!
-  totalPlatformFeeGain: BigInt!
-}
-
-input PlatformGain_filter {
-  id: ID
-  id_not: ID
-  id_gt: ID
-  id_lt: ID
-  id_gte: ID
-  id_lte: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  platform: String
-  platform_not: String
-  platform_gt: String
-  platform_lt: String
-  platform_gte: String
-  platform_lte: String
-  platform_in: [String!]
-  platform_not_in: [String!]
-  platform_contains: String
-  platform_contains_nocase: String
-  platform_not_contains: String
-  platform_not_contains_nocase: String
-  platform_starts_with: String
-  platform_starts_with_nocase: String
-  platform_not_starts_with: String
-  platform_not_starts_with_nocase: String
-  platform_ends_with: String
-  platform_ends_with_nocase: String
-  platform_not_ends_with: String
-  platform_not_ends_with_nocase: String
-  platform_: Platform_filter
-  token: String
-  token_not: String
-  token_gt: String
-  token_lt: String
-  token_gte: String
-  token_lte: String
-  token_in: [String!]
-  token_not_in: [String!]
-  token_contains: String
-  token_contains_nocase: String
-  token_not_contains: String
-  token_not_contains_nocase: String
-  token_starts_with: String
-  token_starts_with_nocase: String
-  token_not_starts_with: String
-  token_not_starts_with_nocase: String
-  token_ends_with: String
-  token_ends_with_nocase: String
-  token_not_ends_with: String
-  token_not_ends_with_nocase: String
-  token_: Token_filter
-  totalOriginPlatformFeeGain: BigInt
-  totalOriginPlatformFeeGain_not: BigInt
-  totalOriginPlatformFeeGain_gt: BigInt
-  totalOriginPlatformFeeGain_lt: BigInt
-  totalOriginPlatformFeeGain_gte: BigInt
-  totalOriginPlatformFeeGain_lte: BigInt
-  totalOriginPlatformFeeGain_in: [BigInt!]
-  totalOriginPlatformFeeGain_not_in: [BigInt!]
-  totalPlatformFeeGain: BigInt
-  totalPlatformFeeGain_not: BigInt
-  totalPlatformFeeGain_gt: BigInt
-  totalPlatformFeeGain_lt: BigInt
-  totalPlatformFeeGain_gte: BigInt
-  totalPlatformFeeGain_lte: BigInt
-  totalPlatformFeeGain_in: [BigInt!]
-  totalPlatformFeeGain_not_in: [BigInt!]
-  """Filter for the block changed event."""
-  _change_block: BlockChangedFilter
-  and: [PlatformGain_filter]
-  or: [PlatformGain_filter]
-}
-
-enum PlatformGain_orderBy {
-  id
-  platform
-  platform__id
-  platform__address
-  platform__name
-  platform__createdAt
-  platform__updatedAt
-  platform__originServiceFeeRate
-  platform__originValidatedProposalFeeRate
-  platform__servicePostingFee
-  platform__proposalPostingFee
-  platform__arbitrator
-  platform__arbitratorExtraData
-  platform__arbitrationFeeTimeout
-  platform__cid
-  platform__signer
-  token
-  token__id
-  token__address
-  token__symbol
-  token__name
-  token__decimals
-  token__allowed
-  token__minimumTransactionAmount
-  totalOriginPlatformFeeGain
-  totalPlatformFeeGain
-}
-
-input Platform_filter {
+input Hive_filter {
   id: ID
   id_not: ID
   id_gt: ID
@@ -954,105 +126,28 @@ input Platform_filter {
   address_not_in: [Bytes!]
   address_contains: Bytes
   address_not_contains: Bytes
-  name: String
-  name_not: String
-  name_gt: String
-  name_lt: String
-  name_gte: String
-  name_lte: String
-  name_in: [String!]
-  name_not_in: [String!]
-  name_contains: String
-  name_contains_nocase: String
-  name_not_contains: String
-  name_not_contains_nocase: String
-  name_starts_with: String
-  name_starts_with_nocase: String
-  name_not_starts_with: String
-  name_not_starts_with_nocase: String
-  name_ends_with: String
-  name_ends_with_nocase: String
-  name_not_ends_with: String
-  name_not_ends_with_nocase: String
-  createdAt: BigInt
-  createdAt_not: BigInt
-  createdAt_gt: BigInt
-  createdAt_lt: BigInt
-  createdAt_gte: BigInt
-  createdAt_lte: BigInt
-  createdAt_in: [BigInt!]
-  createdAt_not_in: [BigInt!]
-  updatedAt: BigInt
-  updatedAt_not: BigInt
-  updatedAt_gt: BigInt
-  updatedAt_lt: BigInt
-  updatedAt_gte: BigInt
-  updatedAt_lte: BigInt
-  updatedAt_in: [BigInt!]
-  updatedAt_not_in: [BigInt!]
-  feePayments_: FeePayment_filter
-  totalPlatformGains_: PlatformGain_filter
-  feeClaims_: FeeClaim_filter
-  originServiceFeeRate: Int
-  originServiceFeeRate_not: Int
-  originServiceFeeRate_gt: Int
-  originServiceFeeRate_lt: Int
-  originServiceFeeRate_gte: Int
-  originServiceFeeRate_lte: Int
-  originServiceFeeRate_in: [Int!]
-  originServiceFeeRate_not_in: [Int!]
-  originValidatedProposalFeeRate: Int
-  originValidatedProposalFeeRate_not: Int
-  originValidatedProposalFeeRate_gt: Int
-  originValidatedProposalFeeRate_lt: Int
-  originValidatedProposalFeeRate_gte: Int
-  originValidatedProposalFeeRate_lte: Int
-  originValidatedProposalFeeRate_in: [Int!]
-  originValidatedProposalFeeRate_not_in: [Int!]
-  servicePostingFee: BigInt
-  servicePostingFee_not: BigInt
-  servicePostingFee_gt: BigInt
-  servicePostingFee_lt: BigInt
-  servicePostingFee_gte: BigInt
-  servicePostingFee_lte: BigInt
-  servicePostingFee_in: [BigInt!]
-  servicePostingFee_not_in: [BigInt!]
-  proposalPostingFee: BigInt
-  proposalPostingFee_not: BigInt
-  proposalPostingFee_gt: BigInt
-  proposalPostingFee_lt: BigInt
-  proposalPostingFee_gte: BigInt
-  proposalPostingFee_lte: BigInt
-  proposalPostingFee_in: [BigInt!]
-  proposalPostingFee_not_in: [BigInt!]
-  arbitrator: Bytes
-  arbitrator_not: Bytes
-  arbitrator_gt: Bytes
-  arbitrator_lt: Bytes
-  arbitrator_gte: Bytes
-  arbitrator_lte: Bytes
-  arbitrator_in: [Bytes!]
-  arbitrator_not_in: [Bytes!]
-  arbitrator_contains: Bytes
-  arbitrator_not_contains: Bytes
-  arbitratorExtraData: Bytes
-  arbitratorExtraData_not: Bytes
-  arbitratorExtraData_gt: Bytes
-  arbitratorExtraData_lt: Bytes
-  arbitratorExtraData_gte: Bytes
-  arbitratorExtraData_lte: Bytes
-  arbitratorExtraData_in: [Bytes!]
-  arbitratorExtraData_not_in: [Bytes!]
-  arbitratorExtraData_contains: Bytes
-  arbitratorExtraData_not_contains: Bytes
-  arbitrationFeeTimeout: BigInt
-  arbitrationFeeTimeout_not: BigInt
-  arbitrationFeeTimeout_gt: BigInt
-  arbitrationFeeTimeout_lt: BigInt
-  arbitrationFeeTimeout_gte: BigInt
-  arbitrationFeeTimeout_lte: BigInt
-  arbitrationFeeTimeout_in: [BigInt!]
-  arbitrationFeeTimeout_not_in: [BigInt!]
+  owner: BigInt
+  owner_not: BigInt
+  owner_gt: BigInt
+  owner_lt: BigInt
+  owner_gte: BigInt
+  owner_lte: BigInt
+  owner_in: [BigInt!]
+  owner_not_in: [BigInt!]
+  honeyFee: Int
+  honeyFee_not: Int
+  honeyFee_gt: Int
+  honeyFee_lt: Int
+  honeyFee_gte: Int
+  honeyFee_lte: Int
+  honeyFee_in: [Int!]
+  honeyFee_not_in: [Int!]
+  members: [BigInt!]
+  members_not: [BigInt!]
+  members_contains: [BigInt!]
+  members_contains_nocase: [BigInt!]
+  members_not_contains: [BigInt!]
+  members_not_contains_nocase: [BigInt!]
   cid: String
   cid_not: String
   cid_gt: String
@@ -1093,74 +188,80 @@ input Platform_filter {
   description_ends_with_nocase: String
   description_not_ends_with: String
   description_not_ends_with_nocase: String
-  description_: PlatformDescription_filter
-  signer: Bytes
-  signer_not: Bytes
-  signer_gt: Bytes
-  signer_lt: Bytes
-  signer_gte: Bytes
-  signer_lte: Bytes
-  signer_in: [Bytes!]
-  signer_not_in: [Bytes!]
-  signer_contains: Bytes
-  signer_not_contains: Bytes
+  description_: HiveDescription_filter
+  proposalRequests_: ProposalRequest_filter
+  paymasterAddress: Bytes
+  paymasterAddress_not: Bytes
+  paymasterAddress_gt: Bytes
+  paymasterAddress_lt: Bytes
+  paymasterAddress_gte: Bytes
+  paymasterAddress_lte: Bytes
+  paymasterAddress_in: [Bytes!]
+  paymasterAddress_not_in: [Bytes!]
+  paymasterAddress_contains: Bytes
+  paymasterAddress_not_contains: Bytes
   """Filter for the block changed event."""
   _change_block: BlockChangedFilter
-  and: [Platform_filter]
-  or: [Platform_filter]
+  and: [Hive_filter]
+  or: [Hive_filter]
 }
 
-enum Platform_orderBy {
+enum Hive_orderBy {
   id
   address
-  name
-  createdAt
-  updatedAt
-  feePayments
-  totalPlatformGains
-  feeClaims
-  originServiceFeeRate
-  originValidatedProposalFeeRate
-  servicePostingFee
-  proposalPostingFee
-  arbitrator
-  arbitratorExtraData
-  arbitrationFeeTimeout
+  owner
+  honeyFee
+  members
   cid
   description
   description__id
-  description__about
-  description__website
-  description__video_url
-  description__image_url
-  signer
+  description__offeredServices
+  description__manifesto
+  proposalRequests
+  paymasterAddress
 }
 
-type Proposal {
+"""
+8 bytes signed integer
+
+"""
+scalar Int8
+
+"""Defines the order direction, either ascending or descending"""
+enum OrderDirection {
+  asc
+  desc
+}
+
+type ProposalRequest {
   id: ID!
-  service: Service!
   createdAt: BigInt!
   updatedAt: BigInt!
-  status: ProposalStatus!
-  seller: User
-  rateToken: Token!
+  ownerId: BigInt!
+  sharedAmount: BigInt!
+  status: ProposalRequestStatus!
+  members: [BigInt!]!
+  shares: [Int!]!
+  serviceId: BigInt!
+  rateToken: String
   rateAmount: BigInt
   cid: String
-  platform: Platform
-  description: ProposalDescription
+  platformId: BigInt
+  description: ProposalRequestDescription
   expirationDate: BigInt
+  hive: Hive!
 }
 
-type ProposalDescription {
+type ProposalRequestDescription {
   id: ID!
-  proposal: Proposal!
+  proposalRequest: ProposalRequest!
   startDate: BigInt
   about: String
   expectedHours: BigInt
   video_url: String
 }
 
-input ProposalDescription_filter {
+input ProposalRequestDescription_filter {
   id: ID
   id_not: ID
   id_gt: ID
@@ -1169,27 +270,27 @@ input ProposalDescription_filter {
   id_lte: ID
   id_in: [ID!]
   id_not_in: [ID!]
-  proposal: String
-  proposal_not: String
-  proposal_gt: String
-  proposal_lt: String
-  proposal_gte: String
-  proposal_lte: String
-  proposal_in: [String!]
-  proposal_not_in: [String!]
-  proposal_contains: String
-  proposal_contains_nocase: String
-  proposal_not_contains: String
-  proposal_not_contains_nocase: String
-  proposal_starts_with: String
-  proposal_starts_with_nocase: String
-  proposal_not_starts_with: String
-  proposal_not_starts_with_nocase: String
-  proposal_ends_with: String
-  proposal_ends_with_nocase: String
-  proposal_not_ends_with: String
-  proposal_not_ends_with_nocase: String
-  proposal_: Proposal_filter
+  proposalRequest: String
+  proposalRequest_not: String
+  proposalRequest_gt: String
+  proposalRequest_lt: String
+  proposalRequest_gte: String
+  proposalRequest_lte: String
+  proposalRequest_in: [String!]
+  proposalRequest_not_in: [String!]
+  proposalRequest_contains: String
+  proposalRequest_contains_nocase: String
+  proposalRequest_not_contains: String
+  proposalRequest_not_contains_nocase: String
+  proposalRequest_starts_with: String
+  proposalRequest_starts_with_nocase: String
+  proposalRequest_not_starts_with: String
+  proposalRequest_not_starts_with_nocase: String
+  proposalRequest_ends_with: String
+  proposalRequest_ends_with_nocase: String
+  proposalRequest_not_ends_with: String
+  proposalRequest_not_ends_with_nocase: String
+  proposalRequest_: ProposalRequest_filter
   startDate: BigInt
   startDate_not: BigInt
   startDate_gt: BigInt
@@ -1248,33 +349,37 @@ input ProposalDescription_filter {
   video_url_not_ends_with_nocase: String
   """Filter for the block changed event."""
   _change_block: BlockChangedFilter
-  and: [ProposalDescription_filter]
-  or: [ProposalDescription_filter]
+  and: [ProposalRequestDescription_filter]
+  or: [ProposalRequestDescription_filter]
 }
 
-enum ProposalDescription_orderBy {
+enum ProposalRequestDescription_orderBy {
   id
-  proposal
-  proposal__id
-  proposal__createdAt
-  proposal__updatedAt
-  proposal__status
-  proposal__rateAmount
-  proposal__cid
-  proposal__expirationDate
+  proposalRequest
+  proposalRequest__id
+  proposalRequest__createdAt
+  proposalRequest__updatedAt
+  proposalRequest__ownerId
+  proposalRequest__sharedAmount
+  proposalRequest__status
+  proposalRequest__serviceId
+  proposalRequest__rateToken
+  proposalRequest__rateAmount
+  proposalRequest__cid
+  proposalRequest__platformId
+  proposalRequest__expirationDate
   startDate
   about
   expectedHours
   video_url
 }
 
-enum ProposalStatus {
+enum ProposalRequestStatus {
   Pending
-  Validated
-  Rejected
+  Executed
 }
 
-input Proposal_filter {
+input ProposalRequest_filter {
   id: ID
   id_not: ID
   id_gt: ID
@@ -1283,27 +388,6 @@ input Proposal_filter {
   id_lte: ID
   id_in: [ID!]
   id_not_in: [ID!]
-  service: String
-  service_not: String
-  service_gt: String
-  service_lt: String
-  service_gte: String
-  service_lte: String
-  service_in: [String!]
-  service_not_in: [String!]
-  service_contains: String
-  service_contains_nocase: String
-  service_not_contains: String
-  service_not_contains_nocase: String
-  service_starts_with: String
-  service_starts_with_nocase: String
-  service_not_starts_with: String
-  service_not_starts_with_nocase: String
-  service_ends_with: String
-  service_ends_with_nocase: String
-  service_not_ends_with: String
-  service_not_ends_with_nocase: String
-  service_: Service_filter
   createdAt: BigInt
   createdAt_not: BigInt
   createdAt_gt: BigInt
@@ -1320,31 +404,46 @@ input Proposal_filter {
   updatedAt_lte: BigInt
   updatedAt_in: [BigInt!]
   updatedAt_not_in: [BigInt!]
-  status: ProposalStatus
-  status_not: ProposalStatus
-  status_in: [ProposalStatus!]
-  status_not_in: [ProposalStatus!]
-  seller: String
-  seller_not: String
-  seller_gt: String
-  seller_lt: String
-  seller_gte: String
-  seller_lte: String
-  seller_in: [String!]
-  seller_not_in: [String!]
-  seller_contains: String
-  seller_contains_nocase: String
-  seller_not_contains: String
-  seller_not_contains_nocase: String
-  seller_starts_with: String
-  seller_starts_with_nocase: String
-  seller_not_starts_with: String
-  seller_not_starts_with_nocase: String
-  seller_ends_with: String
-  seller_ends_with_nocase: String
-  seller_not_ends_with: String
-  seller_not_ends_with_nocase: String
-  seller_: User_filter
+  ownerId: BigInt
+  ownerId_not: BigInt
+  ownerId_gt: BigInt
+  ownerId_lt: BigInt
+  ownerId_gte: BigInt
+  ownerId_lte: BigInt
+  ownerId_in: [BigInt!]
+  ownerId_not_in: [BigInt!]
+  sharedAmount: BigInt
+  sharedAmount_not: BigInt
+  sharedAmount_gt: BigInt
+  sharedAmount_lt: BigInt
+  sharedAmount_gte: BigInt
+  sharedAmount_lte: BigInt
+  sharedAmount_in: [BigInt!]
+  sharedAmount_not_in: [BigInt!]
+  status: ProposalRequestStatus
+  status_not: ProposalRequestStatus
+  status_in: [ProposalRequestStatus!]
+  status_not_in: [ProposalRequestStatus!]
+  members: [BigInt!]
+  members_not: [BigInt!]
+  members_contains: [BigInt!]
+  members_contains_nocase: [BigInt!]
+  members_not_contains: [BigInt!]
+  members_not_contains_nocase: [BigInt!]
+  shares: [Int!]
+  shares_not: [Int!]
+  shares_contains: [Int!]
+  shares_contains_nocase: [Int!]
+  shares_not_contains: [Int!]
+  shares_not_contains_nocase: [Int!]
+  serviceId: BigInt
+  serviceId_not: BigInt
+  serviceId_gt: BigInt
+  serviceId_lt: BigInt
+  serviceId_gte: BigInt
+  serviceId_lte: BigInt
+  serviceId_in: [BigInt!]
+  serviceId_not_in: [BigInt!]
   rateToken: String
   rateToken_not: String
   rateToken_gt: String
@@ -1365,7 +464,6 @@ input Proposal_filter {
   rateToken_ends_with_nocase: String
   rateToken_not_ends_with: String
   rateToken_not_ends_with_nocase: String
-  rateToken_: Token_filter
   rateAmount: BigInt
   rateAmount_not: BigInt
   rateAmount_gt: BigInt
@@ -1394,27 +492,14 @@ input Proposal_filter {
   cid_ends_with_nocase: String
   cid_not_ends_with: String
   cid_not_ends_with_nocase: String
-  platform: String
-  platform_not: String
-  platform_gt: String
-  platform_lt: String
-  platform_gte: String
-  platform_lte: String
-  platform_in: [String!]
-  platform_not_in: [String!]
-  platform_contains: String
-  platform_contains_nocase: String
-  platform_not_contains: String
-  platform_not_contains_nocase: String
-  platform_starts_with: String
-  platform_starts_with_nocase: String
-  platform_not_starts_with: String
-  platform_not_starts_with_nocase: String
-  platform_ends_with: String
-  platform_ends_with_nocase: String
-  platform_not_ends_with: String
-  platform_not_ends_with_nocase: String
-  platform_: Platform_filter
+  platformId: BigInt
+  platformId_not: BigInt
+  platformId_gt: BigInt
+  platformId_lt: BigInt
+  platformId_gte: BigInt
+  platformId_lte: BigInt
+  platformId_in: [BigInt!]
+  platformId_not_in: [BigInt!]
   description: String
   description_not: String
   description_gt: String
@@ -1435,7 +520,7 @@ input Proposal_filter {
   description_ends_with_nocase: String
   description_not_ends_with: String
   description_not_ends_with_nocase: String
-  description_: ProposalDescription_filter
+  description_: ProposalRequestDescription_filter
   expirationDate: BigInt
   expirationDate_not: BigInt
   expirationDate_gt: BigInt
@@ -1444,57 +529,47 @@ input Proposal_filter {
   expirationDate_lte: BigInt
   expirationDate_in: [BigInt!]
   expirationDate_not_in: [BigInt!]
+  hive: String
+  hive_not: String
+  hive_gt: String
+  hive_lt: String
+  hive_gte: String
+  hive_lte: String
+  hive_in: [String!]
+  hive_not_in: [String!]
+  hive_contains: String
+  hive_contains_nocase: String
+  hive_not_contains: String
+  hive_not_contains_nocase: String
+  hive_starts_with: String
+  hive_starts_with_nocase: String
+  hive_not_starts_with: String
+  hive_not_starts_with_nocase: String
+  hive_ends_with: String
+  hive_ends_with_nocase: String
+  hive_not_ends_with: String
+  hive_not_ends_with_nocase: String
+  hive_: Hive_filter
   """Filter for the block changed event."""
   _change_block: BlockChangedFilter
-  and: [Proposal_filter]
-  or: [Proposal_filter]
+  and: [ProposalRequest_filter]
+  or: [ProposalRequest_filter]
 }
 
-enum Proposal_orderBy {
+enum ProposalRequest_orderBy {
   id
-  service
-  service__id
-  service__createdAt
-  service__updatedAt
-  service__status
-  service__cid
   createdAt
   updatedAt
+  ownerId
+  sharedAmount
   status
-  seller
-  seller__id
-  seller__index
-  seller__handle
-  seller__createdAt
-  seller__updatedAt
-  seller__address
-  seller__rating
-  seller__cid
+  members
+  shares
+  serviceId
   rateToken
-  rateToken__id
-  rateToken__address
-  rateToken__symbol
-  rateToken__name
-  rateToken__decimals
-  rateToken__allowed
-  rateToken__minimumTransactionAmount
   rateAmount
   cid
-  platform
-  platform__id
-  platform__address
-  platform__name
-  platform__createdAt
-  platform__updatedAt
-  platform__originServiceFeeRate
-  platform__originValidatedProposalFeeRate
-  platform__servicePostingFee
-  platform__proposalPostingFee
-  platform__arbitrator
-  platform__arbitratorExtraData
-  platform__arbitrationFeeTimeout
-  platform__cid
-  platform__signer
+  platformId
   description
   description__id
   description__startDate
@@ -1502,103 +577,17 @@ enum Proposal_orderBy {
   description__expectedHours
   description__video_url
   expirationDate
-}
-
-type Protocol {
-  id: ID!
-  userMintFee: BigInt!
-  platformMintFee: BigInt!
-  protocolEscrowFeeRate: Int!
-  totalMintFees: BigInt!
-  minArbitrationFeeTimeout: BigInt!
-  shortHandlesMaxPrice: BigInt!
-  minServiceCompletionPercentage: BigInt!
-}
-
-input Protocol_filter {
-  id: ID
-  id_not: ID
-  id_gt: ID
-  id_lt: ID
-  id_gte: ID
-  id_lte: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  userMintFee: BigInt
-  userMintFee_not: BigInt
-  userMintFee_gt: BigInt
-  userMintFee_lt: BigInt
-  userMintFee_gte: BigInt
-  userMintFee_lte: BigInt
-  userMintFee_in: [BigInt!]
-  userMintFee_not_in: [BigInt!]
-  platformMintFee: BigInt
-  platformMintFee_not: BigInt
-  platformMintFee_gt: BigInt
-  platformMintFee_lt: BigInt
-  platformMintFee_gte: BigInt
-  platformMintFee_lte: BigInt
-  platformMintFee_in: [BigInt!]
-  platformMintFee_not_in: [BigInt!]
-  protocolEscrowFeeRate: Int
-  protocolEscrowFeeRate_not: Int
-  protocolEscrowFeeRate_gt: Int
-  protocolEscrowFeeRate_lt: Int
-  protocolEscrowFeeRate_gte: Int
-  protocolEscrowFeeRate_lte: Int
-  protocolEscrowFeeRate_in: [Int!]
-  protocolEscrowFeeRate_not_in: [Int!]
-  totalMintFees: BigInt
-  totalMintFees_not: BigInt
-  totalMintFees_gt: BigInt
-  totalMintFees_lt: BigInt
-  totalMintFees_gte: BigInt
-  totalMintFees_lte: BigInt
-  totalMintFees_in: [BigInt!]
-  totalMintFees_not_in: [BigInt!]
-  minArbitrationFeeTimeout: BigInt
-  minArbitrationFeeTimeout_not: BigInt
-  minArbitrationFeeTimeout_gt: BigInt
-  minArbitrationFeeTimeout_lt: BigInt
-  minArbitrationFeeTimeout_gte: BigInt
-  minArbitrationFeeTimeout_lte: BigInt
-  minArbitrationFeeTimeout_in: [BigInt!]
-  minArbitrationFeeTimeout_not_in: [BigInt!]
-  shortHandlesMaxPrice: BigInt
-  shortHandlesMaxPrice_not: BigInt
-  shortHandlesMaxPrice_gt: BigInt
-  shortHandlesMaxPrice_lt: BigInt
-  shortHandlesMaxPrice_gte: BigInt
-  shortHandlesMaxPrice_lte: BigInt
-  shortHandlesMaxPrice_in: [BigInt!]
-  shortHandlesMaxPrice_not_in: [BigInt!]
-  minServiceCompletionPercentage: BigInt
-  minServiceCompletionPercentage_not: BigInt
-  minServiceCompletionPercentage_gt: BigInt
-  minServiceCompletionPercentage_lt: BigInt
-  minServiceCompletionPercentage_gte: BigInt
-  minServiceCompletionPercentage_lte: BigInt
-  minServiceCompletionPercentage_in: [BigInt!]
-  minServiceCompletionPercentage_not_in: [BigInt!]
-  """Filter for the block changed event."""
-  _change_block: BlockChangedFilter
-  and: [Protocol_filter]
-  or: [Protocol_filter]
-}
-
-enum Protocol_orderBy {
-  id
-  userMintFee
-  platformMintFee
-  protocolEscrowFeeRate
-  totalMintFees
-  minArbitrationFeeTimeout
-  shortHandlesMaxPrice
-  minServiceCompletionPercentage
+  hive
+  hive__id
+  hive__address
+  hive__owner
+  hive__honeyFee
+  hive__cid
+  hive__paymasterAddress
 }
 
 type Query {
-  service(
+  hive(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
@@ -1608,13 +597,13 @@ type Query {
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
     subgraphError: _SubgraphErrorPolicy_! = deny
-  ): Service
-  services(
+  ): Hive
+  hives(
     skip: Int = 0
     first: Int = 100
-    orderBy: Service_orderBy
+    orderBy: Hive_orderBy
     orderDirection: OrderDirection
-    where: Service_filter
+    where: Hive_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
@@ -1623,8 +612,8 @@ type Query {
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
     subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [Service!]!
-  serviceDescription(
+  ): [Hive!]!
+  hiveDescription(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
@@ -1634,13 +623,13 @@ type Query {
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
     subgraphError: _SubgraphErrorPolicy_! = deny
-  ): ServiceDescription
-  serviceDescriptions(
+  ): HiveDescription
+  hiveDescriptions(
     skip: Int = 0
     first: Int = 100
-    orderBy: ServiceDescription_orderBy
+    orderBy: HiveDescription_orderBy
     orderDirection: OrderDirection
-    where: ServiceDescription_filter
+    where: HiveDescription_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
@@ -1649,8 +638,8 @@ type Query {
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
     subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [ServiceDescription!]!
-  keyword(
+  ): [HiveDescription!]!
+  proposalRequest(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
@@ -1660,13 +649,13 @@ type Query {
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
     subgraphError: _SubgraphErrorPolicy_! = deny
-  ): Keyword
-  keywords(
+  ): ProposalRequest
+  proposalRequests(
     skip: Int = 0
     first: Int = 100
-    orderBy: Keyword_orderBy
+    orderBy: ProposalRequest_orderBy
     orderDirection: OrderDirection
-    where: Keyword_filter
+    where: ProposalRequest_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
@@ -1675,8 +664,8 @@ type Query {
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
     subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [Keyword!]!
-  review(
+  ): [ProposalRequest!]!
+  proposalRequestDescription(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
@@ -1686,13 +675,13 @@ type Query {
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
     subgraphError: _SubgraphErrorPolicy_! = deny
-  ): Review
-  reviews(
+  ): ProposalRequestDescription
+  proposalRequestDescriptions(
     skip: Int = 0
     first: Int = 100
-    orderBy: Review_orderBy
+    orderBy: ProposalRequestDescription_orderBy
     orderDirection: OrderDirection
-    where: Review_filter
+    where: ProposalRequestDescription_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
@@ -1701,1122 +690,13 @@ type Query {
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
     subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [Review!]!
-  reviewDescription(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): ReviewDescription
-  reviewDescriptions(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: ReviewDescription_orderBy
-    orderDirection: OrderDirection
-    where: ReviewDescription_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [ReviewDescription!]!
-  token(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): Token
-  tokens(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: Token_orderBy
-    orderDirection: OrderDirection
-    where: Token_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [Token!]!
-  user(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): User
-  users(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: User_orderBy
-    orderDirection: OrderDirection
-    where: User_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [User!]!
-  userStats(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: UserStats_orderBy
-    orderDirection: OrderDirection
-    where: UserStats_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [UserStats!]!
-  userDescription(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): UserDescription
-  userDescriptions(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: UserDescription_orderBy
-    orderDirection: OrderDirection
-    where: UserDescription_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [UserDescription!]!
-  proposal(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): Proposal
-  proposals(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: Proposal_orderBy
-    orderDirection: OrderDirection
-    where: Proposal_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [Proposal!]!
-  proposalDescription(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): ProposalDescription
-  proposalDescriptions(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: ProposalDescription_orderBy
-    orderDirection: OrderDirection
-    where: ProposalDescription_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [ProposalDescription!]!
-  payment(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): Payment
-  payments(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: Payment_orderBy
-    orderDirection: OrderDirection
-    where: Payment_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [Payment!]!
-  transaction(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): Transaction
-  transactions(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: Transaction_orderBy
-    orderDirection: OrderDirection
-    where: Transaction_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [Transaction!]!
-  evidence(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): Evidence
-  evidences(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: Evidence_orderBy
-    orderDirection: OrderDirection
-    where: Evidence_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [Evidence!]!
-  platform(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): Platform
-  platforms(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: Platform_orderBy
-    orderDirection: OrderDirection
-    where: Platform_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [Platform!]!
-  platformDescription(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): PlatformDescription
-  platformDescriptions(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: PlatformDescription_orderBy
-    orderDirection: OrderDirection
-    where: PlatformDescription_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [PlatformDescription!]!
-  feePayment(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): FeePayment
-  feePayments(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: FeePayment_orderBy
-    orderDirection: OrderDirection
-    where: FeePayment_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [FeePayment!]!
-  feeClaim(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): FeeClaim
-  feeClaims(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: FeeClaim_orderBy
-    orderDirection: OrderDirection
-    where: FeeClaim_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [FeeClaim!]!
-  platformGain(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): PlatformGain
-  platformGains(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: PlatformGain_orderBy
-    orderDirection: OrderDirection
-    where: PlatformGain_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [PlatformGain!]!
-  userGain(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): UserGain
-  userGains(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: UserGain_orderBy
-    orderDirection: OrderDirection
-    where: UserGain_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [UserGain!]!
-  protocol(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): Protocol
-  protocols(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: Protocol_orderBy
-    orderDirection: OrderDirection
-    where: Protocol_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [Protocol!]!
-  serviceDescriptionSearchRank(
-    text: String!
-    first: Int = 100
-    skip: Int = 0
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    where: ServiceDescription_filter
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [ServiceDescription!]!
+  ): [ProposalRequestDescription!]!
   """Access to subgraph metadata"""
   _meta(block: Block_height): _Meta_
-}
-
-type Review {
-  id: ID!
-  service: Service!
-  createdAt: BigInt!
-  to: User!
-  rating: BigInt
-  cid: String
-  description: ReviewDescription
-}
-
-type ReviewDescription {
-  id: ID!
-  content: String
-  review: Review
-}
-
-input ReviewDescription_filter {
-  id: ID
-  id_not: ID
-  id_gt: ID
-  id_lt: ID
-  id_gte: ID
-  id_lte: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  content: String
-  content_not: String
-  content_gt: String
-  content_lt: String
-  content_gte: String
-  content_lte: String
-  content_in: [String!]
-  content_not_in: [String!]
-  content_contains: String
-  content_contains_nocase: String
-  content_not_contains: String
-  content_not_contains_nocase: String
-  content_starts_with: String
-  content_starts_with_nocase: String
-  content_not_starts_with: String
-  content_not_starts_with_nocase: String
-  content_ends_with: String
-  content_ends_with_nocase: String
-  content_not_ends_with: String
-  content_not_ends_with_nocase: String
-  review: String
-  review_not: String
-  review_gt: String
-  review_lt: String
-  review_gte: String
-  review_lte: String
-  review_in: [String!]
-  review_not_in: [String!]
-  review_contains: String
-  review_contains_nocase: String
-  review_not_contains: String
-  review_not_contains_nocase: String
-  review_starts_with: String
-  review_starts_with_nocase: String
-  review_not_starts_with: String
-  review_not_starts_with_nocase: String
-  review_ends_with: String
-  review_ends_with_nocase: String
-  review_not_ends_with: String
-  review_not_ends_with_nocase: String
-  review_: Review_filter
-  """Filter for the block changed event."""
-  _change_block: BlockChangedFilter
-  and: [ReviewDescription_filter]
-  or: [ReviewDescription_filter]
-}
-
-enum ReviewDescription_orderBy {
-  id
-  content
-  review
-  review__id
-  review__createdAt
-  review__rating
-  review__cid
-}
-
-input Review_filter {
-  id: ID
-  id_not: ID
-  id_gt: ID
-  id_lt: ID
-  id_gte: ID
-  id_lte: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  service: String
-  service_not: String
-  service_gt: String
-  service_lt: String
-  service_gte: String
-  service_lte: String
-  service_in: [String!]
-  service_not_in: [String!]
-  service_contains: String
-  service_contains_nocase: String
-  service_not_contains: String
-  service_not_contains_nocase: String
-  service_starts_with: String
-  service_starts_with_nocase: String
-  service_not_starts_with: String
-  service_not_starts_with_nocase: String
-  service_ends_with: String
-  service_ends_with_nocase: String
-  service_not_ends_with: String
-  service_not_ends_with_nocase: String
-  service_: Service_filter
-  createdAt: BigInt
-  createdAt_not: BigInt
-  createdAt_gt: BigInt
-  createdAt_lt: BigInt
-  createdAt_gte: BigInt
-  createdAt_lte: BigInt
-  createdAt_in: [BigInt!]
-  createdAt_not_in: [BigInt!]
-  to: String
-  to_not: String
-  to_gt: String
-  to_lt: String
-  to_gte: String
-  to_lte: String
-  to_in: [String!]
-  to_not_in: [String!]
-  to_contains: String
-  to_contains_nocase: String
-  to_not_contains: String
-  to_not_contains_nocase: String
-  to_starts_with: String
-  to_starts_with_nocase: String
-  to_not_starts_with: String
-  to_not_starts_with_nocase: String
-  to_ends_with: String
-  to_ends_with_nocase: String
-  to_not_ends_with: String
-  to_not_ends_with_nocase: String
-  to_: User_filter
-  rating: BigInt
-  rating_not: BigInt
-  rating_gt: BigInt
-  rating_lt: BigInt
-  rating_gte: BigInt
-  rating_lte: BigInt
-  rating_in: [BigInt!]
-  rating_not_in: [BigInt!]
-  cid: String
-  cid_not: String
-  cid_gt: String
-  cid_lt: String
-  cid_gte: String
-  cid_lte: String
-  cid_in: [String!]
-  cid_not_in: [String!]
-  cid_contains: String
-  cid_contains_nocase: String
-  cid_not_contains: String
-  cid_not_contains_nocase: String
-  cid_starts_with: String
-  cid_starts_with_nocase: String
-  cid_not_starts_with: String
-  cid_not_starts_with_nocase: String
-  cid_ends_with: String
-  cid_ends_with_nocase: String
-  cid_not_ends_with: String
-  cid_not_ends_with_nocase: String
-  description: String
-  description_not: String
-  description_gt: String
-  description_lt: String
-  description_gte: String
-  description_lte: String
-  description_in: [String!]
-  description_not_in: [String!]
-  description_contains: String
-  description_contains_nocase: String
-  description_not_contains: String
-  description_not_contains_nocase: String
-  description_starts_with: String
-  description_starts_with_nocase: String
-  description_not_starts_with: String
-  description_not_starts_with_nocase: String
-  description_ends_with: String
-  description_ends_with_nocase: String
-  description_not_ends_with: String
-  description_not_ends_with_nocase: String
-  description_: ReviewDescription_filter
-  """Filter for the block changed event."""
-  _change_block: BlockChangedFilter
-  and: [Review_filter]
-  or: [Review_filter]
-}
-
-enum Review_orderBy {
-  id
-  service
-  service__id
-  service__createdAt
-  service__updatedAt
-  service__status
-  service__cid
-  createdAt
-  to
-  to__id
-  to__index
-  to__handle
-  to__createdAt
-  to__updatedAt
-  to__address
-  to__rating
-  to__cid
-  rating
-  cid
-  description
-  description__id
-  description__content
-}
-
-type Service {
-  id: ID!
-  createdAt: BigInt!
-  updatedAt: BigInt!
-  status: ServiceStatus!
-  buyer: User
-  seller: User
-  transaction: Transaction
-  proposals(skip: Int = 0, first: Int = 100, orderBy: Proposal_orderBy, orderDirection: OrderDirection, where: Proposal_filter): [Proposal!]
-  platform: Platform
-  cid: String
-  description: ServiceDescription
-}
-
-type ServiceDescription {
-  id: ID!
-  service: Service!
-  title: String
-  about: String
-  startDate: BigInt
-  expectedEndDate: BigInt
-  keywords(skip: Int = 0, first: Int = 100, orderBy: Keyword_orderBy, orderDirection: OrderDirection, where: Keyword_filter): [Keyword!]
-  keywords_raw: String
-  rateToken: String
-  rateAmount: String
-  video_url: String
-}
-
-input ServiceDescription_filter {
-  id: ID
-  id_not: ID
-  id_gt: ID
-  id_lt: ID
-  id_gte: ID
-  id_lte: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  service: String
-  service_not: String
-  service_gt: String
-  service_lt: String
-  service_gte: String
-  service_lte: String
-  service_in: [String!]
-  service_not_in: [String!]
-  service_contains: String
-  service_contains_nocase: String
-  service_not_contains: String
-  service_not_contains_nocase: String
-  service_starts_with: String
-  service_starts_with_nocase: String
-  service_not_starts_with: String
-  service_not_starts_with_nocase: String
-  service_ends_with: String
-  service_ends_with_nocase: String
-  service_not_ends_with: String
-  service_not_ends_with_nocase: String
-  service_: Service_filter
-  title: String
-  title_not: String
-  title_gt: String
-  title_lt: String
-  title_gte: String
-  title_lte: String
-  title_in: [String!]
-  title_not_in: [String!]
-  title_contains: String
-  title_contains_nocase: String
-  title_not_contains: String
-  title_not_contains_nocase: String
-  title_starts_with: String
-  title_starts_with_nocase: String
-  title_not_starts_with: String
-  title_not_starts_with_nocase: String
-  title_ends_with: String
-  title_ends_with_nocase: String
-  title_not_ends_with: String
-  title_not_ends_with_nocase: String
-  about: String
-  about_not: String
-  about_gt: String
-  about_lt: String
-  about_gte: String
-  about_lte: String
-  about_in: [String!]
-  about_not_in: [String!]
-  about_contains: String
-  about_contains_nocase: String
-  about_not_contains: String
-  about_not_contains_nocase: String
-  about_starts_with: String
-  about_starts_with_nocase: String
-  about_not_starts_with: String
-  about_not_starts_with_nocase: String
-  about_ends_with: String
-  about_ends_with_nocase: String
-  about_not_ends_with: String
-  about_not_ends_with_nocase: String
-  startDate: BigInt
-  startDate_not: BigInt
-  startDate_gt: BigInt
-  startDate_lt: BigInt
-  startDate_gte: BigInt
-  startDate_lte: BigInt
-  startDate_in: [BigInt!]
-  startDate_not_in: [BigInt!]
-  expectedEndDate: BigInt
-  expectedEndDate_not: BigInt
-  expectedEndDate_gt: BigInt
-  expectedEndDate_lt: BigInt
-  expectedEndDate_gte: BigInt
-  expectedEndDate_lte: BigInt
-  expectedEndDate_in: [BigInt!]
-  expectedEndDate_not_in: [BigInt!]
-  keywords: [String!]
-  keywords_not: [String!]
-  keywords_contains: [String!]
-  keywords_contains_nocase: [String!]
-  keywords_not_contains: [String!]
-  keywords_not_contains_nocase: [String!]
-  keywords_: Keyword_filter
-  keywords_raw: String
-  keywords_raw_not: String
-  keywords_raw_gt: String
-  keywords_raw_lt: String
-  keywords_raw_gte: String
-  keywords_raw_lte: String
-  keywords_raw_in: [String!]
-  keywords_raw_not_in: [String!]
-  keywords_raw_contains: String
-  keywords_raw_contains_nocase: String
-  keywords_raw_not_contains: String
-  keywords_raw_not_contains_nocase: String
-  keywords_raw_starts_with: String
-  keywords_raw_starts_with_nocase: String
-  keywords_raw_not_starts_with: String
-  keywords_raw_not_starts_with_nocase: String
-  keywords_raw_ends_with: String
-  keywords_raw_ends_with_nocase: String
-  keywords_raw_not_ends_with: String
-  keywords_raw_not_ends_with_nocase: String
-  rateToken: String
-  rateToken_not: String
-  rateToken_gt: String
-  rateToken_lt: String
-  rateToken_gte: String
-  rateToken_lte: String
-  rateToken_in: [String!]
-  rateToken_not_in: [String!]
-  rateToken_contains: String
-  rateToken_contains_nocase: String
-  rateToken_not_contains: String
-  rateToken_not_contains_nocase: String
-  rateToken_starts_with: String
-  rateToken_starts_with_nocase: String
-  rateToken_not_starts_with: String
-  rateToken_not_starts_with_nocase: String
-  rateToken_ends_with: String
-  rateToken_ends_with_nocase: String
-  rateToken_not_ends_with: String
-  rateToken_not_ends_with_nocase: String
-  rateAmount: String
-  rateAmount_not: String
-  rateAmount_gt: String
-  rateAmount_lt: String
-  rateAmount_gte: String
-  rateAmount_lte: String
-  rateAmount_in: [String!]
-  rateAmount_not_in: [String!]
-  rateAmount_contains: String
-  rateAmount_contains_nocase: String
-  rateAmount_not_contains: String
-  rateAmount_not_contains_nocase: String
-  rateAmount_starts_with: String
-  rateAmount_starts_with_nocase: String
-  rateAmount_not_starts_with: String
-  rateAmount_not_starts_with_nocase: String
-  rateAmount_ends_with: String
-  rateAmount_ends_with_nocase: String
-  rateAmount_not_ends_with: String
-  rateAmount_not_ends_with_nocase: String
-  video_url: String
-  video_url_not: String
-  video_url_gt: String
-  video_url_lt: String
-  video_url_gte: String
-  video_url_lte: String
-  video_url_in: [String!]
-  video_url_not_in: [String!]
-  video_url_contains: String
-  video_url_contains_nocase: String
-  video_url_not_contains: String
-  video_url_not_contains_nocase: String
-  video_url_starts_with: String
-  video_url_starts_with_nocase: String
-  video_url_not_starts_with: String
-  video_url_not_starts_with_nocase: String
-  video_url_ends_with: String
-  video_url_ends_with_nocase: String
-  video_url_not_ends_with: String
-  video_url_not_ends_with_nocase: String
-  """Filter for the block changed event."""
-  _change_block: BlockChangedFilter
-  and: [ServiceDescription_filter]
-  or: [ServiceDescription_filter]
-}
-
-enum ServiceDescription_orderBy {
-  id
-  service
-  service__id
-  service__createdAt
-  service__updatedAt
-  service__status
-  service__cid
-  title
-  about
-  startDate
-  expectedEndDate
-  keywords
-  keywords_raw
-  rateToken
-  rateAmount
-  video_url
-}
-
-enum ServiceStatus {
-  Opened
-  Confirmed
-  Finished
-  Cancelled
-  Uncompleted
-}
-
-input Service_filter {
-  id: ID
-  id_not: ID
-  id_gt: ID
-  id_lt: ID
-  id_gte: ID
-  id_lte: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  createdAt: BigInt
-  createdAt_not: BigInt
-  createdAt_gt: BigInt
-  createdAt_lt: BigInt
-  createdAt_gte: BigInt
-  createdAt_lte: BigInt
-  createdAt_in: [BigInt!]
-  createdAt_not_in: [BigInt!]
-  updatedAt: BigInt
-  updatedAt_not: BigInt
-  updatedAt_gt: BigInt
-  updatedAt_lt: BigInt
-  updatedAt_gte: BigInt
-  updatedAt_lte: BigInt
-  updatedAt_in: [BigInt!]
-  updatedAt_not_in: [BigInt!]
-  status: ServiceStatus
-  status_not: ServiceStatus
-  status_in: [ServiceStatus!]
-  status_not_in: [ServiceStatus!]
-  buyer: String
-  buyer_not: String
-  buyer_gt: String
-  buyer_lt: String
-  buyer_gte: String
-  buyer_lte: String
-  buyer_in: [String!]
-  buyer_not_in: [String!]
-  buyer_contains: String
-  buyer_contains_nocase: String
-  buyer_not_contains: String
-  buyer_not_contains_nocase: String
-  buyer_starts_with: String
-  buyer_starts_with_nocase: String
-  buyer_not_starts_with: String
-  buyer_not_starts_with_nocase: String
-  buyer_ends_with: String
-  buyer_ends_with_nocase: String
-  buyer_not_ends_with: String
-  buyer_not_ends_with_nocase: String
-  buyer_: User_filter
-  seller: String
-  seller_not: String
-  seller_gt: String
-  seller_lt: String
-  seller_gte: String
-  seller_lte: String
-  seller_in: [String!]
-  seller_not_in: [String!]
-  seller_contains: String
-  seller_contains_nocase: String
-  seller_not_contains: String
-  seller_not_contains_nocase: String
-  seller_starts_with: String
-  seller_starts_with_nocase: String
-  seller_not_starts_with: String
-  seller_not_starts_with_nocase: String
-  seller_ends_with: String
-  seller_ends_with_nocase: String
-  seller_not_ends_with: String
-  seller_not_ends_with_nocase: String
-  seller_: User_filter
-  transaction_: Transaction_filter
-  proposals_: Proposal_filter
-  platform: String
-  platform_not: String
-  platform_gt: String
-  platform_lt: String
-  platform_gte: String
-  platform_lte: String
-  platform_in: [String!]
-  platform_not_in: [String!]
-  platform_contains: String
-  platform_contains_nocase: String
-  platform_not_contains: String
-  platform_not_contains_nocase: String
-  platform_starts_with: String
-  platform_starts_with_nocase: String
-  platform_not_starts_with: String
-  platform_not_starts_with_nocase: String
-  platform_ends_with: String
-  platform_ends_with_nocase: String
-  platform_not_ends_with: String
-  platform_not_ends_with_nocase: String
-  platform_: Platform_filter
-  cid: String
-  cid_not: String
-  cid_gt: String
-  cid_lt: String
-  cid_gte: String
-  cid_lte: String
-  cid_in: [String!]
-  cid_not_in: [String!]
-  cid_contains: String
-  cid_contains_nocase: String
-  cid_not_contains: String
-  cid_not_contains_nocase: String
-  cid_starts_with: String
-  cid_starts_with_nocase: String
-  cid_not_starts_with: String
-  cid_not_starts_with_nocase: String
-  cid_ends_with: String
-  cid_ends_with_nocase: String
-  cid_not_ends_with: String
-  cid_not_ends_with_nocase: String
-  description: String
-  description_not: String
-  description_gt: String
-  description_lt: String
-  description_gte: String
-  description_lte: String
-  description_in: [String!]
-  description_not_in: [String!]
-  description_contains: String
-  description_contains_nocase: String
-  description_not_contains: String
-  description_not_contains_nocase: String
-  description_starts_with: String
-  description_starts_with_nocase: String
-  description_not_starts_with: String
-  description_not_starts_with_nocase: String
-  description_ends_with: String
-  description_ends_with_nocase: String
-  description_not_ends_with: String
-  description_not_ends_with_nocase: String
-  description_: ServiceDescription_filter
-  """Filter for the block changed event."""
-  _change_block: BlockChangedFilter
-  and: [Service_filter]
-  or: [Service_filter]
-}
-
-enum Service_orderBy {
-  id
-  createdAt
-  updatedAt
-  status
-  buyer
-  buyer__id
-  buyer__index
-  buyer__handle
-  buyer__createdAt
-  buyer__updatedAt
-  buyer__address
-  buyer__rating
-  buyer__cid
-  seller
-  seller__id
-  seller__index
-  seller__handle
-  seller__createdAt
-  seller__updatedAt
-  seller__address
-  seller__rating
-  seller__cid
-  transaction
-  transaction__id
-  transaction__amount
-  transaction__protocolEscrowFeeRate
-  transaction__originServiceFeeRate
-  transaction__originValidatedProposalFeeRate
-  transaction__disputeId
-  transaction__senderFee
-  transaction__receiverFee
-  transaction__lastInteraction
-  transaction__status
-  transaction__arbitrator
-  transaction__arbitratorExtraData
-  transaction__arbitrationFeeTimeout
-  transaction__ruling
-  transaction__metaEvidenceUri
-  proposals
-  platform
-  platform__id
-  platform__address
-  platform__name
-  platform__createdAt
-  platform__updatedAt
-  platform__originServiceFeeRate
-  platform__originValidatedProposalFeeRate
-  platform__servicePostingFee
-  platform__proposalPostingFee
-  platform__arbitrator
-  platform__arbitratorExtraData
-  platform__arbitrationFeeTimeout
-  platform__cid
-  platform__signer
-  cid
-  description
-  description__id
-  description__title
-  description__about
-  description__startDate
-  description__expectedEndDate
-  description__keywords_raw
-  description__rateToken
-  description__rateAmount
-  description__video_url
 }
 
 type Subscription {
-  service(
+  hive(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
@@ -2826,13 +706,13 @@ type Subscription {
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
     subgraphError: _SubgraphErrorPolicy_! = deny
-  ): Service
-  services(
+  ): Hive
+  hives(
     skip: Int = 0
     first: Int = 100
-    orderBy: Service_orderBy
+    orderBy: Hive_orderBy
     orderDirection: OrderDirection
-    where: Service_filter
+    where: Hive_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
@@ -2841,8 +721,8 @@ type Subscription {
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
     subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [Service!]!
-  serviceDescription(
+  ): [Hive!]!
+  hiveDescription(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
@@ -2852,13 +732,13 @@ type Subscription {
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
     subgraphError: _SubgraphErrorPolicy_! = deny
-  ): ServiceDescription
-  serviceDescriptions(
+  ): HiveDescription
+  hiveDescriptions(
     skip: Int = 0
     first: Int = 100
-    orderBy: ServiceDescription_orderBy
+    orderBy: HiveDescription_orderBy
     orderDirection: OrderDirection
-    where: ServiceDescription_filter
+    where: HiveDescription_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
@@ -2867,8 +747,8 @@ type Subscription {
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
     subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [ServiceDescription!]!
-  keyword(
+  ): [HiveDescription!]!
+  proposalRequest(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
@@ -2878,13 +758,13 @@ type Subscription {
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
     subgraphError: _SubgraphErrorPolicy_! = deny
-  ): Keyword
-  keywords(
+  ): ProposalRequest
+  proposalRequests(
     skip: Int = 0
     first: Int = 100
-    orderBy: Keyword_orderBy
+    orderBy: ProposalRequest_orderBy
     orderDirection: OrderDirection
-    where: Keyword_filter
+    where: ProposalRequest_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
@@ -2893,8 +773,8 @@ type Subscription {
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
     subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [Keyword!]!
-  review(
+  ): [ProposalRequest!]!
+  proposalRequestDescription(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
@@ -2904,13 +784,13 @@ type Subscription {
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
     subgraphError: _SubgraphErrorPolicy_! = deny
-  ): Review
-  reviews(
+  ): ProposalRequestDescription
+  proposalRequestDescriptions(
     skip: Int = 0
     first: Int = 100
-    orderBy: Review_orderBy
+    orderBy: ProposalRequestDescription_orderBy
     orderDirection: OrderDirection
-    where: Review_filter
+    where: ProposalRequestDescription_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
@@ -2919,1583 +799,9 @@ type Subscription {
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
     subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [Review!]!
-  reviewDescription(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): ReviewDescription
-  reviewDescriptions(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: ReviewDescription_orderBy
-    orderDirection: OrderDirection
-    where: ReviewDescription_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [ReviewDescription!]!
-  token(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): Token
-  tokens(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: Token_orderBy
-    orderDirection: OrderDirection
-    where: Token_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [Token!]!
-  user(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): User
-  users(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: User_orderBy
-    orderDirection: OrderDirection
-    where: User_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [User!]!
-  userStats(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: UserStats_orderBy
-    orderDirection: OrderDirection
-    where: UserStats_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [UserStats!]!
-  userDescription(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): UserDescription
-  userDescriptions(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: UserDescription_orderBy
-    orderDirection: OrderDirection
-    where: UserDescription_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [UserDescription!]!
-  proposal(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): Proposal
-  proposals(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: Proposal_orderBy
-    orderDirection: OrderDirection
-    where: Proposal_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [Proposal!]!
-  proposalDescription(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): ProposalDescription
-  proposalDescriptions(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: ProposalDescription_orderBy
-    orderDirection: OrderDirection
-    where: ProposalDescription_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [ProposalDescription!]!
-  payment(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): Payment
-  payments(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: Payment_orderBy
-    orderDirection: OrderDirection
-    where: Payment_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [Payment!]!
-  transaction(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): Transaction
-  transactions(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: Transaction_orderBy
-    orderDirection: OrderDirection
-    where: Transaction_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [Transaction!]!
-  evidence(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): Evidence
-  evidences(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: Evidence_orderBy
-    orderDirection: OrderDirection
-    where: Evidence_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [Evidence!]!
-  platform(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): Platform
-  platforms(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: Platform_orderBy
-    orderDirection: OrderDirection
-    where: Platform_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [Platform!]!
-  platformDescription(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): PlatformDescription
-  platformDescriptions(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: PlatformDescription_orderBy
-    orderDirection: OrderDirection
-    where: PlatformDescription_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [PlatformDescription!]!
-  feePayment(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): FeePayment
-  feePayments(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: FeePayment_orderBy
-    orderDirection: OrderDirection
-    where: FeePayment_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [FeePayment!]!
-  feeClaim(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): FeeClaim
-  feeClaims(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: FeeClaim_orderBy
-    orderDirection: OrderDirection
-    where: FeeClaim_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [FeeClaim!]!
-  platformGain(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): PlatformGain
-  platformGains(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: PlatformGain_orderBy
-    orderDirection: OrderDirection
-    where: PlatformGain_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [PlatformGain!]!
-  userGain(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): UserGain
-  userGains(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: UserGain_orderBy
-    orderDirection: OrderDirection
-    where: UserGain_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [UserGain!]!
-  protocol(
-    id: ID!
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): Protocol
-  protocols(
-    skip: Int = 0
-    first: Int = 100
-    orderBy: Protocol_orderBy
-    orderDirection: OrderDirection
-    where: Protocol_filter
-    """
-    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
-    """
-    block: Block_height
-    """
-    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
-    """
-    subgraphError: _SubgraphErrorPolicy_! = deny
-  ): [Protocol!]!
+  ): [ProposalRequestDescription!]!
   """Access to subgraph metadata"""
   _meta(block: Block_height): _Meta_
-}
-
-type Token {
-  id: ID!
-  address: Bytes!
-  symbol: String!
-  name: String!
-  decimals: BigInt!
-  allowed: Boolean!
-  minimumTransactionAmount: BigInt!
-}
-
-input Token_filter {
-  id: ID
-  id_not: ID
-  id_gt: ID
-  id_lt: ID
-  id_gte: ID
-  id_lte: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  address: Bytes
-  address_not: Bytes
-  address_gt: Bytes
-  address_lt: Bytes
-  address_gte: Bytes
-  address_lte: Bytes
-  address_in: [Bytes!]
-  address_not_in: [Bytes!]
-  address_contains: Bytes
-  address_not_contains: Bytes
-  symbol: String
-  symbol_not: String
-  symbol_gt: String
-  symbol_lt: String
-  symbol_gte: String
-  symbol_lte: String
-  symbol_in: [String!]
-  symbol_not_in: [String!]
-  symbol_contains: String
-  symbol_contains_nocase: String
-  symbol_not_contains: String
-  symbol_not_contains_nocase: String
-  symbol_starts_with: String
-  symbol_starts_with_nocase: String
-  symbol_not_starts_with: String
-  symbol_not_starts_with_nocase: String
-  symbol_ends_with: String
-  symbol_ends_with_nocase: String
-  symbol_not_ends_with: String
-  symbol_not_ends_with_nocase: String
-  name: String
-  name_not: String
-  name_gt: String
-  name_lt: String
-  name_gte: String
-  name_lte: String
-  name_in: [String!]
-  name_not_in: [String!]
-  name_contains: String
-  name_contains_nocase: String
-  name_not_contains: String
-  name_not_contains_nocase: String
-  name_starts_with: String
-  name_starts_with_nocase: String
-  name_not_starts_with: String
-  name_not_starts_with_nocase: String
-  name_ends_with: String
-  name_ends_with_nocase: String
-  name_not_ends_with: String
-  name_not_ends_with_nocase: String
-  decimals: BigInt
-  decimals_not: BigInt
-  decimals_gt: BigInt
-  decimals_lt: BigInt
-  decimals_gte: BigInt
-  decimals_lte: BigInt
-  decimals_in: [BigInt!]
-  decimals_not_in: [BigInt!]
-  allowed: Boolean
-  allowed_not: Boolean
-  allowed_in: [Boolean!]
-  allowed_not_in: [Boolean!]
-  minimumTransactionAmount: BigInt
-  minimumTransactionAmount_not: BigInt
-  minimumTransactionAmount_gt: BigInt
-  minimumTransactionAmount_lt: BigInt
-  minimumTransactionAmount_gte: BigInt
-  minimumTransactionAmount_lte: BigInt
-  minimumTransactionAmount_in: [BigInt!]
-  minimumTransactionAmount_not_in: [BigInt!]
-  """Filter for the block changed event."""
-  _change_block: BlockChangedFilter
-  and: [Token_filter]
-  or: [Token_filter]
-}
-
-enum Token_orderBy {
-  id
-  address
-  symbol
-  name
-  decimals
-  allowed
-  minimumTransactionAmount
-}
-
-type Transaction {
-  id: ID!
-  sender: User
-  receiver: User
-  token: Token!
-  amount: BigInt!
-  service: Service
-  protocolEscrowFeeRate: Int!
-  originServiceFeeRate: Int!
-  originValidatedProposalFeeRate: Int!
-  disputeId: BigInt
-  senderFee: BigInt!
-  receiverFee: BigInt!
-  lastInteraction: BigInt!
-  status: TransactionStatus!
-  arbitrator: Bytes!
-  arbitratorExtraData: Bytes!
-  arbitrationFeeTimeout: BigInt!
-  ruling: BigInt
-  evidences(skip: Int = 0, first: Int = 100, orderBy: Evidence_orderBy, orderDirection: OrderDirection, where: Evidence_filter): [Evidence!]
-  metaEvidenceUri: String!
-  payments(skip: Int = 0, first: Int = 100, orderBy: Payment_orderBy, orderDirection: OrderDirection, where: Payment_filter): [Payment!]
-}
-
-enum TransactionStatus {
-  NoDispute
-  WaitingSender
-  WaitingReceiver
-  DisputeCreated
-  Resolved
-}
-
-input Transaction_filter {
-  id: ID
-  id_not: ID
-  id_gt: ID
-  id_lt: ID
-  id_gte: ID
-  id_lte: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  sender: String
-  sender_not: String
-  sender_gt: String
-  sender_lt: String
-  sender_gte: String
-  sender_lte: String
-  sender_in: [String!]
-  sender_not_in: [String!]
-  sender_contains: String
-  sender_contains_nocase: String
-  sender_not_contains: String
-  sender_not_contains_nocase: String
-  sender_starts_with: String
-  sender_starts_with_nocase: String
-  sender_not_starts_with: String
-  sender_not_starts_with_nocase: String
-  sender_ends_with: String
-  sender_ends_with_nocase: String
-  sender_not_ends_with: String
-  sender_not_ends_with_nocase: String
-  sender_: User_filter
-  receiver: String
-  receiver_not: String
-  receiver_gt: String
-  receiver_lt: String
-  receiver_gte: String
-  receiver_lte: String
-  receiver_in: [String!]
-  receiver_not_in: [String!]
-  receiver_contains: String
-  receiver_contains_nocase: String
-  receiver_not_contains: String
-  receiver_not_contains_nocase: String
-  receiver_starts_with: String
-  receiver_starts_with_nocase: String
-  receiver_not_starts_with: String
-  receiver_not_starts_with_nocase: String
-  receiver_ends_with: String
-  receiver_ends_with_nocase: String
-  receiver_not_ends_with: String
-  receiver_not_ends_with_nocase: String
-  receiver_: User_filter
-  token: String
-  token_not: String
-  token_gt: String
-  token_lt: String
-  token_gte: String
-  token_lte: String
-  token_in: [String!]
-  token_not_in: [String!]
-  token_contains: String
-  token_contains_nocase: String
-  token_not_contains: String
-  token_not_contains_nocase: String
-  token_starts_with: String
-  token_starts_with_nocase: String
-  token_not_starts_with: String
-  token_not_starts_with_nocase: String
-  token_ends_with: String
-  token_ends_with_nocase: String
-  token_not_ends_with: String
-  token_not_ends_with_nocase: String
-  token_: Token_filter
-  amount: BigInt
-  amount_not: BigInt
-  amount_gt: BigInt
-  amount_lt: BigInt
-  amount_gte: BigInt
-  amount_lte: BigInt
-  amount_in: [BigInt!]
-  amount_not_in: [BigInt!]
-  service: String
-  service_not: String
-  service_gt: String
-  service_lt: String
-  service_gte: String
-  service_lte: String
-  service_in: [String!]
-  service_not_in: [String!]
-  service_contains: String
-  service_contains_nocase: String
-  service_not_contains: String
-  service_not_contains_nocase: String
-  service_starts_with: String
-  service_starts_with_nocase: String
-  service_not_starts_with: String
-  service_not_starts_with_nocase: String
-  service_ends_with: String
-  service_ends_with_nocase: String
-  service_not_ends_with: String
-  service_not_ends_with_nocase: String
-  service_: Service_filter
-  protocolEscrowFeeRate: Int
-  protocolEscrowFeeRate_not: Int
-  protocolEscrowFeeRate_gt: Int
-  protocolEscrowFeeRate_lt: Int
-  protocolEscrowFeeRate_gte: Int
-  protocolEscrowFeeRate_lte: Int
-  protocolEscrowFeeRate_in: [Int!]
-  protocolEscrowFeeRate_not_in: [Int!]
-  originServiceFeeRate: Int
-  originServiceFeeRate_not: Int
-  originServiceFeeRate_gt: Int
-  originServiceFeeRate_lt: Int
-  originServiceFeeRate_gte: Int
-  originServiceFeeRate_lte: Int
-  originServiceFeeRate_in: [Int!]
-  originServiceFeeRate_not_in: [Int!]
-  originValidatedProposalFeeRate: Int
-  originValidatedProposalFeeRate_not: Int
-  originValidatedProposalFeeRate_gt: Int
-  originValidatedProposalFeeRate_lt: Int
-  originValidatedProposalFeeRate_gte: Int
-  originValidatedProposalFeeRate_lte: Int
-  originValidatedProposalFeeRate_in: [Int!]
-  originValidatedProposalFeeRate_not_in: [Int!]
-  disputeId: BigInt
-  disputeId_not: BigInt
-  disputeId_gt: BigInt
-  disputeId_lt: BigInt
-  disputeId_gte: BigInt
-  disputeId_lte: BigInt
-  disputeId_in: [BigInt!]
-  disputeId_not_in: [BigInt!]
-  senderFee: BigInt
-  senderFee_not: BigInt
-  senderFee_gt: BigInt
-  senderFee_lt: BigInt
-  senderFee_gte: BigInt
-  senderFee_lte: BigInt
-  senderFee_in: [BigInt!]
-  senderFee_not_in: [BigInt!]
-  receiverFee: BigInt
-  receiverFee_not: BigInt
-  receiverFee_gt: BigInt
-  receiverFee_lt: BigInt
-  receiverFee_gte: BigInt
-  receiverFee_lte: BigInt
-  receiverFee_in: [BigInt!]
-  receiverFee_not_in: [BigInt!]
-  lastInteraction: BigInt
-  lastInteraction_not: BigInt
-  lastInteraction_gt: BigInt
-  lastInteraction_lt: BigInt
-  lastInteraction_gte: BigInt
-  lastInteraction_lte: BigInt
-  lastInteraction_in: [BigInt!]
-  lastInteraction_not_in: [BigInt!]
-  status: TransactionStatus
-  status_not: TransactionStatus
-  status_in: [TransactionStatus!]
-  status_not_in: [TransactionStatus!]
-  arbitrator: Bytes
-  arbitrator_not: Bytes
-  arbitrator_gt: Bytes
-  arbitrator_lt: Bytes
-  arbitrator_gte: Bytes
-  arbitrator_lte: Bytes
-  arbitrator_in: [Bytes!]
-  arbitrator_not_in: [Bytes!]
-  arbitrator_contains: Bytes
-  arbitrator_not_contains: Bytes
-  arbitratorExtraData: Bytes
-  arbitratorExtraData_not: Bytes
-  arbitratorExtraData_gt: Bytes
-  arbitratorExtraData_lt: Bytes
-  arbitratorExtraData_gte: Bytes
-  arbitratorExtraData_lte: Bytes
-  arbitratorExtraData_in: [Bytes!]
-  arbitratorExtraData_not_in: [Bytes!]
-  arbitratorExtraData_contains: Bytes
-  arbitratorExtraData_not_contains: Bytes
-  arbitrationFeeTimeout: BigInt
-  arbitrationFeeTimeout_not: BigInt
-  arbitrationFeeTimeout_gt: BigInt
-  arbitrationFeeTimeout_lt: BigInt
-  arbitrationFeeTimeout_gte: BigInt
-  arbitrationFeeTimeout_lte: BigInt
-  arbitrationFeeTimeout_in: [BigInt!]
-  arbitrationFeeTimeout_not_in: [BigInt!]
-  ruling: BigInt
-  ruling_not: BigInt
-  ruling_gt: BigInt
-  ruling_lt: BigInt
-  ruling_gte: BigInt
-  ruling_lte: BigInt
-  ruling_in: [BigInt!]
-  ruling_not_in: [BigInt!]
-  evidences_: Evidence_filter
-  metaEvidenceUri: String
-  metaEvidenceUri_not: String
-  metaEvidenceUri_gt: String
-  metaEvidenceUri_lt: String
-  metaEvidenceUri_gte: String
-  metaEvidenceUri_lte: String
-  metaEvidenceUri_in: [String!]
-  metaEvidenceUri_not_in: [String!]
-  metaEvidenceUri_contains: String
-  metaEvidenceUri_contains_nocase: String
-  metaEvidenceUri_not_contains: String
-  metaEvidenceUri_not_contains_nocase: String
-  metaEvidenceUri_starts_with: String
-  metaEvidenceUri_starts_with_nocase: String
-  metaEvidenceUri_not_starts_with: String
-  metaEvidenceUri_not_starts_with_nocase: String
-  metaEvidenceUri_ends_with: String
-  metaEvidenceUri_ends_with_nocase: String
-  metaEvidenceUri_not_ends_with: String
-  metaEvidenceUri_not_ends_with_nocase: String
-  payments_: Payment_filter
-  """Filter for the block changed event."""
-  _change_block: BlockChangedFilter
-  and: [Transaction_filter]
-  or: [Transaction_filter]
-}
-
-enum Transaction_orderBy {
-  id
-  sender
-  sender__id
-  sender__index
-  sender__handle
-  sender__createdAt
-  sender__updatedAt
-  sender__address
-  sender__rating
-  sender__cid
-  receiver
-  receiver__id
-  receiver__index
-  receiver__handle
-  receiver__createdAt
-  receiver__updatedAt
-  receiver__address
-  receiver__rating
-  receiver__cid
-  token
-  token__id
-  token__address
-  token__symbol
-  token__name
-  token__decimals
-  token__allowed
-  token__minimumTransactionAmount
-  amount
-  service
-  service__id
-  service__createdAt
-  service__updatedAt
-  service__status
-  service__cid
-  protocolEscrowFeeRate
-  originServiceFeeRate
-  originValidatedProposalFeeRate
-  disputeId
-  senderFee
-  receiverFee
-  lastInteraction
-  status
-  arbitrator
-  arbitratorExtraData
-  arbitrationFeeTimeout
-  ruling
-  evidences
-  metaEvidenceUri
-  payments
-}
-
-type User {
-  id: ID!
-  index: BigInt!
-  handle: String!
-  createdAt: BigInt!
-  updatedAt: BigInt!
-  platform: Platform
-  address: String!
-  rating: BigDecimal!
-  reviews(skip: Int = 0, first: Int = 100, orderBy: Review_orderBy, orderDirection: OrderDirection, where: Review_filter): [Review!]
-  buyerServices(skip: Int = 0, first: Int = 100, orderBy: Service_orderBy, orderDirection: OrderDirection, where: Service_filter): [Service!]
-  sellerServices(skip: Int = 0, first: Int = 100, orderBy: Service_orderBy, orderDirection: OrderDirection, where: Service_filter): [Service!]
-  totalGains(skip: Int = 0, first: Int = 100, orderBy: UserGain_orderBy, orderDirection: OrderDirection, where: UserGain_filter): [UserGain!]
-  cid: String
-  description: UserDescription
-  delegates: [String!]!
-  userStats: UserStats
-}
-
-type UserDescription {
-  id: ID!
-  title: String
-  about: String
-  skills_raw: String
-  skills(skip: Int = 0, first: Int = 100, orderBy: Keyword_orderBy, orderDirection: OrderDirection, where: Keyword_filter): [Keyword!]
-  timezone: BigInt
-  headline: String
-  country: String
-  user: User!
-  role: String
-  name: String
-  video_url: String
-  image_url: String
-}
-
-input UserDescription_filter {
-  id: ID
-  id_not: ID
-  id_gt: ID
-  id_lt: ID
-  id_gte: ID
-  id_lte: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  title: String
-  title_not: String
-  title_gt: String
-  title_lt: String
-  title_gte: String
-  title_lte: String
-  title_in: [String!]
-  title_not_in: [String!]
-  title_contains: String
-  title_contains_nocase: String
-  title_not_contains: String
-  title_not_contains_nocase: String
-  title_starts_with: String
-  title_starts_with_nocase: String
-  title_not_starts_with: String
-  title_not_starts_with_nocase: String
-  title_ends_with: String
-  title_ends_with_nocase: String
-  title_not_ends_with: String
-  title_not_ends_with_nocase: String
-  about: String
-  about_not: String
-  about_gt: String
-  about_lt: String
-  about_gte: String
-  about_lte: String
-  about_in: [String!]
-  about_not_in: [String!]
-  about_contains: String
-  about_contains_nocase: String
-  about_not_contains: String
-  about_not_contains_nocase: String
-  about_starts_with: String
-  about_starts_with_nocase: String
-  about_not_starts_with: String
-  about_not_starts_with_nocase: String
-  about_ends_with: String
-  about_ends_with_nocase: String
-  about_not_ends_with: String
-  about_not_ends_with_nocase: String
-  skills_raw: String
-  skills_raw_not: String
-  skills_raw_gt: String
-  skills_raw_lt: String
-  skills_raw_gte: String
-  skills_raw_lte: String
-  skills_raw_in: [String!]
-  skills_raw_not_in: [String!]
-  skills_raw_contains: String
-  skills_raw_contains_nocase: String
-  skills_raw_not_contains: String
-  skills_raw_not_contains_nocase: String
-  skills_raw_starts_with: String
-  skills_raw_starts_with_nocase: String
-  skills_raw_not_starts_with: String
-  skills_raw_not_starts_with_nocase: String
-  skills_raw_ends_with: String
-  skills_raw_ends_with_nocase: String
-  skills_raw_not_ends_with: String
-  skills_raw_not_ends_with_nocase: String
-  skills: [String!]
-  skills_not: [String!]
-  skills_contains: [String!]
-  skills_contains_nocase: [String!]
-  skills_not_contains: [String!]
-  skills_not_contains_nocase: [String!]
-  skills_: Keyword_filter
-  timezone: BigInt
-  timezone_not: BigInt
-  timezone_gt: BigInt
-  timezone_lt: BigInt
-  timezone_gte: BigInt
-  timezone_lte: BigInt
-  timezone_in: [BigInt!]
-  timezone_not_in: [BigInt!]
-  headline: String
-  headline_not: String
-  headline_gt: String
-  headline_lt: String
-  headline_gte: String
-  headline_lte: String
-  headline_in: [String!]
-  headline_not_in: [String!]
-  headline_contains: String
-  headline_contains_nocase: String
-  headline_not_contains: String
-  headline_not_contains_nocase: String
-  headline_starts_with: String
-  headline_starts_with_nocase: String
-  headline_not_starts_with: String
-  headline_not_starts_with_nocase: String
-  headline_ends_with: String
-  headline_ends_with_nocase: String
-  headline_not_ends_with: String
-  headline_not_ends_with_nocase: String
-  country: String
-  country_not: String
-  country_gt: String
-  country_lt: String
-  country_gte: String
-  country_lte: String
-  country_in: [String!]
-  country_not_in: [String!]
-  country_contains: String
-  country_contains_nocase: String
-  country_not_contains: String
-  country_not_contains_nocase: String
-  country_starts_with: String
-  country_starts_with_nocase: String
-  country_not_starts_with: String
-  country_not_starts_with_nocase: String
-  country_ends_with: String
-  country_ends_with_nocase: String
-  country_not_ends_with: String
-  country_not_ends_with_nocase: String
-  user: String
-  user_not: String
-  user_gt: String
-  user_lt: String
-  user_gte: String
-  user_lte: String
-  user_in: [String!]
-  user_not_in: [String!]
-  user_contains: String
-  user_contains_nocase: String
-  user_not_contains: String
-  user_not_contains_nocase: String
-  user_starts_with: String
-  user_starts_with_nocase: String
-  user_not_starts_with: String
-  user_not_starts_with_nocase: String
-  user_ends_with: String
-  user_ends_with_nocase: String
-  user_not_ends_with: String
-  user_not_ends_with_nocase: String
-  user_: User_filter
-  role: String
-  role_not: String
-  role_gt: String
-  role_lt: String
-  role_gte: String
-  role_lte: String
-  role_in: [String!]
-  role_not_in: [String!]
-  role_contains: String
-  role_contains_nocase: String
-  role_not_contains: String
-  role_not_contains_nocase: String
-  role_starts_with: String
-  role_starts_with_nocase: String
-  role_not_starts_with: String
-  role_not_starts_with_nocase: String
-  role_ends_with: String
-  role_ends_with_nocase: String
-  role_not_ends_with: String
-  role_not_ends_with_nocase: String
-  name: String
-  name_not: String
-  name_gt: String
-  name_lt: String
-  name_gte: String
-  name_lte: String
-  name_in: [String!]
-  name_not_in: [String!]
-  name_contains: String
-  name_contains_nocase: String
-  name_not_contains: String
-  name_not_contains_nocase: String
-  name_starts_with: String
-  name_starts_with_nocase: String
-  name_not_starts_with: String
-  name_not_starts_with_nocase: String
-  name_ends_with: String
-  name_ends_with_nocase: String
-  name_not_ends_with: String
-  name_not_ends_with_nocase: String
-  video_url: String
-  video_url_not: String
-  video_url_gt: String
-  video_url_lt: String
-  video_url_gte: String
-  video_url_lte: String
-  video_url_in: [String!]
-  video_url_not_in: [String!]
-  video_url_contains: String
-  video_url_contains_nocase: String
-  video_url_not_contains: String
-  video_url_not_contains_nocase: String
-  video_url_starts_with: String
-  video_url_starts_with_nocase: String
-  video_url_not_starts_with: String
-  video_url_not_starts_with_nocase: String
-  video_url_ends_with: String
-  video_url_ends_with_nocase: String
-  video_url_not_ends_with: String
-  video_url_not_ends_with_nocase: String
-  image_url: String
-  image_url_not: String
-  image_url_gt: String
-  image_url_lt: String
-  image_url_gte: String
-  image_url_lte: String
-  image_url_in: [String!]
-  image_url_not_in: [String!]
-  image_url_contains: String
-  image_url_contains_nocase: String
-  image_url_not_contains: String
-  image_url_not_contains_nocase: String
-  image_url_starts_with: String
-  image_url_starts_with_nocase: String
-  image_url_not_starts_with: String
-  image_url_not_starts_with_nocase: String
-  image_url_ends_with: String
-  image_url_ends_with_nocase: String
-  image_url_not_ends_with: String
-  image_url_not_ends_with_nocase: String
-  """Filter for the block changed event."""
-  _change_block: BlockChangedFilter
-  and: [UserDescription_filter]
-  or: [UserDescription_filter]
-}
-
-enum UserDescription_orderBy {
-  id
-  title
-  about
-  skills_raw
-  skills
-  timezone
-  headline
-  country
-  user
-  user__id
-  user__index
-  user__handle
-  user__createdAt
-  user__updatedAt
-  user__address
-  user__rating
-  user__cid
-  role
-  name
-  video_url
-  image_url
-}
-
-type UserGain {
-  id: ID!
-  user: User
-  token: Token
-  totalGain: BigInt!
-}
-
-input UserGain_filter {
-  id: ID
-  id_not: ID
-  id_gt: ID
-  id_lt: ID
-  id_gte: ID
-  id_lte: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  user: String
-  user_not: String
-  user_gt: String
-  user_lt: String
-  user_gte: String
-  user_lte: String
-  user_in: [String!]
-  user_not_in: [String!]
-  user_contains: String
-  user_contains_nocase: String
-  user_not_contains: String
-  user_not_contains_nocase: String
-  user_starts_with: String
-  user_starts_with_nocase: String
-  user_not_starts_with: String
-  user_not_starts_with_nocase: String
-  user_ends_with: String
-  user_ends_with_nocase: String
-  user_not_ends_with: String
-  user_not_ends_with_nocase: String
-  user_: User_filter
-  token: String
-  token_not: String
-  token_gt: String
-  token_lt: String
-  token_gte: String
-  token_lte: String
-  token_in: [String!]
-  token_not_in: [String!]
-  token_contains: String
-  token_contains_nocase: String
-  token_not_contains: String
-  token_not_contains_nocase: String
-  token_starts_with: String
-  token_starts_with_nocase: String
-  token_not_starts_with: String
-  token_not_starts_with_nocase: String
-  token_ends_with: String
-  token_ends_with_nocase: String
-  token_not_ends_with: String
-  token_not_ends_with_nocase: String
-  token_: Token_filter
-  totalGain: BigInt
-  totalGain_not: BigInt
-  totalGain_gt: BigInt
-  totalGain_lt: BigInt
-  totalGain_gte: BigInt
-  totalGain_lte: BigInt
-  totalGain_in: [BigInt!]
-  totalGain_not_in: [BigInt!]
-  """Filter for the block changed event."""
-  _change_block: BlockChangedFilter
-  and: [UserGain_filter]
-  or: [UserGain_filter]
-}
-
-enum UserGain_orderBy {
-  id
-  user
-  user__id
-  user__index
-  user__handle
-  user__createdAt
-  user__updatedAt
-  user__address
-  user__rating
-  user__cid
-  token
-  token__id
-  token__address
-  token__symbol
-  token__name
-  token__decimals
-  token__allowed
-  token__minimumTransactionAmount
-  totalGain
-}
-
-type UserStats {
-  id: ID!
-  numReceivedReviews: BigInt!
-  numGivenReviews: BigInt!
-  numCreatedServices: BigInt!
-  numFinishedServicesAsBuyer: BigInt!
-  numCreatedProposals: BigInt!
-  numFinishedServicesAsSeller: BigInt!
-  user: User!
-}
-
-input UserStats_filter {
-  id: ID
-  id_not: ID
-  id_gt: ID
-  id_lt: ID
-  id_gte: ID
-  id_lte: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  numReceivedReviews: BigInt
-  numReceivedReviews_not: BigInt
-  numReceivedReviews_gt: BigInt
-  numReceivedReviews_lt: BigInt
-  numReceivedReviews_gte: BigInt
-  numReceivedReviews_lte: BigInt
-  numReceivedReviews_in: [BigInt!]
-  numReceivedReviews_not_in: [BigInt!]
-  numGivenReviews: BigInt
-  numGivenReviews_not: BigInt
-  numGivenReviews_gt: BigInt
-  numGivenReviews_lt: BigInt
-  numGivenReviews_gte: BigInt
-  numGivenReviews_lte: BigInt
-  numGivenReviews_in: [BigInt!]
-  numGivenReviews_not_in: [BigInt!]
-  numCreatedServices: BigInt
-  numCreatedServices_not: BigInt
-  numCreatedServices_gt: BigInt
-  numCreatedServices_lt: BigInt
-  numCreatedServices_gte: BigInt
-  numCreatedServices_lte: BigInt
-  numCreatedServices_in: [BigInt!]
-  numCreatedServices_not_in: [BigInt!]
-  numFinishedServicesAsBuyer: BigInt
-  numFinishedServicesAsBuyer_not: BigInt
-  numFinishedServicesAsBuyer_gt: BigInt
-  numFinishedServicesAsBuyer_lt: BigInt
-  numFinishedServicesAsBuyer_gte: BigInt
-  numFinishedServicesAsBuyer_lte: BigInt
-  numFinishedServicesAsBuyer_in: [BigInt!]
-  numFinishedServicesAsBuyer_not_in: [BigInt!]
-  numCreatedProposals: BigInt
-  numCreatedProposals_not: BigInt
-  numCreatedProposals_gt: BigInt
-  numCreatedProposals_lt: BigInt
-  numCreatedProposals_gte: BigInt
-  numCreatedProposals_lte: BigInt
-  numCreatedProposals_in: [BigInt!]
-  numCreatedProposals_not_in: [BigInt!]
-  numFinishedServicesAsSeller: BigInt
-  numFinishedServicesAsSeller_not: BigInt
-  numFinishedServicesAsSeller_gt: BigInt
-  numFinishedServicesAsSeller_lt: BigInt
-  numFinishedServicesAsSeller_gte: BigInt
-  numFinishedServicesAsSeller_lte: BigInt
-  numFinishedServicesAsSeller_in: [BigInt!]
-  numFinishedServicesAsSeller_not_in: [BigInt!]
-  user: String
-  user_not: String
-  user_gt: String
-  user_lt: String
-  user_gte: String
-  user_lte: String
-  user_in: [String!]
-  user_not_in: [String!]
-  user_contains: String
-  user_contains_nocase: String
-  user_not_contains: String
-  user_not_contains_nocase: String
-  user_starts_with: String
-  user_starts_with_nocase: String
-  user_not_starts_with: String
-  user_not_starts_with_nocase: String
-  user_ends_with: String
-  user_ends_with_nocase: String
-  user_not_ends_with: String
-  user_not_ends_with_nocase: String
-  user_: User_filter
-  """Filter for the block changed event."""
-  _change_block: BlockChangedFilter
-  and: [UserStats_filter]
-  or: [UserStats_filter]
-}
-
-enum UserStats_orderBy {
-  id
-  numReceivedReviews
-  numGivenReviews
-  numCreatedServices
-  numFinishedServicesAsBuyer
-  numCreatedProposals
-  numFinishedServicesAsSeller
-  user
-  user__id
-  user__index
-  user__handle
-  user__createdAt
-  user__updatedAt
-  user__address
-  user__rating
-  user__cid
-}
-
-input User_filter {
-  id: ID
-  id_not: ID
-  id_gt: ID
-  id_lt: ID
-  id_gte: ID
-  id_lte: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  index: BigInt
-  index_not: BigInt
-  index_gt: BigInt
-  index_lt: BigInt
-  index_gte: BigInt
-  index_lte: BigInt
-  index_in: [BigInt!]
-  index_not_in: [BigInt!]
-  handle: String
-  handle_not: String
-  handle_gt: String
-  handle_lt: String
-  handle_gte: String
-  handle_lte: String
-  handle_in: [String!]
-  handle_not_in: [String!]
-  handle_contains: String
-  handle_contains_nocase: String
-  handle_not_contains: String
-  handle_not_contains_nocase: String
-  handle_starts_with: String
-  handle_starts_with_nocase: String
-  handle_not_starts_with: String
-  handle_not_starts_with_nocase: String
-  handle_ends_with: String
-  handle_ends_with_nocase: String
-  handle_not_ends_with: String
-  handle_not_ends_with_nocase: String
-  createdAt: BigInt
-  createdAt_not: BigInt
-  createdAt_gt: BigInt
-  createdAt_lt: BigInt
-  createdAt_gte: BigInt
-  createdAt_lte: BigInt
-  createdAt_in: [BigInt!]
-  createdAt_not_in: [BigInt!]
-  updatedAt: BigInt
-  updatedAt_not: BigInt
-  updatedAt_gt: BigInt
-  updatedAt_lt: BigInt
-  updatedAt_gte: BigInt
-  updatedAt_lte: BigInt
-  updatedAt_in: [BigInt!]
-  updatedAt_not_in: [BigInt!]
-  platform: String
-  platform_not: String
-  platform_gt: String
-  platform_lt: String
-  platform_gte: String
-  platform_lte: String
-  platform_in: [String!]
-  platform_not_in: [String!]
-  platform_contains: String
-  platform_contains_nocase: String
-  platform_not_contains: String
-  platform_not_contains_nocase: String
-  platform_starts_with: String
-  platform_starts_with_nocase: String
-  platform_not_starts_with: String
-  platform_not_starts_with_nocase: String
-  platform_ends_with: String
-  platform_ends_with_nocase: String
-  platform_not_ends_with: String
-  platform_not_ends_with_nocase: String
-  platform_: Platform_filter
-  address: String
-  address_not: String
-  address_gt: String
-  address_lt: String
-  address_gte: String
-  address_lte: String
-  address_in: [String!]
-  address_not_in: [String!]
-  address_contains: String
-  address_contains_nocase: String
-  address_not_contains: String
-  address_not_contains_nocase: String
-  address_starts_with: String
-  address_starts_with_nocase: String
-  address_not_starts_with: String
-  address_not_starts_with_nocase: String
-  address_ends_with: String
-  address_ends_with_nocase: String
-  address_not_ends_with: String
-  address_not_ends_with_nocase: String
-  rating: BigDecimal
-  rating_not: BigDecimal
-  rating_gt: BigDecimal
-  rating_lt: BigDecimal
-  rating_gte: BigDecimal
-  rating_lte: BigDecimal
-  rating_in: [BigDecimal!]
-  rating_not_in: [BigDecimal!]
-  reviews_: Review_filter
-  buyerServices_: Service_filter
-  sellerServices_: Service_filter
-  totalGains_: UserGain_filter
-  cid: String
-  cid_not: String
-  cid_gt: String
-  cid_lt: String
-  cid_gte: String
-  cid_lte: String
-  cid_in: [String!]
-  cid_not_in: [String!]
-  cid_contains: String
-  cid_contains_nocase: String
-  cid_not_contains: String
-  cid_not_contains_nocase: String
-  cid_starts_with: String
-  cid_starts_with_nocase: String
-  cid_not_starts_with: String
-  cid_not_starts_with_nocase: String
-  cid_ends_with: String
-  cid_ends_with_nocase: String
-  cid_not_ends_with: String
-  cid_not_ends_with_nocase: String
-  description: String
-  description_not: String
-  description_gt: String
-  description_lt: String
-  description_gte: String
-  description_lte: String
-  description_in: [String!]
-  description_not_in: [String!]
-  description_contains: String
-  description_contains_nocase: String
-  description_not_contains: String
-  description_not_contains_nocase: String
-  description_starts_with: String
-  description_starts_with_nocase: String
-  description_not_starts_with: String
-  description_not_starts_with_nocase: String
-  description_ends_with: String
-  description_ends_with_nocase: String
-  description_not_ends_with: String
-  description_not_ends_with_nocase: String
-  description_: UserDescription_filter
-  delegates: [String!]
-  delegates_not: [String!]
-  delegates_contains: [String!]
-  delegates_contains_nocase: [String!]
-  delegates_not_contains: [String!]
-  delegates_not_contains_nocase: [String!]
-  userStats: String
-  userStats_not: String
-  userStats_gt: String
-  userStats_lt: String
-  userStats_gte: String
-  userStats_lte: String
-  userStats_in: [String!]
-  userStats_not_in: [String!]
-  userStats_contains: String
-  userStats_contains_nocase: String
-  userStats_not_contains: String
-  userStats_not_contains_nocase: String
-  userStats_starts_with: String
-  userStats_starts_with_nocase: String
-  userStats_not_starts_with: String
-  userStats_not_starts_with_nocase: String
-  userStats_ends_with: String
-  userStats_ends_with_nocase: String
-  userStats_not_ends_with: String
-  userStats_not_ends_with_nocase: String
-  userStats_: UserStats_filter
-  """Filter for the block changed event."""
-  _change_block: BlockChangedFilter
-  and: [User_filter]
-  or: [User_filter]
-}
-
-enum User_orderBy {
-  id
-  index
-  handle
-  createdAt
-  updatedAt
-  platform
-  platform__id
-  platform__address
-  platform__name
-  platform__createdAt
-  platform__updatedAt
-  platform__originServiceFeeRate
-  platform__originValidatedProposalFeeRate
-  platform__servicePostingFee
-  platform__proposalPostingFee
-  platform__arbitrator
-  platform__arbitratorExtraData
-  platform__arbitrationFeeTimeout
-  platform__cid
-  platform__signer
-  address
-  rating
-  reviews
-  buyerServices
-  sellerServices
-  totalGains
-  cid
-  description
-  description__id
-  description__title
-  description__about
-  description__skills_raw
-  description__timezone
-  description__headline
-  description__country
-  description__role
-  description__name
-  description__video_url
-  description__image_url
-  delegates
-  userStats
-  userStats__id
-  userStats__numReceivedReviews
-  userStats__numGivenReviews
-  userStats__numCreatedServices
-  userStats__numFinishedServicesAsBuyer
-  userStats__numCreatedProposals
-  userStats__numFinishedServicesAsSeller
 }
 
 type _Block_ {

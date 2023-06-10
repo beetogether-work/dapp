@@ -46,12 +46,13 @@ const validationSchema = Yup.object({
 const getDefaultShares = (hive?: IHive) => {
   if (hive) {
     const membersLength = hive.members.length;
-    const shareByMember = (10000 - hive.honeyFee) / membersLength;
+    const shareByMember = Math.floor((10000 - hive.honeyFee) / membersLength);
+    const remaining = 10000 - hive.honeyFee - shareByMember * membersLength;
     const shares = [];
     for (let index = 0; index < membersLength; index++) {
       shares.push({
         to: hive.members[index],
-        amount: shareByMember,
+        amount: index == 0 ? shareByMember + remaining : shareByMember,
       });
     }
     return shares;
@@ -166,9 +167,7 @@ function ProposalForm({
         let tx;
         if (hive) {
           const hiveContract = new ethers.Contract(hive.address, HiveABI.abi, signer);
-          const membersLength = hive.members.length;
-          const shareByMember = (10000 - hive.honeyFee) / membersLength;
-          const shares = Array(membersLength).fill(shareByMember);
+          const shares = values.shares.map(share => share.amount);
 
           tx = await hiveContract.createProposalRequest(
             service.id,

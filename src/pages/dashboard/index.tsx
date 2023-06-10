@@ -74,7 +74,7 @@ function Hive() {
         </Link>
       </div>
 
-      <ProposalRequests hive={hive} />
+      <ProposalRequests />
     </div>
   );
 }
