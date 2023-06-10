@@ -3,9 +3,14 @@ import { useContext } from 'react';
 import ConnectBlock from './ConnectBlock';
 import BeeTogetherContext from '../context/beeTogether';
 import Link from 'next/link';
+import Loading from './Loading';
 
 function Steps() {
-  const { account, hive } = useContext(BeeTogetherContext);
+  const { account, hive, loading } = useContext(BeeTogetherContext);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   console.log('STEPS');
 

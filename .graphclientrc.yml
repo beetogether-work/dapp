@@ -2,11 +2,12 @@ sources:
   - name: beetogether
     handler:
       graphql:
-        endpoint: https://api.thegraph.com/subgraphs/name/mattiapomelli/beetogether-mumbai
+        endpoint: https://api.thegraph.com/subgraphs/name/mattiapomelli/talentlayer-zksynctestnet
   - name: talentlayer
     handler:
       graphql:
-        endpoint: https://api.thegraph.com/subgraphs/name/talentlayer/talent-layer-mumbai
+        endpoint: https://api.thegraph.com/subgraphs/name/mattiapomelli/beetogether-zksync
 
 documents:
   - ./src/queries/hiveAndIdentity.graphql
+  - ./src/queries/proposalRequests.graphql

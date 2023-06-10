@@ -1,11 +1,11 @@
 import { ethers, FixedNumber } from 'ethers';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { ErrorMessage, Field, FieldArray, Form, Formik } from 'formik';
 import { useRouter } from 'next/router';
 import { useProvider, useSigner } from 'wagmi';
 import * as Yup from 'yup';
 import ServiceRegistry from '../../contracts/ABI/TalentLayerService.json';
 import HiveABI from '../../contracts/ABI/Hive.json';
-import { IProposal, IService, IUser, NetworkEnum } from '../../types';
+import { IHive, IProposal, IService, IUser, NetworkEnum } from '../../types';
 import { postToIPFS } from '../../utils/ipfs';
 import { createMultiStepsTransactionToast, showErrorTransactionToast } from '../../utils/toast';
 import { parseRateAmount } from '../../utils/web3';
@@ -24,12 +24,18 @@ import { useConfig } from '../../hooks/useConfig';
 import { utils, Contract, Web3Provider } from 'zksync-web3';
 import { getTxOverrides } from '../../utils/getTxOverrides';
 
+interface Share {
+  to: string;
+  amount: number;
+}
+
 interface IFormValues {
   about: string;
   rateToken: string;
   rateAmount: number;
   expirationDate: number;
   videoUrl: string;
+  shares: Share[];
 }
 
 const validationSchema = Yup.object({
@@ -38,6 +44,23 @@ const validationSchema = Yup.object({
   rateAmount: Yup.string().required('Please provide an amount for your service'),
   expirationDate: Yup.number().integer().required('Please provide an expiration date'),
 });
+
+const getDefaultShares = (hive?: IHive) => {
+  if (hive) {
+    const membersLength = hive.members.length;
+    const shareByMember = Math.floor((10000 - hive.honeyFee) / membersLength);
+    const remaining = 10000 - hive.honeyFee - shareByMember * membersLength;
+    const shares = [];
+    for (let index = 0; index < membersLength; index++) {
+      shares.push({
+        to: hive.members[index],
+        amount: index == 0 ? shareByMember + remaining : shareByMember,
+      });
+    }
+    return shares;
+  }
+  return [];
+};
 
 function ProposalForm({
   user,
@@ -85,6 +108,7 @@ function ProposalForm({
     rateAmount: existingRateTokenAmount || 0,
     expirationDate: existingExpirationDate || 15,
     videoUrl: existingProposal?.description?.video_url || '',
+    shares: getDefaultShares(hive),
   };
 
   const askAI = async (input: string, setFieldValue: any) => {
@@ -146,10 +170,8 @@ function ProposalForm({
         if (hive) {
           // @ts-ignore
           const zkSyncSigner = new Web3Provider(window.ethereum).getSigner();
-          const hiveContract = new Contract(hive.address, HiveABI.abi, zkSyncSigner);
-          const membersLength = hive.members.length;
-          const shareByMember = (10000 - hive.honeyFee) / membersLength;
-          const shares = Array(membersLength).fill(shareByMember);
+          const hiveContract = new ethers.Contract(hive.address, HiveABI.abi, signer);
+          const shares = values.shares.map(share => share.amount);
 
           console.log('Shares and members: ', { shares, members: hive.members });
 
@@ -349,6 +371,49 @@ function ProposalForm({
                 <ErrorMessage name='videoUrl' />
               </span>
             </label>
+
+            {values.shares.length > 0 && <p>Payment splitting</p>}
+            <FieldArray name='shares'>
+              {({ push }) => (
+                <div className='mb-2'>
+                  {values.shares.length > 0 &&
+                    values.shares.map((share, index) => (
+                      <div className='row' key={index}>
+                        <div className='flex w-full'>
+                          <label className='block flex-1 mr-4'>
+                            <span className='text-gray-200'>To</span>
+                            <Field
+                              type='text'
+                              id='to'
+                              name={`shares.${index}.to`}
+                              className='mt-1 mb-2 block w-full rounded-xl border border-gray-700 bg-midnight shadow-sm focus:ring-opacity-50'
+                              placeholder=''
+                            />
+                          </label>
+                          <label className='block flex-1'>
+                            <span className='text-gray-200'>Amount</span>
+                            <Field
+                              type='number'
+                              id='amount'
+                              name={`shares.${index}.amount`}
+                              className='mt-1 mb-2 block w-full rounded-xl border border-gray-700 bg-midnight shadow-sm focus:ring-opacity-50'
+                              placeholder=''
+                            />
+                          </label>
+                        </div>
+                        <p>
+                          <span className='text-red-500 mt-2'>
+                            <ErrorMessage name={`shares.${index}.amount`} />
+                          </span>
+                          <span className='text-red-500'>
+                            <ErrorMessage name={`shares.${index}.to`} />
+                          </span>
+                        </p>
+                      </div>
+                    ))}
+                </div>
+              )}
+            </FieldArray>
 
             <SubmitButton isSubmitting={isSubmitting} label='Post' />
           </div>

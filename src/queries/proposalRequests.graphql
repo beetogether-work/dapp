@@ -1,0 +1,19 @@
+query ProposalRequestsQuery($hiveId: String) {
+    proposalRequests(where: {hive: $hiveId}){
+        id
+        cid
+        serviceId
+        members
+        shares
+        sharedAmount
+        status
+        createdAt
+        ownerId
+        rateToken
+        rateAmount
+        description {
+            id
+            about
+        }
+    }
+}

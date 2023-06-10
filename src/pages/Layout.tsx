@@ -22,7 +22,7 @@ function Layout({ children, className }: ContainerProps) {
 
     return (
       <>
-        <div className={className + ' pb-[60px]'}>
+        <div className={className + ' dashboard pb-[60px]'}>
           <Transition.Root show={sidebarOpen} as={Fragment}>
             <Dialog as='div' className='relative z-40 md:hidden' onClose={setSidebarOpen}>
               <Transition.Child
