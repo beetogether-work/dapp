@@ -91,7 +91,7 @@ function Layout({ children, className }: ContainerProps) {
           </div>
 
           <div className='flex flex-1 flex-col md:pl-64'>
-            <div className='sticky top-0 z-10 flex h-16 flex-shrink-0 bg-midnight'>
+            <div className='top-0 z-10 flex h-16 flex-shrink-0 bg-midnight'>
               <div className='flex flex-1 items-center pl-6'>
                 <div className='sm:hidden'>
                   <Logo />

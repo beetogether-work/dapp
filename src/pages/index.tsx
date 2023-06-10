@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 function Home() {
   return (
-    <div className='text-black bg-white'>
+    <div className='text-black bg-white home'>
       {/*[if lte IE 9]>
         <p class="browserupgrade">
           You are using an <strong>outdated</strong> browser. Please
@@ -31,7 +31,7 @@ function Home() {
                 {/* Start Navbar */}
                 <nav className='navbar navbar-expand-lg'>
                   <WhiteLogo></WhiteLogo>
-                  <button
+                  {/* <button
                     className='navbar-toggler mobile-menu-btn'
                     type='button'
                     data-bs-toggle='collapse'
@@ -42,7 +42,7 @@ function Home() {
                     <span className='toggler-icon' />
                     <span className='toggler-icon' />
                     <span className='toggler-icon' />
-                  </button>
+                  </button> */}
                   <div
                     className='collapse navbar-collapse sub-menu-bar'
                     id='navbarSupportedContent'>
@@ -135,7 +135,7 @@ function Home() {
                   or freelance collective in web 3
                 </p>
                 <div className='button wow fadeInLeft' data-wow-delay='.8s'>
-                  <a href='javascript:void(0)' className='btn'>
+                  <a href='/onboarding' className='btn'>
                     <i className='lni lni-apple' /> Lannch Your Hive
                   </a>
                 </div>
