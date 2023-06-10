@@ -11,7 +11,7 @@ function UserSubMenu() {
   const { disconnect } = useDisconnect();
 
   if (!user || !hive) {
-    return;
+    return null;
   }
 
   return (

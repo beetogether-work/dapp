@@ -1,9 +1,15 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import InviteMember from './InviteMember';
 import { PlusIcon } from '@heroicons/react/24/outline';
+import BeeTogetherContext from '../context/beeTogether';
 
 function InviteModal() {
   const [show, setShow] = useState(false);
+  const { hive } = useContext(BeeTogetherContext);
+
+  if (!hive) {
+    return null;
+  }
 
   return (
     <>
@@ -41,7 +47,7 @@ function InviteModal() {
             </div>
             <div className='flex flex-col justify-between items-center '>
               <h3 className='text-xl font-semibold text-center py-6'>Invite new member</h3>
-              <InviteMember />
+              <InviteMember hiveAddress={hive.address} signature='' />
             </div>
           </div>
         </div>
