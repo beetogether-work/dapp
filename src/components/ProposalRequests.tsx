@@ -27,22 +27,23 @@ function ProposalRequests() {
     const fetchData = async () => {
       setLoading(true);
       const result = await execute(ProposalRequestsQueryDocument, {
-        hiveId: hive.id,
+        hiveId: hive?.id,
       });
       const data: ProposalRequestsQueryQuery = result?.data;
       setProposalRequests(data.proposalRequests as ProposalRequest[]);
       setLoading(false);
     };
     fetchData();
-  }, [hive.id]);
+  }, [hive?.id]);
 
   const voteAndExecute = async (proposalRequestsId: string) => {
-    if (!signer) {
+    if (!signer || !hive) {
       return;
     }
     const hiveContract = new ethers.Contract(hive.address, HiveABI.abi, signer);
     const tx = await hiveContract.executeProposalRequest(proposalRequestsId);
     await createMultiStepsTransactionToast(
+      chainId,
       {
         pending: 'Executing your proposalRequest...',
         success: 'Congrats! Your proposalRequest has been added',

@@ -1,28 +1,29 @@
+import { ExternalProvider } from '@ethersproject/providers';
 import { ethers, FixedNumber } from 'ethers';
 import { ErrorMessage, Field, FieldArray, Form, Formik } from 'formik';
+import { QuestionMarkCircle } from 'heroicons-react';
 import { useRouter } from 'next/router';
+import { useContext, useState } from 'react';
 import { useProvider, useSigner } from 'wagmi';
 import * as Yup from 'yup';
-import ServiceRegistry from '../../contracts/ABI/TalentLayerService.json';
-import HiveABI from '../../contracts/ABI/Hive.json';
-import { IHive, IProposal, IService, IUser, NetworkEnum } from '../../types';
-import { postToIPFS } from '../../utils/ipfs';
-import { createMultiStepsTransactionToast, showErrorTransactionToast } from '../../utils/toast';
-import { parseRateAmount } from '../../utils/web3';
-import ServiceItem from '../ServiceItem';
-import SubmitButton from './SubmitButton';
-import useAllowedTokens from '../../hooks/useAllowedTokens';
-import { getProposalSignature } from '../../utils/signature';
-import { delegateCreateOrUpdateProposal } from '../request';
-import { useContext, useState } from 'react';
+import { Web3Provider } from 'zksync-web3';
 import BeeTogetherContext from '../../context/beeTogether';
-import { postOpenAiRequest } from '../../modules/OpenAi/utils';
-import { QuestionMarkCircle } from 'heroicons-react';
-import Loading from '../Loading';
+import HiveABI from '../../contracts/ABI/Hive.json';
+import ServiceRegistry from '../../contracts/ABI/TalentLayerService.json';
+import useAllowedTokens from '../../hooks/useAllowedTokens';
 import { useChainId } from '../../hooks/useChainId';
 import { useConfig } from '../../hooks/useConfig';
-import { utils, Contract, Web3Provider } from 'zksync-web3';
+import { postOpenAiRequest } from '../../modules/OpenAi/utils';
+import { IHive, IProposal, IService, IUser } from '../../types';
 import { getTxOverrides } from '../../utils/getTxOverrides';
+import { postToIPFS } from '../../utils/ipfs';
+import { getProposalSignature } from '../../utils/signature';
+import { createMultiStepsTransactionToast, showErrorTransactionToast } from '../../utils/toast';
+import { parseRateAmount } from '../../utils/web3';
+import Loading from '../Loading';
+import { delegateCreateOrUpdateProposal } from '../request';
+import ServiceItem from '../ServiceItem';
+import SubmitButton from './SubmitButton';
 
 interface Share {
   to: string;
@@ -168,12 +169,9 @@ function ProposalForm({
 
         let tx;
         if (hive) {
-          // @ts-ignore
-          const zkSyncSigner = new Web3Provider(window.ethereum).getSigner();
-          const hiveContract = new ethers.Contract(hive.address, HiveABI.abi, signer);
+          const zkSyncSigner = new Web3Provider(window.ethereum as ExternalProvider).getSigner();
+          const hiveContract = new ethers.Contract(hive.address, HiveABI.abi, zkSyncSigner);
           const shares = values.shares.map(share => share.amount);
-
-          console.log('Shares and members: ', { shares, members: hive.members });
 
           // ZkSync
           const createProposalRequestParams = [
