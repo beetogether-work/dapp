@@ -15,15 +15,15 @@ function SearchServiceButton(props?: { value?: string }) {
     const searchQueryRef = formElm.querySelector('input')!.value;
     if (searchQueryRef.length > 0) {
       router.push({
-        pathname: '/services',
+        pathname: '/dashboard/services',
         query: { search: searchQueryRef },
       });
-    } else router.push('/services');
+    } else router.push('/dashboard/services');
   }, []);
 
   return (
     <form onSubmit={e => handleSubmit(e)} className='flex w-full'>
-      <div className='flex bg-white py-2 px-4 sm:px-2 justify-center items-center flex-row drop-shadow-lg rounded w-full'>
+      <div className='flex bg-white py-2 px-4 sm:px-2 justify-center items-center flex-row drop-shadow-lg rounded-xl w-full'>
         <div className='sm:px-6 flex flex-row items-center'>
           <span className='text-gray-500'>
             <svg

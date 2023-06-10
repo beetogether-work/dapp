@@ -60,7 +60,7 @@ function ShareModal() {
             </div>
             <div className='flex flex-col justify-between items-center '>
               <h3 className='text-xl font-semibold text-center py-6'>Share your address</h3>
-              <div className='flex justify-center'>
+              <div className='flex justify-center rounded-xl overflow-hidden'>
                 <QRCodeSVG
                   value={shareLink}
                   size={260}

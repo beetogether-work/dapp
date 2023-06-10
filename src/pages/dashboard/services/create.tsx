@@ -9,6 +9,10 @@ function CreateService() {
   const { account, user } = useContext(TalentLayerContext);
   const { userExists } = useContext(MessagingContext);
 
+  if (!account?.isConnected) {
+    return <Steps />;
+  }
+
   return (
     <div className='max-w-7xl mx-auto text-gray-200 sm:px-4 lg:px-0'>
       <div className=' -mx-6 -mt-6 '>
@@ -16,8 +20,6 @@ function CreateService() {
           Post <span className='text-gray-100 ml-1'> a job </span>
         </p>
       </div>
-
-      <Steps />
 
       {!userExists() && account?.isConnected && user && (
         <div className='border border-redpraha rounded-xl p-8'>

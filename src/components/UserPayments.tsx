@@ -20,7 +20,7 @@ function UserPayments({ user }: { user: IUser }) {
         {payments.map((payment, i) => {
           return (
             <Link
-              href={`/services/${payment.service.id}`}
+              href={`/dashboard/services/${payment.service.id}`}
               className='flex items-center p-4 bg-white rounded-xl border border-redpraha'
               key={i}>
               <div className='flex flex-shrink-0 items-center justify-center bg-green-200 h-16 w-16 rounded'>
