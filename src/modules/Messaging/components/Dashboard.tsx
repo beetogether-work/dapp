@@ -13,11 +13,13 @@ import { ChatMessageStatus, XmtpChatMessage } from '../utils/types';
 import CardHeader from './CardHeader';
 import MessageComposer from './MessageComposer';
 import MessageList from './MessageList';
+import { useChainId } from '../../../hooks/useChainId';
 
 function Dashboard() {
+  const chainId = useChainId();
   const { account, hive } = useContext(BeeTogetherContext);
   const { data: signer } = useSigner({
-    chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
+    chainId,
   });
   const { providerState, setProviderState } = useContext(XmtpContext);
   const [messageContent, setMessageContent] = useState<string>('');

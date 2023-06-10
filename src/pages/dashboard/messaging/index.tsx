@@ -8,11 +8,13 @@ import CardHeader from '../../../modules/Messaging/components/CardHeader';
 import ConversationList from '../../../modules/Messaging/components/ConversationList';
 import { XmtpContext } from '../../../modules/Messaging/context/XmtpContext';
 import useStreamConversations from '../../../modules/Messaging/hooks/useStreamConversations';
+import { useChainId } from '../../../hooks/useChainId';
 
 function MessagingIndex() {
+  const chainId = useChainId();
   const { account, hive } = useContext(BeeTogetherContext);
   const { data: signer } = useSigner({
-    chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
+    chainId,
   });
   const { providerState } = useContext(XmtpContext);
 

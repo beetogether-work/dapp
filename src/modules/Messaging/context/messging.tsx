@@ -4,6 +4,7 @@ import { createContext, ReactNode, useContext, useMemo } from 'react';
 import { useSigner } from 'wagmi';
 import BeeTogetherContext from '../../../context/beeTogether';
 import { XmtpContext } from './XmtpContext';
+import { useChainId } from '../../../hooks/useChainId';
 
 const MessagingContext = createContext<{
   userExists: () => boolean;
@@ -16,10 +17,11 @@ const MessagingContext = createContext<{
 });
 
 const MessagingProvider = ({ children }: { children: ReactNode }) => {
+  const chainId = useChainId();
   const { user } = useContext(BeeTogetherContext);
   const { providerState } = useContext(XmtpContext);
   const { data: signer } = useSigner({
-    chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
+    chainId,
   });
   const router = useRouter();
 

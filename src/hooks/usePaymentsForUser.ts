@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getPaymentsForUser } from '../queries/payments';
 import { IPayment } from '../types';
+import { useChainId } from './useChainId';
 
 const usePaymentsForUser = (
   id: string,
@@ -8,6 +9,8 @@ const usePaymentsForUser = (
   startDate?: string,
   endDate?: string,
 ): { hasMoreData: boolean; loading: boolean; payments: IPayment[]; loadMore: () => void } => {
+  const chainId = useChainId();
+
   const [payments, setPayments] = useState<IPayment[]>([]);
   const [hasMoreData, setHasMoreData] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -22,7 +25,14 @@ const usePaymentsForUser = (
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await getPaymentsForUser(id, total, 0, start.toString(), end.toString());
+        const response = await getPaymentsForUser(
+          chainId,
+          id,
+          total,
+          0,
+          start.toString(),
+          end.toString(),
+        );
 
         if (response && response.data && response.data.data) {
           setPayments([...response.data.data.payments]);

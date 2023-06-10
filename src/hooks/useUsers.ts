@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { getUsers } from '../queries/users';
 import { IUser } from '../types';
+import { useChainId } from './useChainId';
 
 const useUsers = (
   searchQuery?: string,
   numberPerPage?: number,
 ): { hasMoreData: boolean; loading: boolean; users: IUser[]; loadMore: () => void } => {
+  const chainId = useChainId();
   const [users, setUsers] = useState<IUser[]>([]);
   const [hasMoreData, setHasMoreData] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -20,7 +22,7 @@ const useUsers = (
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await getUsers(numberPerPage, offset, searchQuery);
+        const response = await getUsers(chainId, numberPerPage, offset, searchQuery);
 
         if (offset === 0) {
           setUsers(response.data.data.users || []);

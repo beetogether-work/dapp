@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Loading from '../../../components/Loading';
 import { getUserById } from '../../../queries/users';
+import { getHiveById } from '../../../queries/hive';
+import { useChainId } from '../../../hooks/useChainId';
 import { IHive, IUser } from '../../../types';
 import {
   HiveAndIdentityQueryDocument,
@@ -11,6 +13,8 @@ import {
 } from '../../../../.graphclient';
 
 function PublicHive() {
+  const chainId = useChainId();
+
   const router = useRouter();
   const { id } = router.query;
   const [hive, setHive] = useState<IHive>();
@@ -28,7 +32,7 @@ function PublicHive() {
       if (data) {
         const currentHive = data.hive as IHive;
         currentHive.identity = data.user as unknown as IUser;
-        const responseOwner = await getUserById(currentHive.owner);
+        const responseOwner = await getUserById(chainId, currentHive.owner);
         currentHive.ownerIdentity = responseOwner?.data?.data?.user;
         setHive(currentHive);
       }

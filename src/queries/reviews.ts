@@ -1,6 +1,6 @@
 import { processRequest } from '../utils/graphql';
 
-export const getReviewsByService = (serviceId: string): Promise<any> => {
+export const getReviewsByService = (chainId: number, serviceId: string): Promise<any> => {
   const query = `
     {
       reviews(where: { service: "${serviceId}" }, orderBy: id, orderDirection: desc) {
@@ -22,5 +22,5 @@ export const getReviewsByService = (serviceId: string): Promise<any> => {
       }
     }
     `;
-  return processRequest(query);
+  return processRequest(chainId, query);
 };

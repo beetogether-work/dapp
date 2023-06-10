@@ -6,8 +6,11 @@ import { getHiveByAddress } from '../../queries/hive';
 import { useRouter } from 'next/router';
 import Loading from '../../components/Loading';
 import { getUserById } from '../../queries/users';
+import { useChainId } from '../../hooks/useChainId';
 
 function Invite() {
+  const chainId = useChainId();
+
   const router = useRouter();
   const query = router.query;
   const [hive, setHive] = useState();
@@ -17,13 +20,13 @@ function Invite() {
       if (!query.address) {
         return;
       }
-      const responseHive = await getHiveByAddress(query.address as string);
+      const responseHive = await getHiveByAddress(chainId, query.address as string);
       const currentHive = responseHive.data?.data?.hives[0];
       if (currentHive) {
-        const responseOwner = await getUserById(currentHive.owner);
+        const responseOwner = await getUserById(chainId, currentHive.owner);
         currentHive.ownerIdentity = responseOwner?.data?.data?.user;
 
-        const responseIdentity = await getUserById(currentHive.id);
+        const responseIdentity = await getUserById(chainId, currentHive.id);
         currentHive.identity = responseIdentity?.data?.data?.user;
         setHive(currentHive);
       }

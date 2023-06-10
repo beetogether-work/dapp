@@ -3,17 +3,20 @@ import { useContext, useEffect, useState } from 'react';
 import { useProvider, useSigner } from 'wagmi';
 import { toggleDelegation } from '../../contracts/toggleDelegation';
 import BeeTogetherContext from '../../context/beeTogether';
-import { config } from '../../config';
 import TalentLayerID from '../../contracts/ABI/TalentLayerID.json';
 import { getUserByAddress } from '../../queries/users';
+import { useChainId } from '../../hooks/useChainId';
+import { useConfig } from '../../hooks/useConfig';
 
 function DelegateModal() {
+  const config = useConfig();
+  const chainId = useChainId();
   const [show, setShow] = useState(false);
   const [hasPlatformAsDelegate, setHasPlatformAsDelegate] = useState(false);
   const { data: signer } = useSigner({
-    chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
+    chainId,
   });
-  const provider = useProvider({ chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string) });
+  const provider = useProvider({ chainId });
   const { user } = useContext(BeeTogetherContext);
   const delegateAddress = process.env.NEXT_PUBLIC_DELEGATE_ADDRESS as string;
 
@@ -22,7 +25,7 @@ function DelegateModal() {
   }
 
   const checkDelegateState = async () => {
-    const getUser = await getUserByAddress(user.address);
+    const getUser = await getUserByAddress(chainId, user.address);
     const delegateAddresses = getUser.data?.data?.users[0].delegates;
 
     if (delegateAddresses && delegateAddresses.indexOf(delegateAddress.toLowerCase()) != -1) {

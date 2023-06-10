@@ -1,16 +1,17 @@
 // pages/api/createService.ts
 import { NextApiRequest, NextApiResponse } from 'next';
 import { Contract } from 'ethers';
-import { config } from '../../../config';
+import { getConfig } from '../../../config';
 import TalentLayerID from '../../../contracts/ABI/TalentLayerID.json';
 import { getDelegationSigner, isPlatformAllowedToDelegate } from '../utils/delegate';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { userId, userAddress, cid } = req.body;
+  const { userId, userAddress, cid, chainId } = req.body;
+  const config = getConfig(chainId);
 
   // @dev : you can add here all the check you need to confirm the delagation for a user
 
-  await isPlatformAllowedToDelegate(userAddress, res);
+  await isPlatformAllowedToDelegate(chainId, userAddress, res);
 
   try {
     const signer = await getDelegationSigner(res);

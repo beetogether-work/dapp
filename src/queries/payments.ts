@@ -1,6 +1,10 @@
 import { processRequest } from '../utils/graphql';
 
-export const getPaymentsByService = (serviceId: string, paymentType?: string): Promise<any> => {
+export const getPaymentsByService = (
+  chainId: number,
+  serviceId: string,
+  paymentType?: string,
+): Promise<any> => {
   let condition = `where: {service: "${serviceId}"`;
   paymentType ? (condition += `, paymentType: "${paymentType}"`) : '';
   condition += '}, orderBy: id, orderDirection: asc';
@@ -21,10 +25,11 @@ export const getPaymentsByService = (serviceId: string, paymentType?: string): P
       }
     }
     `;
-  return processRequest(query);
+  return processRequest(chainId, query);
 };
 
 export const getPaymentsForUser = (
+  chainId: number,
   userId: string,
   numberPerPage?: number,
   offset?: number,
@@ -62,5 +67,5 @@ export const getPaymentsForUser = (
       }
     }
     `;
-  return processRequest(query);
+  return processRequest(chainId, query);
 };

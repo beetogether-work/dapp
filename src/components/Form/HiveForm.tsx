@@ -4,7 +4,6 @@ import { Field, Form, Formik } from 'formik';
 import { useContext } from 'react';
 import { useProvider, useSigner } from 'wagmi';
 import * as Yup from 'yup';
-import { config } from '../../config';
 import BeeTogetherContext from '../../context/beeTogether';
 import TalentLayerID from '../../contracts/ABI/TalentLayerID.json';
 import { postToIPFS } from '../../utils/ipfs';
@@ -14,6 +13,8 @@ import SubmitButton from './SubmitButton';
 import useUserById from '../../hooks/useUserById';
 import { SkillsInput } from './skills-input';
 import { delegateUpdateProfileData } from '../request';
+import { useChainId } from '../../hooks/useChainId';
+import { useConfig } from '../../hooks/useConfig';
 
 interface IFormValues {
   title?: string;
@@ -30,12 +31,15 @@ const validationSchema = Yup.object({
 });
 
 function HiveForm({ callback }: { callback?: () => void }) {
+  const config = useConfig();
+  const chainId = useChainId();
+
   const { open: openConnectModal } = useWeb3Modal();
   const { user } = useContext(BeeTogetherContext);
-  const provider = useProvider({ chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string) });
+  const provider = useProvider({ chainId });
   const userDescription = user?.id ? useUserById(user?.id)?.description : null;
   const { data: signer } = useSigner({
-    chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
+    chainId,
   });
   const { isActiveDelegate } = useContext(BeeTogetherContext);
 
@@ -73,7 +77,7 @@ function HiveForm({ callback }: { callback?: () => void }) {
 
         let tx;
         if (isActiveDelegate) {
-          const response = await delegateUpdateProfileData(user.id, user.address, cid);
+          const response = await delegateUpdateProfileData(chainId, user.id, user.address, cid);
           tx = response.data.transaction;
         } else {
           const contract = new ethers.Contract(

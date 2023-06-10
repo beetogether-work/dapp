@@ -3,10 +3,12 @@ import { XmtpContext } from '../context/XmtpContext';
 import { useSigner } from 'wagmi';
 import { Conversation, Stream } from '@xmtp/xmtp-js';
 import { buildChatMessage, CONVERSATION_PREFIX } from '../utils/messaging';
+import { useChainId } from '../../../hooks/useChainId';
 
 const useStreamConversations = () => {
+  const chainId = useChainId();
   const { data: signer } = useSigner({
-    chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
+    chainId,
   });
   const { providerState, setProviderState } = useContext(XmtpContext);
   const [stream, setStream] = useState<Stream<Conversation> | undefined>();

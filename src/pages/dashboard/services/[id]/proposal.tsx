@@ -34,18 +34,14 @@ function CreateOrEditProposal() {
           {existingProposal &&
           existingProposal.status === ProposalStatusEnum.Pending &&
           service.status === ServiceStatusEnum.Opened ? (
-            <>
-              Edit <span className='text-gray-100'>your proposal</span>
-            </>
+            <>Edit your proposal</>
           ) : service.status !== ServiceStatusEnum.Opened ? (
             <>
               This service is not <span className='text-gray-100'>open </span> for proposals any
               more
             </>
           ) : (
-            <>
-              Create <span className='text-gray-100'>a proposal</span>
-            </>
+            <>Create a proposal</>
           )}
         </p>
       </div>

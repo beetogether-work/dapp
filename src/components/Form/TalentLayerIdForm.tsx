@@ -5,7 +5,6 @@ import { useContext } from 'react';
 import { useRouter } from 'next/router';
 import { useProvider, useSigner } from 'wagmi';
 import * as Yup from 'yup';
-import { config } from '../../config';
 import BeeTogetherContext from '../../context/beeTogether';
 import TalentLayerID from '../../contracts/ABI/TalentLayerID.json';
 import { createTalentLayerIdTransactionToast, showErrorTransactionToast } from '../../utils/toast';
@@ -13,6 +12,8 @@ import HelpPopover from '../HelpPopover';
 import SubmitButton from './SubmitButton';
 import { HandlePrice } from './handle-price';
 import { delegateMintID } from '../request';
+import { useChainId } from '../../hooks/useChainId';
+import { useConfig } from '../../hooks/useConfig';
 
 interface IFormValues {
   handle: string;
@@ -23,13 +24,15 @@ const initialValues: IFormValues = {
 };
 
 function TalentLayerIdForm() {
+  const config = useConfig();
+  const chainId = useChainId();
   const { open: openConnectModal } = useWeb3Modal();
   const { user, account } = useContext(BeeTogetherContext);
   const { data: signer } = useSigner({
-    chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
+    chainId,
   });
 
-  const provider = useProvider({ chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string) });
+  const provider = useProvider({ chainId });
   const router = useRouter();
   let tx: ethers.providers.TransactionResponse;
 
@@ -60,6 +63,7 @@ function TalentLayerIdForm() {
 
         if (process.env.NEXT_PUBLIC_ACTIVE_DELEGATE_MINT === 'true') {
           const response = await delegateMintID(
+            chainId,
             submittedValues.handle,
             handlePrice,
             account.address,
@@ -71,6 +75,7 @@ function TalentLayerIdForm() {
           });
         }
         await createTalentLayerIdTransactionToast(
+          chainId,
           {
             pending: 'Minting your Talent Layer Id...',
             success: 'Congrats! Your Talent Layer Id is minted',

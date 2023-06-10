@@ -7,12 +7,15 @@ import Logo from '../../components/Layout/Logo';
 import Loading from '../../components/Loading';
 import LeftSide from '../../components/onboarding/LeftSide';
 import BeeTogetherContext from '../../context/beeTogether';
+import { useChainId } from '../../hooks/useChainId';
 
 function Success() {
+  const chainId = useChainId();
+
   const [signature, setSignature] = useState<string>();
   const { hive, refreshData } = useContext(BeeTogetherContext);
   const { data: signer } = useSigner({
-    chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
+    chainId,
   });
 
   const generateSignature = async () => {

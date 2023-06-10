@@ -1,6 +1,7 @@
 import { processRequest } from '../utils/graphql';
 
 export const getUsers = (
+  chainId: number,
   numberPerPage?: number,
   offset?: number,
   searchQuery?: string,
@@ -23,10 +24,10 @@ export const getUsers = (
       }
     }
     `;
-  return processRequest(query);
+  return processRequest(chainId, query);
 };
 
-export const getUserById = (id: string): Promise<any> => {
+export const getUserById = (chainId: number, id: string): Promise<any> => {
   const query = `
     {
       user(id: "${id}") {
@@ -56,10 +57,10 @@ export const getUserById = (id: string): Promise<any> => {
       }
     }
     `;
-  return processRequest(query);
+  return processRequest(chainId, query);
 };
 
-export const getUserByAddress = (address: string): Promise<any> => {
+export const getUserByAddress = (chainId: number, address: string): Promise<any> => {
   const query = `
     {
       users(where: {address: "${address.toLocaleLowerCase()}"}, first: 1) {
@@ -89,10 +90,10 @@ export const getUserByAddress = (address: string): Promise<any> => {
       }
     }
     `;
-  return processRequest(query);
+  return processRequest(chainId, query);
 };
 
-export const getUserTotalGains = (id: string): Promise<any> => {
+export const getUserTotalGains = (chainId: number, id: string): Promise<any> => {
   const query = `
     {
       user(id: "${id}") {
@@ -109,5 +110,5 @@ export const getUserTotalGains = (id: string): Promise<any> => {
       }
     }
     `;
-  return processRequest(query);
+  return processRequest(chainId, query);
 };

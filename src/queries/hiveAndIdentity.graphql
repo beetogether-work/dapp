@@ -5,6 +5,7 @@ query HiveAndIdentityQuery($hiveId: ID!) {
         cid 
         members
         owner
+        honeyFee
         description{
             id
             manifesto

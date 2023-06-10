@@ -7,6 +7,7 @@ export type IHive = {
   address: string;
   description?: IHiveDetails;
   members: string[];
+  honeyFee: number;
   owner: string;
   ownerIdentity?: IUser;
   identity: IUser;
@@ -197,8 +198,8 @@ export enum PaymentTypeEnum {
 
 export enum NetworkEnum {
   LOCAL = 1337,
-  GOERLI = 5,
   MUMBAI = 80001,
+  ZKSYNC = 280,
 }
 
 export type IToken = {

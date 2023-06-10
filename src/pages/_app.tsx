@@ -22,7 +22,7 @@ import SEO from '../../next-seo.config';
 
 import Script from 'next/script';
 
-const chains: Chain[] = [customChains.polygonMumbai];
+const chains: Chain[] = [customChains.polygonMumbai, customChains.zkSync];
 
 // Wagmi client
 const { provider } = configureChains(chains, [
