@@ -1,16 +1,16 @@
+import { ethers } from 'ethers';
 import Link from 'next/link';
+import { useContext, useState } from 'react';
+import { useSigner } from 'wagmi';
 import InviteMember from '../../components/InviteMember';
 import Logo from '../../components/Layout/Logo';
-import LeftSide from '../../components/onboarding/LeftSide';
-import { useContext, useEffect, useState } from 'react';
-import BeeTogetherContext from '../../context/beeTogether';
-import { ethers } from 'ethers';
-import { useSigner } from 'wagmi';
 import Loading from '../../components/Loading';
+import LeftSide from '../../components/onboarding/LeftSide';
+import BeeTogetherContext from '../../context/beeTogether';
 
 function Success() {
   const [signature, setSignature] = useState<string>();
-  const { hive } = useContext(BeeTogetherContext);
+  const { hive, refreshData } = useContext(BeeTogetherContext);
   const { data: signer } = useSigner({
     chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
   });
@@ -18,6 +18,9 @@ function Success() {
   const generateSignature = async () => {
     if (!hive || !signer || signature) {
       console.log('MISSING');
+      if (refreshData) {
+        await refreshData();
+      }
       return;
     }
 

@@ -23,7 +23,7 @@ function UserSubMenu() {
           className='relative mx-auto flex h-20 w-20 items-center justify-center rounded-full'
           role='none'>
           <Image
-            className='max-w-full rounded-full object-cover shadow-sm dark:border-transparent'
+            className='max-w-full rounded-full object-cover shadow-sm'
             alt=''
             src={`/images/default-avatar-1.jpeg`}
             width={80}
