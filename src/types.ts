@@ -11,6 +11,7 @@ export type IHive = {
   owner: string;
   ownerIdentity?: IUser;
   identity: IUser;
+  paymasterAddress: string;
 };
 
 export type IHiveDetails = {

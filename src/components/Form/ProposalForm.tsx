@@ -5,7 +5,7 @@ import { useProvider, useSigner } from 'wagmi';
 import * as Yup from 'yup';
 import ServiceRegistry from '../../contracts/ABI/TalentLayerService.json';
 import HiveABI from '../../contracts/ABI/Hive.json';
-import { IHive, IProposal, IService, IUser } from '../../types';
+import { IHive, IProposal, IService, IUser, NetworkEnum } from '../../types';
 import { postToIPFS } from '../../utils/ipfs';
 import { createMultiStepsTransactionToast, showErrorTransactionToast } from '../../utils/toast';
 import { parseRateAmount } from '../../utils/web3';
@@ -21,6 +21,8 @@ import { QuestionMarkCircle } from 'heroicons-react';
 import Loading from '../Loading';
 import { useChainId } from '../../hooks/useChainId';
 import { useConfig } from '../../hooks/useConfig';
+import { utils, Contract, Web3Provider } from 'zksync-web3';
+import { getTxOverrides } from '../../utils/getTxOverrides';
 
 interface Share {
   to: string;
@@ -166,10 +168,15 @@ function ProposalForm({
 
         let tx;
         if (hive) {
+          // @ts-ignore
+          const zkSyncSigner = new Web3Provider(window.ethereum).getSigner();
           const hiveContract = new ethers.Contract(hive.address, HiveABI.abi, signer);
           const shares = values.shares.map(share => share.amount);
 
-          tx = await hiveContract.createProposalRequest(
+          console.log('Shares and members: ', { shares, members: hive.members });
+
+          // ZkSync
+          const createProposalRequestParams = [
             service.id,
             values.rateToken,
             parsedRateAmountString,
@@ -178,7 +185,20 @@ function ProposalForm({
             convertExpirationDateString,
             hive.members,
             shares,
+          ];
+
+          const overrides = await getTxOverrides(
+            chainId,
+            provider,
+            hiveContract,
+            'createProposalRequest',
+            createProposalRequestParams,
+            hive.paymasterAddress,
           );
+
+          console.log('Overrides: ', overrides);
+
+          tx = await hiveContract.createProposalRequest(...createProposalRequestParams, overrides);
         } else if (isActiveDelegate) {
           const response = await delegateCreateOrUpdateProposal(
             chainId,
@@ -220,6 +240,7 @@ function ProposalForm({
         }
 
         await createMultiStepsTransactionToast(
+          chainId,
           {
             pending: 'Creating your proposal...',
             success: 'Congrats! Your proposal has been added',
@@ -227,12 +248,13 @@ function ProposalForm({
           },
           provider,
           tx,
-          'proposal',
+          'proposalRequest',
           cid,
+          true,
         );
         setSubmitting(false);
         resetForm();
-        router.back();
+        router.push(`/dashboard`);
       } catch (error) {
         showErrorTransactionToast(error);
       }
@@ -337,7 +359,7 @@ function ProposalForm({
               </span>
             </label>
             <label className='block flex-1'>
-              <span className='text-gray-100'>Video URL (optionnal)</span>
+              <span className='text-gray-100'>Video URL (optional)</span>
               <Field
                 type='text'
                 id='videoUrl'

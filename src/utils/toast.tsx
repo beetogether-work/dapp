@@ -5,7 +5,6 @@ import { Transaction } from 'ethers';
 import { toast } from 'react-toastify';
 import MultiStepsTransactionToast from '../components/MultiStepsTransactionToast';
 import { graphIsSynced, graphUserIsSynced } from '../queries/global';
-import { useChainId } from '../hooks/useChainId';
 
 interface IMessages {
   pending: string;
@@ -14,14 +13,14 @@ interface IMessages {
 }
 
 export const createMultiStepsTransactionToast = async (
+  chainId: number,
   messages: IMessages,
   provider: Provider,
   tx: Transaction,
   entity: string,
   newUri?: string,
+  isBTGraph = false,
 ): Promise<number | undefined> => {
-  const chainId = useChainId();
-
   let currentStep = 1;
   const toastId = toast(
     <MultiStepsTransactionToast
@@ -47,7 +46,7 @@ export const createMultiStepsTransactionToast = async (
     });
 
     if (newUri) {
-      const entityId = await graphIsSynced(chainId, `${entity}s`, newUri);
+      const entityId = await graphIsSynced(chainId, `${entity}s`, newUri, isBTGraph);
       currentStep = 3;
       toast.update(toastId, {
         render: (
@@ -58,7 +57,7 @@ export const createMultiStepsTransactionToast = async (
         ),
       });
 
-      await graphIsSynced(chainId, `${entity}Descriptions`, newUri);
+      await graphIsSynced(chainId, `${entity}Descriptions`, newUri, isBTGraph);
       toast.update(toastId, {
         type: toast.TYPE.SUCCESS,
         render: messages.success,

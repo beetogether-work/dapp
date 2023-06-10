@@ -1,14 +1,15 @@
-import { processRequest } from '../utils/graphql';
+import { processBTRequest, processRequest } from '../utils/graphql';
 import { getUserByAddress } from './users';
 
 export const graphIsSynced = async (
   chainId: number,
   entity: string,
   cid: string,
+  isBTGraph = false,
 ): Promise<number> => {
   return new Promise<number>((resolve, reject) => {
     const interval = setInterval(async () => {
-      const response = await checkEntityByUri(chainId, entity, cid);
+      const response = await checkEntityByUri(chainId, entity, cid, isBTGraph);
       if (response?.data?.data?.[entity][0]) {
         clearInterval(interval);
         resolve(response?.data?.data?.[entity][0].id);
@@ -29,7 +30,12 @@ export const graphUserIsSynced = async (chainId: number, address: string): Promi
   });
 };
 
-export const checkEntityByUri = (chainId: number, entity: string, cid: string): Promise<any> => {
+export const checkEntityByUri = (
+  chainId: number,
+  entity: string,
+  cid: string,
+  isBTGraph: boolean,
+): Promise<any> => {
   let query;
   if (entity.includes('Description')) {
     query = `
@@ -46,7 +52,11 @@ export const checkEntityByUri = (chainId: number, entity: string, cid: string): 
           }
         } `;
   }
-  return processRequest(chainId, query);
+  if (isBTGraph) {
+    return processBTRequest(chainId, query);
+  } else {
+    return processRequest(chainId, query);
+  }
 };
 
 export const getAllowedTokenList = (chainId: number): Promise<any> => {

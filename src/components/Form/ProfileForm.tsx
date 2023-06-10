@@ -88,6 +88,7 @@ function ProfileForm({ callback }: { callback?: () => void }) {
         }
 
         await createMultiStepsTransactionToast(
+          chainId,
           {
             pending: 'Updating profile...',
             success: 'Congrats! Your profile has been updated',
