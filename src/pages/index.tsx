@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 function Home() {
   return (
-    <div className='text-black bg-white home'>
+    <div className='text-black bg-white'>
       {/*[if lte IE 9]>
         <p class="browserupgrade">
           You are using an <strong>outdated</strong> browser. Please
@@ -31,7 +31,7 @@ function Home() {
                 {/* Start Navbar */}
                 <nav className='navbar navbar-expand-lg'>
                   <WhiteLogo></WhiteLogo>
-                  {/* <button
+                  <button
                     className='navbar-toggler mobile-menu-btn'
                     type='button'
                     data-bs-toggle='collapse'
@@ -42,7 +42,7 @@ function Home() {
                     <span className='toggler-icon' />
                     <span className='toggler-icon' />
                     <span className='toggler-icon' />
-                  </button> */}
+                  </button>
                   <div
                     className='collapse navbar-collapse sub-menu-bar'
                     id='navbarSupportedContent'>
@@ -128,15 +128,15 @@ function Home() {
             <div className='col-lg-5 col-md-12 col-12'>
               <div className='hero-content'>
                 <h1 className='wow fadeInLeft' data-wow-delay='.4s'>
-                  Do-it-yourself is good, do it together is beeter!
+                  Do-it-yourself is good, do it together is BEEtter!
                 </h1>
                 <p className='wow fadeInLeft' data-wow-delay='.6s'>
                   BeeTogether is your all-in-one platform to launch and manage your own service DAO
                   or freelance collective in web 3
                 </p>
                 <div className='button wow fadeInLeft' data-wow-delay='.8s'>
-                  <a href='/onboarding' className='btn'>
-                    <i className='lni lni-apple' /> Lannch Your Hive
+                  <a href='javascript:void(0)' className='btn'>
+                    <i className='lni lni-apple' /> Launch Your Hive
                   </a>
                 </div>
               </div>
@@ -144,7 +144,7 @@ function Home() {
             <div className='col-lg-7 col-md-12 col-12'>
               <div className='hero-image wow fadeInRight' data-wow-delay='.4s'>
                 <Image
-                  src={'/images/phone.png'}
+                  src={'/images/phone.svg'}
                   width={180}
                   height={36}
                   alt='phone image'
@@ -174,6 +174,13 @@ function Home() {
                   storm as more people transition to freelance and DAO-based work. What about you?
                   Do you have the #HiveMindset?
                 </p>
+                <Image
+                          src={'/images/video.png'}
+                          width={600}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 mt-10 sm:ml-0'
+                />
               </div>
             </div>
           </div>
@@ -181,8 +188,14 @@ function Home() {
             <div className='col-lg-4 col-md-6 col-12'>
               {/* Start Single Feature */}
               <div className='single-feature wow fadeInUp' data-wow-delay='.2s'>
-                <i className='lni lni-cloud-upload' />
-                <h3>1. Find your hive!</h3>
+                <Image
+                          src={'/images/demo1.png'}
+                          width={600}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 mb-4 sm:ml-0'
+                />
+                <h3>Build your hive!</h3>
                 <p>
                   Bring together a team to find work together. Create your Hive and add your frens.
                 </p>
@@ -192,8 +205,14 @@ function Home() {
             <div className='col-lg-4 col-md-6 col-12'>
               {/* Start Single Feature */}
               <div className='single-feature wow fadeInUp' data-wow-delay='.4s'>
-                <i className='lni lni-lock' />
-                <h3>2. Search for work.</h3>
+                <Image
+                          src={'/images/demo2.png'}
+                          width={600}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 mb-4 sm:ml-0'
+                />
+                <h3>Search for work and make proposals.</h3>
                 <p>
                   Connect with the Talentlayer protocol to get results for job types by keyword.
                 </p>
@@ -202,20 +221,15 @@ function Home() {
             </div>
             <div className='col-lg-4 col-md-6 col-12'>
               {/* Start Single Feature */}
-              <div className='single-feature wow fadeInUp' data-wow-delay='.6s'>
-                <i className='lni lni-reload' />
-                <h3>3. Apply and get hired.</h3>
-                <p>
-                  Apply to and get hired for gigs. Configure automatic pay splits for team members.
-                </p>
-              </div>
-              {/* End Single Feature */}
-            </div>
-            <div className='col-lg-4 col-md-6 col-12'>
-              {/* Start Single Feature */}
               <div className='single-feature wow fadeInUp' data-wow-delay='.2s'>
-                <i className='lni lni-shield' />
-                <h3>4. Complete work and get reviews!</h3>
+              <Image
+                          src={'/images/demosoon.png'}
+                          width={600}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 mb-4 sm:ml-0'
+                />
+                <h3>Complete work and get reviews!</h3>
                 <p>Grow your Hive’s reputation and your own at the same time.</p>
               </div>
               {/* End Single Feature */}
@@ -223,8 +237,283 @@ function Home() {
             <div className='col-lg-4 col-md-6 col-12'>
               {/* Start Single Feature */}
               <div className='single-feature wow fadeInUp' data-wow-delay='.4s'>
-                <i className='lni lni-cog' />
-                <h3>5. Manage your Hive treasury with voting!</h3>
+              <Image
+                          src={'/images/demosoon.png'}
+                          width={600}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 mb-4 sm:ml-0'
+                />
+                <h3>Manage your Hive treasury with voting!</h3>
+                <p>
+                  Cover admin costs for everyone in the collective, pay for joint marketing, and
+                  more.
+                </p>
+              </div>
+              {/* End Single Feature */}
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Start Pricing Table Area */}
+      <section id='pricing' className='pricing-table section'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-12'>
+              <div className='section-title'>
+                <h3 className='wow zoomIn' data-wow-delay='.2s'>
+                  Features
+                </h3>
+                <h2 className='wow fadeInUp' data-wow-delay='.4s'>
+                  Make Your Hive Buzz With Custom Features!
+                </h2>
+                <p className='wow fadeInUp' data-wow-delay='.6s'>
+                  BeeTogether has all you need to run a successful hive.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col-lg-3 col-md-6 col-12'>
+              <div className="row">
+              <div className="col-lg-3 col-md-6 col-12">
+                  {/* Single Table */}
+                  <div className="single-table wow fadeInUp" data-wow-delay=".8s">
+                    {/* Table Head */}
+                    <div className="table-head">
+                    <Image
+                          src={'/images/tl.png'}
+                          width={180}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 mb-4 sm:ml-0'
+                        />
+                      <h4 className="title">Find jobs via the open protocol for work!</h4>
+                      <p>⭐ Search for job opportunities for your Hive by keyword</p>
+                      <p>⭐ Apply for work and submit proposals</p>
+                      <p>⭐ Get paid securley with escrow</p>
+                      <p>💙 Built with TalentLayer Protocol</p>
+                    </div>
+                    {/* End Table Head */}
+                  </div>
+                  {/* End Single Table*/}
+                </div>
+                <div className="col-lg-3 col-md-6 col-12">
+                  {/* Single Table */}
+                  <div className="single-table wow fadeInUp" data-wow-delay=".8s">
+                    {/* Table Head */}
+                    <div className="table-head">
+                    <Image
+                          src={'/images/rep.png'}
+                          width={180}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 mb-4 sm:ml-0'
+                        />
+                      <h4 className="title">Grow your Hive's reputation (and yours too!)</h4>
+                      <p>⭐ Get reviews for your hive after doing work for clients</p>
+                      <p>⭐ Your Hives are displayed on your TalentLayer work reputation profile</p>
+                      <p>💙 Built with TalentLayer Protocol</p>
+                    </div>
+                    {/* End Table Head */}
+                  </div>
+                  {/* End Single Table*/}
+                </div>
+                <div className="col-lg-3 col-md-6 col-12">
+                  {/* Single Table */}
+                  <div className="single-table wow fadeInUp" data-wow-delay=".2s">
+                    {/* Table Head */}
+                    <div className="table-head">
+                        <Image
+                          src={'/images/honey.png'}
+                          width={180}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 mb-4 sm:ml-0'
+                        />
+                      <h4 className="title">HoneyPot</h4>
+                      <p><strong>A shared funding pool for your Hive</strong></p>
+                      <p>⭐ Configure a percentage of your earnings to go to a Hive HoneyPot</p>
+                      <p>⭐ Use the pot to pay for team expenses</p>
+                      <p>💙 Built with ERC-4337</p>
+                    </div>
+                    {/* End Table Head */}
+                  </div>
+                  {/* End Single Table*/}
+                </div>
+                <div className="col-lg-3 col-md-6 col-12">
+                  {/* Single Table */}
+                  <div className="single-table wow fadeInUp" data-wow-delay=".4s">
+                    {/* Table Head */}
+                    <div className="table-head">
+                    <Image
+                          src={'/images/stick.png'}
+                          width={180}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 mb-4 sm:ml-0'
+                        />
+                      <h4 className="title">Goodbye Gas Fees!</h4>
+                      <p><strong>Cover gas fees for your members</strong></p>
+                      <p>⭐ Use your Hive HoneyPot to cover everyone's fees</p>
+                      <p>💙 Built with ERC-4337 paymasters</p>
+                    </div>
+                    {/* End Table Head */}
+                  </div>
+                  {/* End Single Table*/}
+                </div>
+                <div className="col-lg-3 col-md-6 col-12">
+                  {/* Single Table */}
+                  <div className="single-table wow fadeInUp" data-wow-delay=".6s">
+                    {/* Table Head */}
+                    <div className="table-head">
+                    <Image
+                          src={'/images/vote.png'}
+                          width={180}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 mb-4 sm:ml-0'
+                        />
+                      <h4 className="title">Governance</h4>
+                      <p><strong>Make decisions as a Hive</strong></p>
+                      <p>⭐ Vote on what jobs to submit proposals for</p>
+                      <p>⭐ Vote on how to allocate funds from your HoneyPot</p>
+                    </div>
+                    {/* End Table Head */}
+                  </div>
+                  {/* End Single Table*/}
+                </div>
+                <div className="col-lg-3 col-md-6 col-12">
+                  {/* Single Table */}
+                  <div className="single-table wow fadeInUp" data-wow-delay=".8s">
+                    {/* Table Head */}
+                    <div className="table-head">
+                    <Image
+                          src={'/images/rpc.png'}
+                          width={180}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 mb-4 sm:ml-0'
+                        />
+                      <h4 className="title">Access Your Data When You Need!</h4>
+                      <p>⭐ Thanks to Gateway RPC, ensure your Hive always has access to your on-chain data!</p>
+                      <p>💙 Built with Gateway RPC</p>
+                    </div>
+                    {/* End Table Head */}
+                  </div>
+                  {/* End Single Table*/}
+                </div>
+                <div className="col-lg-3 col-md-6 col-12">
+                  {/* Single Table */}
+                  <div className="single-table wow fadeInUp" data-wow-delay=".2s">
+                    {/* Table Head */}
+                    <div className="table-head">
+                        <Image
+                          src={'/images/robeet.png'}
+                          width={180}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 sm:ml-0'
+                        />
+                      <h4 className="title">RoBEEt AI Assistant</h4>
+                      <p><strong>The AI assistant that helps your Hive work better!</strong></p>
+                      <p>⭐ Write better proposals for gigs with auto-generated proposals</p>
+                      <p>⭐ Get custom generated PFP logos for your Hive, based on your name</p>
+                      <p>💙 Built with Leap AI and GPT</p>
+                    </div>
+                    {/* End Table Hea4337d */}
+                  </div>
+                  {/* End Single Table*/}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/*/ End Pricing Table Area */}
+      {/* Start Call To Action Area */}
+            {/* Start Features Area */}
+      <section id='features' className='features section'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-12'>
+              <div className='section-title'>
+                <h3 className='wow zoomIn' data-wow-delay='.2s'>
+                  Start Your Hive
+                </h3>
+                <h2 className='wow fadeInUp' data-wow-delay='.4s'>
+                  The Hive Mindset
+                </h2>
+                <p className='wow fadeInUp' data-wow-delay='.6s'>
+                  Hives are groups of independent workers that come together to get hired, make
+                  money, and grow their reputations together! This work style is taking the world by
+                  storm as more people transition to freelance and DAO-based work. What about you?
+                  Do you have the #HiveMindset?
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col-lg-4 col-md-6 col-12'>
+              {/* Start Single Feature */}
+              <div className='single-feature wow fadeInUp' data-wow-delay='.2s'>
+                <Image
+                          src={'/images/demo1.png'}
+                          width={600}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 mb-4 sm:ml-0'
+                />
+                <h3>Build your hive!</h3>
+                <p>
+                  Bring together a team to find work together. Create your Hive and add your frens.
+                </p>
+              </div>
+              {/* End Single Feature */}
+            </div>
+            <div className='col-lg-4 col-md-6 col-12'>
+              {/* Start Single Feature */}
+              <div className='single-feature wow fadeInUp' data-wow-delay='.4s'>
+                <Image
+                          src={'/images/demo2.png'}
+                          width={600}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 mb-4 sm:ml-0'
+                />
+                <h3>Search for work and make proposals.</h3>
+                <p>
+                  Connect with the Talentlayer protocol to get results for job types by keyword.
+                </p>
+              </div>
+              {/* End Single Feature */}
+            </div>
+            <div className='col-lg-4 col-md-6 col-12'>
+              {/* Start Single Feature */}
+              <div className='single-feature wow fadeInUp' data-wow-delay='.2s'>
+              <Image
+                          src={'/images/demosoon.png'}
+                          width={600}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 mb-4 sm:ml-0'
+                />
+                <h3>Complete work and get reviews!</h3>
+                <p>Grow your Hive’s reputation and your own at the same time.</p>
+              </div>
+              {/* End Single Feature */}
+            </div>
+            <div className='col-lg-4 col-md-6 col-12'>
+              {/* Start Single Feature */}
+              <div className='single-feature wow fadeInUp' data-wow-delay='.4s'>
+              <Image
+                          src={'/images/demosoon.png'}
+                          width={600}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 mb-4 sm:ml-0'
+                />
+                <h3>Manage your Hive treasury with voting!</h3>
                 <p>
                   Cover admin costs for everyone in the collective, pay for joint marketing, and
                   more.
@@ -283,259 +572,63 @@ function Home() {
         </div>
       </section>
       {/* End Achievement Area */}
-      {/* Start Pricing Table Area */}
-      <section id='pricing' className='pricing-table section'>
+            {/* Start Features Area */}
+            <section id='features' className='features section'>
         <div className='container'>
           <div className='row'>
             <div className='col-12'>
               <div className='section-title'>
                 <h3 className='wow zoomIn' data-wow-delay='.2s'>
-                  Features
+                  Our Stack
                 </h3>
                 <h2 className='wow fadeInUp' data-wow-delay='.4s'>
-                  Make Your Hive Buzz With Custom Features!
+                  Built With The BEEst
                 </h2>
-                <p className='wow fadeInUp' data-wow-delay='.6s'>
-                  BeeTogether has all you need to run a successful hive.
+                <p>
+                  Thank you to all of our partners for helping us to make the Hive experience come to live!
                 </p>
               </div>
             </div>
           </div>
           <div className='row'>
-            <div className='col-lg-3 col-md-6 col-12'>
-              {/* Single Table */}
-              <div className='single-table wow fadeInUp' data-wow-delay='.2s'>
-                {/* Table Head */}
-                <div className='table-head'>
-                  <h4 className='title'>BeeScribe</h4>
-                  <p>All the basics for starting a new business</p>
-                  <div className='price'>
-                    <Image
-                      src={'/images/logo-placeholder.png'}
-                      width={180}
-                      height={36}
-                      alt='phone image'
-                      className='-ml-2 sm:ml-0'
-                    />
-                  </div>
-                  <div className='button'>
-                    <a href='javascript:void(0)' className='btn'>
-                      Learn More
-                    </a>
-                  </div>
-                </div>
-                {/* End Table Head */}
+            
+            <div className='col-lg-4 col-md-6 col-12'>
+              {/* Start Single Feature */}
+              <div className='single-feature wow fadeInUp' data-wow-delay='.4s'>
+              <Image
+                          src={'/images/tech.png'}
+                          width={600}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 mb-4 sm:ml-0'
+                />
+                <h3>Hives on a Strong Foundation</h3>
+                <p>
+                  You can trust that your Hive is in good hands thanks to our best-in-class decentralized tech stack!
+                </p>
               </div>
-              {/* End Single Table*/}
+              {/* End Single Feature */}
             </div>
-            <div className='col-lg-3 col-md-6 col-12'>
-              {/* Single Table */}
-              <div className='single-table wow fadeInUp' data-wow-delay='.4s'>
-                {/* Table Head */}
-                <div className='table-head'>
-                  <h4 className='title'>Account Abstraction</h4>
-                  <p>All the basics for starting a new business</p>
-                  <div className='price'>
-                    <Image
-                      src={'/images/logo-placeholder.png'}
-                      width={180}
-                      height={36}
-                      alt='phone image'
-                      className='-ml-2 sm:ml-0'
-                    />
-                  </div>
-                  <div className='button'>
-                    <a href='javascript:void(0)' className='btn'>
-                      Learn More
-                    </a>
-                  </div>
-                </div>
-                {/* End Table Head */}
+            <div className='col-lg-4 col-md-6 col-12'>
+              {/* Start Single Feature */}
+              <div className='single-feature wow fadeInUp' data-wow-delay='.2s'>
+              <Image
+                          src={'/images/chains.png'}
+                          width={600}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 mb-4 sm:ml-0'
+                />
+                <h3>A Multi-Chain Future</h3>
+                <p>For Hives that work across many chain ecosystems, we've got you covered! We support all your favorite L1s and L2s.</p>
               </div>
-              {/* End Single Table*/}
+              {/* End Single Feature */}
             </div>
-            <div className='col-lg-3 col-md-6 col-12'>
-              {/* Single Table */}
-              <div className='single-table wow fadeInUp' data-wow-delay='.6s'>
-                {/* Table Head */}
-                <div className='table-head'>
-                  <h4 className='title'>Governance</h4>
-                  <p>All the basics for starting a new business</p>
-                  <div className='price'>
-                    <Image
-                      src={'/images/logo-placeholder.png'}
-                      width={180}
-                      height={36}
-                      alt='phone image'
-                      className='-ml-2 sm:ml-0'
-                    />
-                  </div>
-                  <div className='button'>
-                    <a href='javascript:void(0)' className='btn'>
-                      Learn More
-                    </a>
-                  </div>
-                </div>
-                {/* End Table Head */}
-              </div>
-              {/* End Single Table*/}
-            </div>
-            <div className='col-lg-3 col-md-6 col-12'>
-              {/* Single Table */}
-              <div className='single-table wow fadeInUp' data-wow-delay='.8s'>
-                {/* Table Head */}
-                <div className='table-head'>
-                  <h4 className='title'>Gateway RPC</h4>
-                  <p>A more reliable way to interact with blockchain tech.</p>
-                  <div className='price'>
-                    <Image
-                      src={'/images/logo-placeholder.png'}
-                      width={180}
-                      height={36}
-                      alt='phone image'
-                      className='-ml-2 sm:ml-0'
-                    />
-                  </div>
-                  <div className='button'>
-                    <a href='javascript:void(0)' className='btn'>
-                      Learn More
-                    </a>
-                  </div>
-                </div>
-                {/* End Table Head */}
-              </div>
-              <div className="row">
-                <div className="col-lg-3 col-md-6 col-12">
-                  {/* Single Table */}
-                  <div className="single-table wow fadeInUp" data-wow-delay=".2s">
-                    {/* Table Head */}
-                    <div className="table-head">
-                      <h4 className="title">RoBEEt</h4>
-                      <p>An AI assistant that helps your Hive write better proposals for gigs, makes custom pfps for you Leap for images GPT.</p>
-                      <ul>
-                        <li>Thing</li>
-                      </ul>
-                      <div className="price">
-                        <Image
-                          src={'/images/logo-placeholder.png'}
-                          width={180}
-                          height={36}
-                          alt='phone image'
-                          className='-ml-2 sm:ml-0'
-                        />
-                      </div>
-                      <div className="button">
-                        <a href="javascript:void(0)" className="btn">Learn More</a>
-                      </div>
-                    </div>
-                    {/* End Table Hea4337d */}
-                  </div>
-                  {/* End Single Table*/}
-                </div>
-                <div className="col-lg-3 col-md-6 col-12">
-                  {/* Single Table */}
-                  <div className="single-table wow fadeInUp" data-wow-delay=".2s">
-                    {/* Table Head */}
-                    <div className="table-head">
-                      <h4 className="title">HoneyPot</h4>
-                      <p>Configure a percentage of your earnings to go to a Hive HoneyPot 🍯 Use the pot to pay for team expenses!</p>
-                      <div className="price">
-                        <Image
-                          src={'/images/logo-placeholder.png'}
-                          width={180}
-                          height={36}
-                          alt='phone image'
-                          className='-ml-2 sm:ml-0'
-                        />
-                      </div>
-                      <div className="button">
-                        <a href="javascript:void(0)" className="btn">Learn More</a>
-                      </div>
-                    </div>
-                    {/* End Table Head */}
-                  </div>
-                  {/* End Single Table*/}
-                </div>
-                <div className="col-lg-3 col-md-6 col-12">
-                  {/* Single Table */}
-                  <div className="single-table wow fadeInUp" data-wow-delay=".4s">
-                    {/* Table Head */}
-                    <div className="table-head">
-                      <h4 className="title">Goodbye Gas Fees!</h4>
-                      <p>Gas fees are covered for Hive members from the Honey Fee. This is possible thanks to ERC4337 paymasters.</p>
-                      <div className="price">
-                        <Image
-                          src={'/images/logo-placeholder.png'}
-                          width={180}
-                          height={36}
-                          alt='phone image'
-                          className='-ml-2 sm:ml-0'
-                        />
-                      </div>
-                      <div className="button">
-                        <a href="javascript:void(0)" className="btn">Learn More</a>
-                      </div>
-                    </div>
-                    {/* End Table Head */}
-                  </div>
-                  {/* End Single Table*/}
-                </div>
-                <div className="col-lg-3 col-md-6 col-12">
-                  {/* Single Table */}
-                  <div className="single-table wow fadeInUp" data-wow-delay=".6s">
-                    {/* Table Head */}
-                    <div className="table-head">
-                      <h4 className="title">Governance</h4>
-                      <p>Vote on how to allocate funds in your HoneyPot, approve pending proposals your Hive members have made, and more!</p>
-                      <div className="price">
-                        <Image
-                          src={'/images/logo-placeholder.png'}
-                          width={180}
-                          height={36}
-                          alt='phone image'
-                          className='-ml-2 sm:ml-0'
-                        />
-                      </div>
-                      <div className="button">
-                        <a href="javascript:void(0)" className="btn">Learn More</a>
-                      </div>
-                    </div>
-                    {/* End Table Head */}
-                  </div>
-                  {/* End Single Table*/}
-                </div>
-                <div className="col-lg-3 col-md-6 col-12">
-                  {/* Single Table */}
-                  <div className="single-table wow fadeInUp" data-wow-delay=".8s">
-                    {/* Table Head */}
-                    <div className="table-head">
-                      <h4 className="title">Your Gateway to Better Uptime!</h4>
-                      <p>Thanks to Gateway RPC, ensure your Hive always has access to your on-chain data!</p>
-                      <div className="price">
-                        <Image
-                          src={'/images/logo-placeholder.png'}
-                          width={180}
-                          height={36}
-                          alt='phone image'
-                          className='-ml-2 sm:ml-0'
-                        />
-                      </div>
-                      <div className="button">
-                        <a href="javascript:void(0)" className="btn">Learn More</a>
-                      </div>
-                    </div>
-                    {/* End Table Head */}
-                  </div>
-                  {/* End Single Table*/}
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </section>
-      {/*/ End Pricing Table Area */}
-      {/* Start Call To Action Area */}
-
+      {/* End Features Area */}
       {/* End Call To Action Area */}
       {/* Start Footer Area */}
       <footer className='footer'>
@@ -543,18 +636,6 @@ function Home() {
         <div className='footer-top'>
           <div className='container'>
             <div className='row'>
-              <div className='col-lg-4 col-md-4 col-12'>
-                {/* Single Widget */}
-                <div className='single-footer f-about'>
-                  <div className='logo'>
-                    <a href='index.html'>
-                      <Logo></Logo>
-                    </a>
-                  </div>
-                  <p>Do it yourself is good, do it together is beetter!</p>
-                </div>
-                {/* End Single Widget */}
-              </div>
               <div className='col-lg-8 col-md-8 col-12'>
                 <div className='row'>
                   <div className='col-lg-3 col-md-6 col-12'>
@@ -584,11 +665,7 @@ function Home() {
         {/*/ End Footer Top */}
       </footer>
       {/*/ End Footer Area */}
-      {/* ========================= scroll-top ========================= */}
-      <a href='#' className='scroll-top'>
-        <i className='lni lni-chevron-up' />
-      </a>
-      {/* ========================= JS here ========================= */}
+      
     </div>
   );
 }
