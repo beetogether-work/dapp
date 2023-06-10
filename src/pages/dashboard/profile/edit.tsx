@@ -4,9 +4,9 @@ import Steps from '../../../components/Steps';
 import BeeTogetherContext from '../../../context/beeTogether';
 
 function EditProfile() {
-  const { account, user } = useContext(BeeTogetherContext);
+  const { account, user, hive } = useContext(BeeTogetherContext);
 
-  if (!account?.isConnected) {
+  if (!account?.isConnected || !hive) {
     return <Steps />;
   }
 

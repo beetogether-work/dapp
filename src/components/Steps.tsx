@@ -2,18 +2,12 @@ import Image from 'next/image';
 import { useContext } from 'react';
 import ConnectBlock from './ConnectBlock';
 import BeeTogetherContext from '../context/beeTogether';
+import Link from 'next/link';
 
 function Steps() {
-  const { account } = useContext(BeeTogetherContext);
-
-  if (account?.isConnected) {
-    return null;
-  }
+  const { account, hive } = useContext(BeeTogetherContext);
 
   console.log('STEPS');
-  const createTeam = () => {
-    console.log('createTeam');
-  };
 
   return (
     <div className='max-w-7xl mx-auto text-gray-200 sm:px-4 lg:px-0'>
@@ -39,14 +33,13 @@ function Steps() {
             <ConnectBlock />
           </div>
         )}
-        {account?.isConnected && (
+        {!hive && (
           <>
-            <button
-              type='button'
-              className='hover:bg-endnight hover:text-white bg-redpraha text-midnight px-5 py-2 rounded-xl w-full mt-6'
-              onClick={createTeam}>
-              Create your team
-            </button>
+            <Link
+              className='grow px-5 py-2 rounded-xl bg-white text-redpraha hover:bg-midnight  mt-6'
+              href='/onboarding'>
+              Create your hive
+            </Link>
           </>
         )}
       </div>

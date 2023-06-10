@@ -15,7 +15,7 @@ import MessageComposer from './MessageComposer';
 import MessageList from './MessageList';
 
 function Dashboard() {
-  const { account } = useContext(BeeTogetherContext);
+  const { account, hive } = useContext(BeeTogetherContext);
   const { data: signer } = useSigner({
     chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
   });
@@ -106,7 +106,7 @@ function Dashboard() {
     }
   };
 
-  if (!account?.isConnected) {
+  if (!account?.isConnected || !hive) {
     return <Steps />;
   }
 

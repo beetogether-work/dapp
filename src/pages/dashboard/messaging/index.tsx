@@ -10,7 +10,7 @@ import { XmtpContext } from '../../../modules/Messaging/context/XmtpContext';
 import useStreamConversations from '../../../modules/Messaging/hooks/useStreamConversations';
 
 function MessagingIndex() {
-  const { account } = useContext(BeeTogetherContext);
+  const { account, hive } = useContext(BeeTogetherContext);
   const { data: signer } = useSigner({
     chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
   });
@@ -25,7 +25,7 @@ function MessagingIndex() {
     }
   };
 
-  if (!account?.isConnected) {
+  if (!account?.isConnected || !hive) {
     return <Steps />;
   }
 

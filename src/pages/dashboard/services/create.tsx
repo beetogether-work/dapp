@@ -6,10 +6,10 @@ import ConnectButton from '../../../modules/Messaging/components/ConnectButton';
 import MessagingContext from '../../../modules/Messaging/context/messging';
 
 function CreateService() {
-  const { account, user } = useContext(BeeTogetherContext);
+  const { account, user, hive } = useContext(BeeTogetherContext);
   const { userExists } = useContext(MessagingContext);
 
-  if (!account?.isConnected) {
+  if (!account?.isConnected || !hive) {
     return <Steps />;
   }
 

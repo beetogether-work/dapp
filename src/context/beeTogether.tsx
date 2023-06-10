@@ -24,7 +24,7 @@ const BeeTogetherProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (!account.address || !account.isConnected) {
+      if (!account.address || !account.isConnected || hive) {
         return;
       }
 
@@ -71,7 +71,7 @@ const BeeTogetherProvider = ({ children }: { children: ReactNode }) => {
     fetchData();
     setInterval(() => {
       fetchData();
-    }, 10000);
+    }, 4000);
   }, [account.address, account.isConnected, isActiveDelegate, hive]);
 
   const value = useMemo(() => {
