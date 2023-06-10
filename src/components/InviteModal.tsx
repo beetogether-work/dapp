@@ -2,10 +2,33 @@ import { useContext, useState } from 'react';
 import InviteMember from './InviteMember';
 import { PlusIcon } from '@heroicons/react/24/outline';
 import BeeTogetherContext from '../context/beeTogether';
+import { useSigner } from 'wagmi';
+import { ethers } from 'ethers';
 
 function InviteModal() {
+  const [signature, setSignature] = useState<string>();
   const [show, setShow] = useState(false);
   const { hive } = useContext(BeeTogetherContext);
+  const { data: signer } = useSigner({
+    chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
+  });
+
+  const generateSignature = async () => {
+    if (!hive || !signer || signature) {
+      console.log('MISSING');
+      return;
+    }
+
+    const messageHash = ethers.utils.solidityKeccak256(
+      ['string', 'address'],
+      ['join', hive.address],
+    );
+
+    // Carol the owner of the platform signed the message with her private key
+    const signedMessage = await signer.signMessage(ethers.utils.arrayify(messageHash));
+
+    setSignature(signedMessage);
+  };
 
   if (!hive) {
     return null;
@@ -47,7 +70,17 @@ function InviteModal() {
             </div>
             <div className='flex flex-col justify-between items-center '>
               <h3 className='text-xl font-semibold text-center py-6'>Invite new member</h3>
-              <InviteMember hiveAddress={hive.address} signature='' />
+              {signature ? (
+                <>
+                  <InviteMember hiveAddress={hive.address} signature={signature} />
+                </>
+              ) : (
+                <button
+                  onClick={generateSignature}
+                  className='block mt-4 grow px-5 py-3 rounded-xl border-redpraha bg-endnight text-white'>
+                  Generate invitation link
+                </button>
+              )}
             </div>
           </div>
         </div>

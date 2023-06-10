@@ -1,6 +1,7 @@
 {
   "short_name": "BeeTogether",
   "name": "BeeTogether",
+  "description": "Freelance collective platform",
   "icons": [
     {
       "src": "favicon.ico",
