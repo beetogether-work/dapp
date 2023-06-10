@@ -231,8 +231,35 @@ function Home() {
                   <div className="single-table wow fadeInUp" data-wow-delay=".2s">
                     {/* Table Head */}
                     <div className="table-head">
-                      <h4 className="title">BeeScribe</h4>
-                      <p>All the basics for starting a new business</p>
+                      <h4 className="title">RoBEEt</h4>
+                      <p>An AI assistant that helps your Hive write better proposals for gigs, makes custom pfps for you Leap for images GPT.</p>
+                      <ul>
+                        <li>Thing</li>
+                      </ul>
+                      <div className="price">
+                        <Image
+                          src={'/images/logo-placeholder.png'}
+                          width={180}
+                          height={36}
+                          alt='phone image'
+                          className='-ml-2 sm:ml-0'
+                        />
+                      </div>
+                      <div className="button">
+                        <a href="javascript:void(0)" className="btn">Learn More</a>
+                      </div>
+                    </div>
+                    {/* End Table Hea4337d */}
+                  </div>
+                  {/* End Single Table*/}
+                </div>
+                <div className="col-lg-3 col-md-6 col-12">
+                  {/* Single Table */}
+                  <div className="single-table wow fadeInUp" data-wow-delay=".2s">
+                    {/* Table Head */}
+                    <div className="table-head">
+                      <h4 className="title">HoneyPot</h4>
+                      <p>Configure a percentage of your earnings to go to a Hive HoneyPot 🍯 Use the pot to pay for team expenses!</p>
                       <div className="price">
                         <Image
                           src={'/images/logo-placeholder.png'}
@@ -255,8 +282,8 @@ function Home() {
                   <div className="single-table wow fadeInUp" data-wow-delay=".4s">
                     {/* Table Head */}
                     <div className="table-head">
-                      <h4 className="title">Account Abstraction</h4>
-                      <p>All the basics for starting a new business</p>
+                      <h4 className="title">Goodbye Gas Fees!</h4>
+                      <p>Gas fees are covered for Hive members from the Honey Fee. This is possible thanks to ERC4337 paymasters.</p>
                       <div className="price">
                         <Image
                           src={'/images/logo-placeholder.png'}
@@ -280,7 +307,7 @@ function Home() {
                     {/* Table Head */}
                     <div className="table-head">
                       <h4 className="title">Governance</h4>
-                      <p>All the basics for starting a new business</p>
+                      <p>Vote on how to allocate funds in your HoneyPot, approve pending proposals your Hive members have made, and more!</p>
                       <div className="price">
                         <Image
                           src={'/images/logo-placeholder.png'}
@@ -303,8 +330,8 @@ function Home() {
                   <div className="single-table wow fadeInUp" data-wow-delay=".8s">
                     {/* Table Head */}
                     <div className="table-head">
-                      <h4 className="title">Gateway RPC</h4>
-                      <p>A more reliable way to interact with blockchain tech.</p>
+                      <h4 className="title">Your Gateway to Better Uptime!</h4>
+                      <p>Thanks to Gateway RPC, ensure your Hive always has access to your on-chain data!</p>
                       <div className="price">
                         <Image
                           src={'/images/logo-placeholder.png'}
