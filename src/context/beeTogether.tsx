@@ -60,11 +60,13 @@ const BeeTogetherProvider = ({ children }: { children: ReactNode }) => {
             (process.env.NEXT_PUBLIC_DELEGATE_ADDRESS as string).toLowerCase(),
           ) !== -1,
       );
-      setLoading(false);
+
       return true;
     } catch (err: any) {
       // eslint-disable-next-line no-console
       console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
 
