@@ -48,7 +48,7 @@ function DelegateModal() {
     if (!signer || !provider || !user) {
       return null;
     }
-    await toggleDelegation(user.id, delegateAddress, provider, validateState, contract);
+    await toggleDelegation(chainId, user.id, delegateAddress, provider, validateState, contract);
 
     setShow(false);
   };

@@ -9,6 +9,7 @@ export const getHiveByMemberId = (chainId: number, id: string): Promise<any> => 
         members,
         honeyFee,
         owner,
+        paymasterAddress,
         description{
           id
           manifesto
@@ -30,6 +31,7 @@ export const getHiveByAddress = (chainId: number, address: string): Promise<any>
         members,
         honeyFee,
         owner,
+        paymasterAddress,
         description{
           id
           manifesto
@@ -56,7 +58,8 @@ export const getHiveById = (chainId: number, id: string): Promise<any> => {
           manifesto
           offeredServices
         }
-        address
+        address,
+        paymasterAddress,
       }
     }
     `;

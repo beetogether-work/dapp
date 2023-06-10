@@ -3,6 +3,7 @@ import { ethers } from 'ethers';
 import { createMultiStepsTransactionToast, showErrorTransactionToast } from '../utils/toast';
 
 export const toggleDelegation = async (
+  chainId: number,
   user: string,
   DelegateAddress: string,
   provider: Provider,
@@ -28,7 +29,7 @@ export const toggleDelegation = async (
       };
     }
 
-    await createMultiStepsTransactionToast(toastMessages, provider, tx, 'Delegation');
+    await createMultiStepsTransactionToast(chainId, toastMessages, provider, tx, 'Delegation');
   } catch (error) {
     showErrorTransactionToast(error);
   }

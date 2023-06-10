@@ -81,6 +81,7 @@ function ReviewForm({ serviceId }: { serviceId: string }) {
         }
 
         await createMultiStepsTransactionToast(
+          chainId,
           {
             pending: 'Creating your review...',
             success: 'Congrats! Your review has been posted',
