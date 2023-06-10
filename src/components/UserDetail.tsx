@@ -18,8 +18,8 @@ function UserDetail({ user }: { user: IUser }) {
   }
 
   return (
-    <div className='flex flex-col rounded-xl p-4 border border-redpraha'>
-      <div className='flex items-top justify-between w-full'>
+    <div className='rounded-xl p-4 border border-gray-700 text-white bg-endnight'>
+      <div className='w-full'>
         <div className='flex flex-col justify-start items-start gap-4'>
           <div className='flex items-center justify-start mb-4'>
             <Image
@@ -31,7 +31,7 @@ function UserDetail({ user }: { user: IUser }) {
             />
             <div className='flex flex-col'>
               <p className='text-gray-100 font-medium break-all'>{user?.handle}</p>
-              <p className='text-gray-900 text-xs'>{userDescription?.title}</p>
+              <p className='text-gray-400 text-xs'>{userDescription?.title}</p>
             </div>
             <div className=''>
               <PohModule address={user.address} />
@@ -40,38 +40,28 @@ function UserDetail({ user }: { user: IUser }) {
         </div>
         <Stars rating={Number(user.rating)} numReviews={user.userStats.numReceivedReviews} />
       </div>
-      <div className=' border-t border-gray-700 pt-4 w-full'>
+      <div className=' border-t border-gray-700 pt-2 w-full'>
         {userDescription?.name && (
-          <p className='text-sm text-gray-500 mt-4'>
+          <p className='text-sm text-gray-400 mt-4'>
             <strong>Name:</strong> {userDescription?.name}
           </p>
         )}
-        <p className='text-sm text-gray-500 mt-4'>
+        <p className='text-sm text-gray-400 mt-4'>
           <strong>Skills:</strong> {userDescription?.skills_raw}
         </p>
-        <p className='text-sm text-gray-500 mt-4'>
+        <p className='text-sm text-gray-400 mt-4'>
           <strong>About:</strong> {userDescription?.about}
         </p>
         {userDescription?.role && (
-          <p className='text-sm text-gray-500 mt-4'>
+          <p className='text-sm text-gray-400 mt-4'>
             <strong>Role:</strong> {userDescription?.role}
           </p>
         )}
       </div>
 
-      {currentUser?.id === user.id && (
+      {/* {currentUser?.id === user.id && (
         <div className=' border-t border-gray-700 pt-4 w-full mt-4'>
           <div className='flex flex-row gap-4 justify-end items-center'>
-            <Link
-              className='text-zinc-600 bg-zinc-50 hover:bg-zinc-500 hover:text-white px-3 py-2 rounded text-sm'
-              href={`/dashboard/profile/${user.id}`}>
-              View profile
-            </Link>
-            <Link
-              className='text-green-600 bg-green-50 hover:bg-redpraha hover:text-white px-5 py-2 rounded'
-              href={`/dashboard/profile/edit`}>
-              Edit profile
-            </Link>
             <Link
               className='text-zinc-600 bg-zinc-50 hover:bg-zinc-500 hover:text-white px-3 py-2 rounded text-sm'
               href={`/dashboard/profile/dashboard/incomes`}>
@@ -80,7 +70,7 @@ function UserDetail({ user }: { user: IUser }) {
             <DelegateModal />
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

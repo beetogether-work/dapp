@@ -62,22 +62,22 @@ function ServiceDetail({ service }: { service: IService }) {
 
             <div className=' border-t border-gray-700 pt-4 w-full'>
               {service.seller && (
-                <Link className='text-sm text-gray-500 mt-4' href={`/profile/${service.seller.id}`}>
+                <Link className='text-sm text-gray-400 mt-4' href={`/profile/${service.seller.id}`}>
                   Job handle by <span className='text-gray-100'>{service.seller.handle}</span>
                 </Link>
               )}
-              <div className='text-sm text-gray-500 mt-4'>
+              <div className='text-sm text-gray-400 mt-4'>
                 <strong>Employer rating:</strong>
                 <Stars
                   rating={Number(service.buyer.rating)}
                   numReviews={service.buyer.userStats.numReceivedReviews}
                 />
               </div>
-              <p className='text-sm text-gray-500 mt-4'>
+              <p className='text-sm text-gray-400 mt-4'>
                 <strong>About:</strong> {service.description?.about}
               </p>
               {service.description?.rateToken && service.description?.rateAmount && (
-                <p className='text-sm text-gray-500 mt-4'>
+                <p className='text-sm text-gray-400 mt-4'>
                   <strong>Budget:</strong>{' '}
                   {renderTokenAmountFromConfig(
                     service.description.rateToken,
@@ -85,7 +85,7 @@ function ServiceDetail({ service }: { service: IService }) {
                   )}
                 </p>
               )}
-              <p className='text-sm text-gray-500 mt-4'>
+              <p className='text-sm text-gray-400 mt-4'>
                 <strong>Keywords:</strong>{' '}
                 {service.description?.keywords_raw?.split(',').map((keyword, i) => (
                   <span

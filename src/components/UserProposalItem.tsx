@@ -44,14 +44,14 @@ function UserProposalItem({ proposal }: { proposal: IProposal }) {
           </div>
 
           <div className=' border-t border-gray-100 pt-4'>
-            <p className='text-sm text-gray-500 mt-4'>
+            <p className='text-sm text-gray-400 mt-4'>
               <strong>Proposal:</strong> created by {proposal.seller.handle} the{' '}
               {formatDate(Number(proposal.createdAt) * 1000)}
             </p>
-            <p className='text-sm text-gray-500 mt-4'>
+            <p className='text-sm text-gray-400 mt-4'>
               <strong>Message:</strong> {proposal.description?.title}
             </p>
-            <p className='text-sm text-gray-500 mt-4'>
+            <p className='text-sm text-gray-400 mt-4'>
               <strong>Expiration Date:</strong> {formatDate(Number(proposal.expirationDate) * 1000)}
             </p>
           </div>
@@ -67,7 +67,7 @@ function UserProposalItem({ proposal }: { proposal: IProposal }) {
           </Link>
           {isBuyer && proposal.status === ProposalStatusEnum.Pending && (
             <button className='text-green-600 bg-green-50 hover:bg-redpraha hover:text-white px-5 py-2 rounded'>
-              Validate proposal
+              Validate
             </button>
           )}
         </div>

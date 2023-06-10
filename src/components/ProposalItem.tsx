@@ -45,10 +45,10 @@ function ProposalItem({ proposal }: { proposal: IProposal }) {
           </div>
 
           <div className=' border-t border-gray-700 w-full'>
-            <p className='text-sm text-gray-500 mt-4'>
+            <p className='text-sm text-gray-400 mt-4'>
               <strong>Message:</strong> {proposal.description?.about}
             </p>
-            <p className='text-sm text-gray-500 mt-4'>
+            <p className='text-sm text-gray-400 mt-4'>
               <strong>Expiration Date:</strong> {formatDate(Number(proposal.expirationDate) * 1000)}
             </p>
             {proposal.description?.video_url && (

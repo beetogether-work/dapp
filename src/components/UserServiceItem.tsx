@@ -41,7 +41,7 @@ function UserServiceItem({ user, service }: { user: IUser; service: IService }) 
                 </span>
               ))}
             </div>
-            <p className='text-sm text-gray-500  line-clamp-1 mt-4'>
+            <p className='text-sm text-gray-400  line-clamp-1 mt-4'>
               <strong>About:</strong> {service.description?.about}
             </p>
           </div>
@@ -49,7 +49,7 @@ function UserServiceItem({ user, service }: { user: IUser; service: IService }) 
 
         <div className='flex flex-row gap-4 justify-between items-center border-t border-gray-700 pt-4'>
           {service.description?.rateToken && service.description?.rateAmount && (
-            <p className='text-gray-900 font-bold line-clamp-1 max-w-[100px]'>
+            <p className='text-gray-100 font-bold line-clamp-1 max-w-[100px]'>
               {renderTokenAmountFromConfig(
                 service.description.rateToken,
                 service.description.rateAmount,

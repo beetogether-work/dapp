@@ -76,7 +76,7 @@ function ValidateProposalModal({ proposal, account }: { proposal: IProposal; acc
         className='block text-green-600 bg-green-50 hover:bg-redpraha hover:text-white rounded-xl px-5 py-2.5 text-center'
         type='button'
         data-modal-toggle='defaultModal'>
-        Validate proposal
+        Validate
       </button>
 
       <div
@@ -229,14 +229,14 @@ function ValidateProposalModal({ proposal, account }: { proposal: IProposal; acc
                   onClick={() => onSubmit()}
                   type='button'
                   className='hover:text-green-600 hover:bg-green-50 bg-redpraha text-white rounded-xl px-5 py-2.5 text-center'>
-                  {isProposalUseEth ? 'Validate proposal' : 'Allow spending'}
+                  {isProposalUseEth ? 'Validate' : 'Allow spending'}
                 </button>
               ) : (
                 <button
                   disabled
                   type='button'
                   className='hover:text-red-600 hover:bg-red-50 bg-red-500 text-white rounded-xl px-5 py-2.5 text-center'>
-                  Validate proposal
+                  Validate
                 </button>
               )}
               <button

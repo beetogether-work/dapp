@@ -28,10 +28,10 @@ function ReviewItem({ review }: { review: IReview }) {
           </div>
 
           <div className=' border-t border-gray-700 w-full'>
-            <p className='text-sm text-gray-500 mt-4'>
+            <p className='text-sm text-gray-400 mt-4'>
               <strong>Rating:</strong> {review.rating}
             </p>
-            <p className='text-sm text-gray-500 mt-4'>
+            <p className='text-sm text-gray-400 mt-4'>
               <strong>Message:</strong> {review.description?.content}
             </p>
           </div>
