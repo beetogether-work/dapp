@@ -8,6 +8,7 @@ import Link from 'next/link';
 
 function Hive() {
   const { account, user, hive } = useContext(BeeTogetherContext);
+
   if (!account?.isConnected || !user || !hive) {
     return <Steps />;
   }

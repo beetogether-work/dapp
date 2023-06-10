@@ -31,39 +31,48 @@ const BeeTogetherProvider = ({ children }: { children: ReactNode }) => {
       try {
         console.log('FETCH DATA');
         const response = await getUserByAddress(account.address);
-        if (response?.data?.data?.users?.length > 0) {
-          const currentUser = response.data.data.users[0];
-          console.log('FETCH DATA', currentUser.handle);
-          const responseHive = await getHiveByMemberId(currentUser.id);
-          const currentHive: IHive = responseHive?.data?.data?.hives[0];
-          if (currentHive) {
-            const responseHiveTL = await getUserById(currentHive.id);
-            currentHive.identity = responseHiveTL.data.data.user;
-          }
 
-          console.log('FETCH DATA AFTER', {
-            currentUser,
-            responseHive,
-            currentHive,
-          });
-
-          setUser(currentUser);
-          setHive(currentHive);
-          setIsActiveDelegate(
-            process.env.NEXT_PUBLIC_ACTIVE_DELEGATE &&
-              response.data.data.users[0].delegates &&
-              response.data.data.users[0].delegates.indexOf(
-                (process.env.NEXT_PUBLIC_DELEGATE_ADDRESS as string).toLowerCase(),
-              ) !== -1,
-          );
+        if (response?.data?.data?.users?.length == 0) {
+          return false;
         }
+
+        const currentUser = response.data.data.users[0];
+        console.log('FETCH DATA', currentUser.handle);
+        const responseHive = await getHiveByMemberId(currentUser.id);
+        const currentHive: IHive = responseHive?.data?.data?.hives[0];
+        if (!currentHive) {
+          return false;
+        }
+
+        const responseHiveTL = await getUserById(currentHive.id);
+        currentHive.identity = responseHiveTL.data.data.user;
+
+        console.log('FETCH DATA AFTER', {
+          currentUser,
+          responseHive,
+          currentHive,
+        });
+
+        setUser(currentUser);
+        setHive(currentHive);
+        setIsActiveDelegate(
+          process.env.NEXT_PUBLIC_ACTIVE_DELEGATE &&
+            response.data.data.users[0].delegates &&
+            response.data.data.users[0].delegates.indexOf(
+              (process.env.NEXT_PUBLIC_DELEGATE_ADDRESS as string).toLowerCase(),
+            ) !== -1,
+        );
+        return true;
       } catch (err: any) {
         // eslint-disable-next-line no-console
         console.error(err);
       }
     };
     fetchData();
-  }, [account.address, account.isConnected, isActiveDelegate]);
+    setInterval(() => {
+      fetchData();
+    }, 10000);
+  }, [account.address, account.isConnected, isActiveDelegate, hive]);
 
   const value = useMemo(() => {
     return {

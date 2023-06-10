@@ -115,9 +115,21 @@ function Home() {
                   BeeTogether is your all-in-one platform to launch and manage your own service DAO
                   or freelance collective in web 3
                 </p>
-                <div className='button wow fadeInLeft' data-wow-delay='.8s'>
-                  <a href='/onboarding' className='btn'>
-                    <i className='lni lni-apple' /> Launch Your Hive
+                <div className='my-5 wow fadeInLeft' data-wow-delay='.8s'>
+                  <a
+                    href='/onboarding'
+                    className='grow px-5 py-2 rounded-xl  bg-redpraha text-white  hover:bg-midnight '>
+                    <i className='lni lni-apple' /> Create Your Hive
+                  </a>
+                </div>
+                <p>
+                  <span className='text-gray-700 text-xs'>Already got one?</span>
+                </p>
+                <div className='my-5 wow fadeInRight' data-wow-delay='.8s'>
+                  <a
+                    href='/dashboard'
+                    className='grow px-5 py-2 rounded-xl bg-white text-redpraha hover:bg-midnight '>
+                    <i className='lni lni-apple' /> Go to your dashboard
                   </a>
                 </div>
               </div>
@@ -144,104 +156,19 @@ function Home() {
             <div className='col-12'>
               <div className='section-title'>
                 <h3 className='wow zoomIn' data-wow-delay='.2s'>
-                  Start Your Hive
+                  Meet BeeTogether
                 </h3>
                 <h2 className='wow fadeInUp' data-wow-delay='.4s'>
-                  The Hive Mindset
+                  The platform made by freelance collective for freelance collective
                 </h2>
-                <p className='wow fadeInUp' data-wow-delay='.6s'>
-                  Hives are groups of independent workers that come together to get hired, make
-                  money, and grow their reputations together! This work style is taking the world by
-                  storm as more people transition to freelance and DAO-based work. What about you?
-                  Do you have the #HiveMindset?
-                </p>
-                <Image
-                  src={'/images/video.png'}
-                  width={600}
-                  height={36}
-                  alt='phone image'
-                  className='-ml-2 mt-10 sm:ml-0'
-                />
+                <iframe
+                  width='560'
+                  height='315'
+                  src='https://www.youtube.com/embed/mhjwAs-l1Lw'
+                  title='YouTube video player'
+                  className='max-w-full'
+                  allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'></iframe>
               </div>
-            </div>
-          </div>
-          <div className='row'>
-            <div className='col-lg-4 col-md-6 col-12'>
-              {/* Start Single Feature */}
-              <div className='single-feature wow fadeInUp' data-wow-delay='.2s'>
-                <div className='flex items-center justify-center mb-4'>
-                  <div className='flex items-center justify-center mb-4'>
-                    <Image
-                      src={'/images/demo1.png'}
-                      width={600}
-                      height={36}
-                      alt='phone image'
-                      className='-ml-2 mb-4 sm:ml-0'
-                    />
-                  </div>
-                </div>
-                <h3>Build your hive!</h3>
-                <p>
-                  Bring together a team to find work together. Create your Hive and add your frens.
-                </p>
-              </div>
-              {/* End Single Feature */}
-            </div>
-            <div className='col-lg-4 col-md-6 col-12'>
-              {/* Start Single Feature */}
-              <div className='single-feature wow fadeInUp' data-wow-delay='.4s'>
-                <div className='flex items-center justify-center mb-4'>
-                  <Image
-                    src={'/images/demo2.png'}
-                    width={600}
-                    height={36}
-                    alt='phone image'
-                    className='-ml-2 mb-4 sm:ml-0'
-                  />
-                </div>
-                <h3>Search for work and make proposals.</h3>
-                <p>
-                  Connect with the Talentlayer protocol to get results for job types by keyword.
-                </p>
-              </div>
-              {/* End Single Feature */}
-            </div>
-            <div className='col-lg-4 col-md-6 col-12'>
-              {/* Start Single Feature */}
-              <div className='single-feature wow fadeInUp' data-wow-delay='.2s'>
-                <div className='flex items-center justify-center mb-4'>
-                  <Image
-                    src={'/images/demosoon.png'}
-                    width={600}
-                    height={36}
-                    alt='phone image'
-                    className='-ml-2 mb-4 sm:ml-0'
-                  />
-                </div>
-                <h3>Complete work and get reviews!</h3>
-                <p>Grow your Hive’s reputation and your own at the same time.</p>
-              </div>
-              {/* End Single Feature */}
-            </div>
-            <div className='col-lg-4 col-md-6 col-12'>
-              {/* Start Single Feature */}
-              <div className='single-feature wow fadeInUp' data-wow-delay='.4s'>
-                <div className='flex items-center justify-center mb-4'>
-                  <Image
-                    src={'/images/demosoon.png'}
-                    width={600}
-                    height={36}
-                    alt='phone image'
-                    className='-ml-2 mb-4 sm:ml-0'
-                  />
-                </div>
-                <h3>Manage your Hive treasury with voting!</h3>
-                <p>
-                  Cover admin costs for everyone in the collective, pay for joint marketing, and
-                  more.
-                </p>
-              </div>
-              {/* End Single Feature */}
             </div>
           </div>
         </div>

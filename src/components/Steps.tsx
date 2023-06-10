@@ -10,6 +10,7 @@ function Steps() {
     return null;
   }
 
+  console.log('STEPS');
   const createTeam = () => {
     console.log('createTeam');
   };
