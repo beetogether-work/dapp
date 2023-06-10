@@ -7,7 +7,8 @@ export type IHive = {
   address: string;
   description?: IHiveDetails;
   members: string[];
-  owner?: IUser;
+  owner: string;
+  ownerIdentity?: IUser;
   identity: IUser;
 };
 

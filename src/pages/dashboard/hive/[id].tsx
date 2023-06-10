@@ -3,8 +3,12 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Loading from '../../../components/Loading';
 import { getUserById } from '../../../queries/users';
-import { getHiveById } from '../../../queries/hive';
-import { IHive } from '../../../types';
+import { IHive, IUser } from '../../../types';
+import {
+  HiveAndIdentityQueryDocument,
+  HiveAndIdentityQueryQuery,
+  execute,
+} from '../../../../.graphclient';
 
 function PublicHive() {
   const router = useRouter();
@@ -12,15 +16,20 @@ function PublicHive() {
   const [hive, setHive] = useState<IHive>();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const responseHive = await getHiveById(id as string);
-      const currentHive = responseHive.data?.data?.hives[0];
-      if (currentHive) {
-        const responseOwner = await getUserById(currentHive.owner);
-        currentHive.owner = responseOwner?.data?.data?.user;
+    if (!id) {
+      return;
+    }
 
-        const responseIdentity = await getUserById(currentHive.id);
-        currentHive.identity = responseIdentity?.data?.data?.user;
+    const fetchData = async () => {
+      const result = await execute(HiveAndIdentityQueryDocument, {
+        hiveId: id,
+      });
+      const data: HiveAndIdentityQueryQuery = result?.data;
+      if (data) {
+        const currentHive = data.hive as IHive;
+        currentHive.identity = data.user as unknown as IUser;
+        const responseOwner = await getUserById(currentHive.owner);
+        currentHive.ownerIdentity = responseOwner?.data?.data?.user;
         setHive(currentHive);
       }
     };
