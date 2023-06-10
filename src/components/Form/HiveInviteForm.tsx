@@ -95,7 +95,7 @@ function HiveInviteForm({ hive }: { hive: IHive }) {
       {({ isSubmitting }) => (
         <Form className='mx-auto w-full max-w-xs px-2'>
           <h2 className='font-heading text-3xl font-medium leading-normal pt-12 sm:pt-0'>
-            {hive.owner?.handle} Invite you
+            {hive.ownerIdentity?.handle} Invite you
           </h2>
           <p className='font-alt text-sm font-normal leading-normal text-gray-400 mb-6'>
             to join the {hive.identity.handle} hive
