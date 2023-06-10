@@ -34,7 +34,7 @@ body {
     font-family: 'Inter';
 }
   
-body .Toastify__toast-container--bottom-right{
+body .dashboard .Toastify__toast-container--bottom-right{
     bottom: 64px;
 }
 

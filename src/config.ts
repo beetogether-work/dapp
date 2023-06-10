@@ -21,7 +21,7 @@ const mumbai: Config = {
   subgraphUrl: 'https://api.thegraph.com/subgraphs/name/talentlayer/talent-layer-mumbai',
   BTSubgraphUrl: 'https://api.thegraph.com/subgraphs/name/mattiapomelli/beetogether-mumbai',
   contracts: {
-    hiveFactory: '0xeecFd8a85fbB9BbA5Dac2022C824e1c42C5d9634',
+    hiveFactory: '0xc7BfFb0c1142a03C03E4110e625910996b978054',
     talentLayerId: '0x3F87289e6Ec2D05C32d8A74CCfb30773fF549306',
     serviceRegistry: '0x27ED516dC1df64b4c1517A64aa2Bb72a434a5A6D',
     talentLayerReview: '0x050F59E1871d3B7ca97e6fb9DCE64b3818b14B18',

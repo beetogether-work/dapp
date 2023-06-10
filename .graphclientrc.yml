@@ -10,3 +10,4 @@ sources:
 
 documents:
   - ./src/queries/hiveAndIdentity.graphql
+  - ./src/queries/proposalRequests.graphql

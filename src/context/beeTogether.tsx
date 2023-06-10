@@ -11,11 +11,13 @@ const BeeTogetherContext = createContext<{
   isActiveDelegate: boolean;
   hive?: IHive;
   refreshData?: () => void;
+  loading: boolean;
 }>({
   user: undefined,
   account: undefined,
   isActiveDelegate: false,
   hive: undefined,
+  loading: true,
 });
 
 const BeeTogetherProvider = ({ children }: { children: ReactNode }) => {
@@ -24,6 +26,7 @@ const BeeTogetherProvider = ({ children }: { children: ReactNode }) => {
   const [hive, setHive] = useState<IHive | undefined>();
   const account = useAccount();
   const [isActiveDelegate, setIsActiveDelegate] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const fetchData = async () => {
     if (!account.address || !account.isConnected || !!hive?.id) {
@@ -41,6 +44,7 @@ const BeeTogetherProvider = ({ children }: { children: ReactNode }) => {
       const responseHive = await getHiveByMemberId(chainId, currentUser.id);
       const currentHive: IHive = responseHive?.data?.data?.hives[0];
       if (!currentHive) {
+        setUser(currentUser);
         return false;
       }
 
@@ -56,6 +60,7 @@ const BeeTogetherProvider = ({ children }: { children: ReactNode }) => {
             (process.env.NEXT_PUBLIC_DELEGATE_ADDRESS as string).toLowerCase(),
           ) !== -1,
       );
+      setLoading(false);
       return true;
     } catch (err: any) {
       // eslint-disable-next-line no-console
@@ -84,6 +89,7 @@ const BeeTogetherProvider = ({ children }: { children: ReactNode }) => {
       isActiveDelegate,
       hive,
       refreshData: fetchData,
+      loading,
     };
   }, [account.address, user?.id, isActiveDelegate, hive]);
 

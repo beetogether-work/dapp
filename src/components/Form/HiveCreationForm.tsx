@@ -164,7 +164,7 @@ function HiveCreationForm() {
             <SubmitButton isSubmitting={isSubmitting} label='Create your hive' />
           </div>
           <p className='text-muted-400 mt-4 flex justify-between font-sans text-sm leading-5'>
-            <span>Have already an hive?</span>
+            <span>Already have an hive?</span>
             <a
               href='/dashboard'
               className='text-primary-600 hover:text-primary-500 font-medium underline-offset-4 transition duration-150 ease-in-out hover:underline focus:underline focus:outline-none underline'>

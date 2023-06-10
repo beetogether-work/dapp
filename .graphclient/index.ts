@@ -5960,6 +5960,12 @@ const merger = new(StitchingMerger as any)({
           return printWithCache(HiveAndIdentityQueryDocument);
         },
         location: 'HiveAndIdentityQueryDocument.graphql'
+      },{
+        document: ProposalRequestsQueryDocument,
+        get rawSDL() {
+          return printWithCache(ProposalRequestsQueryDocument);
+        },
+        location: 'ProposalRequestsQueryDocument.graphql'
       }
     ];
     },
@@ -6004,11 +6010,21 @@ export type HiveAndIdentityQueryQueryVariables = Exact<{
 
 
 export type HiveAndIdentityQueryQuery = { hive?: Maybe<(
-    Pick<Hive, 'id' | 'cid' | 'members' | 'owner' | 'address'>
+    Pick<Hive, 'id' | 'cid' | 'members' | 'owner' | 'honeyFee' | 'address'>
     & { description?: Maybe<Pick<HiveDescription, 'id' | 'manifesto' | 'offeredServices'>> }
   )>, user?: Maybe<(
     Pick<User, 'id' | 'address' | 'handle' | 'rating' | 'delegates' | 'updatedAt' | 'createdAt'>
     & { userStats?: Maybe<Pick<UserStats, 'numReceivedReviews'>>, description?: Maybe<Pick<UserDescription, 'about' | 'role' | 'name' | 'country' | 'headline' | 'id' | 'image_url' | 'video_url' | 'title' | 'timezone' | 'skills_raw'>> }
+  )> };
+
+export type ProposalRequestsQueryQueryVariables = Exact<{
+  hiveId?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type ProposalRequestsQueryQuery = { proposalRequests: Array<(
+    Pick<ProposalRequest, 'id' | 'cid' | 'serviceId' | 'members' | 'shares' | 'sharedAmount' | 'status' | 'createdAt' | 'ownerId' | 'rateToken' | 'rateAmount'>
+    & { description?: Maybe<Pick<ProposalRequestDescription, 'id' | 'about'>> }
   )> };
 
 
@@ -6019,6 +6035,7 @@ export const HiveAndIdentityQueryDocument = gql`
     cid
     members
     owner
+    honeyFee
     description {
       id
       manifesto
@@ -6053,6 +6070,28 @@ export const HiveAndIdentityQueryDocument = gql`
   }
 }
     ` as unknown as DocumentNode<HiveAndIdentityQueryQuery, HiveAndIdentityQueryQueryVariables>;
+export const ProposalRequestsQueryDocument = gql`
+    query ProposalRequestsQuery($hiveId: String) {
+  proposalRequests(where: {hive: $hiveId}) {
+    id
+    cid
+    serviceId
+    members
+    shares
+    sharedAmount
+    status
+    createdAt
+    ownerId
+    rateToken
+    rateAmount
+    description {
+      id
+      about
+    }
+  }
+}
+    ` as unknown as DocumentNode<ProposalRequestsQueryQuery, ProposalRequestsQueryQueryVariables>;
+
 
 
 export type Requester<C = {}, E = unknown> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R> | AsyncIterable<R>
@@ -6060,6 +6099,9 @@ export function getSdk<C, E>(requester: Requester<C, E>) {
   return {
     HiveAndIdentityQuery(variables: HiveAndIdentityQueryQueryVariables, options?: C): Promise<HiveAndIdentityQueryQuery> {
       return requester<HiveAndIdentityQueryQuery, HiveAndIdentityQueryQueryVariables>(HiveAndIdentityQueryDocument, variables, options) as Promise<HiveAndIdentityQueryQuery>;
+    },
+    ProposalRequestsQuery(variables?: ProposalRequestsQueryQueryVariables, options?: C): Promise<ProposalRequestsQueryQuery> {
+      return requester<ProposalRequestsQueryQuery, ProposalRequestsQueryQueryVariables>(ProposalRequestsQueryDocument, variables, options) as Promise<ProposalRequestsQueryQuery>;
     }
   };
 }
