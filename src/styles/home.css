@@ -2262,6 +2262,61 @@ html {
 }
 
 /*======================================
+    Features2 Area CSS
+========================================*/
+.features2 {
+  background-color: #fff391;
+}
+
+.features2 .section-title {
+  margin-bottom: 30px;
+}
+
+.features2 .single-feature {
+  text-align: left;
+  padding: 35px;
+  background-color: #fff;
+  border-radius: 6px;
+  position: relative;
+  margin-top: 30px;
+  border: 1px solid #eee;
+  -webkit-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s;
+}
+
+.features2 .single-feature:hover {
+  -webkit-box-shadow: 0px 3px 5px #00000017;
+          box-shadow: 0px 3px 5px #00000017;
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+}
+
+.features2 .single-feature i {
+  height: 60px;
+  width: 60px;
+  line-height: 60px;
+  text-align: center;
+  display: inline-block;
+  background-color: #ff0050;
+  color: #fff;
+  font-size: 20px;
+  border-radius: 7px;
+  -webkit-box-shadow: 0px 4px 6px #0000002a;
+          box-shadow: 0px 4px 6px #0000002a;
+  margin-bottom: 30px;
+}
+
+.features2 .single-feature h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.features2 .single-feature p {
+  line-height: 22px;
+}
+
+/*======================================
     Our Achievement CSS
 ========================================*/
 .our-achievement {
@@ -2330,7 +2385,7 @@ html {
 	Pricing Table CSS
 ===============================*/
 .pricing-table {
-  background-color: #fff391;
+  background-color: #93f4ff;
 }
 
 .pricing-table .section-title {
