@@ -3,7 +3,6 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useRouter } from 'next/router';
 import { useProvider, useSigner } from 'wagmi';
 import * as Yup from 'yup';
-import { config } from '../../config';
 import ServiceRegistry from '../../contracts/ABI/TalentLayerService.json';
 import HiveABI from '../../contracts/ABI/Hive.json';
 import { IProposal, IService, IUser } from '../../types';
@@ -20,6 +19,8 @@ import BeeTogetherContext from '../../context/beeTogether';
 import { postOpenAiRequest } from '../../modules/OpenAi/utils';
 import { QuestionMarkCircle } from 'heroicons-react';
 import Loading from '../Loading';
+import { useChainId } from '../../hooks/useChainId';
+import { useConfig } from '../../hooks/useConfig';
 
 interface IFormValues {
   about: string;
@@ -45,9 +46,11 @@ function ProposalForm({
   service: IService;
   existingProposal?: IProposal;
 }) {
-  const provider = useProvider({ chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string) });
+  const config = useConfig();
+  const chainId = useChainId();
+  const provider = useProvider({ chainId });
   const { data: signer } = useSigner({
-    chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
+    chainId,
   });
   const router = useRouter();
   const allowedTokenList = useAllowedTokens();
@@ -157,6 +160,7 @@ function ProposalForm({
           );
         } else if (isActiveDelegate) {
           const response = await delegateCreateOrUpdateProposal(
+            chainId,
             user.id,
             user.address,
             service.id,

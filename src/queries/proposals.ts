@@ -1,6 +1,6 @@
 import { processRequest } from '../utils/graphql';
 
-export const getAllProposalsByServiceId = (id: string): Promise<any> => {
+export const getAllProposalsByServiceId = (chainId: number, id: string): Promise<any> => {
   const query = `
     {
       proposals(where: {service_: {id: "${id}"}}) {
@@ -50,10 +50,10 @@ export const getAllProposalsByServiceId = (id: string): Promise<any> => {
       }
     }
     `;
-  return processRequest(query);
+  return processRequest(chainId, query);
 };
 
-export const getAllProposalsByUser = (id: string): Promise<any> => {
+export const getAllProposalsByUser = (chainId: number, id: string): Promise<any> => {
   const query = `
       {
         proposals(where: {seller: "${id}", status: "Pending"}) {
@@ -92,10 +92,10 @@ export const getAllProposalsByUser = (id: string): Promise<any> => {
         }
       }
     `;
-  return processRequest(query);
+  return processRequest(chainId, query);
 };
 
-export const getProposalById = (id: string): Promise<any> => {
+export const getProposalById = (chainId: number, id: string): Promise<any> => {
   const query = `
       {
         proposals(where: {id: "${id}"}) {
@@ -112,5 +112,5 @@ export const getProposalById = (id: string): Promise<any> => {
         }
       }
     `;
-  return processRequest(query);
+  return processRequest(chainId, query);
 };

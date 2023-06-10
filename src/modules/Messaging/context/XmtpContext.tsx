@@ -5,6 +5,7 @@ import { useAccount, useSigner } from 'wagmi';
 import { buildChatMessage, CONVERSATION_PREFIX } from '../utils/messaging';
 import { XmtpChatMessage } from '../utils/types';
 import { loadKeys, storeKeys } from '../utils/keys';
+import { useChainId } from '../../../hooks/useChainId';
 
 type clientEnv = 'local' | 'dev' | 'production' | undefined;
 
@@ -28,8 +29,9 @@ export const XmtpContext = createContext<{
 });
 
 export const XmtpContextProvider = ({ children }: { children: ReactNode }) => {
+  const chainId = useChainId();
   const { data: signer } = useSigner({
-    chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
+    chainId,
   });
   const { address: walletAddress } = useAccount();
 

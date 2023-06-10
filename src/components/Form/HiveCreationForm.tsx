@@ -4,13 +4,14 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useContext } from 'react';
 import { useProvider, useSigner } from 'wagmi';
 import * as Yup from 'yup';
-import { config } from '../../config';
 import BeeTogetherContext from '../../context/beeTogether';
 import HiveFactoryABI from '../../contracts/ABI/HiveFactory.json';
 import TalentLayerID from '../../contracts/ABI/TalentLayerID.json';
 import { createTalentLayerIdTransactionToast, showErrorTransactionToast } from '../../utils/toast';
 import SubmitButton from './SubmitButton';
 import { useRouter } from 'next/router';
+import { useConfig } from '../../hooks/useConfig';
+import { useChainId } from '../../hooks/useChainId';
 
 interface IFormValues {
   handle: string;
@@ -18,14 +19,16 @@ interface IFormValues {
 }
 
 function HiveCreationForm() {
+  const chainId = useChainId();
+  const config = useConfig();
   const router = useRouter();
   const { open: openConnectModal } = useWeb3Modal();
   const { account, user } = useContext(BeeTogetherContext);
   const { data: signer } = useSigner({
-    chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
+    chainId,
   });
 
-  const provider = useProvider({ chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string) });
+  const provider = useProvider({ chainId });
   let tx: ethers.providers.TransactionResponse;
 
   const initialValues: IFormValues = {
@@ -96,6 +99,7 @@ function HiveCreationForm() {
         );
 
         await createTalentLayerIdTransactionToast(
+          chainId,
           {
             pending: 'Creating your hive...',
             success: 'Congrats! Your hive is ready!',

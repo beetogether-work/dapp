@@ -4,7 +4,6 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useContext } from 'react';
 import { useProvider, useSigner } from 'wagmi';
 import * as Yup from 'yup';
-import { config } from '../../config';
 import BeeTogetherContext from '../../context/beeTogether';
 import TalentLayerReview from '../../contracts/ABI/TalentLayerReview.json';
 import { postToIPFS } from '../../utils/ipfs';
@@ -12,6 +11,8 @@ import { createMultiStepsTransactionToast, showErrorTransactionToast } from '../
 import SubmitButton from './SubmitButton';
 import { getUserByAddress } from '../../queries/users';
 import { delegateMintReview } from '../request';
+import { useChainId } from '../../hooks/useChainId';
+import { useConfig } from '../../hooks/useConfig';
 
 interface IFormValues {
   content: string;
@@ -29,12 +30,15 @@ const initialValues: IFormValues = {
 };
 
 function ReviewForm({ serviceId }: { serviceId: string }) {
+  const config = useConfig();
+  const chainId = useChainId();
+
   const { open: openConnectModal } = useWeb3Modal();
   const { user } = useContext(BeeTogetherContext);
   const { isActiveDelegate } = useContext(BeeTogetherContext);
-  const provider = useProvider({ chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string) });
+  const provider = useProvider({ chainId });
   const { data: signer } = useSigner({
-    chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
+    chainId,
   });
 
   const onSubmit = async (
@@ -53,12 +57,13 @@ function ReviewForm({ serviceId }: { serviceId: string }) {
           }),
         );
 
-        const getUser = await getUserByAddress(user.address);
+        const getUser = await getUserByAddress(chainId, user.address);
         const delegateAddresses = getUser.data?.data?.users[0].delegates;
         let tx;
 
         if (isActiveDelegate) {
           const response = await delegateMintReview(
+            chainId,
             user.id,
             user.address,
             serviceId,

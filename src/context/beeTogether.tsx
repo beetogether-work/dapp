@@ -3,6 +3,7 @@ import { useAccount } from 'wagmi';
 import { getUserByAddress, getUserById } from '../queries/users';
 import { IAccount, IHive, IUser } from '../types';
 import { getHiveByMemberId } from '../queries/hive';
+import { useChainId } from '../hooks/useChainId';
 
 const BeeTogetherContext = createContext<{
   user?: IUser;
@@ -18,6 +19,7 @@ const BeeTogetherContext = createContext<{
 });
 
 const BeeTogetherProvider = ({ children }: { children: ReactNode }) => {
+  const chainId = useChainId();
   const [user, setUser] = useState<IUser | undefined>();
   const [hive, setHive] = useState<IHive | undefined>();
   const account = useAccount();
@@ -29,20 +31,20 @@ const BeeTogetherProvider = ({ children }: { children: ReactNode }) => {
     }
 
     try {
-      const response = await getUserByAddress(account.address);
+      const response = await getUserByAddress(chainId, account.address);
 
       if (response?.data?.data?.users?.length == 0) {
         return false;
       }
 
       const currentUser = response.data.data.users[0];
-      const responseHive = await getHiveByMemberId(currentUser.id);
+      const responseHive = await getHiveByMemberId(chainId, currentUser.id);
       const currentHive: IHive = responseHive?.data?.data?.hives[0];
       if (!currentHive) {
         return false;
       }
 
-      const responseHiveTL = await getUserById(currentHive.id);
+      const responseHiveTL = await getUserById(chainId, currentHive.id);
       currentHive.identity = responseHiveTL.data.data.user;
 
       setUser(currentUser);

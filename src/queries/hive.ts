@@ -1,6 +1,6 @@
 import { processBTRequest } from '../utils/graphql';
 
-export const getHiveByMemberId = (id: string): Promise<any> => {
+export const getHiveByMemberId = (chainId: number, id: string): Promise<any> => {
   const query = `
     {
       hives(where: {members_contains: ["${id}"] }) {
@@ -18,10 +18,10 @@ export const getHiveByMemberId = (id: string): Promise<any> => {
       }
     }
     `;
-  return processBTRequest(query);
+  return processBTRequest(chainId, query);
 };
 
-export const getHiveByAddress = (address: string): Promise<any> => {
+export const getHiveByAddress = (chainId: number, address: string): Promise<any> => {
   const query = `
     {
       hives(where: {address: "${address}" }) {
@@ -39,10 +39,10 @@ export const getHiveByAddress = (address: string): Promise<any> => {
       }
     }
     `;
-  return processBTRequest(query);
+  return processBTRequest(chainId, query);
 };
 
-export const getHiveById = (id: string): Promise<any> => {
+export const getHiveById = (chainId: number, id: string): Promise<any> => {
   const query = `
     {
       hives(where: {id: "${id}" }) {
@@ -60,5 +60,5 @@ export const getHiveById = (id: string): Promise<any> => {
       }
     }
     `;
-  return processBTRequest(query);
+  return processBTRequest(chainId, query);
 };

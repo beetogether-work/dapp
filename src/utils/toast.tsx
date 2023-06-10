@@ -5,6 +5,7 @@ import { Transaction } from 'ethers';
 import { toast } from 'react-toastify';
 import MultiStepsTransactionToast from '../components/MultiStepsTransactionToast';
 import { graphIsSynced, graphUserIsSynced } from '../queries/global';
+import { useChainId } from '../hooks/useChainId';
 
 interface IMessages {
   pending: string;
@@ -19,6 +20,8 @@ export const createMultiStepsTransactionToast = async (
   entity: string,
   newUri?: string,
 ): Promise<number | undefined> => {
+  const chainId = useChainId();
+
   let currentStep = 1;
   const toastId = toast(
     <MultiStepsTransactionToast
@@ -44,7 +47,7 @@ export const createMultiStepsTransactionToast = async (
     });
 
     if (newUri) {
-      const entityId = await graphIsSynced(`${entity}s`, newUri);
+      const entityId = await graphIsSynced(chainId, `${entity}s`, newUri);
       currentStep = 3;
       toast.update(toastId, {
         render: (
@@ -55,7 +58,7 @@ export const createMultiStepsTransactionToast = async (
         ),
       });
 
-      await graphIsSynced(`${entity}Descriptions`, newUri);
+      await graphIsSynced(chainId, `${entity}Descriptions`, newUri);
       toast.update(toastId, {
         type: toast.TYPE.SUCCESS,
         render: messages.success,
@@ -95,6 +98,7 @@ export const showErrorTransactionToast = (error: any) => {
 };
 
 export const createTalentLayerIdTransactionToast = async (
+  chainId: number,
   messages: IMessages,
   provider: Provider,
   tx: Transaction,
@@ -124,7 +128,7 @@ export const createTalentLayerIdTransactionToast = async (
       ),
     });
 
-    const entityId = await graphUserIsSynced(address);
+    const entityId = await graphUserIsSynced(chainId, address);
 
     toast.update(toastId, {
       type: toast.TYPE.SUCCESS,

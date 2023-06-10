@@ -1,19 +1,21 @@
 /* eslint-disable no-console */
 import axios from 'axios';
-import { config } from '../config';
+import { getConfig } from '../config';
 
-export const processRequest = async (query: string): Promise<any> => {
+export const processRequest = async (chainId: number, query: string): Promise<any> => {
   try {
-    return await axios.post(config.subgraphUrl, { query });
+    const subgraphUrl = getConfig(chainId).subgraphUrl;
+    return await axios.post(subgraphUrl, { query });
   } catch (err) {
     console.error(err);
     return null;
   }
 };
 
-export const processBTRequest = async (query: string): Promise<any> => {
+export const processBTRequest = async (chainId: number, query: string): Promise<any> => {
   try {
-    return await axios.post(config.BTSubgraphUrl, { query });
+    const subgraphUrl = getConfig(chainId).BTSubgraphUrl;
+    return await axios.post(subgraphUrl, { query });
   } catch (err) {
     console.error(err);
     return null;

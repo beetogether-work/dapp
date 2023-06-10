@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getServices, searchServices } from '../queries/services';
 import { IService, ServiceStatusEnum } from '../types';
+import { useChainId } from './useChainId';
 
 const useServices = (
   serviceStatus?: ServiceStatusEnum,
@@ -14,6 +15,7 @@ const useServices = (
   services: IService[];
   loadMore: () => void;
 } => {
+  const chainId = useChainId();
   const [services, setServices] = useState<IService[]>([]);
   const [hasMoreData, setHasMoreData] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -31,7 +33,7 @@ const useServices = (
         let response;
         let newServices: IService[] = [];
         if (searchQuery) {
-          response = await searchServices({
+          response = await searchServices(chainId, {
             serviceStatus,
             buyerId,
             sellerId,
@@ -52,7 +54,7 @@ const useServices = (
             );
           }
         } else {
-          response = await getServices({
+          response = await getServices(chainId, {
             serviceStatus,
             buyerId,
             sellerId,

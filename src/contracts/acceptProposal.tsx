@@ -2,7 +2,7 @@ import { Provider } from '@wagmi/core';
 import { Contract, ethers, Signer } from 'ethers';
 import { toast } from 'react-toastify';
 import TransactionToast from '../components/TransactionToast';
-import { config } from '../config';
+import { getConfig } from '../config';
 import { showErrorTransactionToast } from '../utils/toast';
 import ERC20 from './ABI/ERC20.json';
 import TalentLayerEscrow from './ABI/TalentLayerEscrow.json';
@@ -11,6 +11,7 @@ import TalentLayerEscrow from './ABI/TalentLayerEscrow.json';
 export const metaEvidenceCid = 'QmQ2hcACF6r2Gf8PDxG4NcBdurzRUopwcaYQHNhSah6a8v';
 
 export const validateProposal = async (
+  chainId: number,
   signer: Signer,
   provider: Provider,
   serviceId: string,
@@ -19,6 +20,8 @@ export const validateProposal = async (
   cid: string,
   value: ethers.BigNumber,
 ): Promise<void> => {
+  const config = getConfig(chainId);
+
   const talentLayerEscrow = new Contract(
     config.contracts.talentLayerEscrow,
     TalentLayerEscrow.abi,

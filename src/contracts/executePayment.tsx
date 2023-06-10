@@ -2,12 +2,13 @@ import { Provider } from '@wagmi/core';
 import { BigNumber, Contract, Signer, ethers } from 'ethers';
 import { toast } from 'react-toastify';
 import TransactionToast from '../components/TransactionToast';
-import { config } from '../config';
 import TalentLayerEscrow from './ABI/TalentLayerEscrow.json';
 import { showErrorTransactionToast } from '../utils/toast';
 import { delegateReleaseOrReimburse } from '../components/request';
+import { getConfig } from '../config';
 
 export const executePayment = async (
+  chainId: number,
   userAddress: string,
   signer: Signer,
   provider: Provider,
@@ -17,11 +18,13 @@ export const executePayment = async (
   isBuyer: boolean,
   isActiveDelegate: boolean,
 ): Promise<void> => {
+  const config = getConfig(chainId);
   try {
     let tx: ethers.providers.TransactionResponse;
 
     if (isActiveDelegate) {
       const response = await delegateReleaseOrReimburse(
+        chainId,
         userAddress,
         profileId,
         parseInt(transactionId, 10),

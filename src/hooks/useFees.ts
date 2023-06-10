@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { getProtocolAndPlatformsFees } from '../queries/fees';
 import { IFees } from '../types';
+import { useChainId } from './useChainId';
 
 const useFees = (
   originServicePlatformId: string,
   originValidatedProposalPlatformId: string,
 ): IFees => {
+  const chainId = useChainId();
   const [fees, setFees] = useState({
     protocolEscrowFeeRate: 0,
     originServiceFeeRate: 0,
@@ -21,6 +23,7 @@ const useFees = (
     const fetchData = async () => {
       try {
         const response = await getProtocolAndPlatformsFees(
+          chainId,
           originServicePlatformId,
           originValidatedProposalPlatformId,
         );

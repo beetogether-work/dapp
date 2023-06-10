@@ -15,8 +15,10 @@ import ProposalItem from './ProposalItem';
 import ReviewItem from './ReviewItem';
 import ServiceStatus from './ServiceStatus';
 import Stars from './Stars';
+import { useChainId } from '../hooks/useChainId';
 
 function ServiceDetail({ service }: { service: IService }) {
+  const chainId = useChainId();
   const { account, user } = useContext(BeeTogetherContext);
   const { reviews } = useReviewsByService(service.id);
   const proposals = useProposalsByService(service.id);
@@ -80,6 +82,7 @@ function ServiceDetail({ service }: { service: IService }) {
                 <p className='text-sm text-gray-400 mt-4'>
                   <strong>Budget:</strong>{' '}
                   {renderTokenAmountFromConfig(
+                    chainId,
                     service.description.rateToken,
                     service.description.rateAmount,
                   )}

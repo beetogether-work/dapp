@@ -3,8 +3,11 @@ import { IService } from '../types';
 import { renderTokenAmountFromConfig } from '../utils/conversion';
 import { formatDate } from '../utils/dates';
 import Image from 'next/image';
+import { useChainId } from '../hooks/useChainId';
 
 function ServiceItem({ service }: { service: IService }) {
+  const chainId = useChainId();
+
   return (
     <div className='flex flex-row gap-2 rounded-xl p-4 border border-gray-700 text-white bg-endnight'>
       <div className='flex flex-col items-top justify-between gap-4 w-full'>
@@ -30,6 +33,7 @@ function ServiceItem({ service }: { service: IService }) {
           {service.description?.rateToken && service.description?.rateAmount && (
             <p className='text-gray-300 font-bold line-clamp-1 max-w-[100px]'>
               {renderTokenAmountFromConfig(
+                chainId,
                 service.description.rateToken,
                 service.description.rateAmount,
               )}
