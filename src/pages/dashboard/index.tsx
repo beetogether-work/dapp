@@ -3,6 +3,8 @@ import InviteModal from '../../components/InviteModal';
 import Steps from '../../components/Steps';
 import TalentLayerContext from '../../context/talentLayer';
 import { useContext } from 'react';
+import { EyeIcon, PencilSquareIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
 
 function Hive() {
   const { account } = useContext(TalentLayerContext);
@@ -65,6 +67,21 @@ function Hive() {
         </div>
       </div>
 
+      <div className='flex mt-4'>
+        <Link
+          href='/dashboard/hive/configure'
+          className=' hover:bg-endnight text-white bg-endnight px-3 py-2 text-sm flex items-center mr-4 rounded-xl'>
+          <PencilSquareIcon className='w-[18px] h-[18px] text-redpraha mr-2' />
+          Configure
+        </Link>
+        <Link
+          href='/dashboard/hive/1'
+          className=' hover:bg-endnight text-white bg-endnight px-3 py-2 text-sm flex items-center mr-4 rounded-xl'>
+          <EyeIcon className='w-[18px] h-[18px] text-redpraha mr-2' />
+          Public page
+        </Link>
+      </div>
+
       <div className='flex flex-col justify-between gap-6 mt-6'>
         <div>
           <h3 className='font-heading text-lg font-semibold leading-tight text-gray-100 mb-1'>
@@ -79,19 +96,19 @@ function Hive() {
           </button>
           <button
             type='button'
-            className='inline-flex items-center justify-center text-sm h-8 px-3 py-2 space-x-1 border transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed text-white bg-gray-700 border-gray-600 hover:enabled:bg-gray-50 active:enabled:bg-gray-700/70 active:enabled:bg-gray-100 rounded-xl'>
+            className='inline-flex items-center justify-center text-sm h-8 px-3 py-2 space-x-1 border transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed text-white bg-gray-700 border-gray-700 hover:enabled:bg-gray-50 active:enabled:bg-gray-700/70 active:enabled:bg-gray-100 rounded-xl'>
             To vote
           </button>
           <button
             type='button'
-            className='inline-flex items-center justify-center text-sm h-8 px-3 py-2 space-x-1 border transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed text-white bg-gray-700 border-gray-600 hover:enabled:bg-gray-50 active:enabled:bg-gray-700/70 active:enabled:bg-gray-100 rounded-xl'>
+            className='inline-flex items-center justify-center text-sm h-8 px-3 py-2 space-x-1 border transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed text-white bg-gray-700 border-gray-700 hover:enabled:bg-gray-50 active:enabled:bg-gray-700/70 active:enabled:bg-gray-100 rounded-xl'>
             In progress
           </button>
         </div>
 
         <div className='w-full'>
           <div className='flex flex-col'>
-            <div className='border-gray-200 dark:border-gray-700 overflow-x-auto border rounded-md'>
+            <div className='border-gray-700 overflow-x-auto border rounded-md'>
               <div className='inline-block min-w-full align-middle'>
                 <div className='overflow-hidden'>
                   <table className='divide-gray-200 dark:divide-gray-700 min-w-full table-fixed divide-y'>
