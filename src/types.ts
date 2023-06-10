@@ -7,6 +7,7 @@ export type IHive = {
   address: string;
   description?: IHiveDetails;
   members: string[];
+  honeyFee: number;
   owner: string;
   ownerIdentity?: IUser;
   identity: IUser;

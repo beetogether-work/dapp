@@ -5,6 +5,7 @@ import { useProvider, useSigner } from 'wagmi';
 import * as Yup from 'yup';
 import { config } from '../../config';
 import ServiceRegistry from '../../contracts/ABI/TalentLayerService.json';
+import HiveABI from '../../contracts/ABI/Hive.json';
 import { IProposal, IService, IUser } from '../../types';
 import { postToIPFS } from '../../utils/ipfs';
 import { createMultiStepsTransactionToast, showErrorTransactionToast } from '../../utils/toast';
@@ -50,7 +51,7 @@ function ProposalForm({
   });
   const router = useRouter();
   const allowedTokenList = useAllowedTokens();
-  const { isActiveDelegate } = useContext(BeeTogetherContext);
+  const { isActiveDelegate, hive } = useContext(BeeTogetherContext);
   const [aiLoading, setAiLoading] = useState(false);
 
   if (allowedTokenList.length === 0) {
@@ -137,7 +138,24 @@ function ProposalForm({
         });
 
         let tx;
-        if (isActiveDelegate) {
+        if (hive) {
+          const hiveContract = new ethers.Contract(hive.address, HiveABI.abi, signer);
+          const membersLength = hive.members.length;
+          const shareByMember = (10000 - hive.honeyFee) / membersLength;
+          const shares = Array(membersLength).fill(shareByMember);
+
+          console.log({ shares, members: hive.members });
+          tx = await hiveContract.createProposalRequest(
+            service.id,
+            values.rateToken,
+            parsedRateAmountString,
+            process.env.NEXT_PUBLIC_PLATFORM_ID,
+            cid,
+            convertExpirationDateString,
+            hive.members,
+            shares,
+          );
+        } else if (isActiveDelegate) {
           const response = await delegateCreateOrUpdateProposal(
             user.id,
             user.address,

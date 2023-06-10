@@ -89,7 +89,7 @@ function HiveCreationForm() {
           process.env.NEXT_PUBLIC_PLATFORM_ID,
           submittedValues.groupHandle,
           submittedValues.handle,
-          3,
+          1000,
           {
             value: value.toString(),
           },

@@ -7,6 +7,7 @@ export const getHiveByMemberId = (id: string): Promise<any> => {
         id,
         cid, 
         members,
+        honeyFee,
         owner,
         description{
           id
@@ -27,6 +28,7 @@ export const getHiveByAddress = (address: string): Promise<any> => {
         id,
         cid, 
         members,
+        honeyFee,
         owner,
         description{
           id
@@ -47,6 +49,7 @@ export const getHiveById = (id: string): Promise<any> => {
         id,
         cid, 
         members,
+        honeyFee,
         owner,
         description{
           id
