@@ -8,20 +8,21 @@ import { ToastContainer } from 'react-toastify';
 import { Chain, WagmiConfig, configureChains, createClient } from 'wagmi';
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
 import { customChains } from '../chains';
-import { TalentLayerProvider } from '../context/talentLayer';
+import { BeeTogetherProvider } from '../context/beeTogether';
 import { MessagingProvider } from '../modules/Messaging/context/messging';
 import { XmtpContextProvider } from '../modules/Messaging/context/XmtpContext';
 import '../styles/globals.css';
 import '../styles/home.css';
 import '../styles/animate.css';
 import '../styles/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 import Layout from './Layout';
 import { useEffect } from 'react';
 import SEO from '../../next-seo.config';
 
 import Script from 'next/script';
 
-const chains: Chain[] = [customChains.goerli];
+const chains: Chain[] = [customChains.polygonMumbai];
 
 // Wagmi client
 const { provider } = configureChains(chains, [
@@ -57,7 +58,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <DefaultSeo {...SEO} />
       <ToastContainer position='bottom-right' />
       <WagmiConfig client={wagmiClient}>
-        <TalentLayerProvider>
+        <BeeTogetherProvider>
           <XmtpContextProvider>
             <MessagingProvider>
               <ThemeProvider enableSystem={false}>
@@ -67,7 +68,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               </ThemeProvider>
             </MessagingProvider>
           </XmtpContextProvider>
-        </TalentLayerProvider>
+        </BeeTogetherProvider>
         <Web3Modal
           projectId={`${process.env.NEXT_PUBLIC_WALLECT_CONNECT_PROJECT_ID}`}
           ethereumClient={ethereumClient}

@@ -1,6 +1,21 @@
 import { BigNumber } from 'ethers';
 import { Connector } from 'wagmi';
 
+export type IHive = {
+  id: string;
+  handle: string;
+  address: string;
+  description?: IHiveDetails;
+  members: string[];
+  owner?: IUser;
+  identity: IUser;
+};
+
+export type IHiveDetails = {
+  manifesto: string;
+  offeredServices: string;
+};
+
 export type IUser = {
   id: string;
   handle: string;

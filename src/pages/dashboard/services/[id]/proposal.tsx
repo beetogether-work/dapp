@@ -4,7 +4,7 @@ import Back from '../../../../components/Back';
 import ProposalForm from '../../../../components/Form/ProposalForm';
 import Loading from '../../../../components/Loading';
 import Steps from '../../../../components/Steps';
-import TalentLayerContext from '../../../../context/talentLayer';
+import BeeTogetherContext from '../../../../context/beeTogether';
 import useProposalById from '../../../../hooks/useProposalById';
 import useServiceById from '../../../../hooks/useServiceById';
 import ConnectButton from '../../../../modules/Messaging/components/ConnectButton';
@@ -12,7 +12,7 @@ import MessagingContext from '../../../../modules/Messaging/context/messging';
 import { ProposalStatusEnum, ServiceStatusEnum } from '../../../../types';
 
 function CreateOrEditProposal() {
-  const { account, user } = useContext(TalentLayerContext);
+  const { account, user } = useContext(BeeTogetherContext);
   const { userExists } = useContext(MessagingContext);
   const router = useRouter();
   const { id } = router.query;

@@ -6,10 +6,10 @@ import UserGains from '../../../../components/UserGains';
 import UserPayments from '../../../../components/UserPayments';
 import UserProposals from '../../../../components/UserProposals';
 import UserServices from '../../../../components/UserServices';
-import TalentLayerContext from '../../../../context/talentLayer';
+import BeeTogetherContext from '../../../../context/beeTogether';
 
 function Dashboard() {
-  const { account, user } = useContext(TalentLayerContext);
+  const { account, user } = useContext(BeeTogetherContext);
 
   if (!account?.isConnected) {
     return <Steps />;

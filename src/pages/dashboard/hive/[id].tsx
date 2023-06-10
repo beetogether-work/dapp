@@ -1,6 +1,37 @@
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import Loading from '../../../components/Loading';
+import { getUserById } from '../../../queries/users';
+import { getHiveById } from '../../../queries/hive';
+import { IHive } from '../../../types';
 
 function PublicHive() {
+  const router = useRouter();
+  const { id } = router.query;
+  const [hive, setHive] = useState<IHive>();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const responseHive = await getHiveById(id as string);
+      const currentHive = responseHive.data?.data?.hives[0];
+      if (currentHive) {
+        const responseOwner = await getUserById(currentHive.owner);
+        currentHive.owner = responseOwner?.data?.data?.user;
+
+        const responseIdentity = await getUserById(currentHive.id);
+        currentHive.identity = responseIdentity?.data?.data?.user;
+        setHive(currentHive);
+      }
+    };
+    fetchData();
+  }, [id]);
+
+  console.log('PublicHive', { id, hive });
+  if (!hive) {
+    return <Loading />;
+  }
+
   return (
     <>
       <div className='-ml-6 -mr-6 -mt-6 p-6 pb-0 bg-endnight'>
@@ -28,7 +59,7 @@ function PublicHive() {
             </div>
             <div className='ltablet:text-left text-center lg:text-left'>
               <h2 className='font-heading text-xl font-semibold leading-normal ltablet:justify-start flex items-center justify-center gap-2 lg:justify-start'>
-                <span className='text-gray-800 dark:text-white'>Sweet Mango</span>
+                <span className='text-gray-800 dark:text-white'>{hive?.identity.handle}</span>
                 <svg
                   data-v-cd102a71
                   xmlns='http://www.w3.org/2000/svg'
@@ -48,7 +79,10 @@ function PublicHive() {
               <span className='text-gray-400 mb-4 block font-sans text-base'>UI-UX web3</span>
               <div className='mb-6 flex items-center gap-x-6'>
                 <div className='ltablet:flex-row ltablet:flex-auto flex flex-1 flex-col gap-x-2 font-sans lg:flex-auto lg:flex-row'>
-                  <span className='text-gray-800 dark:text-gray-100 font-semibold'> 5 </span>
+                  <span className='text-gray-800 dark:text-gray-100 font-semibold'>
+                    {' '}
+                    {hive.members.length}{' '}
+                  </span>
                   <span className='text-gray-400 ltablet:text-base text-xs sm:text-sm lg:text-base'>
                     {' '}
                     Members{' '}

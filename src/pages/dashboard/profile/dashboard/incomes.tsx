@@ -1,10 +1,10 @@
 import { useContext } from 'react';
-import TalentLayerContext from '../../../../context/talentLayer';
+import BeeTogetherContext from '../../../../context/beeTogether';
 import Loading from '../../../../components/Loading';
 import UserIncomes from '../../../../components/UserIncomes';
 
 function Incomes() {
-  const { user } = useContext(TalentLayerContext);
+  const { user } = useContext(BeeTogetherContext);
 
   if (!user) {
     return <Loading />;

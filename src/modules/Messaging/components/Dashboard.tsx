@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 import { useSigner } from 'wagmi';
 import Steps from '../../../components/Steps';
-import TalentLayerContext from '../../../context/talentLayer';
+import BeeTogetherContext from '../../../context/beeTogether';
 import useUserByAddress from '../../../hooks/useUserByAddress';
 import { XmtpContext } from '../context/XmtpContext';
 import useSendMessage from '../hooks/useSendMessage';
@@ -15,7 +15,7 @@ import MessageComposer from './MessageComposer';
 import MessageList from './MessageList';
 
 function Dashboard() {
-  const { account } = useContext(TalentLayerContext);
+  const { account } = useContext(BeeTogetherContext);
   const { data: signer } = useSigner({
     chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
   });

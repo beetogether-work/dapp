@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useContext } from 'react';
-import TalentLayerContext from '../context/talentLayer';
+import BeeTogetherContext from '../context/beeTogether';
 import useUserById from '../hooks/useUserById';
 import PohModule from '../modules/Poh/PohModule';
 import { IUser } from '../types';
@@ -10,7 +10,7 @@ import Image from 'next/image';
 import DelegateModal from './Modal/DelegateModal';
 
 function UserDetail({ user }: { user: IUser }) {
-  const { user: currentUser } = useContext(TalentLayerContext);
+  const { user: currentUser } = useContext(BeeTogetherContext);
   const userDescription = user?.id ? useUserById(user?.id)?.description : null;
 
   if (!user?.id) {

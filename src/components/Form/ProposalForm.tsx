@@ -15,7 +15,7 @@ import useAllowedTokens from '../../hooks/useAllowedTokens';
 import { getProposalSignature } from '../../utils/signature';
 import { delegateCreateOrUpdateProposal } from '../request';
 import { useContext, useState } from 'react';
-import TalentLayerContext from '../../context/talentLayer';
+import BeeTogetherContext from '../../context/beeTogether';
 import { postOpenAiRequest } from '../../modules/OpenAi/utils';
 import { QuestionMarkCircle } from 'heroicons-react';
 import Loading from '../Loading';
@@ -50,7 +50,7 @@ function ProposalForm({
   });
   const router = useRouter();
   const allowedTokenList = useAllowedTokens();
-  const { isActiveDelegate } = useContext(TalentLayerContext);
+  const { isActiveDelegate } = useContext(BeeTogetherContext);
   const [aiLoading, setAiLoading] = useState(false);
 
   if (allowedTokenList.length === 0) {

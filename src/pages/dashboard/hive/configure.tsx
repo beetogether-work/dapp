@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import Steps from '../../../components/Steps';
-import TalentLayerContext from '../../../context/talentLayer';
+import BeeTogetherContext from '../../../context/beeTogether';
 import HiveForm from '../../../components/Form/HiveForm';
 
 function ConfigureHive() {
-  const { account, user } = useContext(TalentLayerContext);
+  const { account, user } = useContext(BeeTogetherContext);
 
   if (!account?.isConnected) {
     return <Steps />;

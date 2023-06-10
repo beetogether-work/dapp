@@ -3,14 +3,14 @@ import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import { useSigner } from 'wagmi';
 import Steps from '../../../components/Steps';
-import TalentLayerContext from '../../../context/talentLayer';
+import BeeTogetherContext from '../../../context/beeTogether';
 import CardHeader from '../../../modules/Messaging/components/CardHeader';
 import ConversationList from '../../../modules/Messaging/components/ConversationList';
 import { XmtpContext } from '../../../modules/Messaging/context/XmtpContext';
 import useStreamConversations from '../../../modules/Messaging/hooks/useStreamConversations';
 
 function MessagingIndex() {
-  const { account } = useContext(TalentLayerContext);
+  const { account } = useContext(BeeTogetherContext);
   const { data: signer } = useSigner({
     chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
   });

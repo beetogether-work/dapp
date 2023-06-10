@@ -1,12 +1,12 @@
 import { SearchOutline } from 'heroicons-react';
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
-import TalentLayerContext from '../../../context/talentLayer';
+import BeeTogetherContext from '../../../context/beeTogether';
 
 function SearchModal() {
   const [show, setShow] = useState(false);
   const [search, setSearch] = useState('');
-  const { account } = useContext(TalentLayerContext);
+  const { account } = useContext(BeeTogetherContext);
   const router = useRouter();
 
   const handleChat = () => {

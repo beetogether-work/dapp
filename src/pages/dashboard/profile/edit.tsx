@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import ProfileForm from '../../../components/Form/ProfileForm';
 import Steps from '../../../components/Steps';
-import TalentLayerContext from '../../../context/talentLayer';
+import BeeTogetherContext from '../../../context/beeTogether';
 
 function EditProfile() {
-  const { account, user } = useContext(TalentLayerContext);
+  const { account, user } = useContext(BeeTogetherContext);
 
   if (!account?.isConnected) {
     return <Steps />;

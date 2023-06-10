@@ -11,12 +11,11 @@ function Onboarding() {
           subtext="You're in the perfect place to start your new collective, you will have here all the tools to grow your business and collaborate effectively."></LeftSide>
 
         <div className='flex flex-col items-center justify-between py-10 md:w-1/2'>
-          <div className='mx-auto flex w-full max-w-xs items-center justify-between'>
-            <a href='/' className='hover:text-primary-500 transition-colors duration-300 px-2'>
-              <Logo />
-            </a>
+          <div className='mx-auto flex w-full max-w-xs items-center justify-between px-3'>
+            <Logo />
           </div>
           <HiveCreationForm />
+          <p></p>
         </div>
       </div>
     </div>

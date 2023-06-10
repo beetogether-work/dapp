@@ -2,7 +2,7 @@ import { ethers } from 'ethers';
 import { useRouter } from 'next/router';
 import { createContext, ReactNode, useContext, useMemo } from 'react';
 import { useSigner } from 'wagmi';
-import TalentLayerContext from '../../../context/talentLayer';
+import BeeTogetherContext from '../../../context/beeTogether';
 import { XmtpContext } from './XmtpContext';
 
 const MessagingContext = createContext<{
@@ -16,7 +16,7 @@ const MessagingContext = createContext<{
 });
 
 const MessagingProvider = ({ children }: { children: ReactNode }) => {
-  const { user } = useContext(TalentLayerContext);
+  const { user } = useContext(BeeTogetherContext);
   const { providerState } = useContext(XmtpContext);
   const { data: signer } = useSigner({
     chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),

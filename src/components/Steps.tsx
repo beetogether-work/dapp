@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import { useContext } from 'react';
 import ConnectBlock from './ConnectBlock';
-import TalentLayerContext from '../context/talentLayer';
+import BeeTogetherContext from '../context/beeTogether';
 
 function Steps() {
-  const { account } = useContext(TalentLayerContext);
+  const { account } = useContext(BeeTogetherContext);
 
   if (account?.isConnected) {
     return null;

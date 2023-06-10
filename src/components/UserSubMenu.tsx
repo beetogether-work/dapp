@@ -2,13 +2,17 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import { useDisconnect } from 'wagmi';
-import TalentLayerContext from '../context/talentLayer';
+import BeeTogetherContext from '../context/beeTogether';
 import { truncateAddress } from '../utils';
 
 function UserSubMenu() {
-  const { account } = useContext(TalentLayerContext);
+  const { account, user, hive } = useContext(BeeTogetherContext);
   const router = useRouter();
   const { disconnect } = useDisconnect();
+
+  if (!user || !hive) {
+    return;
+  }
 
   return (
     <div
@@ -31,7 +35,7 @@ function UserSubMenu() {
             className='font-heading text-gray-800 text-sm font-medium dark:text-white'
             role='none'>
             {' '}
-            Maya Rosselini{' '}
+            {user.handle}{' '}
           </h6>
           <p className='text-gray-400 mb-4 font-sans text-xs' role='none'>
             {account?.address && truncateAddress(account.address)}
@@ -62,55 +66,9 @@ function UserSubMenu() {
             <div className='ms-2'>
               <h6 className='font-heading text-gray-800 text-xs font-medium leading-none dark:text-white'>
                 {' '}
-                My Team 1{' '}
+                {hive.identity.handle}{' '}
               </h6>
-              <p className='text-gray-400 font-sans text-xs'>2 persons</p>
-            </div>
-          </a>
-        </div>
-        <div role='menuitem'>
-          <a
-            aria-current='page'
-            href='/dashboards/personal-3#'
-            className='group flex w-full items-center rounded-md p-2 text-sm transition-colors duration-300 text-gray-500 bg-endnight hover:bg-midnight'>
-            <div className='relative inline-flex h-9 w-9 items-center justify-center rounded-full mr-2'>
-              <Image
-                className='max-w-full rounded-full object-cover shadow-sm dark:border-transparent'
-                alt=''
-                src={`/images/default-avatar-1.jpeg`}
-                width={36}
-                height={36}
-              />
-            </div>
-            <div className='ms-2'>
-              <h6 className='font-heading text-gray-800 text-xs font-medium leading-none dark:text-white'>
-                {' '}
-                My Team 2{' '}
-              </h6>
-              <p className='text-gray-400 font-sans text-xs'>5 persons</p>
-            </div>
-          </a>
-        </div>
-        <div role='menuitem'>
-          <a
-            aria-current='page'
-            href='/dashboards/personal-3#'
-            className='group flex w-full items-center rounded-md p-2 text-sm transition-colors duration-300 text-gray-500 bg-endnight hover:bg-midnight'>
-            <div className='relative inline-flex h-9 w-9 items-center justify-center rounded-full mr-2'>
-              <Image
-                className='max-w-full rounded-full object-cover shadow-sm dark:border-transparent'
-                alt=''
-                src={`/images/default-avatar-1.jpeg`}
-                width={36}
-                height={36}
-              />
-            </div>
-            <div className='ms-2'>
-              <h6 className='font-heading text-gray-800 text-xs font-medium leading-none dark:text-white'>
-                {' '}
-                My team 3{' '}
-              </h6>
-              <p className='text-gray-400 font-sans text-xs'>1 person</p>
+              <p className='text-gray-400 font-sans text-xs'>{hive.members.length} members</p>
             </div>
           </a>
         </div>

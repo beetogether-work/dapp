@@ -1,6 +1,6 @@
 import { ISismoGroup } from '../utils/types';
 import { useContext } from 'react';
-import TalentLayerContext from '../../../context/talentLayer';
+import BeeTogetherContext from '../../../context/beeTogether';
 import SismoHelpPopover from './SismoHelpPopover';
 import Image from 'next/image';
 
@@ -11,7 +11,7 @@ function SismoGroupCard({
   sismoGroupData: ISismoGroup;
   userAddrss: string;
 }) {
-  const { user } = useContext(TalentLayerContext);
+  const { user } = useContext(BeeTogetherContext);
   const isConnectedUser = () => {
     return user?.address === userAddrss;
   };

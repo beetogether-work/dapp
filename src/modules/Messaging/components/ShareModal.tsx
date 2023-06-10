@@ -2,11 +2,11 @@ import { ClipboardDocumentIcon, QrCodeIcon } from '@heroicons/react/24/outline';
 import { QRCodeSVG } from 'qrcode.react';
 import { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
-import TalentLayerContext from '../../../context/talentLayer';
+import BeeTogetherContext from '../../../context/beeTogether';
 
 function ShareModal() {
   const [show, setShow] = useState(false);
-  const { account } = useContext(TalentLayerContext);
+  const { account } = useContext(BeeTogetherContext);
 
   const shareLink = `https://www.beetogether.work/messaging/${account?.address}`;
 

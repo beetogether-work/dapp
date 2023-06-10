@@ -10,3 +10,12 @@ export const processRequest = async (query: string): Promise<any> => {
     return null;
   }
 };
+
+export const processBTRequest = async (query: string): Promise<any> => {
+  try {
+    return await axios.post(config.BTSubgraphUrl, { query });
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+};

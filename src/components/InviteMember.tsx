@@ -1,10 +1,9 @@
 import { QRCodeSVG } from 'qrcode.react';
 import { toast } from 'react-toastify';
 import { ClipboardDocumentIcon } from '@heroicons/react/24/outline';
-import Link from 'next/link';
 
-function InviteMember() {
-  const shareLink = `https://www.beetogether.work/onboarding/invite`;
+function InviteMember({ hiveAddress, signature }: { hiveAddress: string; signature: string }) {
+  const shareLink = `https://www.beetogether.work/onboarding/invite?address=${hiveAddress}&code=${signature}`;
   const handleCopyClick = () => {
     navigator.clipboard.writeText(shareLink);
     toast('Link copied', {

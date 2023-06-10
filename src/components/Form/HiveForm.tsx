@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { useProvider, useSigner } from 'wagmi';
 import * as Yup from 'yup';
 import { config } from '../../config';
-import TalentLayerContext from '../../context/talentLayer';
+import BeeTogetherContext from '../../context/beeTogether';
 import TalentLayerID from '../../contracts/ABI/TalentLayerID.json';
 import { postToIPFS } from '../../utils/ipfs';
 import { createMultiStepsTransactionToast, showErrorTransactionToast } from '../../utils/toast';
@@ -31,13 +31,13 @@ const validationSchema = Yup.object({
 
 function HiveForm({ callback }: { callback?: () => void }) {
   const { open: openConnectModal } = useWeb3Modal();
-  const { user } = useContext(TalentLayerContext);
+  const { user } = useContext(BeeTogetherContext);
   const provider = useProvider({ chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string) });
   const userDescription = user?.id ? useUserById(user?.id)?.description : null;
   const { data: signer } = useSigner({
     chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
   });
-  const { isActiveDelegate } = useContext(TalentLayerContext);
+  const { isActiveDelegate } = useContext(BeeTogetherContext);
 
   if (!user?.id) {
     return <Loading />;

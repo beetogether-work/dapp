@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { useProvider, useSigner } from 'wagmi';
 import * as Yup from 'yup';
 import { config } from '../../config';
-import TalentLayerContext from '../../context/talentLayer';
+import BeeTogetherContext from '../../context/beeTogether';
 import TalentLayerID from '../../contracts/ABI/TalentLayerID.json';
 import { createTalentLayerIdTransactionToast, showErrorTransactionToast } from '../../utils/toast';
 import HelpPopover from '../HelpPopover';
@@ -24,7 +24,7 @@ const initialValues: IFormValues = {
 
 function TalentLayerIdForm() {
   const { open: openConnectModal } = useWeb3Modal();
-  const { user, account } = useContext(TalentLayerContext);
+  const { user, account } = useContext(BeeTogetherContext);
   const { data: signer } = useSigner({
     chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
   });

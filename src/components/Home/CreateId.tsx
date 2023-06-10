@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import TalentLayerContext from '../../context/talentLayer';
+import BeeTogetherContext from '../../context/beeTogether';
 import TalentLayerIdForm from '../Form/TalentLayerIdForm';
 
 function CreateId() {
-  const { user } = useContext(TalentLayerContext);
+  const { user } = useContext(BeeTogetherContext);
 
   if (user) {
     return null;

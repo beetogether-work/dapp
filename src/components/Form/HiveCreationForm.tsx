@@ -5,24 +5,22 @@ import { useContext } from 'react';
 import { useProvider, useSigner } from 'wagmi';
 import * as Yup from 'yup';
 import { config } from '../../config';
-import TalentLayerContext from '../../context/talentLayer';
+import BeeTogetherContext from '../../context/beeTogether';
+import HiveFactoryABI from '../../contracts/ABI/HiveFactory.json';
 import TalentLayerID from '../../contracts/ABI/TalentLayerID.json';
 import { createTalentLayerIdTransactionToast, showErrorTransactionToast } from '../../utils/toast';
 import SubmitButton from './SubmitButton';
+import { useRouter } from 'next/router';
 
 interface IFormValues {
   handle: string;
   groupHandle: string;
 }
 
-const initialValues: IFormValues = {
-  handle: '',
-  groupHandle: '',
-};
-
 function HiveCreationForm() {
+  const router = useRouter();
   const { open: openConnectModal } = useWeb3Modal();
-  const { account } = useContext(TalentLayerContext);
+  const { account, user } = useContext(BeeTogetherContext);
   const { data: signer } = useSigner({
     chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
   });
@@ -30,7 +28,12 @@ function HiveCreationForm() {
   const provider = useProvider({ chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string) });
   let tx: ethers.providers.TransactionResponse;
 
-  console.log('test', account, account?.isConnected);
+  const initialValues: IFormValues = {
+    handle: user?.handle || '',
+    groupHandle: '',
+  };
+
+  console.log('test', account, account?.isConnected, user?.handle || '');
 
   const validationSchema = Yup.object().shape({
     handle: Yup.string()
@@ -57,18 +60,41 @@ function HiveCreationForm() {
   ) => {
     if (account && account.address && account.isConnected && provider && signer) {
       try {
-        const contract = new ethers.Contract(
+        const hiveFactoryContract = new ethers.Contract(
+          config.contracts.hiveFactory,
+          HiveFactoryABI.abi,
+          signer,
+        );
+        const talentLayerIdcontract = new ethers.Contract(
           config.contracts.talentLayerId,
           TalentLayerID.abi,
           signer,
         );
 
-        const handlePrice = await contract.getHandlePrice(submittedValues.handle);
+        const handlePriceForHandle = user?.handle
+          ? 0
+          : await talentLayerIdcontract.getHandlePrice(submittedValues.handle);
+        const handlePriceForGroupHandle = await talentLayerIdcontract.getHandlePrice(
+          submittedValues.groupHandle,
+        );
+        const value = handlePriceForGroupHandle.add(handlePriceForHandle);
 
-        // TODO: update to new contract group createGroup
-        tx = await contract.mint(process.env.NEXT_PUBLIC_PLATFORM_ID, submittedValues.handle, {
-          value: handlePrice,
+        console.log({
+          value: value.toString(),
+          groupHandle: submittedValues.groupHandle,
+          handle: submittedValues.handle,
         });
+
+        tx = await hiveFactoryContract.createHive(
+          process.env.NEXT_PUBLIC_PLATFORM_ID,
+          submittedValues.groupHandle,
+          submittedValues.handle,
+          3,
+          {
+            value: value.toString(),
+          },
+        );
+
         await createTalentLayerIdTransactionToast(
           {
             pending: 'Creating your hive...',
@@ -81,7 +107,7 @@ function HiveCreationForm() {
         );
 
         setSubmitting(false);
-        // TODO: now redirect to success page
+        router.push('/onboarding/success');
       } catch (error: any) {
         showErrorTransactionToast(error);
       }
@@ -101,7 +127,7 @@ function HiveCreationForm() {
             Let's start by creating your hive!
           </p>
           <div className='grid grid-cols-1 gap-6 border border-gray-700 rounded-xl p-6 bg-endnight'>
-            <label className='block'>
+            <label className={`block ${user ? 'hidden' : ''}`}>
               <span className='text-gray-100'>Your handle</span>
               <Field
                 type='text'

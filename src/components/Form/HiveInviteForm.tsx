@@ -4,25 +4,24 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useContext } from 'react';
 import { useProvider, useSigner } from 'wagmi';
 import * as Yup from 'yup';
-import { config } from '../../config';
-import TalentLayerContext from '../../context/talentLayer';
+import BeeTogetherContext from '../../context/beeTogether';
+import HiveABI from '../../contracts/ABI/Hive.json';
 import TalentLayerID from '../../contracts/ABI/TalentLayerID.json';
 import { createTalentLayerIdTransactionToast, showErrorTransactionToast } from '../../utils/toast';
 import SubmitButton from './SubmitButton';
+import { IHive } from '../../types';
+import { useRouter } from 'next/router';
+import { config } from '../../config';
 
 interface IFormValues {
   handle: string;
-  groupHandle: string;
 }
 
-const initialValues: IFormValues = {
-  handle: '',
-  groupHandle: '',
-};
-
-function HiveInviteForm() {
+function HiveInviteForm({ hive }: { hive: IHive }) {
+  const router = useRouter();
+  const query = router.query;
   const { open: openConnectModal } = useWeb3Modal();
-  const { account } = useContext(TalentLayerContext);
+  const { account, user } = useContext(BeeTogetherContext);
   const { data: signer } = useSigner({
     chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
   });
@@ -41,28 +40,39 @@ function HiveInviteForm() {
       }),
   });
 
+  const initialValues: IFormValues = {
+    handle: user?.handle || '',
+  };
+
   const onSubmit = async (
     submittedValues: IFormValues,
     { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void },
   ) => {
     if (account && account.address && account.isConnected && provider && signer) {
       try {
-        const contract = new ethers.Contract(
+        const hiveContract = new ethers.Contract(hive.address, HiveABI.abi, signer);
+        const talentLayerIdcontract = new ethers.Contract(
           config.contracts.talentLayerId,
           TalentLayerID.abi,
           signer,
         );
 
-        const handlePrice = await contract.getHandlePrice(submittedValues.handle);
+        const handlePrice = user?.handle
+          ? 0
+          : await talentLayerIdcontract.getHandlePrice(submittedValues.handle);
 
-        // TODO: update to new contract group createGroup
-        tx = await contract.mint(process.env.NEXT_PUBLIC_PLATFORM_ID, submittedValues.handle, {
-          value: handlePrice,
-        });
+        tx = await hiveContract.join(
+          query.code,
+          process.env.NEXT_PUBLIC_PLATFORM_ID,
+          submittedValues.handle,
+          {
+            value: handlePrice,
+          },
+        );
         await createTalentLayerIdTransactionToast(
           {
-            pending: 'Creating your hive...',
-            success: 'Congrats! Your hive is ready!',
+            pending: 'Joining the hive...',
+            success: 'Congrats! Your are now part of this hive!',
             error: 'An error occurred while creating your hive',
           },
           provider,
@@ -71,7 +81,7 @@ function HiveInviteForm() {
         );
 
         setSubmitting(false);
-        // TODO: now redirect to hive dashboard page
+        router.push('/dashboard');
       } catch (error: any) {
         showErrorTransactionToast(error);
       }
@@ -85,13 +95,14 @@ function HiveInviteForm() {
       {({ isSubmitting }) => (
         <Form className='mx-auto w-full max-w-xs px-2'>
           <h2 className='font-heading text-3xl font-medium leading-normal pt-12 sm:pt-0'>
-            xxx Invite you
+            {hive.owner?.handle} Invite you
           </h2>
           <p className='font-alt text-sm font-normal leading-normal text-gray-400 mb-6'>
-            to join the yyy hive
+            to join the {hive.identity.handle} hive
           </p>
-          <div className='grid grid-cols-1 gap-6 border border-gray-700 rounded-xl p-6 bg-endnight'>
-            <label className='block'>
+          <div
+            className={`grid grid-cols-1 gap-6 border border-gray-700 rounded-xl p-6 bg-endnight`}>
+            <label className={`block ${user ? 'hidden' : ''}`}>
               <span className='text-gray-100'>Your handle</span>
               <Field
                 type='text'

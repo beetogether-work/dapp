@@ -1,12 +1,12 @@
 import { useContext } from 'react';
 import ServiceForm from '../../../components/Form/ServiceForm';
 import Steps from '../../../components/Steps';
-import TalentLayerContext from '../../../context/talentLayer';
+import BeeTogetherContext from '../../../context/beeTogether';
 import ConnectButton from '../../../modules/Messaging/components/ConnectButton';
 import MessagingContext from '../../../modules/Messaging/context/messging';
 
 function CreateService() {
-  const { account, user } = useContext(TalentLayerContext);
+  const { account, user } = useContext(BeeTogetherContext);
   const { userExists } = useContext(MessagingContext);
 
   if (!account?.isConnected) {

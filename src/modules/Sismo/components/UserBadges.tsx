@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import TalentLayerContext from '../../../context/talentLayer';
+import BeeTogetherContext from '../../../context/beeTogether';
 import { IUser } from '../../../types';
 import useSismoBadgesPerAddress from '../hooks/useSismoBadgesPerAddress';
 import { TALENTLAYER_GROUPS } from '../utils/sismoGroupsData';
@@ -12,7 +12,7 @@ interface IProps {
 }
 
 function UserBadges({ user }: IProps) {
-  const { user: currentUser } = useContext(TalentLayerContext);
+  const { user: currentUser } = useContext(BeeTogetherContext);
   const sismoBadges = useSismoBadgesPerAddress(user.address);
 
   const groupsData: ISismoGroup[] = [...TALENTLAYER_GROUPS];

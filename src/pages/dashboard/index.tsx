@@ -1,14 +1,14 @@
 import Image from 'next/image';
 import InviteModal from '../../components/InviteModal';
 import Steps from '../../components/Steps';
-import TalentLayerContext from '../../context/talentLayer';
+import BeeTogetherContext from '../../context/beeTogether';
 import { useContext } from 'react';
 import { EyeIcon, PencilSquareIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
 function Hive() {
-  const { account } = useContext(TalentLayerContext);
-  if (!account?.isConnected) {
+  const { account, user, hive } = useContext(BeeTogetherContext);
+  if (!account?.isConnected || !user || !hive) {
     return <Steps />;
   }
 
@@ -29,7 +29,7 @@ function Hive() {
               </div>
             </div>
             <h2 className='font-heading text-2xl font-bold leading-none text-white flex-1 ml-4 flex items-center'>
-              My hive
+              {hive.identity.handle}
             </h2>
           </div>
           <div className='flex w-full flex-1 flex-col'>
@@ -37,30 +37,20 @@ function Hive() {
               <span>Members</span>
             </h2>
             <div className='mt-auto flex gap-2'>
-              <div className='relative inline-flex shrink-0 items-center justify-center outline-none h-10 w-10'>
-                <div className='flex h-full w-full items-center justify-center overflow-hidden text-center transition-all duration-300'>
-                  <img
-                    src={`/images/default-avatar-1.jpeg`}
-                    className='max-h-full max-w-full object-cover shadow-sm border-transparent h-10 w-10 rounded-xl'
-                  />
-                </div>
-              </div>
-              <div className='relative inline-flex shrink-0 items-center justify-center outline-none h-10 w-10'>
-                <div className='flex h-full w-full items-center justify-center overflow-hidden text-center transition-all duration-300'>
-                  <img
-                    src={`/images/default-avatar-2.jpeg`}
-                    className='max-h-full max-w-full object-cover shadow-sm border-transparent h-10 w-10 rounded-xl'
-                  />
-                </div>
-              </div>
-              <div className='relative inline-flex shrink-0 items-center justify-center outline-none h-10 w-10'>
-                <div className='flex h-full w-full items-center justify-center overflow-hidden text-center transition-all duration-300'>
-                  <img
-                    src={`/images/default-avatar-3.jpeg`}
-                    className='max-h-full max-w-full object-cover shadow-sm border-transparent h-10 w-10 rounded-xl'
-                  />
-                </div>
-              </div>
+              {hive.members.map((item, index) => (
+                <a
+                  href={`/dashboard/profile/${item}`}
+                  key={index}
+                  className='relative inline-flex shrink-0 items-center justify-center outline-none h-10 w-10'>
+                  <div className='flex h-full w-full items-center justify-center overflow-hidden text-center transition-all duration-300'>
+                    <img
+                      src={`/images/default-avatar-${Number(index) % 9}.jpeg`}
+                      className='max-h-full max-w-full object-cover shadow-sm border-transparent h-10 w-10 rounded-xl'
+                    />
+                  </div>
+                </a>
+              ))}
+
               <InviteModal />
             </div>
           </div>
@@ -75,7 +65,7 @@ function Hive() {
           Configure
         </Link>
         <Link
-          href='/dashboard/hive/1'
+          href={`/dashboard/hive/${hive.id}`}
           className=' hover:bg-endnight text-white bg-endnight px-3 py-2 text-sm flex items-center mr-4 rounded-xl'>
           <EyeIcon className='w-[18px] h-[18px] text-redpraha mr-2' />
           Public page

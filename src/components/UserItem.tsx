@@ -1,14 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useContext } from 'react';
-import TalentLayerContext from '../context/talentLayer';
+import BeeTogetherContext from '../context/beeTogether';
 import useUserById from '../hooks/useUserById';
 import { IUser } from '../types';
 import Loading from './Loading';
 import Stars from './Stars';
 
 function UserItem({ user }: { user: IUser }) {
-  const { user: currentUser } = useContext(TalentLayerContext);
+  const { user: currentUser } = useContext(BeeTogetherContext);
   const userDescription = user?.id ? useUserById(user?.id)?.description : null;
 
   if (!user?.id) {
