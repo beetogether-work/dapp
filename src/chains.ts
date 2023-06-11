@@ -59,6 +59,23 @@ export const customChains = {
     },
     testnet: true,
   },
+  base: {
+    id: 84531,
+    name: 'Base',
+    network: 'base',
+    nativeCurrency: {
+      decimals: 18,
+      name: 'Ethereum',
+      symbol: 'ETH',
+    },
+    rpcUrls: {
+      default: 'https://goerli.base.org',
+    },
+    blockExplorers: {
+      default: { name: 'explorer', url: 'https://goerli.basescan.org' },
+    },
+    testnet: true,
+  },
   local: {
     id: 1337,
     name: 'localhost',

@@ -161,12 +161,40 @@ const scroll: Config = {
   },
 };
 
+const base: Config = {
+  networkId: NetworkEnum.BASE,
+  subgraphUrl: 'https://api.studio.thegraph.com/proxy/48248/talentlayer-base/v0.0.1',
+  BTSubgraphUrl: 'https://api.studio.thegraph.com/proxy/48248/beetogether-base/v0.0.1',
+  contracts: {
+    hiveFactory: '0xF2Aa5FF1dA065Aa08E0a640e1Ee50D6DE6d7D782',
+    talentLayerId: '0xd751F9F4ecC8D543967cAc3C2367c038AF3A92eb',
+    serviceRegistry: '0xa7F9D8792C963f19cB1C68008190F760Aff87d00',
+    talentLayerReview: '0x330E249D7eE36652932Ef9667483e9415D82ca9C',
+    talentLayerEscrow: '0xf066918bB3870C1f2280f6F5A062B56408400F05',
+    talentLayerPlatformId: '0x1E21e9bB2bf3EB0d4b2cFbD1e8Cc0653F42B8532',
+  },
+  escrowConfig: {
+    adminFee: '0',
+    adminWallet: '0x8d960334c2EF30f425b395C1506Ef7c5783789F3',
+    timeoutPayment: 3600 * 24 * 7,
+  },
+  tokens: {
+    [ethers.constants.AddressZero]: {
+      address: ethers.constants.AddressZero,
+      symbol: 'ETH',
+      name: 'Ethereum',
+      decimals: 18,
+    },
+  },
+};
+
 const chains: { [networkId in NetworkEnum]: Config } = {
   [NetworkEnum.LOCAL]: local,
   [NetworkEnum.MUMBAI]: mumbai,
   [NetworkEnum.ZKSYNC]: zkSync,
   [NetworkEnum.MANTLE]: mantle,
   [NetworkEnum.SCROLL]: scroll,
+  [NetworkEnum.BASE]: base,
 };
 
 export const getConfig = (networkId: NetworkEnum) => chains[networkId];
