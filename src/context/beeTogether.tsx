@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useEffect, useMemo, useState } from 'react';
+import { createContext, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 import { useAccount } from 'wagmi';
 import { getUserByAddress, getUserById, getUserByIds } from '../queries/users';
 import { IAccount, IHive, IUser } from '../types';
@@ -114,7 +114,7 @@ const BeeTogetherProvider = ({ children }: { children: ReactNode }) => {
       loading,
       membersIdentities,
     };
-  }, [account.address, user?.id, isActiveDelegate, hive, membersIdentities]);
+  }, [account.address, user?.id, isActiveDelegate, hive, membersIdentities, loading]);
 
   return <BeeTogetherContext.Provider value={value}>{children}</BeeTogetherContext.Provider>;
 };

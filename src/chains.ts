@@ -2,6 +2,12 @@ import { chain } from 'wagmi';
 
 export const customChains = {
   ...chain,
+  polygonMumbai: {
+    ...chain.polygonMumbai,
+    rpcUrls: {
+      default: 'https://rpc.mumbai.polygon.gateway.fm/',
+    },
+  },
   zkSync: {
     id: 280,
     name: 'zkSync Era Testnet',
@@ -17,7 +23,7 @@ export const customChains = {
     blockExplorers: {
       default: { name: 'explorer', url: 'https://goerli.explorer.zksync.io/' },
     },
-    testnet: false,
+    testnet: true,
   },
   mantle: {
     id: 5001,
@@ -34,7 +40,24 @@ export const customChains = {
     blockExplorers: {
       default: { name: 'explorer', url: 'https://explorer.testnet.mantle.xyz/' },
     },
-    testnet: false,
+    testnet: true,
+  },
+  scroll: {
+    id: 534353,
+    name: 'Scroll',
+    network: 'scroll',
+    nativeCurrency: {
+      decimals: 18,
+      name: 'Ethereum',
+      symbol: 'ETH',
+    },
+    rpcUrls: {
+      default: 'https://alpha-rpc.scroll.io/l2',
+    },
+    blockExplorers: {
+      default: { name: 'explorer', url: 'https://blockscout.scroll.io/' },
+    },
+    testnet: true,
   },
   local: {
     id: 1337,
@@ -51,6 +74,6 @@ export const customChains = {
     blockExplorers: {
       default: { name: 'testnet.snowTrace', url: 'https://testnet.snowtrace.io/' },
     },
-    testnet: false,
+    testnet: true,
   },
 };

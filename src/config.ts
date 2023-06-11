@@ -134,11 +134,39 @@ const mantle: Config = {
   },
 };
 
+const scroll: Config = {
+  networkId: NetworkEnum.SCROLL,
+  subgraphUrl: '', // not supported for Scroll
+  BTSubgraphUrl: '', // not supported for Scroll
+  contracts: {
+    hiveFactory: '0x5FC6c2fE038a79Bb5A5300dEa61162FFd3EaA276',
+    talentLayerId: '0x86FC1Ce8122973E0990227b6Cb6e6eB1276A60E8',
+    serviceRegistry: '0xc83A9E89C2E61d251a9429203b99f0497CEfE5Ec',
+    talentLayerReview: '0x7C171329aA4edCEF43de5E378c1E93C110C756A7',
+    talentLayerEscrow: '0x6444ac8760c5647d3f94d691990FcBA734434A66',
+    talentLayerPlatformId: '0xC965483E19407D296971a815A8e59F8c51B7d923',
+  },
+  escrowConfig: {
+    adminFee: '0',
+    adminWallet: '0x8d960334c2EF30f425b395C1506Ef7c5783789F3',
+    timeoutPayment: 3600 * 24 * 7,
+  },
+  tokens: {
+    [ethers.constants.AddressZero]: {
+      address: ethers.constants.AddressZero,
+      symbol: 'ETH',
+      name: 'Ethereum',
+      decimals: 18,
+    },
+  },
+};
+
 const chains: { [networkId in NetworkEnum]: Config } = {
   [NetworkEnum.LOCAL]: local,
   [NetworkEnum.MUMBAI]: mumbai,
   [NetworkEnum.ZKSYNC]: zkSync,
   [NetworkEnum.MANTLE]: mantle,
+  [NetworkEnum.SCROLL]: scroll,
 };
 
 export const getConfig = (networkId: NetworkEnum) => chains[networkId];
