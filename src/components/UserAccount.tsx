@@ -20,7 +20,11 @@ function UserAccount() {
                   <Image
                     className='h-9 w-9 rounded-full'
                     alt=''
-                    src={`/images/default-avatar-${Number(user?.id ? user.id : '1') % 9}.jpeg`}
+                    src={
+                      user?.image_url
+                        ? user?.image_url
+                        : `/images/default-avatar-${Number(user?.id ? user.id : '1') % 9}.jpeg`
+                    }
                     width={50}
                     height={50}
                   />

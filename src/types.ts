@@ -26,6 +26,7 @@ export type IUser = {
   rating: string;
   description?: IUserDetails;
   userStats: IUserStats;
+  image_url: string;
   delegates?: string[];
 };
 
