@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useEffect, useMemo, useState } from 'react';
+import { createContext, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 import { useAccount } from 'wagmi';
 import { getUserByAddress, getUserById, getUserByIds } from '../queries/users';
 import { IAccount, IHive, IUser } from '../types';
@@ -31,7 +31,7 @@ const BeeTogetherProvider = ({ children }: { children: ReactNode }) => {
   const [isActiveDelegate, setIsActiveDelegate] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     if (!account.address || !account.isConnected || !!hive?.id) {
       setLoading(false);
       return false;
@@ -71,11 +71,11 @@ const BeeTogetherProvider = ({ children }: { children: ReactNode }) => {
       // eslint-disable-next-line no-console
       console.error(err);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchData();
-  }, [chainId, account.address, account.isConnected, isActiveDelegate, hive]);
+  }, [chainId, account.address, account.isConnected, isActiveDelegate, hive, fetchData]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -114,7 +114,7 @@ const BeeTogetherProvider = ({ children }: { children: ReactNode }) => {
       loading,
       membersIdentities,
     };
-  }, [account.address, user?.id, isActiveDelegate, hive, membersIdentities]);
+  }, [account.address, user?.id, isActiveDelegate, hive, membersIdentities, loading]);
 
   return <BeeTogetherContext.Provider value={value}>{children}</BeeTogetherContext.Provider>;
 };
