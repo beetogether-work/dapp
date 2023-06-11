@@ -17,12 +17,12 @@ function UserAccount() {
               <div className='flex items-center relative group'>
                 <Menu.Button className='group-hover:ring-redpraha ring-offset-midnight inline-flex h-9 w-9 items-center justify-center rounded-full ring-1 ring-transparent transition-all duration-300 group-hover:ring-offset-4'>
                   <span className='sr-only'>Open user menu</span>
-                  <Image
+                  <img
                     className='h-9 w-9 rounded-full'
                     alt=''
                     src={
-                      user?.image_url
-                        ? user?.image_url
+                      user?.description?.image_url
+                        ? user?.description?.image_url
                         : `/images/default-avatar-${Number(user?.id ? user.id : '1') % 9}.jpeg`
                     }
                     width={50}

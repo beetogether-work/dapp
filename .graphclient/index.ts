@@ -5920,7 +5920,7 @@ const talentlayerTransforms = [];
 const additionalTypeDefs = [] as any[];
 const beetogetherHandler = new GraphqlHandler({
               name: "beetogether",
-              config: {"endpoint":"https://api.thegraph.com/subgraphs/name/mattiapomelli/beetogether-mumbai"},
+              config: {"endpoint":"https://api.thegraph.com/subgraphs/name/{context.name:mattiapomelli/beetogether-mumbai}"},
               baseDir,
               cache,
               pubsub,
@@ -5930,7 +5930,7 @@ const beetogetherHandler = new GraphqlHandler({
             });
 const talentlayerHandler = new GraphqlHandler({
               name: "talentlayer",
-              config: {"endpoint":"https://api.thegraph.com/subgraphs/name/talentlayer/talent-layer-mumbai"},
+              config: {"endpoint":"https://api.thegraph.com/subgraphs/name/{context.name2:talentlayer/talent-layer-mumbai}"},
               baseDir,
               cache,
               pubsub,

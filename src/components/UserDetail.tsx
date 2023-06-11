@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { useContext } from 'react';
 import BeeTogetherContext from '../context/beeTogether';
 import useUserById from '../hooks/useUserById';
@@ -6,8 +5,6 @@ import PohModule from '../modules/Poh/PohModule';
 import { IUser } from '../types';
 import Loading from './Loading';
 import Stars from './Stars';
-import Image from 'next/image';
-import DelegateModal from './Modal/DelegateModal';
 
 function UserDetail({ user }: { user: IUser }) {
   const { user: currentUser } = useContext(BeeTogetherContext);
@@ -22,10 +19,10 @@ function UserDetail({ user }: { user: IUser }) {
       <div className='w-full'>
         <div className='flex flex-col justify-start items-start gap-4'>
           <div className='flex items-center justify-start mb-4'>
-            <Image
+            <img
               src={
-                user?.image_url
-                  ? user?.image_url
+                user?.description?.image_url
+                  ? user?.description?.image_url
                   : `/images/default-avatar-${Number(user?.id ? user.id : '1') % 9}.jpeg`
               }
               className='w-10 mr-4 rounded-full'

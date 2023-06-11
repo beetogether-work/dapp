@@ -4551,6 +4551,6 @@ export type _SubgraphErrorPolicy_ =
 
   export type Context = {
       ["talentlayer"]: { Query: QuerySdk, Mutation: MutationSdk, Subscription: SubscriptionSdk },
-      
+      ["name2"]: Scalars['ID']
     };
 }

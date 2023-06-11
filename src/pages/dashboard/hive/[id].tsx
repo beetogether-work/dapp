@@ -20,14 +20,21 @@ function PublicHive() {
   const [hive, setHive] = useState<IHive>();
 
   useEffect(() => {
-    if (!id) {
+    if (!id || !chainId) {
       return;
     }
 
     const fetchData = async () => {
-      const result = await execute(HiveAndIdentityQueryDocument, {
-        hiveId: id,
-      });
+      const result = await execute(
+        HiveAndIdentityQueryDocument,
+        {
+          hiveId: id,
+        },
+        {
+          name: chainId == 280 ? 'mattiapomelli/beetogether-zksync' : null,
+          name2: chainId == 280 ? 'mattiapomelli/talentlayer-zksynctestnet' : null,
+        },
+      );
       const data: HiveAndIdentityQueryQuery = result?.data;
       if (data && data.hive) {
         const currentHive = data.hive as IHive;

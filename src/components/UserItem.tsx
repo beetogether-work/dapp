@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { useContext } from 'react';
 import BeeTogetherContext from '../context/beeTogether';
@@ -20,10 +19,10 @@ function UserItem({ user }: { user: IUser }) {
       <div className='flex flex-col items-top justify-between w-full'>
         <div className='flex flex-col justify-start items-start gap-4'>
           <div className='flex items-center justify-start mb-4'>
-            <Image
+            <img
               src={
-                user?.image_url
-                  ? user?.image_url
+                user?.description?.image_url
+                  ? user?.description?.image_url
                   : `/images/default-avatar-${Number(user?.id ? user.id : '1') % 9}.jpeg`
               }
               className='w-10 mr-4 rounded-full'

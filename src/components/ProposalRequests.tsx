@@ -29,9 +29,16 @@ function ProposalRequests() {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const result = await execute(ProposalRequestsQueryDocument, {
-        hiveId: hive?.id,
-      });
+      const result = await execute(
+        ProposalRequestsQueryDocument,
+        {
+          hiveId: hive?.id,
+        },
+        {
+          name: chainId == 280 ? 'mattiapomelli/beetogether-zksync' : null,
+          name2: chainId == 280 ? 'mattiapomelli/talentlayer-zksynctestnet' : null,
+        },
+      );
       const data: ProposalRequestsQueryQuery = result?.data;
       setProposalRequests(data.proposalRequests as ProposalRequest[]);
       setLoading(false);

@@ -3,22 +3,11 @@ sources:
   - name: beetogether
     handler:
       graphql:
-        endpoint: https://api.thegraph.com/subgraphs/name/mattiapomelli/beetogether-mumbai
+        endpoint: https://api.thegraph.com/subgraphs/name/{context.name:mattiapomelli/beetogether-mumbai}
   - name: talentlayer
     handler:
       graphql:
-        endpoint: https://api.thegraph.com/subgraphs/name/talentlayer/talent-layer-mumbai
-
-# For zksync
-# sources:
-#   - name: beetogether
-#     handler:
-#       graphql:
-#         endpoint: https://api.thegraph.com/subgraphs/name/mattiapomelli/beetogether-zksync
-#   - name: talentlayer
-#     handler:
-#       graphql:
-#         endpoint: https://api.thegraph.com/subgraphs/name/mattiapomelli/talentlayer-zksynctestnet
+        endpoint: https://api.thegraph.com/subgraphs/name/{context.name2:talentlayer/talent-layer-mumbai}
 
 documents:
   - ./src/queries/hiveAndIdentity.graphql

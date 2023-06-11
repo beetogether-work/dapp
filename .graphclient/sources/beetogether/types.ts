@@ -846,6 +846,6 @@ export type _SubgraphErrorPolicy_ =
 
   export type Context = {
       ["beetogether"]: { Query: QuerySdk, Mutation: MutationSdk, Subscription: SubscriptionSdk },
-      
+      ["name"]: Scalars['ID']
     };
 }
