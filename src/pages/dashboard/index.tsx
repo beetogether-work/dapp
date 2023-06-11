@@ -78,12 +78,6 @@ function Hive() {
             </div>
           </div>
         </div>
-        {isZkSync && (
-          <div className='mt-4'>
-            Paymaster balance (used to cover gas fees for hive members):
-            <span>{ethers.utils.formatEther(paymasterBalance)}</span>
-          </div>
-        )}
       </div>
 
       <div className='flex mt-4'>
@@ -100,6 +94,20 @@ function Hive() {
           Public page
         </Link>
       </div>
+
+      {isZkSync && (
+        <div className='flex flex-col justify-between gap-6 mt-6 mb-6 pb-6 pt-6 border-b border-t border-gray-700'>
+          <div>
+            <h3 className='font-heading text-lg font-semibold leading-tight text-gray-100 mb-1'>
+              <span>Paymaster balance</span>
+            </h3>
+            <p className='text-sm text-gray-400 italic '>
+              (used to cover gas fees for hive members)
+            </p>
+          </div>
+          <span>{ethers.utils.formatEther(paymasterBalance)} ETH</span>
+        </div>
+      )}
 
       <ProposalRequests />
     </div>
