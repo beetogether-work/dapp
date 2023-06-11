@@ -16,7 +16,6 @@ import { delegateUpdateProfileData } from '../request';
 import { useChainId } from '../../hooks/useChainId';
 import { useConfig } from '../../hooks/useConfig';
 import { QuestionMarkCircle } from 'heroicons-react';
-import { values } from 'cypress/types/lodash';
 
 interface IFormValues {
   title?: string;
