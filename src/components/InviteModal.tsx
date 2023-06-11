@@ -42,7 +42,7 @@ function InviteModal() {
         onClick={() => setShow(true)}
         type='button'
         className='disabled:opacity-60 disabled:cursor-not-allowed hover:shadow-none false false border text-white bg-gray-700 hover:bg-gray-600 border-gray-600 rounded-xl h-10 w-10 p-2 relative inline-flex items-center justify-center space-x-1 font-sans text-sm font-normal leading-5 no-underline outline-none transition-all duration-300'>
-        <PlusIcon />
+        <PlusIcon width={22} height={22} />
       </button>
 
       <div
