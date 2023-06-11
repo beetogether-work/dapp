@@ -168,7 +168,8 @@ function ProposalForm({
 
         let tx;
         if (hive) {
-          // const zkSyncSigner = new Web3Provider(window.ethereum).getSigner(); This doesn't work on mobile :()
+          // This is commented because it doesn't work on mobile (which we need for the demo). However it works on desktop.
+          // const zkSyncSigner = new Web3Provider(window.ethereum).getSigner();
           const hiveContract = new ethers.Contract(hive.address, HiveABI.abi, signer);
           const shares = values.shares.map(share => share.amount);
 
