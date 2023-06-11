@@ -169,7 +169,8 @@ function ProposalForm({
 
         let tx;
         if (hive) {
-          const zkSyncSigner = new Web3Provider(window.ethereum as ExternalProvider).getSigner();
+          // @ts-ignore
+          const zkSyncSigner = new Web3Provider(provider).getSigner();
           const hiveContract = new ethers.Contract(hive.address, HiveABI.abi, zkSyncSigner);
           const shares = values.shares.map(share => share.amount);
 

@@ -69,22 +69,26 @@ function Success() {
             {signature ? (
               <>
                 <InviteMember hiveAddress={hive.address} signature={signature} />
-
-                <p className='mt-4 mb-4'>then</p>
-
-                <Link
-                  href='/dashboard'
-                  className='block mt-4 grow px-5 py-3 rounded-xl border-redpraha bg-endnight text-white'>
-                  Go to your Hive dashboard
-                </Link>
               </>
             ) : (
-              <button
-                onClick={generateSignature}
-                className='block mt-4 grow px-5 py-3 rounded-xl border-redpraha bg-endnight text-white'>
-                Generate invitation link
-              </button>
+              <div className='flex justify-center'>
+                <button
+                  onClick={generateSignature}
+                  className='block mt-4 grow px-5 py-3 rounded-xl border-gray-700 bg-redpraha text-white'>
+                  Generate invitation link
+                </button>
+              </div>
             )}
+          </div>
+
+          <div>
+            <p className='mt-4 mb-4 text-center'>or</p>
+
+            <Link
+              href='/dashboard'
+              className='block mt-4 grow px-5 py-3 rounded-xl border-redpraha bg-endnight text-white'>
+              Go to your Hive dashboard
+            </Link>
           </div>
         </div>
       </div>

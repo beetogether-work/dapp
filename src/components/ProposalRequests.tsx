@@ -84,7 +84,7 @@ function ProposalRequests() {
       </div>
       {proposalRequests && proposalRequests?.length > 0 ? (
         <>
-          <div className='flex gap-2 sm:justify-end'>
+          <div className='flex gap-2'>
             {['All', 'To vote', 'Pending'].map(filterName => {
               return (
                 <button
