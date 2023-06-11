@@ -203,6 +203,7 @@ export enum NetworkEnum {
   ZKSYNC = 280,
   MANTLE = 5001,
   SCROLL = 534353,
+  BASE = 84531,
 }
 
 export type IToken = {

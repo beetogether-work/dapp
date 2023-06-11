@@ -27,6 +27,7 @@ const chains: Chain[] = [
   customChains.polygonMumbai,
   customChains.mantle,
   customChains.scroll,
+  customChains.base,
 ];
 
 // Wagmi client
