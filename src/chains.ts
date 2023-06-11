@@ -19,20 +19,20 @@ export const customChains = {
     },
     testnet: false,
   },
-  fuji: {
-    id: 43_113,
-    name: 'Fuji',
-    network: 'fuji',
+  mantle: {
+    id: 5001,
+    name: 'Mantle',
+    network: 'mantle-testnet',
     nativeCurrency: {
       decimals: 18,
-      name: 'Avalanche',
-      symbol: 'AVAX',
+      name: 'Bit',
+      symbol: 'BIT',
     },
     rpcUrls: {
-      default: 'https://api.avax-test.network/ext/C/rpc',
+      default: 'https://rpc.testnet.mantle.xyz',
     },
     blockExplorers: {
-      default: { name: 'testnet.snowTrace', url: 'https://testnet.snowtrace.io/' },
+      default: { name: 'explorer', url: 'https://explorer.testnet.mantle.xyz/' },
     },
     testnet: false,
   },
