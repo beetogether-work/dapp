@@ -1,4 +1,3 @@
-import { ExternalProvider } from '@ethersproject/providers';
 import { ethers, FixedNumber } from 'ethers';
 import { ErrorMessage, Field, FieldArray, Form, Formik } from 'formik';
 import { QuestionMarkCircle } from 'heroicons-react';
@@ -6,7 +5,7 @@ import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 import { useProvider, useSigner } from 'wagmi';
 import * as Yup from 'yup';
-import { Web3Provider } from 'zksync-web3';
+// import { Web3Provider, Provider } from 'zksync-web3';
 import BeeTogetherContext from '../../context/beeTogether';
 import HiveABI from '../../contracts/ABI/Hive.json';
 import ServiceRegistry from '../../contracts/ABI/TalentLayerService.json';
@@ -169,9 +168,8 @@ function ProposalForm({
 
         let tx;
         if (hive) {
-          // @ts-ignore
-          const zkSyncSigner = new Web3Provider(provider).getSigner();
-          const hiveContract = new ethers.Contract(hive.address, HiveABI.abi, zkSyncSigner);
+          // const zkSyncSigner = new Web3Provider(window.ethereum).getSigner(); This doesn't work on mobile :()
+          const hiveContract = new ethers.Contract(hive.address, HiveABI.abi, signer);
           const shares = values.shares.map(share => share.amount);
 
           // ZkSync
