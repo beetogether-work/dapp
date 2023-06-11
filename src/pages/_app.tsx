@@ -23,8 +23,8 @@ import SEO from '../../next-seo.config';
 import Script from 'next/script';
 
 const chains: Chain[] = [
-  customChains.zkSync,
   customChains.polygonMumbai,
+  customChains.zkSync,
   customChains.mantle,
   customChains.scroll,
   customChains.base,
