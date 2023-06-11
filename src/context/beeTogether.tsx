@@ -33,6 +33,7 @@ const BeeTogetherProvider = ({ children }: { children: ReactNode }) => {
 
   const fetchData = async () => {
     if (!account.address || !account.isConnected || !!hive?.id) {
+      setLoading(false);
       return false;
     }
 

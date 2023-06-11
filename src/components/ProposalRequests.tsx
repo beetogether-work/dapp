@@ -126,7 +126,9 @@ function ProposalRequests() {
                       <tbody className='divide-gray-700 bg-gray-800 divide-y'>
                         {proposalRequests &&
                           proposalRequests.map(proposalRequest => (
-                            <tr className={`hover:bg-gray-900 transition-colors duration-300`}>
+                            <tr
+                              key={proposalRequest.id}
+                              className={`hover:bg-gray-900 transition-colors duration-300`}>
                               <td className='font-alt whitespace-nowrap text-sm text-white p-4'>
                                 <Link
                                   href={`/dashboard/services/${proposalRequest.serviceId}`}
