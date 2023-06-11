@@ -19,7 +19,7 @@ import { useChainId } from '../hooks/useChainId';
 
 function ServiceDetail({ service }: { service: IService }) {
   const chainId = useChainId();
-  const { account, user } = useContext(BeeTogetherContext);
+  const { account, user, hive } = useContext(BeeTogetherContext);
   const { reviews } = useReviewsByService(service.id);
   const proposals = useProposalsByService(service.id);
   const payments = usePaymentsByService(service.id);
@@ -27,10 +27,10 @@ function ServiceDetail({ service }: { service: IService }) {
   const isBuyer = user?.id === service.buyer.id;
   const isSeller = user?.id === service.seller?.id;
   const hasReviewed = !!reviews.find(review => {
-    return review.to.id !== user?.id;
+    return review.to.id !== user?.id || review.to.id !== hive?.identity.id;
   });
   const userProposal = proposals.find(proposal => {
-    return proposal.seller.id === user?.id;
+    return proposal.seller.id === user?.id || proposal.seller.id === hive?.identity.id;
   });
 
   const validatedProposal = proposals.find(proposal => {

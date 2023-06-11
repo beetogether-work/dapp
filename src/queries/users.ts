@@ -112,3 +112,36 @@ export const getUserTotalGains = (chainId: number, id: string): Promise<any> => 
     `;
   return processRequest(chainId, query);
 };
+
+export const getUserByIds = (chainId: number, ids: string[]): Promise<any> => {
+  const query = `
+    {
+      users(where: {id_in: [${ids.join(',')}]}) {
+        id
+        address
+        handle
+        rating
+        delegates
+        userStats {
+          numReceivedReviews
+        }
+        updatedAt
+        createdAt
+        description {
+          about
+          role
+          name
+          country
+          headline
+          id
+          image_url
+          video_url
+          title
+          timezone
+          skills_raw
+        }
+      }
+    }
+    `;
+  return processRequest(chainId, query);
+};

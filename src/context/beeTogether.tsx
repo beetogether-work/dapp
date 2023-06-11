@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useEffect, useMemo, useState } from 'react';
 import { useAccount } from 'wagmi';
-import { getUserByAddress, getUserById } from '../queries/users';
+import { getUserByAddress, getUserById, getUserByIds } from '../queries/users';
 import { IAccount, IHive, IUser } from '../types';
 import { getHiveByMemberId } from '../queries/hive';
 import { useChainId } from '../hooks/useChainId';
@@ -12,17 +12,20 @@ const BeeTogetherContext = createContext<{
   hive?: IHive;
   refreshData?: () => void;
   loading: boolean;
+  membersIdentities: IUser[];
 }>({
   user: undefined,
   account: undefined,
   isActiveDelegate: false,
   hive: undefined,
   loading: true,
+  membersIdentities: [],
 });
 
 const BeeTogetherProvider = ({ children }: { children: ReactNode }) => {
   const chainId = useChainId();
   const [user, setUser] = useState<IUser | undefined>();
+  const [membersIdentities, setMembersIdentities] = useState<IUser[]>([]);
   const [hive, setHive] = useState<IHive | undefined>();
   const account = useAccount();
   const [isActiveDelegate, setIsActiveDelegate] = useState(false);
@@ -82,6 +85,24 @@ const BeeTogetherProvider = ({ children }: { children: ReactNode }) => {
     };
   }, [fetchData]);
 
+  useEffect(() => {
+    if (!hive || hive.members.length == 0) {
+      return;
+    }
+
+    const fetch = async () => {
+      const response = await getUserByIds(chainId, hive.members);
+      const users = response?.data?.data?.users;
+      const reindexedUsers = users.reduce((acc: any, user: IUser) => {
+        acc[user.id] = user;
+        return acc;
+      }, {});
+      setMembersIdentities(reindexedUsers);
+    };
+
+    fetch();
+  }, [hive?.members.length]);
+
   const value = useMemo(() => {
     return {
       user,
@@ -90,8 +111,9 @@ const BeeTogetherProvider = ({ children }: { children: ReactNode }) => {
       hive,
       refreshData: fetchData,
       loading,
+      membersIdentities,
     };
-  }, [account.address, user?.id, isActiveDelegate, hive]);
+  }, [account.address, user?.id, isActiveDelegate, hive, membersIdentities]);
 
   return <BeeTogetherContext.Provider value={value}>{children}</BeeTogetherContext.Provider>;
 };
