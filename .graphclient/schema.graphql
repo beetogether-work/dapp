@@ -2040,7 +2040,6 @@ enum Evidence_orderBy {
   party__handle
   party__createdAt
   party__updatedAt
-  party__numReviews
   party__address
   party__rating
   party__cid
@@ -3350,7 +3349,6 @@ enum Proposal_orderBy {
   seller__handle
   seller__createdAt
   seller__updatedAt
-  seller__numReviews
   seller__address
   seller__rating
   seller__cid
@@ -3692,7 +3690,6 @@ enum Review_orderBy {
   to__handle
   to__createdAt
   to__updatedAt
-  to__numReviews
   to__address
   to__rating
   to__cid
@@ -4089,7 +4086,6 @@ enum Service_orderBy {
   buyer__handle
   buyer__createdAt
   buyer__updatedAt
-  buyer__numReviews
   buyer__address
   buyer__rating
   buyer__cid
@@ -4099,7 +4095,6 @@ enum Service_orderBy {
   seller__handle
   seller__createdAt
   seller__updatedAt
-  seller__numReviews
   seller__address
   seller__rating
   seller__cid
@@ -4518,7 +4513,6 @@ enum Transaction_orderBy {
   sender__handle
   sender__createdAt
   sender__updatedAt
-  sender__numReviews
   sender__address
   sender__rating
   sender__cid
@@ -4528,7 +4522,6 @@ enum Transaction_orderBy {
   receiver__handle
   receiver__createdAt
   receiver__updatedAt
-  receiver__numReviews
   receiver__address
   receiver__rating
   receiver__cid
@@ -4571,7 +4564,6 @@ type User {
   createdAt: BigInt!
   updatedAt: BigInt!
   platform: Platform
-  numReviews: BigInt
   address: String!
   rating: BigDecimal!
   reviews(skip: Int = 0, first: Int = 100, orderBy: Review_orderBy, orderDirection: OrderDirection, where: Review_filter): [Review!]
@@ -4846,7 +4838,6 @@ enum UserDescription_orderBy {
   user__handle
   user__createdAt
   user__updatedAt
-  user__numReviews
   user__address
   user__rating
   user__cid
@@ -4936,7 +4927,6 @@ enum UserGain_orderBy {
   user__handle
   user__createdAt
   user__updatedAt
-  user__numReviews
   user__address
   user__rating
   user__cid
@@ -5060,7 +5050,6 @@ enum UserStats_orderBy {
   user__handle
   user__createdAt
   user__updatedAt
-  user__numReviews
   user__address
   user__rating
   user__cid
@@ -5140,14 +5129,6 @@ input User_filter {
   platform_not_ends_with: String
   platform_not_ends_with_nocase: String
   platform_: Platform_filter
-  numReviews: BigInt
-  numReviews_not: BigInt
-  numReviews_gt: BigInt
-  numReviews_lt: BigInt
-  numReviews_gte: BigInt
-  numReviews_lte: BigInt
-  numReviews_in: [BigInt!]
-  numReviews_not_in: [BigInt!]
   address: String
   address_not: String
   address_gt: String
@@ -5275,7 +5256,6 @@ enum User_orderBy {
   platform__arbitrationFeeTimeout
   platform__cid
   platform__signer
-  numReviews
   address
   rating
   reviews

@@ -29,7 +29,7 @@ function PublicHive() {
         hiveId: id,
       });
       const data: HiveAndIdentityQueryQuery = result?.data;
-      if (data) {
+      if (data && data.hive) {
         const currentHive = data.hive as IHive;
         currentHive.identity = data.user as unknown as IUser;
         const responseOwner = await getUserById(chainId, currentHive.owner);

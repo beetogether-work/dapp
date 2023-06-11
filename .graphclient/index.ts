@@ -20,10 +20,10 @@ import { getMesh, ExecuteMeshFn, SubscribeMeshFn, MeshContext as BaseMeshContext
 import { MeshStore, FsStoreStorageAdapter } from '@graphql-mesh/store';
 import { path as pathModule } from '@graphql-mesh/cross-helpers';
 import { ImportFn } from '@graphql-mesh/types';
-import type { TalentlayerTypes } from './sources/talentlayer/types';
 import type { BeetogetherTypes } from './sources/beetogether/types';
-import * as importedModule$0 from "./sources/talentlayer/introspectionSchema";
-import * as importedModule$1 from "./sources/beetogether/introspectionSchema";
+import type { TalentlayerTypes } from './sources/talentlayer/types';
+import * as importedModule$0 from "./sources/beetogether/introspectionSchema";
+import * as importedModule$1 from "./sources/talentlayer/introspectionSchema";
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -1775,7 +1775,6 @@ export type Evidence_orderBy =
   | 'party__handle'
   | 'party__createdAt'
   | 'party__updatedAt'
-  | 'party__numReviews'
   | 'party__address'
   | 'party__rating'
   | 'party__cid'
@@ -3100,7 +3099,6 @@ export type Proposal_orderBy =
   | 'seller__handle'
   | 'seller__createdAt'
   | 'seller__updatedAt'
-  | 'seller__numReviews'
   | 'seller__address'
   | 'seller__rating'
   | 'seller__cid'
@@ -3439,7 +3437,6 @@ export type Review_orderBy =
   | 'to__handle'
   | 'to__createdAt'
   | 'to__updatedAt'
-  | 'to__numReviews'
   | 'to__address'
   | 'to__rating'
   | 'to__cid'
@@ -3851,7 +3848,6 @@ export type Service_orderBy =
   | 'buyer__handle'
   | 'buyer__createdAt'
   | 'buyer__updatedAt'
-  | 'buyer__numReviews'
   | 'buyer__address'
   | 'buyer__rating'
   | 'buyer__cid'
@@ -3861,7 +3857,6 @@ export type Service_orderBy =
   | 'seller__handle'
   | 'seller__createdAt'
   | 'seller__updatedAt'
-  | 'seller__numReviews'
   | 'seller__address'
   | 'seller__rating'
   | 'seller__cid'
@@ -4295,7 +4290,6 @@ export type Transaction_orderBy =
   | 'sender__handle'
   | 'sender__createdAt'
   | 'sender__updatedAt'
-  | 'sender__numReviews'
   | 'sender__address'
   | 'sender__rating'
   | 'sender__cid'
@@ -4305,7 +4299,6 @@ export type Transaction_orderBy =
   | 'receiver__handle'
   | 'receiver__createdAt'
   | 'receiver__updatedAt'
-  | 'receiver__numReviews'
   | 'receiver__address'
   | 'receiver__rating'
   | 'receiver__cid'
@@ -4347,7 +4340,6 @@ export type User = {
   createdAt: Scalars['BigInt'];
   updatedAt: Scalars['BigInt'];
   platform?: Maybe<Platform>;
-  numReviews?: Maybe<Scalars['BigInt']>;
   address: Scalars['String'];
   rating: Scalars['BigDecimal'];
   reviews?: Maybe<Array<Review>>;
@@ -4667,7 +4659,6 @@ export type UserDescription_orderBy =
   | 'user__handle'
   | 'user__createdAt'
   | 'user__updatedAt'
-  | 'user__numReviews'
   | 'user__address'
   | 'user__rating'
   | 'user__cid'
@@ -4756,7 +4747,6 @@ export type UserGain_orderBy =
   | 'user__handle'
   | 'user__createdAt'
   | 'user__updatedAt'
-  | 'user__numReviews'
   | 'user__address'
   | 'user__rating'
   | 'user__cid'
@@ -4879,7 +4869,6 @@ export type UserStats_orderBy =
   | 'user__handle'
   | 'user__createdAt'
   | 'user__updatedAt'
-  | 'user__numReviews'
   | 'user__address'
   | 'user__rating'
   | 'user__cid';
@@ -4958,14 +4947,6 @@ export type User_filter = {
   platform_not_ends_with?: InputMaybe<Scalars['String']>;
   platform_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
   platform_?: InputMaybe<Platform_filter>;
-  numReviews?: InputMaybe<Scalars['BigInt']>;
-  numReviews_not?: InputMaybe<Scalars['BigInt']>;
-  numReviews_gt?: InputMaybe<Scalars['BigInt']>;
-  numReviews_lt?: InputMaybe<Scalars['BigInt']>;
-  numReviews_gte?: InputMaybe<Scalars['BigInt']>;
-  numReviews_lte?: InputMaybe<Scalars['BigInt']>;
-  numReviews_in?: InputMaybe<Array<Scalars['BigInt']>>;
-  numReviews_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
   address?: InputMaybe<Scalars['String']>;
   address_not?: InputMaybe<Scalars['String']>;
   address_gt?: InputMaybe<Scalars['String']>;
@@ -5093,7 +5074,6 @@ export type User_orderBy =
   | 'platform__arbitrationFeeTimeout'
   | 'platform__cid'
   | 'platform__signer'
-  | 'numReviews'
   | 'address'
   | 'rating'
   | 'reviews'
@@ -5798,7 +5778,6 @@ export type UserResolvers<ContextType = MeshContext, ParentType extends Resolver
   createdAt?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
   updatedAt?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
   platform?: Resolver<Maybe<ResolversTypes['Platform']>, ParentType, ContextType>;
-  numReviews?: Resolver<Maybe<ResolversTypes['BigInt']>, ParentType, ContextType>;
   address?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   rating?: Resolver<ResolversTypes['BigDecimal'], ParentType, ContextType>;
   reviews?: Resolver<Maybe<Array<ResolversTypes['Review']>>, ParentType, ContextType, RequireFields<UserreviewsArgs, 'skip' | 'first'>>;
@@ -5891,7 +5870,7 @@ export type DirectiveResolvers<ContextType = MeshContext> = ResolversObject<{
   derivedFrom?: derivedFromDirectiveResolver<any, any, ContextType>;
 }>;
 
-export type MeshContext = TalentlayerTypes.Context & BeetogetherTypes.Context & BaseMeshContext;
+export type MeshContext = BeetogetherTypes.Context & TalentlayerTypes.Context & BaseMeshContext;
 
 
 import { fileURLToPath } from '@graphql-mesh/utils';
@@ -5900,10 +5879,10 @@ const baseDir = pathModule.join(pathModule.dirname(fileURLToPath(import.meta.url
 const importFn: ImportFn = <T>(moduleId: string) => {
   const relativeModuleId = (pathModule.isAbsolute(moduleId) ? pathModule.relative(baseDir, moduleId) : moduleId).split('\\').join('/').replace(baseDir + '/', '');
   switch(relativeModuleId) {
-    case ".graphclient/sources/talentlayer/introspectionSchema":
+    case ".graphclient/sources/beetogether/introspectionSchema":
       return Promise.resolve(importedModule$0) as T;
     
-    case ".graphclient/sources/beetogether/introspectionSchema":
+    case ".graphclient/sources/talentlayer/introspectionSchema":
       return Promise.resolve(importedModule$1) as T;
     
     default:
@@ -5941,7 +5920,7 @@ const talentlayerTransforms = [];
 const additionalTypeDefs = [] as any[];
 const beetogetherHandler = new GraphqlHandler({
               name: "beetogether",
-              config: {"endpoint":"https://api.thegraph.com/subgraphs/name/mattiapomelli/talentlayer-zksynctestnet"},
+              config: {"endpoint":"https://api.thegraph.com/subgraphs/name/mattiapomelli/beetogether-mumbai"},
               baseDir,
               cache,
               pubsub,
@@ -5951,7 +5930,7 @@ const beetogetherHandler = new GraphqlHandler({
             });
 const talentlayerHandler = new GraphqlHandler({
               name: "talentlayer",
-              config: {"endpoint":"https://api.thegraph.com/subgraphs/name/mattiapomelli/beetogether-zksync"},
+              config: {"endpoint":"https://api.thegraph.com/subgraphs/name/talentlayer/talent-layer-mumbai"},
               baseDir,
               cache,
               pubsub,

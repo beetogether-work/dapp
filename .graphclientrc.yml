@@ -1,12 +1,24 @@
+# For mumbai
 sources:
   - name: beetogether
     handler:
       graphql:
-        endpoint: https://api.thegraph.com/subgraphs/name/mattiapomelli/talentlayer-zksynctestnet
+        endpoint: https://api.thegraph.com/subgraphs/name/mattiapomelli/beetogether-mumbai
   - name: talentlayer
     handler:
       graphql:
-        endpoint: https://api.thegraph.com/subgraphs/name/mattiapomelli/beetogether-zksync
+        endpoint: https://api.thegraph.com/subgraphs/name/talentlayer/talent-layer-mumbai
+
+# For zksync
+# sources:
+#   - name: beetogether
+#     handler:
+#       graphql:
+#         endpoint: https://api.thegraph.com/subgraphs/name/mattiapomelli/beetogether-zksync
+#   - name: talentlayer
+#     handler:
+#       graphql:
+#         endpoint: https://api.thegraph.com/subgraphs/name/mattiapomelli/talentlayer-zksynctestnet
 
 documents:
   - ./src/queries/hiveAndIdentity.graphql
