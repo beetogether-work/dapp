@@ -202,6 +202,7 @@ export enum NetworkEnum {
   MUMBAI = 80001,
   ZKSYNC = 280,
   MANTLE = 5001,
+  SCROLL = 534353,
 }
 
 export type IToken = {

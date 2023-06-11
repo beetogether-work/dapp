@@ -31,7 +31,7 @@ function Hive() {
               </div>
             </div>
             <h2 className='font-heading text-2xl font-bold leading-none text-white flex-1 ml-4 flex items-center'>
-              {hive.identity.handle}
+              {hive.identity?.handle}
             </h2>
           </div>
           <div className='flex w-full flex-1 flex-col'>
