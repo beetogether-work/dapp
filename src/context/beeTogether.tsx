@@ -31,7 +31,7 @@ const BeeTogetherProvider = ({ children }: { children: ReactNode }) => {
   const [isActiveDelegate, setIsActiveDelegate] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const fetchData = useCallback(async () => {
+  const fetchData = async () => {
     if (!account.address || !account.isConnected || !!hive?.id) {
       setLoading(false);
       return false;
@@ -71,11 +71,11 @@ const BeeTogetherProvider = ({ children }: { children: ReactNode }) => {
       // eslint-disable-next-line no-console
       console.error(err);
     }
-  }, []);
+  };
 
   useEffect(() => {
     fetchData();
-  }, [chainId, account.address, account.isConnected, isActiveDelegate, hive, fetchData]);
+  }, [chainId, account.address, account.isConnected, isActiveDelegate, hive]);
 
   useEffect(() => {
     const interval = setInterval(() => {
